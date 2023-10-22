@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mockserver</title>
+    <style>
+        pre {background-color: rgba(215, 215, 215, 1)
+        }
+    </style>
+</head>
+<body>
+<h1>Mockserver</h1>
+
+<p>本 kata 主要練習使用 Mockserver 架空外部相依的 API 回傳內容，對我們開發的 API 進行可控的測試。Kata 涵蓋以下範圍</p>
+
+<ul>
+    <li>Spring Reactive Web (Webflux)</li>
+    <li><a href="https://www.mock-server.com/">Mockserver</a>: 在測試中執行假的 server，用於提供外部相依 API 的內容。</li>
+    <li><a href="https://square.github.io/retrofit/">Retrofit</a>: 產生呼叫外部 API 的實作。</li>
+</ul>
+
+<p>使用語言: Kotlin + Gradle</p>
+
+
+<b>步驟 1: 新增專案</b>
+<p>新增 Spring Boot 專案，使用 Spring Reactive Web。</p>
+
+<b>步驟 2: 新增測試</b>
+<p>新增一個會測試描述我們預計要開發的 API。</p>
+
+<p>我們預計新增一個 API 入口 <code>/hello</code>，回傳的內容為 <code>Hello Teddy!</code></p>
+
+<pre>
+@SpringBootTest
+@AutoConfigureWebTestClient
+class HelloControllerTest(
+    @Autowired
+    val webTestClient: WebTestClient, <font color="green">// 個人偏好在最後一個參數結尾也加上逗號(,)，如此將來新增 parameter 時，讓 diff 不會判斷此欄位有更新。</font>
+) {
+    @Test
+    fun `hello Teddy`() {
+        webTestClient.get().uri("/hello").exchange()
+            .expectBody().jsonPath("$").isEqualTo("Hello Teddy!")
+    }
+}
+</pre>
+
+<b>步驟 3: 執行測試</b>
+
+<p>因為還沒實作，所以測試結果會失敗。</p>
+
+<b>步驟 4: 讓測試通過</b>
+
+<p>新增 <code>HelloController</code>，以最簡單的方式實作。</p>
+
+<pre>
+@RestController
+class HelloController {
+    @GetMapping("/hello")
+    suspend fun hello() = "Hello Teddy!"
+}
+</pre>
+
+<b>步驟 5: 執行測試</b>
+
+<p>我們已經提供測試的實作，這次測試應該要通過。</p>
+
+<b>步驟 6: 架空外部相依的 API 內容</b>
+
+<p>我們目標是將 Hello 後的使用者名稱從外部 API 取得。這裡需要引入 mockserver 套件。</p>
+
+<pre>
+val mockServerVersion = "5.15.0"
+testImplementation("org.mock-server:mockserver-netty:$mockServerVersion")
+testImplementation("org.mock-server:mockserver-client-java:$mockServerVersion")
+</pre>
+
+<p>修改既有的測試，設定 mockserver 架空外部 API ，提供使用者名稱。</p>
+
+<pre>
+@SpringBootTest
+@AutoConfigureWebTestClient
+class HelloControllerTest(
+    @Autowired
+    val webTestClient: WebTestClient,
+) {
+    @Test
+    fun `hello Teddy`() {
+        <b>givenUserName("Teddy")</b>
+        webTestClient.get().uri("/hello").exchange()
+            .expectBody().jsonPath("$").isEqualTo("Hello Teddy!")
+    }
+
+    <b>private fun givenUserName(name: String) {
+        clientAndServer.`when`(request().withMethod("Get").withPath("/name")).respond(response(name))
+    }
+
+    companion object {
+        val clientAndServer: ClientAndServer = ClientAndServer()
+
+        @DynamicPropertySource
+        @JvmStatic
+        fun register(dynamicPropertyRegistry: DynamicPropertyRegistry) {
+            dynamicPropertyRegistry.add("remoteHost") { "http://localhost:${clientAndServer.port}" }
+        }
+    }
+    </b>
+}
+</pre>
+
+<b>步驟 7: 執行測試</b>
+
+<p>測試應該通過。</p>
+
+<b>步驟 8: 新增測試</b>
+
+<p>新增測試，提供另一個使用者名稱，逼出新的實作。</p>
+
+<pre>
+@SpringBootTest
+@AutoConfigureWebTestClient
+class HelloControllerTest(
+    @Autowired
+    val webTestClient: WebTestClient,
+) {
+    <b>
+    @BeforeEach
+    fun setUp() {
+        clientAndServer.reset()
+    }
+    </b>
+
+    @Test
+    fun `hello Teddy`() {
+        givenUserName("Teddy")
+        webTestClient.get().uri("/hello").exchange()
+            .expectBody().jsonPath("$").isEqualTo("Hello Teddy!")
+    }
+
+    <b>
+    @Test
+    fun `hello Bob`() {
+        givenUserName("Bob")
+        webTestClient.get().uri("/hello").exchange()
+            .expectBody().jsonPath("$").isEqualTo("Hello Bob!")
+    }
+    </b>
+
+    private fun givenUserName(name: String) {
+        clientAndServer.`when`(request().withMethod("Get").withPath("/name")).respond(response(name))
+    }
+
+    companion object {
+        val clientAndServer: ClientAndServer = ClientAndServer()
+
+        @DynamicPropertySource
+        @JvmStatic
+        fun register(dynamicPropertyRegistry: DynamicPropertyRegistry) {
+            dynamicPropertyRegistry.add("remoteHost") { "http://localhost:${clientAndServer.port}" }
+        }
+    }
+
+}
+</pre>
+
+<b>步驟 8: 執行測試</b>
+
+<p>還沒實作，<code>Hello Bob!</code> 的測試應該要失敗。</p>
+
+<b>步驟 9: 調整實作</b>
+
+<p>引入 Retrofit 套件，幫助我們產生呼叫外部 API 的實作。</p>
+
+<pre>
+val retrofitVersion = "2.9.0"
+implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+implementation("com.squareup.retrofit2:converter-scalars:$retrofitVersion")
+</pre>
+
+<p>設定 Retrofit 的 interface，目標 API 為 <code>GET /name</code>，回傳的內容型態為 <code>String</code>。</p>
+
+<pre>
+interface ApiClient {
+    @GET("/name")
+    suspend fun getName(): String
+}
+</pre>
+
+<p>設定 <code>ApiClient</code> 實作的 Bean。</p>
+
+<pre>
+@Configuration
+class ApiClientConfig(
+    @Value("\${remoteHost}")
+    val remoteHost: String
+) {
+    @Bean
+    fun apiClient(): ApiClient =
+        Retrofit.Builder().baseUrl(remoteHost).addConverterFactory(ScalarsConverterFactory.create()).build()
+            .create(ApiClient::class.java)
+}
+</pre>
+
+<p>修改 <code>hello</code> 的名稱來自 api 呼叫。</p>
+
+<pre>
+@RestController
+class HelloController(
+    <b>val apiClient: ApiClient,</b>
+) {
+    @GetMapping("/hello")
+    suspend fun hello() = "Hello <b>${apiClient.getName()}</b>!"
+}
+</pre>
+
+<b>步驟 10: 執行測試</b>
+
+<p>測試通過。</p>
+
+
+<h1>展示影片</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rOMdEsksIR8?si=urllcMt2KDKWVGRY"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+<p>(END)</p>
+</body>
+</html>
