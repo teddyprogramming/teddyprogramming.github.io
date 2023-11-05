@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self-signed (Let's Encrypt)</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<h1>Self-seigned (Let's Encrypt)</h1>
+
+<p>1. 建立 deployment</p>
+
+<pre>
+$ kubectl create deploy alpaca \
+    --image gcr.io/kuar-demo/kuard-amd64:blue \
+    --port 8080
+</pre>
+
+<p>2. 使用 service 暴露 deployment </p>
+
+<pre>
+$ kubectl expose deploy alpaca
+</pre>
+
+<p>3. 安裝 ingress (這裡使用 contour)</p>
+
+<pre>
+$ kubectl apply -f http://projectcontour.io/quickstart/contour.yaml
+</pre>
+
+配置 external IP 需要一些時間。我們在下下一步再來查 ingress 分配的 IP。
+
+<p>4. 安裝 cert-manager</p>
+
+<pre>
+$ kubectl apply \
+    -f http://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
+</pre>
+
+<p>5. 查詢 external IP 並註冊一個 domain name</p>
+
+<pre>
+$ kubectl get service -n projectcontour
+NAME      TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+contour   ClusterIP      10.76.3.26     &lt;none>        8001/TCP                     53s
+envoy     LoadBalancer   10.76.12.110   <span style="color: red; font-weight: bold">34.80.30.76</span>   80:30921/TCP,443:32209/TCP   52s
+</pre>
+
+替 ingress 分配到的 EXTERNAL-IP 註冊一個 domain name，稍後我們會使用此 domain name 存取 service。可以使用 no-ip 註冊免費的 domain name。
+
+<p>6. 新增 issuer (<i>issuer.yaml</i>)</p>
+
+<pre>
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: issuer
+spec:
+  selfSigned:
+    { }
+</pre>
+
+<p>7. 新增 certification (<i>cert.yaml</i>)</p>
+
+<pre>
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert
+spec:
+  dnsNames:
+    - <span style="color: red; font-weight: bold">${domainName}</span>
+  secretName: secret
+  issuerRef:
+    name: issuer
+</pre>
+
+<code>${domainName}</code> 替換成註冊的 domain name，例如 alpaca.example.com。
+
+<p>8. 新增 ingress (<i>ingress.yaml</i>)</p>
+
+<pre>
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  tls:
+    - hosts:
+        - <span style="color: red; font-weight: bold">${domainName}</span>
+      secretName: secret
+  rules:
+    - host: <span style="color: red; font-weight: bold">${domainName}</span>
+      http:
+        paths:
+          - backend:
+              service:
+                name: alpaca
+                port:
+                  number: 8080
+            pathType: Prefix
+            path: /
+</pre>
+
+<p>9. 上線</p>
+
+<pre>
+$ kubectl apply -f .
+</pre>
+
+套用 <i>issuer.yaml</i>, <i>cert.yaml</i>, <i>ingress.yaml</i>。
+
+<p>10. 測試</p>
+
+使用瀏覽器，透過 HTTPS 連線到 service，即 <i>https://<span style="font-weight: bold;">${domainName}</span></i>。
+
+<h2>清除環境</h2>
+
+<p>1. 清除 issuer, certification, ingress</p>
+
+<pre>
+$ kubectl delete -f . --wait=false
+</pre>
+
+<p>2. 刪除 cert-manager</p>
+
+<pre>
+$ kubectl delete \
+    -f http://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml \
+    --wait=false --ignore-not-found
+</pre>
+
+<p>3. 刪除 contour</p>
+
+<pre>
+$ kubectl delete \
+    -f http://projectcontour.io/quickstart/contour.yaml \
+    --wait=false --ignore-not-found
+</pre>
+
+<p>4. 刪除 service</p>
+
+<pre>
+$ kubectl delete service alpaca
+</pre>
+
+<p>5. 刪除 deployment</p>
+
+<pre>
+$ kubectl delete deployment alpaca
+</pre>
+
+<h2>Demo</h2>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YiAMR5TykYI?si=3DSMab-ftDC1eskw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</body>
+</html>
