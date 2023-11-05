@@ -2,3 +2,12 @@ pre {
     background-color: rgba(215, 215, 215, 1);
     padding: 10px
 }
+
+a:visited {
+    text-decoration: none;
+    color: navy;
+}
+
+a {
+    color: navy;
+}
