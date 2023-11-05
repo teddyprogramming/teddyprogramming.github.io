@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HTTPS: Self-signed (Let's Encrypt)</title>
+    <title>HTTPS ACME (Let's Encrypt)</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<h1>HTTPS: Self-seigned (Let's Encrypt)</h1>
+<h1>HTTPS: ACME (Let's Encrypt)</h1>
 
 <p>1. 建立 deployment</p>
 
@@ -43,7 +43,7 @@ $ kubectl apply \
 $ kubectl get service -n projectcontour
 NAME      TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
 contour   ClusterIP      10.76.3.26     &lt;none>        8001/TCP                     53s
-envoy     LoadBalancer   10.76.12.110   <span style="color: red; font-weight: bold">34.80.30.76</span>   80:30921/TCP,443:32209/TCP   52s
+envoy     LoadBalancer   10.76.12.110   <span style="color: red">34.80.30.76</span>   80:30921/TCP,443:32209/TCP   52s
 </pre>
 
 替 ingress 分配到的 EXTERNAL-IP 註冊一個 domain name，稍後我們會使用此 domain name 存取 service。可以使用 no-ip 註冊免費的 domain name。
@@ -56,41 +56,35 @@ kind: Issuer
 metadata:
   name: issuer
 spec:
-  selfSigned:
-    { }
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: <span style="color: red">${email}</span>
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: contour
 </pre>
 
-<p>7. 新增 certification (<i>cert.yaml</i>)</p>
+<code>${email}</code> 填入 email，不需註冊，有效的 email 即可。
 
-<pre>
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: cert
-spec:
-  dnsNames:
-    - <span style="color: red; font-weight: bold">${domainName}</span>
-  secretName: secret
-  issuerRef:
-    name: issuer
-</pre>
-
-<code>${domainName}</code> 替換成註冊的 domain name，例如 alpaca.example.com。
-
-<p>8. 新增 ingress (<i>ingress.yaml</i>)</p>
+<p>7. 新增 ingress (<i>ingress.yaml</i>)</p>
 
 <pre>
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    cert-manager.io/issuer: "issuer"
 spec:
   tls:
     - hosts:
-        - <span style="color: red; font-weight: bold">${domainName}</span>
-      secretName: secret
+        - <span style="color: red">${domainName}</span>
+      secretName: tls-secret
   rules:
-    - host: <span style="color: red; font-weight: bold">${domainName}</span>
+    - host: <span style="color: red">${domainName}</span>
       http:
         paths:
           - backend:
@@ -102,13 +96,15 @@ spec:
             path: /
 </pre>
 
+<code>${domainName}</code> 替換成註冊的 domain name，例如 alpaca.example.com。
+
 <p>9. 上線</p>
 
 <pre>
 $ kubectl apply -f .
 </pre>
 
-套用 <i>issuer.yaml</i>, <i>cert.yaml</i>, <i>ingress.yaml</i>。
+套用 <i>issuer.yaml</i>, <i>ingress.yaml</i>。
 
 <p>10. 測試</p>
 
@@ -116,7 +112,7 @@ $ kubectl apply -f .
 
 <h2>清除環境</h2>
 
-<p>1. 清除 issuer, certification, ingress</p>
+<p>1. 清除 issuer, ingress</p>
 
 <pre>
 $ kubectl delete -f . --wait=false
@@ -153,12 +149,12 @@ $ kubectl delete deployment alpaca
 <p>6. 刪除 secret</p>
 
 <pre>
-$ kubectl delete secret secret
+$ kubectl delete secret letsencrypt-prod tls-secret
 </pre>
 
 <h2>Demo</h2>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YiAMR5TykYI?si=3DSMab-ftDC1eskw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/muIN4lu0nGY?si=hp0Rrr22ylDHwH8F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 </body>
 </html>
