@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReplicaSet basic</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a href="../index.html">回上一頁</a>
+
+<h1>ReplicaSet basic</h1>
+
+<p>1. 新增 ReplicaSet 的 yaml 描述，命名為 <i>kuard-rs.yaml</i>。內容如下：</p>
+
+<pre>
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+    version: "2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard
+      version: "2"
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+        version: "2"
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:green
+</pre>
+
+<p>2. 套用 <i>kuard-rs.yaml</i></p>
+
+<pre>
+$ kubectl apply -f kuard-rs.yaml
+</pre>
+
+<p>3. 確認 ReplicaSet 的數量為 1</p>
+
+檢視 rs
+
+<pre>
+$ kubectl get rs kuard
+</pre>
+
+檢視 pod
+
+<pre>
+$ kubectl get pod
+</pre>
+
+檢視 ReplicaSet 的描述
+
+<pre>
+$ kubectl describe rs kuard
+</pre>
+
+<p>4. 檢視屬於 ReplicaSet kuard 的 pod</p>
+
+<pre>
+$ kubectl get pod -l app=kuard,version=2
+</pre>
+
+<p>5. 檢視 pod 所屬的 ReplicaSet</p>
+
+<pre>
+$ kubectl get pod <span style="color: red">kuard-xxx</span> -o jsonpath='{.metadata.ownerReferences[0].name}'
+</pre>
+
+將 <code>kuard-xxx</code> 替換成實際上 Pod 名稱
+
+<p>6. scale ReplicaSet</p>
+
+<pre>
+$ kubectl scale rs kuard --replicas 4
+</pre>
+
+<p>7. 檢視 ReplicaSet 的數量為 4</p>
+
+檢視 rs kuard 的描述
+
+<pre>
+$ kubectl describe rs kuard
+</pre>
+
+檢視 pod
+
+<pre>
+$ kubectl get pod
+</pre>
+
+檢視 rs
+
+<pre>
+$ kubectl get rs kuard
+</pre>
+
+<p>8. 重新套用 <i>kuard-rs.yaml</i></p>
+
+因為 scale 的設定並沒有對應修正到 yaml 描述，所以重新套用後，scale 會重新被設定回 1。因此，需要維護 yaml 與實際狀況的一致性。
+
+<pre>
+$ kubectl apply -f kuard-rs.yaml
+</pre>
+
+<p>9. 檢視 ReplicaSet 的數量應為 1</p>
+
+檢視 rs
+
+<pre>
+$ kubectl get rs kuard
+</pre>
+
+檢視 pod
+
+<pre>
+$ kubectl get pod
+</pre>
+
+<p>10. 刪除 ReplicaSet</p>
+
+<pre>
+$ kubectl delete rs kuard
+</pre>
+
+<p>11. 確認 ReplicaSet 及其 Pod 被刪除</p>
+
+檢視 rs
+
+<pre>
+$ kubectl get rs
+</pre>
+
+檢視 pod
+
+<pre>
+$ kubectl get pod
+</pre>
+
+<h1>Demo</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v4VOyINzXxA?si=aDrErVNNYoZkqVL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</body>
+</html>
