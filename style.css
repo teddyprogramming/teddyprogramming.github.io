@@ -11,3 +11,7 @@ a:visited {
 a {
     color: navy;
 }
+
+p {
+    font-weight: bold;
+}

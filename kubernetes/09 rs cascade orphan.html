@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReplicaSet: cascade - orphan</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a href="../index.html">回上一頁</a>
+
+<h1>ReplicaSet: cascade - orphan</h1>
+
+預設行為，刪除 ReplicaSet 會刪除其管理的 pod。這個練習只刪除 ReplicaSet 而不刪除其管理的 pod。
+
+<p>1. 新增 ReplicaSet 檔案命名為 <i>kuard-rs.yaml</i></p>
+
+<pre>
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+    version: "2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard
+      version: "2"
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+        version: "2"
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:green
+</pre>
+
+<p>2. 確認目前的 rs 與 pod</p>
+
+<pre>
+$ kubectl get rs kuard
+$ kubectl get pod
+</pre>
+
+<p>3. 刪除 rs 但不刪除其管理的 pod</p>
+
+<pre>
+$ kubectl delete rs <span style="color: red">--cascade=orphan</span>
+</pre>
+
+舊版，將被棄用的寫法，可以使用 <code>--cascade=false</code>
+
+<p>4. 確認 rs 與 pod</p>
+
+rs 應不存在，pod 應保留。
+
+<pre>
+$ kubectl get rs kuard
+$ kubectl get pod
+</pre>
+
+<p>5. 刪除 pod</p>
+
+<pre>
+$ kubectl delete <span style="color: red">kuard-xxx</span>
+</pre>
+
+將 <code>kuard-xxx</code> 替換成實際上 pod 的名稱。
+
+<h1>Demo</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HFBxEwH1qx4?si=VAvKzu_nuv9sVVEI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</body>
+</html>
