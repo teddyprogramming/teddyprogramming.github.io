@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReplicaSet: autoscale</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a href="../index.html">回上一頁</a>
+
+<h1>ReplicaSet: autoscale</h1>
+
+<p>1. 確認 cluster 支援 autoscale</p>
+
+<pre>
+$ kubectl get pod -n kube-system
+</pre>
+
+確認清單中是否有 <code>metric-server</code>，有出現才支援。
+
+<p>2. 套用 ReplicaSet</p>
+
+<pre>
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+    version: "2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard
+      version: "2"
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+        version: "2"
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:green
+</pre>
+
+<p>3. autoscale</p>
+
+<pre>
+$ kubectl autoscale rs kuard --min 2 --max 5 --cpu-percent 80
+</pre>
+
+<code>--min</code> 設定最低 pod 數量；<code>--max</code> 設定最高 pod 數量；<code>--cpu-percent</code> 設定要提升 pod 數量的條件。
+
+<p>4. 查詢新增的 hpa (horizontal pod autoscaling)</p>
+
+<pre>
+$ kubectl get hpa
+</pre>
+
+<p>5. 查詢 rs 的設定</p>
+
+<pre>
+$ kubectl get rs -w
+</pre>
+
+因為需要一些時間套用，使用 <code>-w</code> 等待更新的狀態。使用 <code>ctl+c</code> 離開等待狀態。
+
+<p>6. 查詢 pod</p>
+
+<pre>
+$ kubectl get pod
+</pre>
+
+<p>7. 刪除 rs</p>
+
+<pre>
+$ kubectl delete rs kuard
+</pre>
+
+<p>8. 刪除 hpa</p>
+
+<pre>
+$ kubectl delete hpa kuard
+</pre>
+
+<h1>Demo</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Jlz8ZO-HvWs?si=XG9C3sA02fo0jSh-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</body>
+</html>
