@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deployment replicas</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a href="../index.html">回上一頁</a>
+
+<h1>Deployment: replicas</h1>
+
+<p>1. 新增 Deployment 的 yaml 檔案，命名成 <i>kuard-deployment.yaml</i>。</p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+</pre>
+
+<p>2. 套用 yaml 檔案。</p>
+
+<pre>
+$ kubectl apply -f kuard-deployment.yaml
+</pre>
+
+<p>3. 查詢 deployment</p>
+
+<pre>
+$ kubectl get deployment kuard
+</pre>
+
+顯示的 replicas 相關欄位的數量為 1
+
+<p>4. 更新 yaml 檔案中 replicas 的數量為 3</p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  replicas: <span style="color: red; font-weight: bold">3</span>
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+</pre>
+
+<p>5. 套用變更</p>
+
+<pre>
+$ kubectl apply -f kuard-deployment.yaml
+</pre>
+
+<p>6. 查詢 deployment</p>
+
+<pre>
+$ kubectl get deployment kuard
+</pre>
+
+顯示的 replicas 相關欄位應為 3。
+
+<p>7. 刪除 deployment</p>
+
+<pre>
+$ kubectl delete -f kuard-deployment.yaml
+</pre>
+
+<h1>Demo</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2yYFkplZKbw?si=NCq5vwfHqiOcrJhV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</body>
+</html>
