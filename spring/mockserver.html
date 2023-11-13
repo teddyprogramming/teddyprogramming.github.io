@@ -11,7 +11,7 @@
 
 <h1>Mockserver</h1>
 
-<p>本 kata 主要練習使用 Mockserver 架空外部相依的 API 回傳內容，對我們開發的 API 進行可控的測試。Kata 涵蓋以下範圍</p>
+本 kata 主要練習使用 Mockserver 架空外部相依的 API 回傳內容，對我們開發的 API 進行可控的測試。Kata 涵蓋以下範圍
 
 <ul>
     <li>Spring Reactive Web (Webflux)</li>
@@ -19,16 +19,16 @@
     <li><a href="https://square.github.io/retrofit/">Retrofit</a>: 產生呼叫外部 API 的實作。</li>
 </ul>
 
-<p>使用語言: Kotlin + Gradle</p>
+使用語言: Kotlin + Gradle
 
 
-<b>步驟 1: 新增專案</b>
-<p>新增 Spring Boot 專案，使用 Spring Reactive Web。</p>
+<p>步驟 1: 新增專案</p>
+新增 Spring Boot 專案，使用 Spring Reactive Web。
 
-<b>步驟 2: 新增測試</b>
-<p>新增一個會測試描述我們預計要開發的 API。</p>
+<p>步驟 2: 新增測試</p>
+新增一個會測試描述我們預計要開發的 API。
 
-<p>我們預計新增一個 API 入口 <code>/hello</code>，回傳的內容為 <code>Hello Teddy!</code></p>
+我們預計新增一個 API 入口 <code>/hello</code>，回傳的內容為 <code>Hello Teddy!</code>
 
 <pre>
 @SpringBootTest
@@ -45,13 +45,13 @@ class HelloControllerTest(
 }
 </pre>
 
-<b>步驟 3: 執行測試</b>
+<p>步驟 3: 執行測試</p>
 
-<p>因為還沒實作，所以測試結果會失敗。</p>
+因為還沒實作，所以測試結果會失敗。
 
-<b>步驟 4: 讓測試通過</b>
+<p>步驟 4: 讓測試通過</p>
 
-<p>新增 <code>HelloController</code>，以最簡單的方式實作。</p>
+新增 <code>HelloController</code>，以最簡單的方式實作。
 
 <pre>
 @RestController
@@ -61,13 +61,13 @@ class HelloController {
 }
 </pre>
 
-<b>步驟 5: 執行測試</b>
+<p>步驟 5: 執行測試</p>
 
-<p>我們已經提供測試的實作，這次測試應該要通過。</p>
+我們已經提供測試的實作，這次測試應該要通過。
 
-<b>步驟 6: 架空外部相依的 API 內容</b>
+<p>步驟 6: 架空外部相依的 API 內容</p>
 
-<p>我們目標是將 Hello 後的使用者名稱從外部 API 取得。這裡需要引入 mockserver 套件。</p>
+我們目標是將 Hello 後的使用者名稱從外部 API 取得。這裡需要引入 mockserver 套件。
 
 <pre>
 val mockServerVersion = "5.15.0"
@@ -75,7 +75,7 @@ testImplementation("org.mock-server:mockserver-netty:$mockServerVersion")
 testImplementation("org.mock-server:mockserver-client-java:$mockServerVersion")
 </pre>
 
-<p>修改既有的測試，設定 mockserver 架空外部 API ，提供使用者名稱。</p>
+修改既有的測試，設定 mockserver 架空外部 API ，提供使用者名稱。
 
 <pre>
 @SpringBootTest
@@ -108,13 +108,13 @@ class HelloControllerTest(
 }
 </pre>
 
-<b>步驟 7: 執行測試</b>
+<p>步驟 7: 執行測試</p>
 
-<p>測試應該通過。</p>
+測試應該通過。
 
-<b>步驟 8: 新增測試</b>
+<p>步驟 8: 新增測試</p>
 
-<p>新增測試，提供另一個使用者名稱，逼出新的實作。</p>
+新增測試，提供另一個使用者名稱，逼出新的實作。
 
 <pre>
 @SpringBootTest
@@ -163,13 +163,13 @@ class HelloControllerTest(
 }
 </pre>
 
-<b>步驟 8: 執行測試</b>
+<p>步驟 9: 執行測試</p>
 
-<p>還沒實作，<code>Hello Bob!</code> 的測試應該要失敗。</p>
+還沒實作，<code>Hello Bob!</code> 的測試應該要失敗。
 
-<b>步驟 9: 調整實作</b>
+<p>步驟 10: 調整實作</p>
 
-<p>引入 Retrofit 套件，幫助我們產生呼叫外部 API 的實作。</p>
+引入 Retrofit 套件，幫助我們產生呼叫外部 API 的實作。
 
 <pre>
 val retrofitVersion = "2.9.0"
@@ -177,7 +177,7 @@ implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
 implementation("com.squareup.retrofit2:converter-scalars:$retrofitVersion")
 </pre>
 
-<p>設定 Retrofit 的 interface，目標 API 為 <code>GET /name</code>，回傳的內容型態為 <code>String</code>。</p>
+設定 Retrofit 的 interface，目標 API 為 <code>GET /name</code>，回傳的內容型態為 <code>String</code>。
 
 <pre>
 interface ApiClient {
@@ -186,7 +186,7 @@ interface ApiClient {
 }
 </pre>
 
-<p>設定 <code>ApiClient</code> 實作的 Bean。</p>
+設定 <code>ApiClient</code> 實作的 Bean。
 
 <pre>
 @Configuration
@@ -201,7 +201,7 @@ class ApiClientConfig(
 }
 </pre>
 
-<p>修改 <code>hello</code> 的名稱來自 api 呼叫。</p>
+修改 <code>hello</code> 的名稱來自 api 呼叫。
 
 <pre>
 @RestController
@@ -213,10 +213,9 @@ class HelloController(
 }
 </pre>
 
-<b>步驟 10: 執行測試</b>
+<p>步驟 11: 執行測試</p>
 
-<p>測試通過。</p>
-
+測試通過。
 
 <h1>展示影片</h1>
 
