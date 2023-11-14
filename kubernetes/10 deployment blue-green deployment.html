@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deployment: blue/green deployment</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a href="../index.html">回上一頁</a>
+
+<h1>Deployment: blue/green deployment</h1>
+
+<p>1. 新增 deployment 的 yaml 檔案，命名成 <i>kuard-deployment.yaml</i></p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  replicas: <span style="color: red">4</span>
+  <span style="color: red">strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 25%</span>
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+</pre>
+
+<code>maxSurge</code> 100% 相當於 blue/green deployment。
+
+<p>2. 開一個而外的 terminal 觀察 rs 的狀態</p>
+
+<pre>
+$ kubectl get rs -o wide -w --output-watch-events
+</pre>
+
+<p>3. 套用 deployment</p>
+
+<pre>
+$ kubectl apply -f kuard-deployment.yaml
+</pre>
+
+<p>4. 更新 image</p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  replicas: 4
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:<span style="color: red">green</span>
+</pre>
+
+<p>5. 套用變更</p>
+
+<pre>
+$ kubectl apply -f kuard-deployment.yaml
+</pre>
+
+查看 ReplicaSet 的 pod 變更狀況。
+
+<p>6. 刪除 deployment</p>
+
+<pre>
+$ kubectl delete -f kuard-deoloyment.yaml
+</pre>
+
+<h1>Demo</h1>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m2qNer3JK8Q?si=Hb7RGVCXp_g-LBJH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</body>
+</html>
