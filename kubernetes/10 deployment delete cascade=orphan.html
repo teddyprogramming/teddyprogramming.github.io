@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deployment delete cascade=orphan</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a href="../index.html">回上一頁</a>
+
+<h1>Deployment delete cascade=orphan</h1>
+
+<code>cascade=orphan</code> 表示僅刪除 Deployment，不會刪除 ReplicaSet 與其 Pod。
+
+<p>1. 新增 Deployment 的 yaml 檔案，命名成 <i>kuard-deployment.yaml</i>。</p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+    spec:
+      containers:
+        - name: kuard
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+</pre>
+
+<p>2. 套用 yaml 檔案。</p>
+
+<pre>
+$ kubectl apply -f kaurd-deployment.yaml
+</pre>
+
+<p>3. 確認目前的 ReplicaSet 與 Pod</p>
+
+<pre>
+$ kubectl get rs
+NAME               DESIRED   CURRENT   READY   AGE
+kuard-54b78d8b67   1         1         1       4s
+
+$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+kuard-54b78d8b67-8zf26   1/1     Running   0          9s
+</pre>
+
+<p>4. 刪除 Deployment 帶參數 <code>--cascade=orphan</code></p>
+
+<pre>
+$ kubectl delete deployment kuard <span style="color: red;">--cascade=orphan</span>
+</pre>
+
+<p>5. 確認目前的 ReplicaSet 與 Pod 沒有被刪除</p>
+
+<pre>
+$ kubectl get rs
+NAME               DESIRED   CURRENT   READY   AGE
+kuard-54b78d8b67   1         1         1       32s
+
+$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+kuard-54b78d8b67-8zf26   1/1     Running   0          37s
+</pre>
+
+<p>6. 刪除 ReplicaSet</p>
+
+<pre>
+$ kubectl delete rs kuard-54b78d8b67
+</pre>
+
+<h1>Demo</h1>
+
+</body>
+</html>
