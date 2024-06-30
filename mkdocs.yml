@@ -1,0 +1,32 @@
+site_name: Teddy 的筆記本
+
+# https://squidfunk.github.io/mkdocs-material/
+theme:
+  name: 'material'
+  language: 'zh-TW'
+  features:
+    - content.code.select
+    - content.code.annotate
+    - toc.integrate
+    - navigation.top
+
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
+# https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
+nav:
+  - Spring Boot:
+      - Scheduler:
+        - Quartz:
+          - Hello World!: spring-boot/scheduler/01_quartz_hello_world.md
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/
+      num_workers: 8
+      puml_keyword: plantuml
