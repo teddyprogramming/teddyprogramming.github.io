@@ -21,6 +21,7 @@ nav:
           - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
 
 markdown_extensions:
+  - admonition
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.snippets

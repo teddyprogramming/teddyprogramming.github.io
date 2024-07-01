@@ -29,18 +29,25 @@ services:
 
 ```yaml title="src/main/resources/application.yml"
 spring:
+  datasource: #(1)!
+    name: datasource
+    url: jdbc:mysql://localhost:3306/quartz
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
   quartz:
-    job-store-type: jdbc #(1)!
+    job-store-type: jdbc #(2)!
     jdbc:
-      initialize-schema: always #(2)!
+      initialize-schema: always #(3)!
+    overwrite-existing-jobs: true
     properties:
       org:
         quartz:
           scheduler:
             instanceName: scheduler
-            instanceId: AUTO #(3)!
+            instanceId: AUTO #(4)!
           dataSource:
-            quartzDataSource: #(4)!
+            quartzDataSource: #(5)!
               driver: com.mysql.cj.jdbc.Driver
               URL: jdbc:mysql://localhost:3306/quartz
               user: root
@@ -52,12 +59,13 @@ spring:
             isClustered: true #(6)!
 ```
 
-1. 使用 JDBC JobStore。
-2. 每次啟動都會初始化 schema。換句話說，我們可以不必手動新增 quartz 相關的 tables。([SQL 參考](https://github.com/quartz-scheduler/quartz/tree/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore))
-3. 在 cluster 上的 pod 需要有唯一的 instance id。這裡設定 `AUTO` 即可達到需求。
-4. data source 的設定。這裡的名稱會在下面設定 job store 的 dataSource 參考。
-5. job store 使用的 dataSource。
-6. 啟用 cluster。
+1. `spring.quartz.jdbc.initialize-schema` 吃的 Data Source 設定。在 `spring.quartz.properties.org.quartz.dataSource` 設定的 Data Source 不支援 initialize schema。
+2. 使用 JDBC JobStore。
+3. 每次啟動都會初始化 schema。換句話說，我們可以不必手動新增 quartz 相關的 tables。([SQL 參考](https://github.com/quartz-scheduler/quartz/tree/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore))
+4. 在 cluster 上的 pod 需要有唯一的 instance id。這裡設定 `AUTO` 即可達到需求。
+5. data source 的設定。這裡的名稱會在下面設定 job store 的 dataSource 參考。
+6. job store 使用的 dataSource。
+7. 啟用 cluster。
 
 新增 `Job` 實作，簡單的在畫面輸出現在的時間以及 "Hello World!"。印出時間是為了幫助我們識別這是哪個時間點所觸發的 Job。
 
@@ -109,6 +117,131 @@ java -jar build/libs/xxx.jar
 ```
 
 觀察每 10 秒只會有一個 terminal 輸出 "Hello World!"。這表示 Job 是在 cluster 上執行的。將輸出訊息的 terminal 關閉，可以觀察到其他 terminal 會接續執行輸出 "Hello World!" 的 Job。
+
+!!! note "一個 trigger 一個 job instance 的設定"
+
+    `org.quartz.scheduler.batchTriggerAcquisitionMaxCount` 預設值為 1 設定了 Trigger 的 job 一次執行一個 instance。可以設定其他數值來讓同一 trigger 同時執行多個 job。
+
+## 探討: 執行時間超過下一次排程的時間的行為
+
+假設我們設定每 10 秒跑一個 job。並且，每個 job 執行時間需要 15 秒。也就是說，job 的執行時間必定會覆蓋到下一次觸發的時間。在沒有特別設定的情況下，經過 30 秒後，將會有 3 個 job 被跑起來。job 與 job 的時間時間是會重疊的。
+
+```plantuml
+@startgantt
+[T1] happens D+0
+
+[T2] happens D+10
+[T2] displays on same row as [T1]
+
+[T3] happens D+20
+[T3] displays on same row as [T1]
+
+[T4] happens D+30
+[T4] displays on same row as [T1]
+
+[Job 1] starts D+0
+[Job 2] starts D+10
+[Job 3] starts D+20
+[Job 1] requires 15 days
+[Job 2] requires 15 days
+[Job 3] requires 15 days
+@endgantt
+```
+
+### 使用`@DisallowConcurrentExecution` 來避免重疊執行
+
+在 Job 的宣告加上 `@DisallowConcurrentExecution` 來避免 Job 重疊執行。
+
+```java title="HelloWorldJob.java" hl_lines="1"
+@DisallowConcurrentExecution
+public class HelloWorldJob implements Job {
+    // ...
+}
+```
+
+如此，當 Job 還在執行時，下一次的 Job 將會被延遲到上一次的 Job 執行完畢後再執行。變更後的
+ 3 個 Job 執行時間軸參考下圖:
+
+```plantuml
+@startgantt
+[T1] happens D+0
+
+[T2] happens D+10
+[T2] displays on same row as [T1]
+
+[T3] happens D+20
+[T3] displays on same row as [T1]
+
+[T4] happens D+30
+[T4] displays on same row as [T1]
+
+[T5] happens D+40
+[T5] displays on same row as [T1]
+
+[Job 1] starts D+0
+[Job 2] starts D+15
+[Job 3] starts D+30
+
+[Job 1] requires 15 days
+[Job 2] requires 15 days
+[Job 3] requires 15 days
+
+@endgantt
+```
+
+### 計算排程的時間與觸發的時間差來忽略錯過的 trigger
+
+在 `Job.execute` 開始前，檢查 job 觸發的時間與排程的時間差，如果超過一定時間，則忽略這次的 trigger。範例中是時間差超過 1000 毫秒 (1 秒) 就忽略這次的 trigger。
+
+```java title="HelloWorldJob.java" hl_lines="5-7"
+@DisallowConcurrentExecution
+public class HelloWorldJob implements Job {
+    @Override
+    public void execute(JobExecutionContext context) {
+        if (context.getFireTime().getTime() - context.getScheduledFireTime().getTime() > 1000) {
+            return;  // skip this trigger
+        }
+        // ...
+    }
+}
+```
+
+如此，每一個被 trigger 的 job 都會落在排程設定的時間點上。變更後的 3 個 Job 執行時間軸參考下圖:
+
+```plantuml
+@startgantt
+[T1] happens D+0
+
+[T2] happens D+10
+[T2] displays on same row as [T1]
+
+[T3] happens D+20
+[T3] displays on same row as [T1]
+
+[T4] happens D+30
+[T4] displays on same row as [T1]
+
+[T5] happens D+40
+[T5] displays on same row as [T1]
+
+[T6] happens D+50
+[T6] displays on same row as [T1]
+
+[Job 1] starts D+0
+[Job 2] starts D+20
+[Job 3] starts D+40
+
+[Job 1] requires 15 days
+[Job 2] requires 15 days
+[Job 3] requires 15 days
+
+@endgantt
+```
+
+!!! note
+    目前沒有發現官方對於此方案的解法。這裡的解法有土法煉鋼的感覺。
+
+[// TODO]: # (## 探討: Job 執行過程發生錯誤的行為)
 
 ## 參考
 
