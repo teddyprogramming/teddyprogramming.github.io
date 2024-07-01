@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../hello_world/">
+      
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Hello World! - Teddy 的筆記本</title>
+        <title>JDBC JobStore - Teddy 的筆記本</title>
       
     
     
@@ -58,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quartz-hello-world" class="md-skip">
+        <a href="#quartz-jdbc-jobstore" class="md-skip">
           跳轉到
         </a>
       
@@ -94,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hello World!
+              JDBC JobStore
             
           </span>
         </div>
@@ -297,6 +299,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../hello_world/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello World!
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -313,7 +336,7 @@
           
   
   <span class="md-ellipsis">
-    Hello World!
+    JDBC JobStore
   </span>
   
 
@@ -324,7 +347,7 @@
         
   
   <span class="md-ellipsis">
-    Hello World!
+    JDBC JobStore
   </span>
   
 
@@ -346,18 +369,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#5-hello-world" class="md-nav__link">
+  <a href="#job" class="md-nav__link">
     <span class="md-ellipsis">
-      每 5 秒輸出 "Hello World!" 到畫面上
+      簡單的 Job 範例
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-hello-name" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      每 5 秒輸出 "Hello {name}!" 到畫面上
+      參考
     </span>
   </a>
   
@@ -410,74 +433,99 @@
                   
 
 
-<h1 id="quartz-hello-world">Quartz: Hello World</h1>
-<h2 id="5-hello-world">每 5 秒輸出 "Hello World!" 到畫面上</h2>
-<div class="puml"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="174px" preserveAspectRatio="true" style="background: #ffffff" version="1.1" viewBox="0 0 526 174" width="526px" zoomAndPan="magnify"><defs/><g><g id="elem_Scheduler"><rect codeLine="3" fill="#F1F1F1" height="42.2969" id="Scheduler" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="76" x="7" y="15.15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="10" y="33.1451">Scheduler</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="82" y1="41.4469" y2="41.4469"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="82" y1="49.4469" y2="49.4469"/></g><g id="elem_Job"><rect codeLine="5" fill="#F1F1F1" height="58.5938" id="Job" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="167" x="352.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="21" x="425.5" y="24.9951">Job</text><line style="stroke:#181818;stroke-width:0.5;" x1="353.5" x2="518.5" y1="33.2969" y2="33.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="353.5" x2="518.5" y1="41.2969" y2="41.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="358.5" y="58.292">execute(context): void</text></g><g id="elem_HelloWorldJob"><rect codeLine="9" fill="#F1F1F1" height="42.2969" id="HelloWorldJob" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="100" x="390" y="125.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="393" y="143.5851">HelloWorldJob</text><line style="stroke:#181818;stroke-width:0.5;" x1="391" x2="489" y1="151.8869" y2="151.8869"/><line style="stroke:#181818;stroke-width:0.5;" x1="391" x2="489" y1="159.8869" y2="159.8869"/></g><g id="elem_JobDetail"><rect codeLine="11" fill="#F1F1F1" height="42.2969" id="JobDetail" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="66" x="249" y="15.15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="252" y="33.1451">JobDetail</text><line style="stroke:#181818;stroke-width:0.5;" x1="250" x2="314" y1="41.4469" y2="41.4469"/><line style="stroke:#181818;stroke-width:0.5;" x1="250" x2="314" y1="49.4469" y2="49.4469"/></g><g id="elem_Trigger"><rect codeLine="14" fill="#F1F1F1" height="42.2969" id="Trigger" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="55" x="118.5" y="15.15"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="49" x="121.5" y="33.1451">Trigger</text><line style="stroke:#181818;stroke-width:0.5;" x1="119.5" x2="172.5" y1="41.4469" y2="41.4469"/><line style="stroke:#181818;stroke-width:0.5;" x1="119.5" x2="172.5" y1="49.4469" y2="49.4469"/></g><g id="elem_helloWorldTrigger"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="135" x="38.5" y="128.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="45.5" y="143.5851">helloWorldTrigger</text><line style="stroke:#181818;stroke-width:0.5;" x1="39.5" x2="172.5" y1="148.8869" y2="148.8869"/></g><g id="elem_helloWorldJobDetail"><rect fill="#F1F1F1" height="36.2969" style="stroke:#181818;stroke-width:0.5;" width="146" x="209" y="128.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="216" y="143.5851">helloWorldJobDetail</text><line style="stroke:#181818;stroke-width:0.5;" x1="210" x2="354" y1="148.8869" y2="148.8869"/></g><g id="link_Job_HelloWorldJob"><path d="M437.7237,84.0578 C438.4137,102.7578 438.63,108.69 439.25,125.42 " fill="none" id="Job-backto-HelloWorldJob" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="437.06,66.07,431.7278,84.279,443.7196,83.8365,437.06,66.07" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_JobDetail_Job"><path codeLine="18" d="M315.39,36.3 C327.64,36.3 333.89,36.3 346.14,36.3 " fill="none" id="JobDetail-to-Job" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="352.14,36.3,343.14,32.3,347.14,36.3,343.14,40.3,352.14,36.3" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_Trigger_JobDetail"><path codeLine="19" d="M173.89,36.3 C198.81,36.3 217.72,36.3 242.64,36.3 " fill="none" id="Trigger-to-JobDetail" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="248.64,36.3,239.64,32.3,243.64,36.3,239.64,40.3,248.64,36.3" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_Scheduler_Trigger"><path codeLine="20" d="M83.27,36.3 C94.87,36.3 100.47,36.3 112.07,36.3 " fill="none" id="Scheduler-to-Trigger" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="118.07,36.3,109.07,32.3,113.07,36.3,109.07,40.3,118.07,36.3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="103.4089" y="31.5553">*</text></g><g id="link_Trigger_helloWorldTrigger"><path codeLine="23" d="M132.2462,74.5761 C124.7262,94.9461 119.54,109.04 112.43,128.3 " fill="none" id="Trigger-backto-helloWorldTrigger" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="138.48,57.69,126.6175,72.4981,137.8749,76.654,138.48,57.69" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_JobDetail_helloWorldJobDetail"><path codeLine="26" d="M282,75.69 C282,96.06 282,109.04 282,128.3 " fill="none" id="JobDetail-backto-helloWorldJobDetail" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="282,57.69,276,75.69,288,75.69,282,57.69" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_helloWorldTrigger_helloWorldJobDetail"><path codeLine="28" d="M173.72,146.74 C185.42,146.74 191.12,146.74 202.83,146.74 " fill="none" id="helloWorldTrigger-to-helloWorldJobDetail" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="208.83,146.74,199.83,142.74,203.83,146.74,199.83,150.74,208.83,146.74" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_helloWorldJobDetail_HelloWorldJob"><path codeLine="29" d="M355.45,146.74 C366.9,146.74 372.35,146.74 383.8,146.74 " fill="none" id="helloWorldJobDetail-to-HelloWorldJob" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="389.8,146.74,380.8,142.74,384.8,146.74,380.8,150.74,389.8,146.74" style="stroke:#181818;stroke-width:1.0;"/></g></g></svg></div>
-
-<p>當程式啟動時， Quartz Scheduler 會在背景執行，並在 <code>helloWorldTrigger</code> 定義的每 5 秒執行一次 <code>HelloWorldJob</code> 實作的 <code>execute</code> 輸出 "Hello World!" 到畫面上。</p>
-<p>使用 Spring Boot 我們需要在 <code>build.gradle.kts</code> 中新增 <code>spring-boot-starter-quartz</code> 相依套件。如此，程式啟動後就會有一個 Quartz Scheduler 在背景執行。</p>
+<h1 id="quartz-jdbc-jobstore">Quartz: JDBC JobStore</h1>
+<h2 id="job">簡單的 Job 範例</h2>
+<p>以下範例展示，在 Spring Boot 中如何設定 Quartz 使用 JDBC JobStore。如此一來，我們把 Job 放到 cluster 上執行。</p>
+<p>在 <code>build.gradle.kts</code> 中新增 <code>spring-boot-starter-quartz</code> 相依套件。如此，程式啟動後就會有一個 Quartz Scheduler 在背景執行。</p>
 <div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.springframework.boot:spring-boot-starter-quartz&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>接著，我們需要定義 <code>HelloWorldJob</code> 實作 <code>Job</code> 介面，實作輸出 "Hello World!" 的邏輯。</p>
+<p>使用 docker compose 執行 mysql。</p>
+<div class="highlight"><span class="filename">compose.yml</span><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.1&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.4.0</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3306:3306&quot;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quartz</span>
+</code></pre></div>
+<p>設定 spring boot 的 properties。</p>
+<div class="highlight"><span class="filename">src/main/resources/application.yml</span><pre><span></span><code><span class="nt">spring</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">quartz</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">job-store-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc</span><span class="w"> </span><span class="c1">#(1)!</span>
+<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">initialize-schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"> </span><span class="c1">#(2)!</span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">org</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">quartz</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">scheduler</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">instanceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduler</span>
+<span class="w">            </span><span class="nt">instanceId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AUTO</span><span class="w"> </span><span class="c1">#(3)!</span>
+<span class="w">          </span><span class="nt">dataSource</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">quartzDataSource</span><span class="p">:</span><span class="w"> </span><span class="c1">#(4)!</span>
+<span class="w">              </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span>
+<span class="w">              </span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/quartz</span>
+<span class="w">              </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">              </span><span class="nt">password</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hikaricp</span>
+<span class="w">          </span><span class="nt">jobStore</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.quartz.impl.jdbcjobstore.JobStoreTX</span>
+<span class="w">            </span><span class="nt">dataSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quartzDataSource</span><span class="w"> </span><span class="c1">#(5)!</span>
+<span class="w">            </span><span class="nt">isClustered</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1">#(6)!</span>
+</code></pre></div>
+<ol>
+<li>使用 JDBC JobStore。</li>
+<li>每次啟動都會初始化 schema。換句話說，我們可以不必手動新增 quartz 相關的 tables。(<a href="https://github.com/quartz-scheduler/quartz/tree/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore">SQL 參考</a>)</li>
+<li>在 cluster 上的 pod 需要有唯一的 instance id。這裡設定 <code>AUTO</code> 即可達到需求。</li>
+<li>data source 的設定。這裡的名稱會在下面設定 job store 的 dataSource 參考。</li>
+<li>job store 使用的 dataSource。</li>
+<li>啟用 cluster。</li>
+</ol>
+<p>新增 <code>Job</code> 實作，簡單的在畫面輸出現在的時間以及 "Hello World!"。印出時間是為了幫助我們識別這是哪個時間點所觸發的 Job。</p>
 <div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">jobExecutionContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">&quot;hh:mm:ss&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">time</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; Hello World!&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>然後，我們需要再新增兩個 Bean 定義 <code>JobDetail</code> 和 <code>Trigger</code>。其中，<code>JobDetail</code> 定義了 <code>HelloWorldJob</code> 的 metadata，而 <code>Trigger</code> 定義了 <code>JobDetail</code> 的觸發條件。</p>
-<div class="highlight"><span class="filename">QuartzConfig.java</span><pre><span></span><code><span class="nd">@Component</span>
+<p>新增 <code>JobDetail</code> 和 <code>Trigger</code> 的 Bean 定義。這裡設定每 10 秒觸發一次 Job 在畫面上輸出 "Hello World!"。</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">QuartzConfig</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nd">@Bean</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JobDetail</span><span class="w"> </span><span class="nf">helloWorldJobDetail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">JobBuilder</span><span class="p">.</span><span class="na">newJob</span><span class="p">(</span><span class="n">HelloWorldJob</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
 <span class="w">                         </span><span class="p">.</span><span class="na">withIdentity</span><span class="p">(</span><span class="s">&quot;helloWorldJob&quot;</span><span class="p">)</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">storeDurably</span><span class="p">()</span><span class="w"> </span><span class="c1">// (1)</span>
+<span class="w">                         </span><span class="p">.</span><span class="na">storeDurably</span><span class="p">()</span>
 <span class="w">                         </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nd">@Bean</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="nf">helloWorldTrigger</span><span class="p">(</span><span class="n">JobDetail</span><span class="w"> </span><span class="n">printHelloWorldJobDetail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">SimpleScheduleBuilder</span><span class="w"> </span><span class="n">scheduleBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SimpleScheduleBuilder</span>
-<span class="w">                </span><span class="p">.</span><span class="na">simpleSchedule</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">withIntervalInSeconds</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">repeatForever</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TriggerBuilder</span><span class="p">.</span><span class="na">newTrigger</span><span class="p">()</span>
 <span class="w">                             </span><span class="p">.</span><span class="na">forJob</span><span class="p">(</span><span class="n">printHelloWorldJobDetail</span><span class="p">)</span>
 <span class="w">                             </span><span class="p">.</span><span class="na">withIdentity</span><span class="p">(</span><span class="s">&quot;helloWorldTrigger&quot;</span><span class="p">)</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">withSchedule</span><span class="p">(</span><span class="n">scheduleBuilder</span><span class="p">)</span>
+<span class="w">                             </span><span class="p">.</span><span class="na">withSchedule</span><span class="p">(</span><span class="n">CronScheduleBuilder</span><span class="p">.</span><span class="na">cronSchedule</span><span class="p">(</span><span class="s">&quot;*/10 * * * * ?&quot;</span><span class="p">))</span>
 <span class="w">                             </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li><code>Trigger</code> 要執行的 <code>JobDetail</code> 必須要在 <code>JobStore</code> 中，設定 <code>storeDurably()</code> 來保證 <code>JobDetail</code> 在 <code>JobStore</code> 中。否則，<code>JobDetail</code> 會在沒有與 <code>Trigger</code> 關聯的情況下被移除。</li>
-</ol>
-<p>最後，把程式跑起來後，每 5 秒就會在畫面上輸出 "Hello World!"。</p>
-<h2 id="5-hello-name">每 5 秒輸出 "Hello {name}!" 到畫面上</h2>
-<p>這裡展示 <code>Job</code> 可以存取到 bean 的方式。為了方便展示，我們新增一個 <code>name</code> bean，並在 <code>HelloWorldJob</code> 中取得 <code>name</code> bean 的值。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="nd">@Bean</span>
-<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">name</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Teddy&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<p>為了可以同時執行多個 instance，我們將程式打包成 tar 檔。專案的目錄 /build/libs 應該會產生 xxx.jar 檔。</p>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>bootJar
 </code></pre></div>
-<p>修改 <code>HelloWorldJob</code> 的建構式接收 <code>name</code> 字串，這個變數的實體，會透過 DI 注入。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-</span>
-<span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">HelloWorldJob</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-</span><span class="hll"><span class="w">    </span><span class="p">}</span>
-</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">jobExecutionContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;!&quot;</span><span class="p">);</span>
-</span><span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<p>打開 3 個 terminal，分別執行以下指令執行程式: (xxx 替換成實際檔案名稱)</p>
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/xxx.jar
 </code></pre></div>
-<p>最後，把程式跑起來後，每 5 秒就會在畫面上輸出 "Hello Teddy!"。</p>
+<p>觀察每 10 秒只會有一個 terminal 輸出 "Hello World!"。這表示 Job 是在 cluster 上執行的。將輸出訊息的 terminal 關閉，可以觀察到其他 terminal 會接續執行輸出 "Hello World!" 的 Job。</p>
+<h2 id="_1">參考</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/reference/io/quartz.html">Sprint Boot Quartz Scheduler</a></li>
+<li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.2.2/configuration/ConfigJDBCJobStoreClustering.html">Quartz Configuration - Configure Clustering with JDBC-JobStore</a> </li>
+</ul>
 
 
 
@@ -512,11 +560,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Teddy Lee
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
   
 </div>
       
@@ -530,7 +577,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.select", "content.code.annotate", "toc.integrate", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
