@@ -241,7 +241,26 @@ public class HelloWorldJob implements Job {
 !!! note
     目前沒有發現官方對於此方案的解法。這裡的解法有土法煉鋼的感覺。
 
-[// TODO]: # (## 探討: Job 執行過程發生錯誤的行為)
+## 探討: Job 執行過程發生錯誤的行為
+
+在 Job 執行過程中，如果拋出例外，Job 即中斷執行。如果拋出的例外是 `JobExecutionException` 並設定 `refireImmediately` 為 `true`，則 Job 會立即重新執行，並且下一次 `JobExecutionContext.getRefireCount()` 數字累加。
+以下程式碼展示當 Job 失敗拋出例外時， retry 3 次。
+
+```java title="HelloWorldJob.java" hl_lines="5-7 11"
+@DisallowConcurrentExecution
+public class HelloWorldJob implements Job {
+    @Override
+    public void execute(JobExecutionContext context) {
+        if(context.getRefireCount() > 3) {
+            throw new JobExecutionException("Too many re-fires");
+        }
+        
+        // ...
+        
+        throw new JobExecutionException("Something goes wrong", true);
+    }
+}
+```
 
 ## 參考
 
