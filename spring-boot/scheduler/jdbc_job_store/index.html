@@ -411,6 +411,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#job_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      探討: Job 執行過程發生錯誤的行為
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       參考
@@ -601,6 +610,23 @@
 <p class="admonition-title">Note</p>
 <p>目前沒有發現官方對於此方案的解法。這裡的解法有土法煉鋼的感覺。</p>
 </div>
+<h2 id="job_1">探討: Job 執行過程發生錯誤的行為</h2>
+<p>在 Job 執行過程中，如果拋出例外，Job 即中斷執行。如果拋出的例外是 <code>JobExecutionException</code> 並設定 <code>refireImmediately</code> 為 <code>true</code>，則 Job 會立即重新執行，並且下一次 <code>JobExecutionContext.getRefireCount()</code> 數字累加。
+以下程式碼展示當 Job 失敗拋出例外時， retry 3 次。</p>
+<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="nd">@DisallowConcurrentExecution</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">getRefireCount</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JobExecutionException</span><span class="p">(</span><span class="s">&quot;Too many re-fires&quot;</span><span class="p">);</span>
+</span><span class="hll"><span class="w">        </span><span class="p">}</span>
+</span>
+<span class="w">        </span><span class="c1">// ...</span>
+
+<span class="hll"><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JobExecutionException</span><span class="p">(</span><span class="s">&quot;Something goes wrong&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+</span><span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="_2">參考</h2>
 <ul>
 <li><a href="https://docs.spring.io/spring-boot/reference/io/quartz.html">Sprint Boot Quartz Scheduler</a></li>
