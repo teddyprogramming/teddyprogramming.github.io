@@ -7,6 +7,7 @@ theme:
   features:
     - content.code.select
     - content.code.annotate
+    - content.code.copy
     - toc.integrate
     - navigation.top
 
@@ -16,7 +17,8 @@ nav:
   - Spring Boot:
       - Scheduler:
         - Quartz:
-          - Hello World!: spring-boot/scheduler/01_quartz_hello_world.md
+          - Hello World!: spring-boot/scheduler/hello_world.md
+          - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
 
 markdown_extensions:
   - pymdownx.highlight
@@ -30,3 +32,7 @@ plugins:
       puml_url: https://www.plantuml.com/plantuml/
       num_workers: 8
       puml_keyword: plantuml
+
+copyright: Copyright &copy; 2024 Teddy Lee
+extra:
+  generator: false

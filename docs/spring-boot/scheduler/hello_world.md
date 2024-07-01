@@ -36,7 +36,7 @@ helloWorldJobDetail -> HelloWorldJob
 
 當程式啟動時， Quartz Scheduler 會在背景執行，並在 `helloWorldTrigger` 定義的每 5 秒執行一次 `HelloWorldJob` 實作的 `execute` 輸出 "Hello World!" 到畫面上。
 
-使用 Spring Boot 我們需要在 `build.gradle.kts` 中新增 `spring-boot-starter-quartz` 相依套件。如此，程式啟動後就會有一個 Quartz Scheduler 在背景執行。
+在 `build.gradle.kts` 中新增 `spring-boot-starter-quartz` 相依套件。如此，程式啟動後就會有一個 Quartz Scheduler 在背景執行。
 
 ```kotlin title="build.gradle.kts"
 implementation("org.springframework.boot:spring-boot-starter-quartz")
