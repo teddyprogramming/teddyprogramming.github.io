@@ -115,3 +115,52 @@ public class HelloWorldJob implements Job {
 ```
 
 最後，把程式跑起來後，每 5 秒就會在畫面上輸出 "Hello Teddy!"。
+
+## 自動化測試
+
+使用 [awaitility](https://github.com/awaitility/awaitility) 來實作需要等待時間的測試。首先，需要增加相依套件。
+
+```kotlin title="build.gradle.kts"
+testImplementation("org.awaitility:awaitility")
+```
+
+!!! tip "awaitility 在 Spring Boot 3.2 已受到相依控管，所以使用 3.2 以上的版本這裡不需要加版本號碼。"
+
+使用 JUnit 5 進行測試。測試驗證 15 秒內，必須要有 "Hello World!" 字串輸出到 standard output 上。
+
+```java
+@SpringBootTest
+class HelloWorldJobTest {
+    private final PrintStream standardOut = System.out; // (1)!
+
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream(); // (2)!
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor)); // (3)!
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut); // (4)!
+    }
+
+    @Test
+    void helloWorld() {
+    await().atMost(Duration.ofSeconds(15)) // (5)!
+           .untilAsserted(() -> assertThat(outputStreamCaptor.toString()).contains("Hello World!")); // (6)!
+    }
+}
+```
+
+1. 先記下預設的 `System.out`，在測試結束後還原使用。
+2. 建立一個 `ByteArrayOutputStream` 來取代 `System.out`，這樣可以把 `System.out` 的輸出捕捉到 `ByteArrayOutputStream` 中。
+3. 在每一個測試開始前，把 `System.out` 設定為 `ByteArrayOutputStream`。
+4. 在每一個測試結束後，把 `System.out` 還原為預設的 `System.out`。
+5. 等待最多 15 秒。
+6. 確認 standard output 輸出必須包含 "Hello World!"。
+
+### 參考
+
+- [Scheduling Tasks](https://spring.io/guides/gs/scheduling-tasks)
+- [Unit Testing of `System.out.println()` with JUnit](https://www.baeldung.com/java-testing-system-out-println)
