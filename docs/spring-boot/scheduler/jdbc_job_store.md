@@ -67,6 +67,22 @@ spring:
 6. job store 使用的 dataSource。
 7. 啟用 cluster。
 
+??? tip "使用變數來避免重複設定"
+
+    ```yaml
+    spring:
+      quartz:
+        properties:
+          org:
+            quartz:
+              dataSource:
+                quartzDataSource:
+                  driver: ${spring.datasource.driver-class-name}
+                  URL: ${spring.datasource.url}
+                  user: ${spring.datasource.username}
+                  password: ${spring.datasource.password}
+    ```
+
 新增 `Job` 實作，簡單的在畫面輸出現在的時間以及 "Hello World!"。印出時間是為了幫助我們識別這是哪個時間點所觸發的 Job。
 
 ```java title="HelloWorldJob.java"
@@ -129,15 +145,19 @@ java -jar build/libs/xxx.jar
 ```plantuml
 @startgantt
 [T1] happens D+0
+Separator just at [T1]'s start
 
 [T2] happens D+10
 [T2] displays on same row as [T1]
+Separator just at [T2]'s start
 
 [T3] happens D+20
 [T3] displays on same row as [T1]
+Separator just at [T3]'s start
 
 [T4] happens D+30
 [T4] displays on same row as [T1]
+Separator just at [T4]'s start
 
 [Job 1] starts D+0
 [Job 2] starts D+10
@@ -160,27 +180,41 @@ public class HelloWorldJob implements Job {
 ```
 
 如此，當 Job 還在執行時，下一次的 Job 將會被延遲到上一次的 Job 執行完畢後再執行。變更後的
- 3 個 Job 執行時間軸參考下圖:
+3 個 Job 執行時間軸參考下圖:
 
 ```plantuml
 @startgantt
 [T1] happens D+0
+Separator just at [T1]'s start
 
 [T2] happens D+10
 [T2] displays on same row as [T1]
+Separator just at [T2]'s start
 
 [T3] happens D+20
 [T3] displays on same row as [T1]
+Separator just at [T3]'s start
 
 [T4] happens D+30
 [T4] displays on same row as [T1]
+Separator just at [T4]'s start
 
 [T5] happens D+40
 [T5] displays on same row as [T1]
+Separator just at [T5]'s start
 
 [Job 1] starts D+0
+note bottom
+Trigger by T1
+end note
 [Job 2] starts D+15
+note bottom
+Trigger by T2
+end note
 [Job 3] starts D+30
+note bottom
+Trigger by T3
+end note
 
 [Job 1] requires 15 days
 [Job 2] requires 15 days
@@ -206,34 +240,50 @@ public class HelloWorldJob implements Job {
 }
 ```
 
-如此，每一個被 trigger 的 job 都會落在排程設定的時間點上。變更後的 3 個 Job 執行時間軸參考下圖:
+如此，trigger 的 job 都會落在排程設定的時間點上。變更後的 Job 執行時間軸參考下圖:
 
 ```plantuml
 @startgantt
 [T1] happens D+0
+Separator just at [T1]'s start
 
 [T2] happens D+10
 [T2] displays on same row as [T1]
+Separator just at [T2]'s start
 
 [T3] happens D+20
 [T3] displays on same row as [T1]
+Separator just at [T3]'s start
 
 [T4] happens D+30
 [T4] displays on same row as [T1]
+Separator just at [T4]'s start
 
 [T5] happens D+40
 [T5] displays on same row as [T1]
+Separator just at [T5]'s start
 
 [T6] happens D+50
 [T6] displays on same row as [T1]
+Separator just at [T6]'s start
 
 [Job 1] starts D+0
-[Job 2] starts D+20
-[Job 3] starts D+40
+[Job 2] starts D+15
+note bottom
+Trigger by T2
+skipped
+end note
+[Job 3] starts D+20
+[Job 4] starts D+35
+note bottom
+Trigger by T4
+skipped
+end note
+[Job 5] starts D+40
 
 [Job 1] requires 15 days
-[Job 2] requires 15 days
 [Job 3] requires 15 days
+[Job 5] requires 15 days
 
 @endgantt
 ```
