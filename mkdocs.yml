@@ -19,12 +19,17 @@ nav:
         - Quartz:
           - Hello World!: spring-boot/scheduler/hello_world.md
           - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
+          # TODO: share data between jobs (via context ?)
+          #       - Job vs Bean Job
+          # TODO: tes
 
 markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
   - pymdownx.superfences
 
 plugins:
@@ -33,6 +38,9 @@ plugins:
       puml_url: https://www.plantuml.com/plantuml/
       num_workers: 8
       puml_keyword: plantuml
+  - git-revision-date-localized:
+      locale: zh
+      enable_creation_date: true
 
 copyright: Copyright &copy; 2024 Teddy Lee
 extra:
