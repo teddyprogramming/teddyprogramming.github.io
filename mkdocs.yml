@@ -14,6 +14,9 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
+  - Java:
+    - Effective Java:
+        - Item 01 - Consider static factory methods instead of constructors: java/effective-java/01_consider_static_factor_methods_instead_of_constructors.md
   - Spring Boot:
       - Scheduler:
         - Quartz:
