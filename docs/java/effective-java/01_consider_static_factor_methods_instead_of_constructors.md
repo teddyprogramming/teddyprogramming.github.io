@@ -107,8 +107,4 @@
              - `getType` 與 `newType` 的簡化版
              - 範例:
                  - `Collections.singletonList("apple")`
-
-## 額外參考
-
-- https://www.baeldung.com/java-constructors-vs-static-factory-methods
  
