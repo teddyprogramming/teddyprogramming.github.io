@@ -16,8 +16,9 @@ theme:
 nav:
   - Java:
     - Effective Java:
-        - Item 01 - Consider static factory methods instead of constructors: java/effective-java/001.md
-        - Item 02 - Consider a builder when faced with many constructor parameters: java/effective-java/002.md
+        - Item 1 - Consider static factory methods instead of constructors: java/effective-java/001.md
+        - Item 2 - Consider a builder when faced with many constructor parameters: java/effective-java/002.md
+        - Item 3 - Enforce the singleton property with a private constructor or an enum type: java/effective-java/003.md
   - Spring Boot:
       - Scheduler:
         - Quartz:
