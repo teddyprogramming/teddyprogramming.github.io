@@ -16,7 +16,7 @@ theme:
 nav:
   - Java:
     - Effective Java:
-        - Item 01 - Consider static factory methods instead of constructors: java/effective-java/01_consider_static_factor_methods_instead_of_constructors.md
+        - Item 01 - Consider static factory methods instead of constructors: java/effective-java/001.md
   - Spring Boot:
       - Scheduler:
         - Quartz:
@@ -44,6 +44,7 @@ plugins:
   - git-revision-date-localized:
       locale: zh
       enable_creation_date: true
+      exclude: ['index.md']
 
 copyright: Copyright &copy; 2024 Teddy Lee
 extra:
