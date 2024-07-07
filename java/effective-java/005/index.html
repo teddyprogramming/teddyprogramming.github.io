@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../003/">
+        <link rel="prev" href="../004/">
       
       
-        <link rel="next" href="../005/">
+        <link rel="next" href="../../../spring-boot/scheduler/hello_world/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Item 4 - Enforce noninstantiability with a private constructor - Teddy 的筆記本</title>
+        <title>Item 5 - Prefer dependency injection to hardwiring resources - Teddy 的筆記本</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-4-enforce-noninstantiability-with-a-private-constructor" class="md-skip">
+        <a href="#item-5-prefer-dependency-injection-to-hardwiring-resources" class="md-skip">
           跳轉到
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 4 - Enforce noninstantiability with a private constructor
+              Item 5 - Prefer dependency injection to hardwiring resources
             
           </span>
         </div>
@@ -327,6 +327,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../004/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 4 - Enforce noninstantiability with a private constructor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -343,33 +364,12 @@
         
   
   <span class="md-ellipsis">
-    Item 4 - Enforce noninstantiability with a private constructor
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../005/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
     Item 5 - Prefer dependency injection to hardwiring resources
   </span>
   
 
       </a>
+      
     </li>
   
 
@@ -575,18 +575,50 @@
                   
 
 
-<h1 id="item-4-enforce-noninstantiability-with-a-private-constructor">Item 4: Enforce noninstantiability with a private constructor</h1>
-<div class="highlight"><pre><span></span><code><span class="c1">// Noninstantiable utility class</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UtilityClass</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Suppress default constructor for noninstantiability</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">UtilityClass</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">// Remainder omitted</span>
+<h1 id="item-5-prefer-dependency-injection-to-hardwiring-resources">Item 5: Prefer dependency injection to hardwiring resources</h1>
+<p>實作拼字檢查物件，以下兩種實作方法有可以更好的空間：</p>
+<p>1: Utility class</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of static utility - inflexible &amp; untestable!</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Noninstantiable</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>如果 class 不允許有 instance，就將 constructor 設為 private，這樣就無法被實例化。而且， class 也無法被繼承。</p>
-<p>不允許有 instance 的類別的範例有 <code>Math</code>, <code>Arrays</code>, <code>Collections</code> 等等。</p>
+<p>2: Singleton</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of singleton - inflexible &amp; untestable!</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(...)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">SpellChecker</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(...);</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">讓物件變成不可繼承會增加測試的難度</p>
+</div>
+<p>使用 dependency injection 比較好:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Dependency injection provides flexibility and testability</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(</span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">dictionary</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>常見的 Dependency injection framework: Dagger, Guice, Spring</p>
+<p>另一個替代方法是使用 Factory Method。</p>
+<p>總的來說，不要使用 singleton 或 static utility class 來實作有 resource dependency 的物件，這樣會讓物件變得不靈活，難以測試。</p>
 
 
 
