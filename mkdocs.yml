@@ -21,6 +21,7 @@ nav:
         - Item 3 - Enforce the singleton property with a private constructor or an enum type: java/effective-java/003.md
         - Item 4 - Enforce noninstantiability with a private constructor: java/effective-java/004.md
         - Item 5 - Prefer dependency injection to hardwiring resources: java/effective-java/005.md
+        - Item 6 - Avoid creating unnecessary objects: java/effective-java/006.md
   - Spring Boot:
       - Scheduler:
         - Quartz:
