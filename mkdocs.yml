@@ -15,8 +15,7 @@ theme:
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
   - IDE:
-      - IntelliJ IDEA:
-        - IntelliJ IDEA 快捷鍵: ide/intellij-idea/shortcuts.md
+        - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
   - Java:
     - Effective Java:
         - Item 1 - Consider static factory methods instead of constructors: java/effective-java/001.md
