@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="../004/">
+        <link rel="prev" href="005.html">
       
       
-        <link rel="next" href="../006/">
+        <link rel="next" href="007.html">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
-        <title>Item 5 - Prefer dependency injection to hardwiring resources - Teddy 的筆記本</title>
+        <title>Item 6 - Avoid creating unnecessary objects - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
       
 
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-5-prefer-dependency-injection-to-hardwiring-resources" class="md-skip">
+        <a href="#item-6-avoid-creating-unnecessary-objects" class="md-skip">
           跳轉到
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 5 - Prefer dependency injection to hardwiring resources
+              Item 6 - Avoid creating unnecessary objects
             
           </span>
         </div>
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ide/jet-brains/shortcuts/" class="md-nav__link">
+      <a href="../../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -330,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../001/" class="md-nav__link">
+      <a href="001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -351,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../002/" class="md-nav__link">
+      <a href="002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../003/" class="md-nav__link">
+      <a href="003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -393,11 +393,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../004/" class="md-nav__link">
+      <a href="004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Item 4 - Enforce noninstantiability with a private constructor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="005.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 5 - Prefer dependency injection to hardwiring resources
   </span>
   
 
@@ -423,15 +444,63 @@
         
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Item 6 - Avoid creating unnecessary objects
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="006.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Item 5 - Prefer dependency injection to hardwiring resources
+    Item 6 - Avoid creating unnecessary objects
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: 重復使用 Pattern 物件
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autoboxing" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: autoboxing
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -445,11 +514,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../006/" class="md-nav__link">
+      <a href="007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Item 6 - Avoid creating unnecessary objects
+    Item 7 - Eliminate obsolete object references
   </span>
   
 
@@ -466,11 +535,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../007/" class="md-nav__link">
+      <a href="008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Item 7 - Eliminate obsolete object references
+    Item 8 - Avoid finalizers and cleaners
   </span>
   
 
@@ -607,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../spring-boot/scheduler/hello_world/" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../spring-boot/scheduler/jdbc_job_store/" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,50 +749,59 @@
                   
 
 
-<h1 id="item-5-prefer-dependency-injection-to-hardwiring-resources">Item 5: Prefer dependency injection to hardwiring resources</h1>
-<p>實作拼字檢查物件，以下兩種實作方法有可以更好的空間：</p>
-<p>1: Utility class</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of static utility - inflexible &amp; untestable!</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Noninstantiable</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<h1 id="item-6-avoid-creating-unnecessary-objects">Item 6: Avoid creating unnecessary objects</h1>
+<p>immutable object 通常可以 reuse，不必重新產生一個新的物件。</p>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;bikini&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 別這麼做 !!</span>
+</code></pre></div>
+<p>應該這麼做</p>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bikini&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>這樣可以確保 <code>s</code> 會指向同一個物件，而不是重新產生一個新的物件。只要使用 constructor 就會產生新的物件。</p>
+<p>通常 static factory methods 可以實作避免重複產生物件的效果。</p>
+<p><code>Boolean.valueOf(String)</code> 優於 <code>Boolean(String)</code>，因為 <code>valueOf</code> 可以重複使用物件。</p>
+<h2 id="pattern">範例: 重復使用 <code>Pattern</code> 物件</h2>
+<div class="highlight"><span class="filename">可以改進的寫法</span><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isRomanNumeral</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="s">&quot;^(?=.)M*(C[MD]|D?C{0,3})&quot;</span>
+<span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>2: Singleton</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of singleton - inflexible &amp; untestable!</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<p>問題:</p>
+<ol>
+<li><code>String.matches</code> 會建立一個新的 <code>Pattern</code> 物件，使用完後就會被 Garbage Collection 回收。</li>
+<li>建立 <code>Pattern</code> 物件需要將 regular expression 編譯成 finite state machine，這是一個昂貴的運算。</li>
+</ol>
+<p>改進:</p>
+<div class="highlight"><span class="filename">改進後的寫法</span><pre><span></span><code><span class="c1">// Reusing expensive object for improved performance</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RomanNumerals</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Pattern</span><span class="w"> </span><span class="n">ROMAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;^(?=.)M*(C[MD]|D?C{0,3})&quot;</span>
+<span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(...)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">SpellChecker</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(...);</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">讓物件變成不可繼承會增加測試的難度</p>
-</div>
-<p>使用 dependency injection 比較好:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Dependency injection provides flexibility and testability</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(</span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">dictionary</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isRomanNumeral</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ROMAN</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">matches</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>常見的 Dependency injection framework: Dagger, Guice, Spring</p>
-<p>另一個替代方法是使用 Factory Method。</p>
-<p>總的來說，不要使用 singleton 或 static utility class 來實作有 resource dependency 的物件，這樣會讓物件變得不靈活，難以測試。</p>
+<div class="admonition quote">
+<p class="admonition-title">原書作者提供的執行時間提升的參考數據</p>
+<p>On my machine, the original version takes 1.1 µs on an 8-character input string, while the improved version takes 0.17 µs, which is 6.5 times faster.</p>
+</div>
+<h2 id="autoboxing">範例: autoboxing</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Hideously slow! Can you spot the object creation?</span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">L</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>因為 <code>sum</code> 宣告成 <code>Long</code>，所以每次 <code>sum += i</code> 都會產生一個新的 <code>Long</code> 物件。程式跑完共會產生 2<sup>31</sup> 個 <code>Long</code> 物件。將 <code>Long</code> 改成 <code>long</code> 就可以避免這個問題。</p>
+<div class="admonition quote">
+<p class="admonition-title">作者的數據</p>
+<p>Changing the declaration of <code>sum</code> from <code>Long</code> to <code>long</code> reduces the runtime from 6.3 seconds to 0.59 seconds on my machine.</p>
+</div>
+<p>Prefer primitives to boxed primitives, and watch out for unintentional autoboxing.</p>
 
 
 
@@ -746,7 +824,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月8日</span>
   </span>
 
     
@@ -756,7 +834,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月8日</span>
   </span>
 
     
@@ -807,10 +885,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

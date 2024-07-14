@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="../002/">
+        <link rel="prev" href="004.html">
       
       
-        <link rel="next" href="../004/">
+        <link rel="next" href="006.html">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
-        <title>Item 3 - Enforce the singleton property with a private constructor or an enum type - Teddy 的筆記本</title>
+        <title>Item 5 - Prefer dependency injection to hardwiring resources - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
       
 
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-3-enforce-the-singleton-property-with-a-private-constructor-or-an-enum-type" class="md-skip">
+        <a href="#item-5-prefer-dependency-injection-to-hardwiring-resources" class="md-skip">
           跳轉到
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 3 - Enforce the singleton property with a private constructor or an enum type
+              Item 5 - Prefer dependency injection to hardwiring resources
             
           </span>
         </div>
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ide/jet-brains/shortcuts/" class="md-nav__link">
+      <a href="../../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -330,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../001/" class="md-nav__link">
+      <a href="001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -351,11 +351,53 @@
   
   
     <li class="md-nav__item">
-      <a href="../002/" class="md-nav__link">
+      <a href="002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Item 2 - Consider a builder when faced with many constructor parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="003.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 3 - Enforce the singleton property with a private constructor or an enum type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="004.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 4 - Enforce noninstantiability with a private constructor
   </span>
   
 
@@ -381,11 +423,11 @@
         
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="005.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Item 3 - Enforce the singleton property with a private constructor or an enum type
+    Item 5 - Prefer dependency injection to hardwiring resources
   </span>
   
 
@@ -403,49 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../004/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Item 4 - Enforce noninstantiability with a private constructor
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../005/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Item 5 - Prefer dependency injection to hardwiring resources
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../006/" class="md-nav__link">
+      <a href="006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -466,11 +466,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../007/" class="md-nav__link">
+      <a href="007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Item 7 - Eliminate obsolete object references
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="008.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 8 - Avoid finalizers and cleaners
   </span>
   
 
@@ -607,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../spring-boot/scheduler/hello_world/" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../spring-boot/scheduler/jdbc_job_store/" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,34 +701,50 @@
                   
 
 
-<h1 id="item-3-enforce-the-singleton-property-with-a-private-constructor-or-an-enum-type">Item 3: Enforce the singleton property with a private constructor or an enum type</h1>
-<p>兩種常見實作 Singleton 的方法：</p>
-<p>方法一: 將 constructor 設為 private，並且有一個 public static final field 來存放唯一的 instance。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Singleton with public final field</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Elvis</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Elvis</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<h1 id="item-5-prefer-dependency-injection-to-hardwiring-resources">Item 5: Prefer dependency injection to hardwiring resources</h1>
+<p>實作拼字檢查物件，以下兩種實作方法有可以更好的空間：</p>
+<p>1: Utility class</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of static utility - inflexible &amp; untestable!</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Noninstantiable</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>方法二: 將 constructor 設為 private，並且有一個 public static 方法來回傳唯一的 instance。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Singleton with static factory</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Elvis</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Elvis</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">INSTANCE</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<p>2: Singleton</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of singleton - inflexible &amp; untestable!</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(...)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">SpellChecker</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(...);</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>另一種實作 Singleton 的方法是 single-element enum。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">INSTANCE</span><span class="p">;</span>
+<div class="admonition note">
+<p class="admonition-title">讓物件變成不可繼承會增加測試的難度</p>
+</div>
+<p>使用 dependency injection 比較好:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Dependency injection provides flexibility and testability</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(</span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">dictionary</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>常見的 Dependency injection framework: Dagger, Guice, Spring</p>
+<p>另一個替代方法是使用 Factory Method。</p>
+<p>總的來說，不要使用 singleton 或 static utility class 來實作有 resource dependency 的物件，這樣會讓物件變得不靈活，難以測試。</p>
 
 
 
@@ -791,10 +828,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
