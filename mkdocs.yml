@@ -1,5 +1,7 @@
 site_name: Teddy 的筆記本
 
+use_directory_urls: false
+
 # https://squidfunk.github.io/mkdocs-material/
 theme:
   name: 'material'
@@ -25,6 +27,7 @@ nav:
         - Item 5 - Prefer dependency injection to hardwiring resources: java/effective-java/005.md
         - Item 6 - Avoid creating unnecessary objects: java/effective-java/006.md
         - Item 7 - Eliminate obsolete object references: java/effective-java/007.md
+        - Item 8 - Avoid finalizers and cleaners: java/effective-java/008.md
   - Spring Boot:
       - Scheduler:
         - Quartz:
