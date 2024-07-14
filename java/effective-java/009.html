@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="007.html">
+        <link rel="prev" href="008.html">
       
       
-        <link rel="next" href="009.html">
+        <link rel="next" href="../../spring-boot/scheduler/hello_world.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Item 8 - Avoid finalizers and cleaners - Teddy 的筆記本</title>
+        <title>Item 9 - Prefer try-with-resources to try-finally - Teddy 的筆記本</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-8-avoid-finalizers-and-cleaners" class="md-skip">
+        <a href="#item-9-prefer-try-with-resources-to-try-finally" class="md-skip">
           跳轉到
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 8 - Avoid finalizers and cleaners
+              Item 9 - Prefer try-with-resources to try-finally
             
           </span>
         </div>
@@ -474,6 +474,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="008.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 8 - Avoid finalizers and cleaners
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -490,18 +511,18 @@
           
   
   <span class="md-ellipsis">
-    Item 8 - Avoid finalizers and cleaners
+    Item 9 - Prefer try-with-resources to try-finally
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="008.html" class="md-nav__link md-nav__link--active">
+      <a href="009.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Item 8 - Avoid finalizers and cleaners
+    Item 9 - Prefer try-with-resources to try-finally
   </span>
   
 
@@ -523,37 +544,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#finalizers" class="md-nav__link">
+  <a href="#try-with-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      什麼是 Finalizers
+      使用 try-with-resources
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#finalizer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Finalizer 的替代方案
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Finalizer 的替代方案">
+    <nav class="md-nav" aria-label="使用 try-with-resources">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#try-with-resources" class="md-nav__link">
+  <a href="#try-with-multiple-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      try-with-resources
+      try with multiple resources
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cleaners" class="md-nav__link">
+  <a href="#try-close" class="md-nav__link">
     <span class="md-ellipsis">
-      Cleaners
+      try 區塊發生例外: close 方法依然會被呼叫
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      finally 區塊發生例外
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-finally-close-suppress" class="md-nav__link">
+    <span class="md-ellipsis">
+      try 區塊與 finally 區塊都發生例外: close 方法的例外會被 Suppress
     </span>
   </a>
   
@@ -564,40 +594,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      額外參考
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="009.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Item 9 - Prefer try-with-resources to try-finally
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -803,154 +803,165 @@
                   
 
 
-<h1 id="item-8-avoid-finalizers-and-cleaners">Item 8: Avoid finalizers and cleaners</h1>
-<h2 id="finalizers">什麼是 Finalizers</h2>
-<p>finalizer 是 Java 提供的一種 resource 回收機制，作用於 GC (Garbage Collection) 在回收物件前，會呼叫物件的 <code>finalize</code> 方法來釋放 resource。</p>
-<p><img alt="" src="008-timeline.svg" /></p>
-<p>若物件有 resource 需要釋放，就將釋放的程式碼寫在 <code>protected void finalize()</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClassWithFinalizer</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">finalize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// release resource</span>
+<h1 id="item-9-prefer-try-with-resources-to-try-finally">Item 9: Prefer try-with-resources to try-finally</h1>
+<p>使用 <code>try-finally</code> 可以確保資源可以正常被關閉，但如同 <a href="008.html">Item 8</a> 所述，這樣的寫法會讓程式碼變得冗長且難以閱讀，而且較複雜的狀況可能會造成例外覆蓋難以除錯。</p>
+<p>Java 7 引入了 try-with-resources 來解決這個問題，這個語法可以讓程式碼更簡潔且易讀。類別需實作 <code>AutoCloseable</code> 介面，並實作 <code>close</code> 方法，這樣就可以在 try-with-resources 中使用。</p>
+<h2 id="try-with-resources">使用 try-with-resources</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">(){</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nd">@Override</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Finalizer 有 Security, Reliability, Performance 風險，不建議使用，並被棄用。在 Java 9 被標記為 deprecated 且為 removal。</p>
-<h2 id="finalizer">Finalizer 的替代方案</h2>
-<p>不使用 finalizer 可以使用 <code>try-finally</code> 替代。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">FileInputStream</span><span class="w">  </span><span class="n">input</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="n">FileOutputStream</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file2</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// ... copy bytes from input to output ...</span>
-
-<span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">output</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">output</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// ignore exception</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">input</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// ignore exception</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<p>程式碼中，在 <code>try</code> 區塊中建立 resource，並在 <code>finally</code> 區塊中釋放 resource。因為 <code>try</code> 區塊中不止一個 resource，所以在 <code>finally</code> 區塊中要分別釋放。為了避免釋放 resource 時發生例外影響其他 resource 的釋放，所以在釋放 resource 時要用 <code>try-catch</code> 包住，忽略例外。</p>
-<p>這樣的寫法真的是又臭又長。</p>
-<h3 id="try-with-resources">try-with-resources</h3>
-<p>Java 7 新增的 try-with-resources 可以用來釋放 resource，改進上面所提到的 <code>try-finally</code> 的寫法。等價寫法如下:</p>
+<ol>
+<li><code>SimpleAutoCloseable</code> 實作 <code>AutoCloseable</code> 介面，並實作 <code>close</code> 方法。</li>
+<li>在 <code>try</code> 括號中宣告 <code>SimpleAutoCloseable</code> 物件，在 try 區塊結束時，無論有無發生例外，都會自動呼叫 <code>close</code> 方法。</li>
+</ol>
+<p>程式的執行結果</p>
+<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
+SimpleAutoCloseable.close()
+</code></pre></div>
+<h3 id="try-with-multiple-resources">try with multiple resources</h3>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file1</span><span class="p">);</span>
 <span class="w">     </span><span class="n">FileOutputStream</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ... copy bytes from input to output ...</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="cleaners">Cleaners</h3>
-<p>try-with-resource 不適用在生命週期長的 resource，Java 9 新增了 Cleaner 用來釋放長生命週期的 resource。</p>
-<p>Cleaner 允許註冊 release action 的動作，當物件 unreachable 時，Cleaner 會執行 release action。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CleaningExample</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Cleaner</span><span class="w"> </span><span class="n">cleaner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cleaner</span><span class="p">.</span><span class="na">create</span><span class="p">();</span>
+<h3 id="try-close"><code>try</code> 區塊發生例外: <code>close</code> 方法依然會被呼叫</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">(){</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
+<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in doIo()&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// (1)!</span>
+</span><span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">State</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Runnable</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="n">State</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 準備清理動作所需要的資料。</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 執行清理動作，最多執行一次。</span>
+<span class="w">        </span><span class="nd">@Override</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Cleaner</span><span class="p">.</span><span class="na">Cleanable</span><span class="w"> </span><span class="n">cleanable</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CleaningExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">State</span><span class="p">(...);</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cleanable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cleaner</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cleanable</span><span class="p">.</span><span class="na">clean</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>State</code> 稱作 clean action，實作 <code>Runnable</code> 介面，負責執行釋放 resource 的動作。</li>
-<li><code>CleaningExample</code> 實作 <code>AutoCloseable</code> 介面，負責註冊 clean action。當物件變得 unreachable 時，clean action 會被執行。<ul>
-<li>注意，clean action 不要回去參考 <code>AutoCloseable</code> 物件，否則會讓 unreachable 狀態永遠無法達到。</li>
-</ul>
-</li>
-<li>向 cleaner 註冊 clean action 後回傳 <code>Cleanable</code> 物件，用來執行 clean action。<ul>
-<li>最有效率的做法是在 resource 不需要時，呼叫 <code>clean()</code> 來執行 clean action。(第 23-25 行)</li>
-</ul>
-</li>
-<li>clean action 在 cleaner 的 thread 中執行，所有 clean action 拋出的例外都會被忽略。所以 clean action 的例外不會影響其他的 clean action。</li>
-<li><code>AutoClosable</code> 註冊的所有 clean action 都執行完畢，GC 才會回收物件。</li>
-<li>Clean action 可以用 lambda 來實作，但會很容易不小心參考到 <code>AutoCloseable</code> 物件。所以按範例實作成 nested static class 可以避免這種錯誤。</li>
-</ul>
-<p>如果依賴 cleaner 自動執行 clean action，要注意的是，不能保證在 <code>System.exit</code> (包含程式正常結束) 是否會被執行。因此，有可能程式結束了，但是 clean action 並沒有執行。</p>
-<p>另外，cleaner 受 GC 排程，也會有 Reliability 與 Performance 的問題。</p>
-<p>簡單來說，應避免使用 finalizer 與 cleaner。</p>
-<h2 id="_1">額外參考</h2>
-<ul>
-<li><a href="https://openjdk.org/jeps/421">JEP 421: Deprecate Finalization for Removal</a></li>
-</ul>
+</code></pre></div>
+<ol>
+<li>故意在 <code>doIo</code> 方法中拋出例外，這會造成 <code>try</code> 區塊在呼叫時發生例外。</li>
+</ol>
+<p>程式的執行結果:</p>
+<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
+SimpleAutoCloseable.close()
+Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in doIo()
+    at ...
+</code></pre></div>
+<p>如果要捕捉 <code>doIo</code> 方法的例外，可以在 <code>try</code> 增加 <code>catch</code> 區塊。</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">try</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="w">    </span><span class="c1">// ...</span>
+<span class="hll"><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">    </span><span class="c1">// handle exception</span>
+</span><span class="hll"><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="finally"><code>finally</code> 區塊發生例外</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">(){</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nd">@Override</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
+<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in close()&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// (1)!</span>
+</span><span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>故意在 <code>close</code> 方法中拋出例外，會造成 <code>try</code> 區塊結束後執行的 <code>close</code> 方法發生例外。</li>
+</ol>
+<p>執行結果:</p>
+<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
+SimpleAutoCloseable.close()
+Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in close()
+    at ... 
+</code></pre></div>
+<p>如果要捕捉 <code>doIo</code> 方法的例外，可以在 <code>try</code> 增加 <code>catch</code> 區塊。</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">try</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="w">    </span><span class="c1">// ...</span>
+<span class="hll"><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">    </span><span class="c1">// handle exception</span>
+</span><span class="hll"><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="try-finally-close-suppress"><code>try</code> 區塊與 <code>finally</code> 區塊都發生例外: <code>close</code> 方法的例外會被 Suppress</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
+<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in doIo()&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// (1)!</span>
+</span><span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nd">@Override</span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
+<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in close()&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// (2)!</span>
+</span><span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>故意在 <code>doIo</code> 方法中拋出例外，這會造成 <code>try</code> 區塊在呼叫時發生例外。</li>
+<li>故意在 <code>close</code> 方法中拋出例外，會造成 <code>try</code> 區塊結束後執行的 <code>close</code> 方法發生例外。</li>
+</ol>
+<p>執行結果:</p>
+<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
+SimpleAutoCloseable.close()
+Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in doIo()
+    at ...
+    Suppressed: java.lang.RuntimeException: Exception in close()
+        at ...
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">try-finally 的例外覆蓋行為</p>
+<p>值得關注的是，try-with-resource 發生多個例外的行為，與 try-catch-finally 的多個例外行為不同。(Java 21)</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in try block&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in finally block&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>執行結果</p>
+<div class="highlight"><pre><span></span><code>Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in finally block
+    at ...
+</code></pre></div>
+<p>這種情況，<code>try</code> 的例外訊息遺失了，這會造成<strong>除錯上的困難</strong>。而 try-with-resource 的例外行為，會將 <code>try</code> 的例外訊息保留下來，並將 <code>finally</code> 的例外訊息以 suppressed 的方式附加在後面。</p>
+</div>
 
 
 
