@@ -16,6 +16,7 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
+  - Blog: blog/index.md
   - IDE:
         - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
   - Java:
@@ -50,6 +51,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - blog
   - plantuml:
       puml_url: https://www.plantuml.com/plantuml/
       num_workers: 8
@@ -57,7 +59,9 @@ plugins:
   - git-revision-date-localized:
       locale: zh
       enable_creation_date: true
-      exclude: ['index.md']
+      exclude:
+        - index.md
+        - blog/**/*
 
 copyright: Copyright &copy; 2024 Teddy Lee
 extra:
