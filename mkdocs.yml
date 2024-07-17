@@ -20,16 +20,19 @@ nav:
   - IDE:
         - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
   - Java:
-    - Effective Java:
-        - Item 1 - Consider static factory methods instead of constructors: java/effective-java/001.md
-        - Item 2 - Consider a builder when faced with many constructor parameters: java/effective-java/002.md
-        - Item 3 - Enforce the singleton property with a private constructor or an enum type: java/effective-java/003.md
-        - Item 4 - Enforce noninstantiability with a private constructor: java/effective-java/004.md
-        - Item 5 - Prefer dependency injection to hardwiring resources: java/effective-java/005.md
-        - Item 6 - Avoid creating unnecessary objects: java/effective-java/006.md
-        - Item 7 - Eliminate obsolete object references: java/effective-java/007.md
-        - Item 8 - Avoid finalizers and cleaners: java/effective-java/008.md
-        - Item 9 - Prefer try-with-resources to try-finally: java/effective-java/009.md
+    - Effective Java, 3rd:
+        - Creating And Destroying Objects:
+          - Item 1 - Consider static factory methods instead of constructors: java/effective-java/001.md
+          - Item 2 - Consider a builder when faced with many constructor parameters: java/effective-java/002.md
+          - Item 3 - Enforce the singleton property with a private constructor or an enum type: java/effective-java/003.md
+          - Item 4 - Enforce noninstantiability with a private constructor: java/effective-java/004.md
+          - Item 5 - Prefer dependency injection to hardwiring resources: java/effective-java/005.md
+          - Item 6 - Avoid creating unnecessary objects: java/effective-java/006.md
+          - Item 7 - Eliminate obsolete object references: java/effective-java/007.md
+          - Item 8 - Avoid finalizers and cleaners: java/effective-java/008.md
+          - Item 9 - Prefer try-with-resources to try-finally: java/effective-java/009.md
+        - Methods Common To All Objects:
+          - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
   - Spring Boot:
       - Scheduler:
         - Quartz:
