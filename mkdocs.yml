@@ -34,14 +34,14 @@ nav:
         - Methods Common To All Objects:
           - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
   - Spring Boot:
-      - Scheduler:
-        - Quartz:
-          - Hello World!: spring-boot/scheduler/hello_world.md
-          - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
-          # TODO: share data between jobs (via context ?)
-          #       - Job vs Bean Job
-          # TODO: tes
-
+    - Scheduler:
+      - Quartz:
+        - Hello World!: spring-boot/scheduler/hello_world.md
+        - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
+        # TODO: share data between jobs (via context ?)
+        #       - Job vs Bean Job
+        # TODO: tes
+    - Testing: spring-boot/testing/index.md
 markdown_extensions:
   - admonition
   - pymdownx.highlight
