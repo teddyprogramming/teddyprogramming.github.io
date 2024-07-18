@@ -5,14 +5,14 @@ categories:
 date: 2024-07-15
 ---
 
-# Retrieving new entity id in end-to-end testing in Spring Boot test using `@SpyBean`
+# Retrieving new entity id in integration testing in Spring Boot test using `@SpyBean`
 
-在 end-to-end 測試中，常會涉及將資料寫入資料庫，然後再透過其他 API 將資料撈出來以確認資料確實寫入資料庫。
+在 integration test 中，常會涉及將資料寫入資料庫，然後再透過其他 API 將資料撈出來以確認資料確實寫入資料庫。
 
 ```java
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EndToEndTest {
+public class IntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -36,7 +36,7 @@ public class EndToEndTest {
 ```java hl_lines="8-9 16-20"
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EndToEndTest {
+public class IntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
