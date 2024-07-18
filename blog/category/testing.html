@@ -881,11 +881,11 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="retrieving-new-entity-id-in-end-to-end-testing-in-spring-boot-test-using-spybean"><a class="toclink" href="../2024/07/15/retrieving-new-entity-id-in-end-to-end-testing-in-spring-boot-test-using-spybean.html">Retrieving new entity id in end-to-end testing in Spring Boot test using <code>@SpyBean</code></a></h2>
-<p>在 end-to-end 測試中，常會涉及將資料寫入資料庫，然後再透過其他 API 將資料撈出來以確認資料確實寫入資料庫。</p>
+    <h2 id="retrieving-new-entity-id-in-integration-testing-in-spring-boot-test-using-spybean"><a class="toclink" href="../2024/07/15/retrieving-new-entity-id-in-integration-testing-in-spring-boot-test-using-spybean.html">Retrieving new entity id in integration testing in Spring Boot test using <code>@SpyBean</code></a></h2>
+<p>在 integration test 中，常會涉及將資料寫入資料庫，然後再透過其他 API 將資料撈出來以確認資料確實寫入資料庫。</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@SpringBootTest</span>
 <span class="nd">@AutoConfigureMockMvc</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EndToEndTest</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntegrationTest</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MockMvc</span><span class="w"> </span><span class="n">mockMvc</span><span class="p">;</span>
@@ -906,7 +906,7 @@
 <p>總之，沒有撈資料 API 的情況下，要確認資料是否正確新增到資料庫，有一種做法是直接確認資料確實寫進資料庫。不過，直接撈資料庫最後一筆資料，然後進行驗證的做法會有缺陷，我們如何確定最後一筆資料一定是剛才 API 寫入的資料呢？如果我們在不同測試共用相同的測試資料，就更難以確定了。我們可以使用 <code>@SpyBean</code> 來解決這個問題，確認 repository 寫入資料庫的 method 確實有被呼叫，並取得方才新增資料的 id。</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@SpringBootTest</span>
 <span class="nd">@AutoConfigureMockMvc</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EndToEndTest</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntegrationTest</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MockMvc</span><span class="w"> </span><span class="n">mockMvc</span><span class="p">;</span>
