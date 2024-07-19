@@ -33,6 +33,7 @@ nav:
           - Item 9 - Prefer try-with-resources to try-finally: java/effective-java/009.md
         - Methods Common To All Objects:
           - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
+          - Item 11 - Always override hashCode when you override equals: java/effective-java/011.md
   - Spring Boot:
     - Scheduler:
       - Quartz:
