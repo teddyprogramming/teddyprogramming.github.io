@@ -988,7 +988,10 @@
 <p>對於 immutable 物件，考量執行時間，可以使用 cache。</p>
 <h2 id="_1">其他重點</h2>
 <ul>
-<li>不要為了減少 <code>hashCode</code> 的執行時間，而將重要欄位排除在 hash 的計算。這會讓雜湊的機制崩壞。</li>
+<li>不要為了減少 <code>hashCode</code> 的執行時間，而將重要欄位排除在 hash 的計算。這會讓雜湊的機制崩壞。<ul>
+<li>補充: <a href="../../blog/2024/07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">雜湊函數設計不良導致 <span class="arithmatex">\(O(n^2)\)</span> 時間複雜度</a></li>
+</ul>
+</li>
 <li>不要規範 <code>hashCode</code> 該如何計算，這有助於遭遇 hash 運算有缺陷時，有替換演算法的彈性。</li>
 </ul>
 
@@ -1013,7 +1016,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月19日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月20日</span>
   </span>
 
     
@@ -1078,6 +1081,10 @@
     
     
       <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

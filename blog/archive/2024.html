@@ -881,6 +881,41 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
+          <time datetime="2024-07-21 00:00:00">2024年7月21日</time></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 2 分鐘閱讀時間
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="on2"><a class="toclink" href="../2024/07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">雜湊函數設計不良導致 <span class="arithmatex">\(O(n^2)\)</span> 時間複雜度</a></h2>
+<p>最近在看 Effective Java, 3rd 一書的 <a href="../../java/effective-java/011.html">Item 11</a> 討論 <code>hashCode</code> 的實作，說到糟糕的 <code>hashCode</code> 實作將導致程式的時間複雜度從 <span class="arithmatex">\(O(n)\)</span> 變成 <span class="arithmatex">\(O(n^2)\)</span>。</p>
+<p>書中並沒有詳細說明情境。而在我的理解，hash 的時間複雜不就是 <span class="arithmatex">\(O(1)\)</span> 嗎？那麼 <span class="arithmatex">\(O(n)\)</span> 跟 <span class="arithmatex">\(O(n^2)\)</span> 是怎麼回事？ 所以我就自己<strong>腦補</strong>一個情境來解釋書中沒有描述的情境。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../2024/07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">
+          繼續閱讀
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
           <time datetime="2024-07-15 00:00:00">2024年7月15日</time></li>
         
           <li class="md-meta__item">
@@ -1013,6 +1048,10 @@
     
     
       <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
