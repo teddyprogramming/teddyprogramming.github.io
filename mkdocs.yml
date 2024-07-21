@@ -34,6 +34,7 @@ nav:
         - Methods Common To All Objects:
           - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
           - Item 11 - Always override hashCode when you override equals: java/effective-java/011.md
+          - Item 12 = Always override toString: java/effective-java/012.md
   - Spring Boot:
     - Scheduler:
       - Quartz:
