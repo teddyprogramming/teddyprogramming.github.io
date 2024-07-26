@@ -19,6 +19,8 @@ nav:
   - Blog: blog/index.md
   - IDE:
         - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
+  - Kubernetes:
+    - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Java:
     - Effective Java, 3rd:
         - Creating And Destroying Objects:
@@ -55,6 +57,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.arithmatex:
       generic: true
+  - nl2br
 
 plugins:
   - search
