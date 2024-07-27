@@ -37,6 +37,7 @@ nav:
           - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
           - Item 11 - Always override hashCode when you override equals: java/effective-java/011.md
           - Item 12 = Always override toString: java/effective-java/012.md
+          - Item 13 - Override clone judiciously: java/effective-java/013.md
   - Spring Boot:
     - Scheduler:
       - Quartz:
@@ -58,6 +59,11 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - nl2br
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
   - search
