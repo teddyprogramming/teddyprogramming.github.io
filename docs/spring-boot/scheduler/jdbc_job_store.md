@@ -110,9 +110,9 @@ public class QuartzConfig {
     }
 
     @Bean
-    public Trigger helloWorldTrigger(JobDetail printHelloWorldJobDetail) {
+    public Trigger helloWorldTrigger(JobDetail helloWorldJobDetail) {
         return TriggerBuilder.newTrigger()
-                             .forJob(printHelloWorldJobDetail)
+                             .forJob(helloWorldJobDetail)
                              .withIdentity("helloWorldTrigger")
                              .withSchedule(CronScheduleBuilder.cronSchedule("*/10 * * * * ?"))
                              .build();
