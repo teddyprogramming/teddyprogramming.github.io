@@ -39,6 +39,8 @@ nav:
           - Item 12 = Always override toString: java/effective-java/012.md
           - Item 13 - Override clone judiciously: java/effective-java/013.md
           - Item 14 - Consider implementing Comparable: java/effective-java/014.md
+        - Methods:
+          - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Spring Boot:
     - Scheduler:
       - Quartz:
