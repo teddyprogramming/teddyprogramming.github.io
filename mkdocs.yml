@@ -41,6 +41,7 @@ nav:
           - Item 14 - Consider implementing Comparable: java/effective-java/014.md
         - Classes and Interface:
           - Item 15 - Minimize the accessibility of classes and members: java/effective-java/015.md
+          - Item 16 - In public classes, use accessor methods, not public fields: java/effective-java/016.md
         - Methods:
           - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Spring Boot:
