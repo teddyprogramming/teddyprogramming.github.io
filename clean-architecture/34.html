@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="../../clean-architecture/34.html">
+        <link rel="prev" href="../kubernetes/pod-topology-spread-constraints.html">
       
       
-        <link rel="next" href="002.html">
+        <link rel="next" href="../java/effective-java/001.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
-        <title>Item 1 - Consider static factory methods instead of constructors - Teddy 的筆記本</title>
+        <title>34 The Missing Chapter - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
       
 
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-1-consider-static-factory-methods-instead-of-constructors" class="md-skip">
+        <a href="#the-missing-chapter" class="md-skip">
           跳轉到
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 1 - Consider static factory methods instead of constructors
+              34 The Missing Chapter
             
           </span>
         </div>
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -195,7 +195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -250,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ide/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -313,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -322,6 +322,120 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clean Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Clean Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    34 The Missing Chapter
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="34.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    34 The Missing Chapter
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#class-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      不是所有 class 都是 public
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -348,72 +462,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Clean Architecture
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Clean Architecture
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clean-architecture/34.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    34 The Missing Chapter
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -427,7 +476,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Java
@@ -438,19 +487,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -464,7 +511,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             Effective Java, 3rd
@@ -475,19 +522,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" >
         
           
           <label class="md-nav__link" for="__nav_5_1_1" id="__nav_5_1_1_label" tabindex="0">
@@ -501,7 +546,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1_1">
             <span class="md-nav__icon md-icon"></span>
             Creating And Destroying Objects
@@ -512,30 +557,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Item 1 - Consider static factory methods instead of constructors
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="001.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -544,44 +569,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      優點
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      限制
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -594,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -615,7 +602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -636,7 +623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -657,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -699,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -720,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -741,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -805,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -826,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -847,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="012.html" class="md-nav__link">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -889,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -974,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1038,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1187,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1208,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1245,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1281,168 +1268,29 @@
                   
 
 
-<h1 id="item-1-consider-static-factory-methods-instead-of-constructors">Item 1: Consider static factory methods instead of constructors</h1>
-<h2 id="_1">優點</h2>
-<p>偏好 static factory method 的優點：</p>
-<ol>
-<li>
-<p>可以提供有意義的名稱，幫助閱讀理解的名稱</p>
-<ul>
-<li><code>BigInteger.probablePrime</code> 比 <code>BigInteger(int, int, Random)</code> 更容易理解。</li>
-<li>constructor 之間只能夠透過參數型別不同來加以區隔，開發人員需要知道這些不同 constructor 對應的實作。但是，他們也可能會記錯而誤用。例如，我們有辦法區分 <code>BigInteger(int[])</code>, <code>BigInteger(int[], int)</code>, <code>BigInteger(int, int[])</code> 他們的不同嗎？</li>
-</ul>
-</li>
-<li>
-<p>不必每次都建立新物件</p>
-<ul>
-<li>套用 Flyweight pattern, Singleton pattern</li>
-<li>可以避免建立不必要重複的物件</li>
-<li>Instance-controlled class</li>
-</ul>
-</li>
-<li>
-<p>可以回傳 Subclass</p>
-<ul>
-<li>interface-based frameworks</li>
-<li><a href="https://en.wikiversity.org/wiki/Software_Design/Interface_size">conceptual weight</a>: 開發人員需要掌握多少概念才能夠使用 API</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Java 8 以前，interface 不能有 static method。在實作上，需要 static factory methods 的 class 會命名成 Type + s，並將 constructor 宣告成 private，例如 <code>Collections</code>, <code>Arrays</code>。</p>
+<h1 id="the-missing-chapter">The Missing Chapter</h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Package by layer</label><label for="__tabbed_1_2">Package by feature</label><label for="__tabbed_1_3">Ports and Adapters</label><label for="__tabbed_1_4">Package by component</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="34/package-by-layer.svg" /></p>
 </div>
-</li>
-<li>
-<p>可以依據情況回傳不同的 Subclass</p>
-<ul>
-<li>允許不同的 release 更換 return 的 subclass。</li>
-<li>
-<p><code>EnumSet</code> 的實作，根據 enum 數量的不同，回傳不同的 subclass。回傳的 subclass 與條件是可以改變而不影響呼叫端的。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 示意程式碼</span>
-<span class="kd">class</span> <span class="nc">EnumSet</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">E</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Enum</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">EnumSet</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">noneOf</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elementType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elementType</span><span class="p">.</span><span class="na">getEnumCount</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RegularEnumSet</span><span class="p">(..)</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JumboEnumSet</span><span class="p">(..)</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>條件 (<code>&lt;= 64</code>) 與 subclass 的實作是可以改變的，而不影響呼叫端的程式碼。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>在撰寫程式碼時，類別不必存在</p>
-<ul>
-<li>利於 service provider frameworks<ul>
-<li>框架開發商不必提前知道所有 interface 可能的實作</li>
-<li>讓 interface 實作延遲到 development time 決定</li>
-<li>例如: JDBC API 的 Connection interface，開發人員可以在開發時在決定具體的 Connection 實作，像是透過 property 設定 Connection 是 MySql <code>spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</code></li>
-</ul>
-</li>
-<li>Bridge pattern</li>
-<li>可以配合 Dependency injection frameworks 使用</li>
-<li><code>ServiceLoader</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="_2">限制</h2>
-<p>偏好 static factory method 的限制：</p>
-<ol>
-<li>
-<p><strong>拋棄繼承</strong>:</p>
-<ul>
-<li>constructor 被宣告成 <code>private</code> / <code>protected</code>，使得 subclass 無法初始化 superclass，造成無法繼承。</li>
-<li>無法繼承意味著放棄 polymorphism 的特性。</li>
-</ul>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>如果同時讓 class 保有 static factory methods 並且把 constructor 宣告成 <code>public</code> 呢?</p>
+<div class="tabbed-block">
+<p><img alt="" src="34/package-by-feature.svg" /></p>
 </div>
-</li>
-<li>
-<p><strong>增加 debug 難度</strong>:</p>
-<ul>
-<li>因為建立物件的動作隱藏在 static factory methods 裡，所以 debug 時無法直接看到建立物件的地方，以及怎麼被建立的。</li>
-<li>以下幾種命名規則，可以幫助 static factory methods 的理解: (此為列舉而非窮舉)<ul>
-<li><code>from</code><ul>
-<li>type-conversion method: 從 <strong>一個</strong> type 的物件轉換成另一個 type 的物件</li>
-<li>範例:<ul>
-<li><code>Date.from(instant)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>of</code><ul>
-<li>aggregation method: 從 <strong>多個</strong> 參數的物件合併成一個 type 的物件</li>
-<li>範例:<ul>
-<li><code>EnumSet.of(JACK, QUEEN, KING)</code></li>
-<li><code>LocalDate.of(2024, 7, 4)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>valueOf</code><ul>
-<li>比 <code>from</code> 與 <code>of</code> 更囉唆一點的版本</li>
-<li>範例:<ul>
-<li><code>Integer.valueOf("100")</code> </li>
-<li><code>Integer.valueOf("100", 2)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>instance</code> / <code>getInstance</code><ul>
-<li>從 <strong>0</strong> 至 <strong>多個</strong> 參數建立物件</li>
-<li>雖然說是 <code>getInstance</code>，但是不保證回傳的是同一個物件</li>
-<li>範例:<ul>
-<li><code>Calendar.getInstance()</code> </li>
-<li><code>Calendar.getInstance(TimeZone.getDefault())</code> </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>create</code> / <code>newInstance</code><ul>
-<li>從 <strong>0</strong> 至 <strong>多個</strong> 參數建立物件</li>
-<li>每次都會建立新的物件</li>
-<li>範例:<ul>
-<li><code>Array.newInstance(Integer.class, 10)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>getType</code><ul>
-<li>回傳的物件是 <code>Type</code> 的 instance</li>
-<li>雖然為 get，但是不保證回傳的是同一個物件</li>
-<li>範例:<ul>
-<li><code>Files.getFileStore(path)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>newType</code><ul>
-<li>回傳的物件是 <code>Type</code> 的 instance</li>
-<li>每次都會建立新的物件</li>
-<li>範例:<ul>
-<li><code>BufferedReader br = Buffer.newBufferedReader(path)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>type</code><ul>
-<li><code>getType</code> 與 <code>newType</code> 的簡化版</li>
-<li>範例:<ul>
-<li><code>Collections.singletonList("apple")</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
+<div class="tabbed-block">
+<p><img alt="" src="34/ports-and-adapters.svg" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="34/package-by-component.svg" /></p>
+</div>
+</div>
+</div>
+<h2 id="class-public">不是所有 class 都是 <code>public</code></h2>
+<p>所有 class 都是 <code>public</code>，無論 package 怎麼安排，都僅僅是組織程式碼的方式，而非封裝。<code>public</code> class 可以被任何地方的程式碼使用，完全沒有存取控管的約束力。</p>
+<p><img alt="" src="34/all-public.svg" /></p>
+<p>應將 package 內部實作的 class (灰色的部分) 宣告成 package-protected 阻止 package 外的 class 存取。</p>
+<p><img alt="" src="34/hide-interface-class.svg" /></p>
+<p>相依的部分，透過 dependency injection 解決。</p>
 
 
 
@@ -1465,7 +1313,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月1日</span>
   </span>
 
     
@@ -1475,7 +1323,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月4日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月1日</span>
   </span>
 
     
@@ -1526,12 +1374,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
