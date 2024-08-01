@@ -21,6 +21,8 @@ nav:
         - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
   - Kubernetes:
     - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
+  - Clean Architecture:
+      - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
     - Effective Java, 3rd:
         - Creating And Destroying Objects:
