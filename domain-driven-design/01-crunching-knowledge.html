@@ -9,20 +9,22 @@
       
       
       
-        <link rel="prev" href="../15/retrieving-new-entity-id-in-integration-testing-in-spring-boot-test-using-spybean.html">
+        <link rel="prev" href="../kubernetes/pod-topology-spread-constraints.html">
       
       
+        <link rel="next" href="../clean-architecture/34.html">
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>雜湊函數設計不良導致 \(O(n^2)\) 時間複雜度 - Teddy 的筆記本</title>
+        <title>1 Crunching Knowledge - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
       
 
@@ -41,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -60,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#on2" class="md-skip">
+        <a href="#ch-1-crunching-knowledge" class="md-skip">
           跳轉到
         </a>
       
@@ -76,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../../../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              雜湊函數設計不良導致 \(O(n^2)\) 時間複雜度
+              1 Crunching Knowledge
             
           </span>
         </div>
@@ -162,9 +164,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ide/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -291,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -316,17 +316,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -340,7 +342,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Domain-Driven Design
@@ -351,10 +353,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1 Crunching Knowledge
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01-crunching-knowledge.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -363,6 +385,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      印刷電路板(PCB)的專用軟體
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      有效建模的要素
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-rich-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge-Rich Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge-Rich Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-extracting-a-hidden-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Extracting a Hidden Concept
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -417,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -550,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -571,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -592,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -613,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -634,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -655,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -676,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -697,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -718,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -824,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/012.html" class="md-nav__link">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -930,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -951,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1015,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../java/effective-java/055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1164,7 +1248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1185,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1222,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1247,14 +1331,12 @@
       
   
   
-    
-  
   
     
   
   
-    <li class="md-nav__item md-nav__item--active">
-      <a href="../../../index.html" class="md-nav__link">
+    <li class="md-nav__item">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1276,173 +1358,164 @@
             
           
           
-  <div class="md-content md-content--post" data-md-component="content">
-    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-        <div class="md-sidebar__inner md-post">
-          <nav class="md-nav md-nav--primary">
-            <div class="md-post__back">
-              <div class="md-nav__title md-nav__container">
-                <a href="../../../index.html" class="md-nav__link">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-                  <span class="md-ellipsis">
-                    回到主頁
-                  </span>
-                </a>
-              </div>
-            </div>
-            
-            <ul class="md-post__meta md-nav__list">
-              <li class="md-nav__item md-nav__item--section">
-                <div class="md-post__title">
-                  <span class="md-ellipsis">
-                    元數據
-                  </span>
-                </div>
-                <nav class="md-nav">
-                  <ul class="md-nav__list">
-                    <li class="md-nav__item">
-                      <div class="md-nav__link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-07-21 00:00:00" class="md-ellipsis">2024年7月21日</time>
-                      </div>
-                    </li>
-                    
-                    
-                    
-                      
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
-                          <span class="md-ellipsis">
-                            
-                              需要 2 分鐘閱讀時間
-                            
-                          </span>
-                        </div>
-                      </li>
-                    
-                  </ul>
-                </nav>
-              </li>
-            </ul>
-          </nav>
-          
-            
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
+
+<h1 id="ch-1-crunching-knowledge">Ch 1: Crunching Knowledge</h1>
+<p><img alt="" src="01/001.png" /></p>
+<p>十八世紀，中國繪製的世界地圖。</p>
+<ul>
+<li>model 是一種簡化，把與問題相關的方面抽象出來，並且忽略無關的細節。<ul>
+<li><em>it is a rigorously organized and selective abstraction of that knowledge</em>.</li>
+</ul>
+</li>
+<li>domain model 目標不是要盡可能建立一個符合現實的模型。建模的人應視模型的需求挑選具體的模型。</li>
+</ul>
+<h2 id="pcb">印刷電路板(PCB)的專用軟體</h2>
+<p>domain model 是逐步演化。</p>
+<p>net (導線) 可以連接任意數量的 chip (元件)</p>
+<p><img alt="" src="01/002.png" /></p>
+<p>有了 domain model，以非正式的 object interaction diagrams 討論一些情境</p>
+<p><img alt="" src="01/003.png" /></p>
+<p>根據圖，討論後，更新了 model</p>
+<p><img alt="" src="01/004.png" /></p>
+<p>根據 model 討論情境</p>
+<p><img alt="" src="01/005.png" /></p>
+<p>目標要找出最長 delay 的路徑，超過 2 或 3 hops 的都要找出來。帶入經過 net 會有 one hop 的知識，更新圖。</p>
+<p><img alt="" src="01/006.png" /></p>
+<p>為了釐清 push 的概念，透過下圖:</p>
+<p><img alt="" src="01/007.png" /></p>
+<p>與專家討論，他們沒有很完全理解圖的意義，不過對於建模這也不重要，可以忽略。</p>
+<p>不斷討論後，產出了以下的初期模型的類別圖:</p>
+<p><img alt="" src="01/008.png" /></p>
+<p>然後據此模型，開發純 java 的 prototype (不包含 db, ui 等)。透過 prototype 讓專家理解模型的具體涵義。</p>
+<p>優點:</p>
+<ul>
+<li>👍 模型將「同義詞」與「語言描寫的微小差異」做了統一。</li>
+<li>👍 模型排除了與問題沒有直接關係的事實。</li>
+</ul>
+<h2 id="_1">有效建模的要素</h2>
+<ul>
+<li><em>Binding the model and the implementation</em></li>
+<li><em>Cultivating a language based on the model</em>: 專家與開發人員基於同一個模型討論，可以減少匹此認知。</li>
+<li><em>Developing a knowledge-rich model</em></li>
+<li><em>Distilling the model</em>: 重要的東西加到 model 中，不重要的東西從 model 中移除。</li>
+<li><em>Brainstorming and experimenting</em>: 基於模型，可以進行腦力激盪與沙盤推演。</li>
+</ul>
+<h2 id="knowledge-rich-design">Knowledge-Rich Design</h2>
+<h3 id="example-extracting-a-hidden-concept">Example: Extracting a Hidden Concept</h3>
+<p>預約一艘船在一趟航程(voyage)要載運的貨物(cargo)</p>
+<p><img alt="" src="01/voyage-cargo-001.svg" /></p>
+<p>實作可能如下:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">makeBooking</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">Voyage</span><span class="w"> </span><span class="n">voyage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">confirmation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderConfirmationSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">  </span>
+<span class="w">    </span><span class="n">voyage</span><span class="p">.</span><span class="na">addCargo</span><span class="p">(</span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">confirmation</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">confirmation</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<p>因為總是會有人在最後一刻取消訂單，因此航運業一般都會接受比承載能力要多一些的貨物，稱之為超訂(overbooking)。這是航運業的基本策略，從事航運業的業務人員都會知道，但是軟體開發人員，並不是每個人都會知道。</p>
+<p>需求文件將會包含一句話：Allow 10% overbooking.</p>
+<p>類別圖會長這樣:</p>
+<p><img alt="" src="01/voyage-cargo-002.svg" /></p>
+<p>實作可能如下:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">makeBooking</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">Voyage</span><span class="w"> </span><span class="n">voyage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">maxBooking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">voyage</span><span class="p">.</span><span class="na">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">voyage</span><span class="p">.</span><span class="na">bookedCargoSize</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cargo</span><span class="p">.</span><span class="na">size</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxBooking</span><span class="p">)</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="err">–</span><span class="mi">1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">confirmation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderConfirmationSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">  </span>
+<span class="w">    </span><span class="n">voyage</span><span class="p">.</span><span class="na">addCargo</span><span class="p">(</span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">confirmation</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">confirmation</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<p>有一個重要的業務規則被隱藏在程式碼中。</p>
+<ul>
+<li>👎 不是所有業務專家都會讀程式碼來檢查規則。即使有開發人員幫助，也很難完成任務。</li>
+<li>👎 非業務的技術人員，很難將需求文件與程式碼連結起來。</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">將超訂規則，透過 Policy 的方式<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>，暴露在 domain model 上。</p>
+<p><img alt="" src="01/voyage-cargo-003.svg" />    </p>
+</div>
+<ul>
+<li>✨ 開發人員與相關人員必須理解 overbooking 的本質，知道他是重要的業務規則，而非程式碼中一個不起眼的描述。</li>
+<li>✨ 開發人員可以向專家展示 model，並在帶領下可以理解程式碼。</li>
+</ul>
+<p>程式碼修改如下:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">makeBooking</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">Voyage</span><span class="w"> </span><span class="n">voyage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">overbookingPolicy</span><span class="p">.</span><span class="na">isAllowed</span><span class="p">(</span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">voyage</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="err">–</span><span class="mi">1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">confirmation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderConfirmationSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">  </span>
+<span class="w">    </span><span class="n">voyage</span><span class="p">.</span><span class="na">addCargo</span><span class="p">(</span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">confirmation</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">confirmation</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">OverbookingPolicy</span><span class="w"> </span><span class="p">...</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isAllowed</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">cargo</span><span class="p">,</span><span class="w"> </span><span class="n">Voyage</span><span class="w"> </span><span class="n">voyage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">cargo</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">voyage</span><span class="p">.</span><span class="na">bookedCargoSize</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">voyage</span><span class="p">.</span><span class="na">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.1</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">I am not recommending that such an elaborate design be applied to every detail of the domain</p>
+<p>作者不建議將這樣的精細設計套用到 domain 的每個細節中。(第十五章將進行討論)</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>即 strategy pattern&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
   
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    
+  
+
+
+  <aside class="md-source-file">
+    
       
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      情境
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-  </a>
-  
-</li>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月2日</span>
+  </span>
+
+    
+    
       
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      最佳情況
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      最糟情況
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      結論
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月2日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
           
-        </div>
-      </div>
-    </div>
-    <article class="md-content__inner md-typeset">
-      
-        
-
-
-<h1 id="on2">雜湊函數設計不良導致 <span class="arithmatex">\(O(n^2)\)</span> 時間複雜度</h1>
-<p>最近在看 Effective Java, 3rd 一書的 <a href="../../../../java/effective-java/011.html">Item 11</a> 討論 <code>hashCode</code> 的實作，說到糟糕的 <code>hashCode</code> 實作將導致程式的時間複雜度從 <span class="arithmatex">\(O(n)\)</span> 變成 <span class="arithmatex">\(O(n^2)\)</span>。</p>
-<p>書中並沒有詳細說明情境。而在我的理解，hash 的時間複雜不就是 <span class="arithmatex">\(O(1)\)</span> 嗎？那麼 <span class="arithmatex">\(O(n)\)</span> 跟 <span class="arithmatex">\(O(n^2)\)</span> 是怎麼回事？ 所以我就自己<strong>腦補</strong>一個情境來解釋書中沒有描述的情境。</p>
-<!-- more -->
-
-<h2 id="_1">情境</h2>
-<p>程式要維護一個 Set，插入 <span class="arithmatex">\(n\)</span> (<span class="arithmatex">\(x_1\)</span>, <span class="arithmatex">\(x_2\)</span>, ..., <span class="arithmatex">\(x_n\)</span>) 個不相同的元素到 Set 的時間複雜度為何？</p>
-<p>假設我們宣告一個長度為 <span class="arithmatex">\(n\)</span> 的 hash table。</p>
-<p><img alt="" src="../../../hash-quadratic-time/explain1.svg" /></p>
-<p>我們要將元素 <span class="arithmatex">\(x_m\)</span> 存到 hash table 中，首先我們要計算 <span class="arithmatex">\(hash(x_m)\)</span> 他會是一個介於 <span class="arithmatex">\(1~n\)</span> 的值，決定 <span class="arithmatex">\(x_m\)</span> 存在 hash table 的哪個位置。</p>
-<p><img alt="" src="../../../hash-quadratic-time/explain2.svg" /></p>
-<p>當 hash table 的某個位置已經有元素了，就用 linked list 的方式串接起來。</p>
-<p><img alt="" src="../../../hash-quadratic-time/explain3.svg" /></p>
-<p>不過，這個 hash table 是為了實現 Set。當算出來的 hash 位址已經有元素存在，我們需要檢查待新增的元素是否已經在該 hash 位址的 linked list 中存在。如果存在，就不加入，否則加入。</p>
-<h2 id="_2">最佳情況</h2>
-<p><span class="arithmatex">\(x_1\)</span>, <span class="arithmatex">\(x_2\)</span>, ..., <span class="arithmatex">\(x_n\)</span> 的 hash 值都不相同，這樣每個元素都可以直接存在 hash table 的某個位址。</p>
-<p><img alt="" src="../../../hash-quadratic-time/best.svg" /></p>
-<p>時間複雜度:</p>
-<p><span class="arithmatex">\(O(1) + O(1) + ... + O(1) = \sum_{1}^n O(1) = O(n)\)</span></p>
-<h2 id="_3">最糟情況</h2>
-<p><span class="arithmatex">\(x_1\)</span>, <span class="arithmatex">\(x_2\)</span>, ..., <span class="arithmatex">\(x_n\)</span> 的 hash 值全相同 (假設為 <span class="arithmatex">\(m\)</span>)，這樣會導致每次加入元素時，都必須檢查 hash table 的所有元素。</p>
-<p><img alt="" src="../../../hash-quadratic-time/worst1.svg" /></p>
-<p>插入 <span class="arithmatex">\(x_1\)</span> 時，沒有需要檢查任何元素，時間複雜度為 <span class="arithmatex">\(O(1)\)</span>。</p>
-<p><img alt="" src="../../../hash-quadratic-time/worst2.svg" /></p>
-<p>插入 <span class="arithmatex">\(x_2\)</span>，與 <span class="arithmatex">\(m\)</span> 位址的元素相比，確認 <span class="arithmatex">\(m\)</span> 位址沒有出現 <span class="arithmatex">\(x_2\)</span> 再進行插入，時間複雜度為 <span class="arithmatex">\(O(2)\)</span>。(<span class="arithmatex">\(O(1)\)</span> 為計算 hash，<span class="arithmatex">\(O(1)\)</span> 為與一個元素比較)</p>
-<p><img alt="" src="../../../hash-quadratic-time/worst3.svg" /></p>
-<p>插入 <span class="arithmatex">\(x_n\)</span>。與 <span class="arithmatex">\(m\)</span> 位址的元素相比，確認 <span class="arithmatex">\(m\)</span> 位址沒有出現 <span class="arithmatex">\(x_n\)</span> 再進行插入，時間複雜度為 <span class="arithmatex">\(O(n)\)</span>。(<span class="arithmatex">\(O(1)\)</span> 為計算 hash，<span class="arithmatex">\(O(n-1)\)</span> 為與 <span class="arithmatex">\(n-1\)</span> 個元素比較)</p>
-<p>因此，整體的時間複雜度為:</p>
-<p><span class="arithmatex">\(O(1) + O(2) + ... + O(n) = O(1 + 2 + ... + n) = O(\frac{n(n+1)}{2}) = O(\frac{n^2+n}{2}) = O(\frac{n^2}{2} + \frac{n}{2}) = O(n^2)\)</span></p>
-<h2 id="_4">結論</h2>
-<p>以上最佳的情境與最糟的情境所記算出來的時間複雜度，與書中所說的 <span class="arithmatex">\(O(n)\)</span> 與 <span class="arithmatex">\(O(n^2)\)</span> 是相符的。應該可以搭配這個範例來理解書中的描述。</p>
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-  
-
-
-
-      
-    </article>
-  </div>
-
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -1478,12 +1551,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
