@@ -12,15 +12,17 @@ theme:
     - content.code.copy
     - toc.integrate
     - navigation.top
+    - content.footnote.tooltips
 
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
-  - Blog: blog/index.md
   - IDE:
         - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
   - Kubernetes:
     - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
+  - Domain-Driven Design:
+      - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
@@ -55,6 +57,8 @@ nav:
         #       - Job vs Bean Job
         # TODO: tes
     - Testing: spring-boot/testing/index.md
+  - Blog: blog/index.md
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight
@@ -72,6 +76,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed:
       alternate_style: true
+  - footnotes
 
 plugins:
   - search
