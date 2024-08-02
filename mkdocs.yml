@@ -23,6 +23,7 @@ nav:
     - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Domain-Driven Design:
       - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
+      - 2 Communication and the Use of Language: domain-driven-design/02-communication-and-the-use-of-language.md
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
