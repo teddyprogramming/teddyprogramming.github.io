@@ -25,6 +25,7 @@ nav:
       - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
       - 2 Communication and the Use of Language: domain-driven-design/02-communication-and-the-use-of-language.md
       - 3 Binding Model and Implementation: domain-driven-design/03-binding-model-and-implementation.md
+      - 4 Isolating the Domain: domain-driven-design/04-isolating-the-domain.md
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
