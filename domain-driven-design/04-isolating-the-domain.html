@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="010.html">
+        <link rel="prev" href="03-binding-model-and-implementation.html">
       
       
-        <link rel="next" href="012.html">
+        <link rel="next" href="../clean-architecture/34.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>Item 11 - Always override hashCode when you override equals - Teddy 的筆記本</title>
+        <title>4 Isolating the Domain - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
       
 
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-11-always-override-hashcode-when-you-override-equals" class="md-skip">
+        <a href="#ch-4-isolating-the-domain" class="md-skip">
           跳轉到
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 11 - Always override hashCode when you override equals
+              4 Isolating the Domain
             
           </span>
         </div>
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ide/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -291,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -316,17 +316,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -340,7 +342,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Domain-Driven Design
@@ -354,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="01-crunching-knowledge.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -396,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -414,10 +416,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4 Isolating the Domain
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04-isolating-the-domain.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -426,6 +448,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#layered-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layered Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layered Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partitioning-online-banking-functionality-into-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: Partitioning Online Banking Functionality into Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-smart-ui-anti-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Smart UI (Anti-Pattern)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -480,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -505,19 +580,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -531,7 +604,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Java
@@ -542,19 +615,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -568,7 +639,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             Effective Java, 3rd
@@ -617,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -811,19 +882,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
         
           
           <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
@@ -837,7 +906,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1_2">
             <span class="md-nav__icon md-icon"></span>
             Methods Common To All Objects
@@ -851,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,19 +938,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="011.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +950,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -903,7 +962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="012.html" class="md-nav__link">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1009,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1094,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1243,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1264,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1301,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1331,7 +1390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1359,104 +1418,37 @@
                   
 
 
-<h1 id="item-11-always-override-hashcode-when-you-override-equals">Item 11: Always override hashCode when you override equals</h1>
-<p>規範: Override <code>equals</code> 就必須 override <code>hashCode</code>。</p>
-<p>違反: <code>Collection</code> 像是 <code>HashMap</code>, <code>HashSet</code>，就無法正確運作。</p>
-<p><code>hashCode</code> 需要實作的規範:</p>
+<h1 id="ch-4-isolating-the-domain">Ch 4: Isolating the Domain</h1>
+<h2 id="layered-architecture">Layered Architecture</h2>
+<p><img alt="" src="04/01.png" /></p>
+<p>Layered Architecture 有很多變體，不過，將 <strong>Domain Layer</strong> 分離出來是實作 Domain-Driven Design 的關鍵。</p>
+<h3 id="partitioning-online-banking-functionality-into-layers">範例: Partitioning Online Banking Functionality into Layers</h3>
+<p>應用程式提供銀行各種功能，這裡使用轉帳(funds transfer)為例。使用者可以輸入或選擇兩組帳號，填寫轉帳金額，然後開始轉帳。</p>
+<p>範例省略一些複雜的細節，以利說明。</p>
+<p><img alt="" src="04/02.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
-<li>在 <code>equals</code> 中使用到的資訊沒有修改的情況下，<code>hashCode</code> 重複的呼叫必須回傳相同的值。</li>
-<li>不同次的應用程式執行計算的 <code>hashCode</code> 可以不必相同。</li>
-<li>如果 <code>equals</code> 比較兩個物件相等，那麼兩個物件的 <code>hashCode</code> 必須相同。</li>
-<li><code>equals</code> 比較不相等的兩個物件，他們的 <code>hashCode</code> 不必不相同。但是，產生不同的 <code>hashCode</code> 可能有助於加快程式的執行速度。</li>
+<li>處理 business rule 的是 domain layer 而非 application layer</li>
+<li>business rule: Every credit has a matching debit</li>
 </ul>
-<h1 id="hashcode-hashmap">未正確實作 <code>hashCode</code> 會導致 <code>HashMap</code> 無法正確運作</h1>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PhoneNumber</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">areaCode</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="n">lineNum</span><span class="p">;</span>
-
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">PhoneNumber</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">areaCode</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lineNum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">areaCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">areaCode</span><span class="p">;</span>
-<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="p">;</span>
-<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">lineNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lineNum</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="w"> </span><span class="n">pn</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;}</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">pn</span><span class="p">.</span><span class="na">lineNum</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">lineNum</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pn</span><span class="p">.</span><span class="na">prefix</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pn</span><span class="p">.</span><span class="na">areaCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">areaCode</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">PhoneNumber</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="p">(</span><span class="mi">707</span><span class="p">,</span><span class="w"> </span><span class="mi">867</span><span class="p">,</span><span class="w"> </span><span class="mi">5309</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Jenny&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="p">(</span><span class="mi">707</span><span class="p">,</span><span class="w"> </span><span class="mi">867</span><span class="p">,</span><span class="w"> </span><span class="mi">5309</span><span class="p">)));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>執行結果:</p>
-<div class="highlight"><pre><span></span><code>null <span class="cm">&lt;!-- (1)! --&gt;</span>
-</code></pre></div>
-<ol>
-<li>期望結果應為 "Jenny"</li>
-</ol>
-<p>因為 <code>PhoneNumber</code> 沒有正確實作 <code>hashCode</code> 使得兩個 <code>PhoneNumber</code> 物件的 <code>hashCode</code> 不同，導致 <code>HashMap</code> 將兩個物件視為不同的物件。</p>
-<p>最簡單，也是最不好的做法就是讓 <code>hashCode</code> 回傳固定的值。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PhoneNumber</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">areaCode</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="n">lineNum</span><span class="p">;</span>
-
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">PhoneNumber</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">areaCode</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lineNum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">areaCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">areaCode</span><span class="p">;</span>
-<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="p">;</span>
-<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">lineNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lineNum</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="w"> </span><span class="n">pn</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;}</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">pn</span><span class="p">.</span><span class="na">lineNum</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">lineNum</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pn</span><span class="p">.</span><span class="na">prefix</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pn</span><span class="p">.</span><span class="na">areaCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">areaCode</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="hll"><span class="w">        </span><span class="nd">@Override</span>
-</span><span class="hll"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
-</span><span class="hll"><span class="w">        </span><span class="p">}</span>
-</span><span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">PhoneNumber</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="p">(</span><span class="mi">707</span><span class="p">,</span><span class="w"> </span><span class="mi">867</span><span class="p">,</span><span class="w"> </span><span class="mi">5309</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Jenny&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="p">(</span><span class="mi">707</span><span class="p">,</span><span class="w"> </span><span class="mi">867</span><span class="p">,</span><span class="w"> </span><span class="mi">5309</span><span class="p">)));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>執行結果:</p>
-<div class="highlight"><pre><span></span><code>Jenny
-</code></pre></div>
-<p>比較好的實作方法:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">hashCode</span><span class="p">(</span><span class="n">areaCode</span><span class="p">);</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">hashCode</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">hashCode</span><span class="p">(</span><span class="n">lineNum</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>或者</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">areaCode</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="n">lineNum</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>對於 immutable 物件，考量執行時間，可以使用 cache。</p>
-<h2 id="_1">其他重點</h2>
+</div>
+<h2 id="the-smart-ui-anti-pattern">The Smart UI (Anti-Pattern)</h2>
+<p>Smart UI 在使用者介面中實作所有的業務邏輯。</p>
+<p>優點:</p>
 <ul>
-<li>不要為了減少 <code>hashCode</code> 的執行時間，而將重要欄位排除在 hash 的計算。這會讓雜湊的機制崩壞。<ul>
-<li>補充: <a href="../../blog/2024/07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">雜湊函數設計不良導致 <span class="arithmatex">\(O(n^2)\)</span> 時間複雜度</a></li>
+<li>簡單，對專案成員的技術要求低，短時間的專案可以很快速開發</li>
+<li>快速回應修改的要求</li>
+<li>適用開發週期短，小型的專案</li>
+</ul>
+<p>缺點:</p>
+<ul>
+<li>不將 Domain 與 UI 分離，就無法實作 Domain-Driven Design <ul>
+<li>這裡將其視為 Anti-Pattern 的主因。但應考慮優點所描述的情境，並非所有情況都適用 Domain-Driven Design。</li>
 </ul>
 </li>
-<li>不要規範 <code>hashCode</code> 該如何計算，這有助於遭遇 hash 運算有缺陷時，有替換演算法的彈性。</li>
+<li>業務邏輯的程式碼沒有重複使用，當有重複使用的需求時，就需要複製相同的程式碼。</li>
+<li>隨著專案的複雜度增加，程式的維護難度會急劇的增加。</li>
 </ul>
 
 
@@ -1480,7 +1472,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月20日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月11日</span>
   </span>
 
     
@@ -1490,7 +1482,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月19日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月11日</span>
   </span>
 
     
@@ -1541,12 +1533,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
