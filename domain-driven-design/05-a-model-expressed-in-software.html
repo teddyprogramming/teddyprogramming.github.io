@@ -9,18 +9,22 @@
       
       
       
+        <link rel="prev" href="04-isolating-the-domain.html">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="next" href="../clean-architecture/34.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>Teddy 的筆記本</title>
+        <title>5 A Model Expressed in Software - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
       
 
@@ -39,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -57,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ch-5-a-model-expressed-in-software" class="md-skip">
+          跳轉到
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -69,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="/." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -89,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              5 A Model Expressed in Software
             
           </span>
         </div>
@@ -166,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ide/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -282,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -307,17 +316,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -331,7 +342,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Domain-Driven Design
@@ -345,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="01-crunching-knowledge.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -366,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -387,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -408,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+      <a href="04-isolating-the-domain.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -426,10 +437,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5 A Model Expressed in Software
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="05-a-model-expressed-in-software.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -438,6 +469,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#associations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Associations (關聯)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Associations (關聯)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#brokerage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: Brokerage Account 中的關聯
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entities-aka-reference-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entities (a.k.a Reference Objects)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#value-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value Objects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -492,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -625,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -646,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -667,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -688,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -709,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -730,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -751,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -772,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -857,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -878,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/012.html" class="md-nav__link">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -920,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -941,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1005,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1026,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1090,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/java/effective-java/055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1239,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1260,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1297,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1327,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1352,8 +1469,179 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="ch-5-a-model-expressed-in-software">Ch 5: A Model Expressed in Software</h1>
+<h2 id="associations">Associations (關聯)</h2>
+<ol>
+<li>bidirectional association (雙向關聯) 到 unidirectional association (單向關聯)</li>
+</ol>
+<p><img alt="" src="05/01.png" /></p>
+<p>美國有很多任總統。國家與總統是雙向的關係。但是，當提到 George Washington (喬治・華盛頓) 時，很少會問是哪個國家的總統。關聯的方向，反映了領域中自然的走訪傾向。</p>
+<ol>
+<li>qualified relationship (限定關係)</li>
+</ol>
+<p><img alt="" src="05/02.png" /></p>
+<p>一個國家在一個期間只會有一位總統。限定條件將「一對多」的關係簡化成「一對一」的關係。</p>
+<h3 id="brokerage-account">範例: Brokerage Account 中的關聯</h3>
+<p><img alt="" src="05/03.png" /></p>
+<p>符合模型的一種實作:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Set</span><span class="w"> </span><span class="n">investments</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Constructors, etc. omitted</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">getInvestments</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">investments</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>同樣也符合模型，但是從關聯式資料庫取出資料的另一種實作:</p>
+<p><img alt="" src="05/04.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">customerSocialSecurityNumber</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Omit constructors, etc.</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="s">&quot;SELECT * FROM CUSTOMER WHERE&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">&quot;SS_NUMBER=&#39;&quot;</span><span class="o">+</span><span class="n">customerSocialSecurityNumber</span><span class="o">+</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findSingleCustomerFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">getInvestments</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="s">&quot;SELECT * FROM INVESTMENT WHERE&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">&quot;BROKERAGE_ACCOUNT=&#39;&quot;</span><span class="o">+</span><span class="n">accountNumber</span><span class="o">+</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findInvestmentsFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>透過限定 Brokerage Account 與 Investment 的關聯，簡化多重性。限定每支股票只能對應一筆投資。</p>
+<p><img alt="" src="05/05.png" /></p>
+<p>程式碼調整如下:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Java</label><label for="__tabbed_1_2">SQL-based</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+<span class="hll"><span class="w">    </span><span class="n">Map</span><span class="w"> </span><span class="n">investments</span><span class="p">;</span>
+</span>
+<span class="w">    </span><span class="c1">// Omitting constructors, etc.</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Investment</span><span class="w"> </span><span class="nf">getInvestment</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">stockSymbol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">Investment</span><span class="p">)</span><span class="n">investments</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">stockSymbol</span><span class="p">);</span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">customerSocialSecurityNumber</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">//Omitting constructors, etc.</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM CUSTOMER WHERE SS_NUMBER=&#39;&quot;</span>
+<span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="n">customerSocialSecurityNumber</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findSingleCustomerFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Investment</span><span class="w"> </span><span class="nf">getInvestment</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">stockSymbol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM INVESTMENT &quot;</span>
+</span><span class="hll"><span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;WHERE BROKERAGE_ACCOUNT=&#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">accountNumber</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span>
+</span><span class="hll"><span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;AND STOCK_SYMBOL=&#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stockSymbol</span><span class="w"> </span><span class="o">+</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findInvestmentFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="entities-aka-reference-objects">Entities (a.k.a Reference Objects)</h2>
+<p><img alt="" src="05/06.png" /></p>
+<p>將與識別相關的屬性與 Entity 關聯在一起。</p>
+<ul>
+<li><code>customerId</code> 是 <code>Customer</code> 的唯一識別碼(identifier)。</li>
+<li><code>name</code> 通常是識別人的方式之一。</li>
+<li>這裡，將 <code>contact phone</code> 與 <code>contact address</code> 與 <code>Customer</code> 關聯在一起。<ul>
+<li>這兩個屬性取決實際的應用。例如 <code>Customer</code> 有很多不同目的用途的 <code>contact phone</code>，有可能就與識別 <code>Customer</code> 的方式無關，應將其保持在原來的 <code>Sales Contact</code> 中。</li>
+</ul>
+</li>
+</ul>
+<p>將與識別不相關的屬性，從 Entity 移出。</p>
+<h2 id="value-objects">Value Objects</h2>
+<ul>
+<li>value object 是不可變的(immutable)。</li>
+<li>不需要 identity</li>
+<li>不要設計得像 Entity 一樣複雜</li>
+</ul>
+<p><img alt="" src="05/07.png" /></p>
+<p>Value Object 是一個概念整體。<code>street</code>, <code>city</code>, <code>state</code> 不應該是 <code>Person</code> 的個別屬性，它們應該是一個整體 - <code>Address</code>。這裡 <code>Customer</code> 為 Entity，<code>Address</code> 為 Value Object。</p>
+<p>Value Object 提供最佳化的一種選擇 - Flyweight Pattern (GoF)。</p>
+<h2 id="service">Service</h2>
+<p>在 Ubiquitous Language 中表達操作，是動詞，而非名詞。</p>
+<p>不同 Layer 層有各自的 Servie。這裡說的是 Domain Layer 中的 Service。</p>
+<p>Domain Service 避免客戶端與 Entity Objects, Value Objects 耦合。</p>
+<h3 id="_1">範例</h3>
+<p>銀行使用寄電子郵件的應用程式，當帳戶餘額低於臨界值，即發送通知信給客戶。</p>
+<p><img alt="" src="05/08.svg" /></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月18日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月18日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1392,12 +1680,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "/assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
