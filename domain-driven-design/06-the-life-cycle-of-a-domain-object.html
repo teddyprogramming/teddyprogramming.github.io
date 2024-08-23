@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="011.html">
+        <link rel="prev" href="05-a-model-expressed-in-software.html">
       
       
-        <link rel="next" href="013.html">
+        <link rel="next" href="../clean-architecture/34.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
     
     
       
-        <title>Item 12 = Always override toString - Teddy 的筆記本</title>
+        <title>6 The Life Cycle of a Domain Object - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
       
 
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-12-always-override-tostring" class="md-skip">
+        <a href="#ch-6-the-life-cycle-of-a-domain-object" class="md-skip">
           跳轉到
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 12 = Always override toString
+              6 The Life Cycle of a Domain Object
             
           </span>
         </div>
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ide/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -291,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -316,17 +316,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -340,7 +342,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Domain-Driven Design
@@ -354,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="01-crunching-knowledge.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -396,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -417,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+      <a href="04-isolating-the-domain.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -438,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
+      <a href="05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -456,10 +458,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6 The Life Cycle of a Domain Object
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06-the-life-cycle-of-a-domain-object.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -468,6 +490,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aggregates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: 汽車
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: 採購訂單的完整性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="範例: 採購訂單的完整性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作期間忽略其他資料庫變化造成的問題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#po" class="md-nav__link">
+    <span class="md-ellipsis">
+      一次鎖定整筆 PO 進行更新
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      加入業務知識
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -522,7 +630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -547,19 +655,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -573,7 +679,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Java
@@ -584,19 +690,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -610,7 +714,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             Effective Java, 3rd
@@ -659,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -806,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -827,7 +931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -853,19 +957,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
         
           
           <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
@@ -879,7 +981,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1_2">
             <span class="md-nav__icon md-icon"></span>
             Methods Common To All Objects
@@ -893,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -914,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,30 +1034,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Item 12 = Always override toString
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="012.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -964,35 +1046,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      其他補充
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1005,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1026,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1090,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1111,7 +1164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1175,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1324,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1345,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1382,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1412,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1440,17 +1493,97 @@
                   
 
 
-<h1 id="item-12-always-override-tostring">Item 12: Always override <code>toString</code></h1>
-<p>Programmer 時常會將物件的訊息印出來，以幫助診斷程式的行為。實作輸出有意義有助於 Programmer 閱讀的訊息有助於診斷問題。</p>
-<p>在自動化測試，錯誤訊息像</p>
-<div class="highlight"><pre><span></span><code>Assertion failure: expected {abc, 123}, but was {abc, 123}.
-</code></pre></div>
-<p>對除錯的幫助有限。</p>
-<h2 id="_1">其他補充</h2>
+<h1 id="ch-6-the-life-cycle-of-a-domain-object">Ch 6: The Life Cycle of a Domain Object</h1>
+<p><img alt="" src="06/01.png" /></p>
+<h2 id="aggregates">Aggregates</h2>
+<p>假設我們要從資料庫刪除一個 <code>Person</code> 物件，那麼此人的姓名、出生日期、工作描述都應該被刪除。但是地址需要刪掉嗎？有可能有其他 <code>Person</code> 物件還需要參考到這個地址。不過如果沒有呢？那地址就會越累積越多。</p>
+<p>Aggregate 是一個相關物件的群集，有一個 root 與邊界。外部物件只能引用 root。邊界內的物件，可以互相引用。</p>
+<h3 id="_1">範例: 汽車</h3>
+<p>汽車是一個有「global identity (全域識別碼)」的 Entity。識別碼用以識別世界上每一輛汽車個體，是 Aggregate root。</p>
+<p>輪胎，有「里程數」與「磨損度」屬性。如果我們會關心某個輪胎被裝在哪台汽車上面，就需要將輪胎視為 Entity，給予識別碼。不過，我們並不會關心特定輪胎被安裝在哪台汽車上。輪胎從汽車拆除後，我們也不會關心他後續的存在。我們只會搜尋汽車，透過汽車了解其輪胎狀況。</p>
+<p>引擎有自己的序號，有時候會獨立追蹤。因此，引擎可以是 Aggregate root。</p>
+<p><img alt="" src="06/02.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">可以被外部用識別碼查詢，就是 Aggregate root。</p>
+</div>
+<p><img alt="" src="06/03.png" /></p>
+<p><strong>invariant</strong> 是 Aggregate 內的物件必須遵守的規則。如圖中的</p>
+<ol>
+<li><code>{time period must not overlap on same wheel}</code></li>
+<li><code>{mileage = sum(Position.mileage)}</code></li>
+</ol>
+<p>Aggregate 與 Aggregate 之間不應求即時同步，可以透過 event 或 batch 等機制更新。</p>
+<p>Aggregate 的規則:</p>
 <ul>
-<li>輸出物件的所有重要資訊</li>
-<li>訊息量太多的 field，提供 summary 即可</li>
+<li>Root Entities 有 global identity (全域唯一識別)<ul>
+<li>範例: 若 <code>Car</code> 的車號是 ABC-123，那麼應用程式不會有另外一台車也是 ABC-123。</li>
 </ul>
+</li>
+<li>Root Entities 負責檢查 invariant<ul>
+<li>範例: <code>Car</code> 必須檢查<code>{time period must not overlap on same wheel}</code> 與 <code>{mileage = sum(Position.mileage)}</code></li>
+</ul>
+</li>
+<li>邊界內的 Entities 有 local identity (邊界內唯一識別)<ul>
+<li>範例: <code>Car</code> ABC-123 的 LF <code>Wheel</code> 只在 ABC-123 裡面唯一。另一台車，假設 DEF-456，也有 LF <code>Wheel</code>，但是這兩個 <code>Wheel</code> 是不同的。</li>
+</ul>
+</li>
+<li>Aggregate 外，只能參考 Root Entities，不能參考內部的物件<ul>
+<li>內部物件可以傳遞到外部，但是外部不能保留對內部物件的參考</li>
+<li>範例: 外部只能保留 <code>Car</code> 的參考，不能保留 <code>Wheel</code>, <code>Tire</code>, <code>Position</code> 的參考</li>
+</ul>
+</li>
+<li>Aggregate root 可以透過資料庫查詢。其他內部物件必須透過 root 走訪得到。<ul>
+<li>範例: 可以查詢資料庫車號 ABC-123 得到 <code>Car</code>，但是不能查詢 <code>Wheel</code> 得到 <code>Car</code>。</li>
+</ul>
+</li>
+<li>Aggregate 內部物件可以保留其他 aggregate root 的參考。</li>
+<li>刪除操作必須一次性刪除整個 Aggregate。</li>
+</ul>
+<h3 id="_2">範例: 採購訂單的完整性</h3>
+<p>Domain model</p>
+<p><img alt="" src="06/04.png" /></p>
+<p>假定資料庫儲存了一筆 Purchase Order 的情況。</p>
+<p><img alt="" src="06/05.png" /></p>
+<p>Object diagram</p>
+<div class="puml"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="267px" preserveAspectRatio="true" style="background: #ffffff" version="1.1" viewBox="0 0 513 267" width="513px" zoomAndPan="magnify"><defs/><g><g id="elem_po"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="198.5771" x="158.16" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184.5771" x="165.16" y="21.9951">0012946 : Purchase Order</text><line style="stroke:#181818;stroke-width:0.5;" x1="159.16" x2="355.7371" y1="27.2969" y2="27.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.9648" x="164.16" y="44.292">approved limit = 1000</text></g><g id="elem_g"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="106.6133" x="70.14" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92.6133" x="77.14" y="231.1851">Guitars : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="71.14" x2="175.7533" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="76.14" y="253.482">price = 100</text></g><g id="elem_t"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="134.627" x="324.13" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.627" x="331.13" y="231.1851">Trombones : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="325.13" x2="457.757" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="330.13" y="253.482">price = 200</text></g><g id="elem_i1"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="7" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="14" y="126.5851">001 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="238.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="13" y="148.882">quantity = 3</text></g><g id="elem_i2"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="275" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="282" y="126.5851">002 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="276" x2="506.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="281" y="148.882">quantity = 2</text></g><g id="link_po_i1"><path codeLine="21" d="M229.03,52.05 C206.29,69.46 179.3143,90.1129 156.5843,107.5129 " fill="none" id="po-to-i1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="151.82,111.16,161.3979,108.8655,155.7903,108.1207,156.535,102.5131,151.82,111.16" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_po_i2"><path codeLine="22" d="M285.86,52.05 C308.6,69.46 335.5757,90.1129 358.3057,107.5129 " fill="none" id="po-to-i2" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="363.07,111.16,358.355,102.5131,359.0997,108.1207,353.4921,108.8655,363.07,111.16" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_i1_g"><path codeLine="23" d="M123.45,156.65 C123.45,174.06 123.45,198.35 123.45,215.76 " fill="none" id="i1-g" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_i2_t"><path codeLine="24" d="M391.45,156.65 C391.45,174.06 391.45,198.35 391.45,215.76 " fill="none" id="i2-t" style="stroke:#181818;stroke-width:1.0;"/></g></g></svg></div>
+
+<h4 id="_3">操作期間忽略其他資料庫變化造成的問題</h4>
+<p><img alt="" src="06/06.png" /></p>
+<ol>
+<li>George 修改 Guitars 的 Quantity 為 5，更新後 Total 為 900，滿足 invariant，予以更新。 </li>
+<li>Amanda 修改 Trombones 的 Amount 為 600，更新後 Total 為 900 滿足 invariant，予以更新。 </li>
+</ol>
+<p><img alt="" src="06/07.png" /> </p>
+<p>但是這兩筆資料更新後，造成 PO 的 Total 變成 1100，超過 PO 的 approved limit 1000。</p>
+<h4 id="po">一次鎖定整筆 PO 進行更新</h4>
+<p><img alt="" src="06/08.png" /></p>
+<ol>
+<li>George 修改 Guitars 的 Quantity 為 5，更新後 Total 為 900，滿足 invariant，予以更新。<ul>
+<li>因為 George 進行修改，鎖定整筆 PO，Amanda 要修改需要排隊等 George 完成。</li>
+</ul>
+</li>
+<li>Amanda 修改 Trombones 的 Amount 為 600，更新後 Total 為 1100 違反 invariant，不予更新。</li>
+</ol>
+<p>如果 George 修改 Guitars 時，有人提高 Guitars 的 Price，是不是也會可能違反 invariant。因此，可能也需要考慮在鎖定 PO 時，也鎖定 Part。</p>
+<p>不過，過度鎖定會造成複雜的競爭問題，如下：</p>
+<p><img alt="" src="06/09.png" /></p>
+<ol>
+<li>George 修改 PO #0012946。Guitars, Trombones 都被鎖定。</li>
+<li>Amanda 要修改 PO #0012932，所以鎖定 Violins。然後要把 Trombones 加到 PO，但是 Trombones 被鎖定，所以 Amanda 要等 George 完成。</li>
+<li>Sam 要修改 PO #0013003，所以鎖定 Piano。然後要把 Trombones 加到 PO，但是 Trombones 被鎖定，所以 Sam 要等 George 完成。</li>
+</ol>
+<p>接著，George 要把 Violins 加到 PO，但是 Violins 被 Amanda 鎖定，所以 George 要等 Amanda 完成。</p>
+<p><img alt="" src="06/10.png" /></p>
+<p>結果是，三個人都在相互等待。</p>
+<h4 id="_4">加入業務知識</h4>
+<ol>
+<li>Parts 會在多個 PO 使用，會產生 high contention。</li>
+<li>修改 Parts 的機會低於修改 PO。</li>
+<li>修改 Parts 的 Price 可以不必影響已存在的 PO。</li>
+</ol>
+<p><img alt="" src="06/11.png" /></p>
+<p><code>Purchase Order Line Item</code> 中保留了一份 <code>price</code>，它是填寫 PO 時的價格，而非最新價格。</p>
+<p>Aggregate 強迫 <code>Purchase Order</code> 與 <code>Purchase Order Line Item</code> 的新增與刪除。而 <code>Part</code> 的新增與刪除是獨立的。</p>
 
 
 
@@ -1473,7 +1606,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月23日</span>
   </span>
 
     
@@ -1483,7 +1616,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月23日</span>
   </span>
 
     
@@ -1534,12 +1667,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.af256bd8.min.js"></script>
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
