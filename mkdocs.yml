@@ -18,9 +18,10 @@ theme:
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
   - IDE:
-        - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
+      - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
+      - IdeaVim: ide/jet-brains/ideavim.md
   - Kubernetes:
-    - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
+      - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Domain-Driven Design:
       - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
       - 2 Communication and the Use of Language: domain-driven-design/02-communication-and-the-use-of-language.md
@@ -31,37 +32,37 @@ nav:
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
-    - Effective Java, 3rd:
-        - Creating And Destroying Objects:
-          - Item 1 - Consider static factory methods instead of constructors: java/effective-java/001.md
-          - Item 2 - Consider a builder when faced with many constructor parameters: java/effective-java/002.md
-          - Item 3 - Enforce the singleton property with a private constructor or an enum type: java/effective-java/003.md
-          - Item 4 - Enforce noninstantiability with a private constructor: java/effective-java/004.md
-          - Item 5 - Prefer dependency injection to hardwiring resources: java/effective-java/005.md
-          - Item 6 - Avoid creating unnecessary objects: java/effective-java/006.md
-          - Item 7 - Eliminate obsolete object references: java/effective-java/007.md
-          - Item 8 - Avoid finalizers and cleaners: java/effective-java/008.md
-          - Item 9 - Prefer try-with-resources to try-finally: java/effective-java/009.md
-        - Methods Common To All Objects:
-          - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
-          - Item 11 - Always override hashCode when you override equals: java/effective-java/011.md
-          - Item 12 = Always override toString: java/effective-java/012.md
-          - Item 13 - Override clone judiciously: java/effective-java/013.md
-          - Item 14 - Consider implementing Comparable: java/effective-java/014.md
-        - Classes and Interface:
-          - Item 15 - Minimize the accessibility of classes and members: java/effective-java/015.md
-          - Item 16 - In public classes, use accessor methods, not public fields: java/effective-java/016.md
-        - Methods:
-          - Item 55 - Return optionals judiciously: java/effective-java/055.md
+      - Effective Java, 3rd:
+          - Creating And Destroying Objects:
+              - Item 1 - Consider static factory methods instead of constructors: java/effective-java/001.md
+              - Item 2 - Consider a builder when faced with many constructor parameters: java/effective-java/002.md
+              - Item 3 - Enforce the singleton property with a private constructor or an enum type: java/effective-java/003.md
+              - Item 4 - Enforce noninstantiability with a private constructor: java/effective-java/004.md
+              - Item 5 - Prefer dependency injection to hardwiring resources: java/effective-java/005.md
+              - Item 6 - Avoid creating unnecessary objects: java/effective-java/006.md
+              - Item 7 - Eliminate obsolete object references: java/effective-java/007.md
+              - Item 8 - Avoid finalizers and cleaners: java/effective-java/008.md
+              - Item 9 - Prefer try-with-resources to try-finally: java/effective-java/009.md
+          - Methods Common To All Objects:
+              - Item 10 - Obey the general contract when overriding equals: java/effective-java/010.md
+              - Item 11 - Always override hashCode when you override equals: java/effective-java/011.md
+              - Item 12 = Always override toString: java/effective-java/012.md
+              - Item 13 - Override clone judiciously: java/effective-java/013.md
+              - Item 14 - Consider implementing Comparable: java/effective-java/014.md
+          - Classes and Interface:
+              - Item 15 - Minimize the accessibility of classes and members: java/effective-java/015.md
+              - Item 16 - In public classes, use accessor methods, not public fields: java/effective-java/016.md
+          - Methods:
+              - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Spring Boot:
-    - Scheduler:
-      - Quartz:
-        - Hello World!: spring-boot/scheduler/hello_world.md
-        - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
-        # TODO: share data between jobs (via context ?)
-        #       - Job vs Bean Job
-        # TODO: tes
-    - Testing: spring-boot/testing/index.md
+      - Scheduler:
+          - Quartz:
+              - Hello World!: spring-boot/scheduler/hello_world.md
+              - JDBC JobStore: spring-boot/scheduler/jdbc_job_store.md
+            # TODO: share data between jobs (via context ?)
+            #       - Job vs Bean Job
+            # TODO: tes
+      - Testing: spring-boot/testing/index.md
   - Blog: blog/index.md
 
 markdown_extensions:
