@@ -130,3 +130,39 @@ i2 -d- t
 `Purchase Order Line Item` 中保留了一份 `price`，它是填寫 PO 時的價格，而非最新價格。
 
 Aggregate 強迫 `Purchase Order` 與 `Purchase Order Line Item` 的新增與刪除。而 `Part` 的新增與刪除是獨立的。
+
+## Factory
+
+![](06/12.png)
+
+Factory 的實作手段: (GoF Design Patterns)
+1. Factory method
+2. Abstract factory
+3. Builder
+
+整個 Aggregate 通常由 Factory 建立，並回傳 Aggregate root。
+
+![](06/15.png)
+
+### 在既有的 Aggregate 中新增元素
+
+![](06/13.png)
+
+在 Aggregate root 增加 Factory method，用以新增元素。
+
+但是，Factory method 產生的元素可以不必屬於 Aggregate。
+
+![](06/14.png)
+
+`TradeOrder` 不屬於 `Brokerage Account` 的 Aggregate。但是讓 `Brokerage Account` 產生 `TradeOrder` 是很自然的事情。因為
+
+- `TradeOrder` 建立需要 `Brokerage Account` 的資訊。
+- `Brokerage Account` 控制交易是否允許。
+
+### 重建 Aggregate
+
+![](06/16.png)
+
+CUST: customer?
+
+![](06/17.png)
