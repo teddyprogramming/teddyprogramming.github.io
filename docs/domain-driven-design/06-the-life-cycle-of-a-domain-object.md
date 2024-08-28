@@ -166,3 +166,32 @@ Factory 的實作手段: (GoF Design Patterns)
 CUST: customer?
 
 ![](06/17.png)
+
+## Repository
+
+![](06/18.png)
+
+寫死的查詢，只接收固定參數的查詢。
+
+![](06/19.png)
+
+Specification-based 的查詢，讓 repository 更通用化。
+
+![](06/20.png)
+
+### Repository 的實作
+
+![](06/21.png)
+
+理想的 Repository 向 client 隱藏所有細節，無論資料是存在物件資料庫、關聯式資料庫、或是在記憶體中。
+
+## Factory v.s. Repository
+
+Factory 負責建立物件。
+Repository 負責保存物件、查詢物件、刪除物件。即使物件被保留在外部媒介(資料庫等)，也應該讓 client 覺得物件就是在記憶體中。
+
+Repository 可以委託(delegate) Factory 來建立物件。
+![](06/22.png)
+
+Client 從 Factory 建立物件後，需要知道應透過 Repository 保存物件。
+![](06/23.png)
