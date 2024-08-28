@@ -593,6 +593,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Factory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggregate" class="md-nav__link">
+    <span class="md-ellipsis">
+      在既有的 Aggregate 中新增元素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      重建 Aggregate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository 的實作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factory-vs-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factory v.s. Repository
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1571,10 +1637,10 @@
 <h4 id="_3">操作期間忽略其他資料庫變化造成的問題</h4>
 <p><img alt="" src="06/06.png" /></p>
 <ol>
-<li>George 修改 Guitars 的 Quantity 為 5，更新後 Total 為 900，滿足 invariant，予以更新。 </li>
-<li>Amanda 修改 Trombones 的 Amount 為 600，更新後 Total 為 900 滿足 invariant，予以更新。 </li>
+<li>George 修改 Guitars 的 Quantity 為 5，更新後 Total 為 900，滿足 invariant，予以更新。</li>
+<li>Amanda 修改 Trombones 的 Amount 為 600，更新後 Total 為 900 滿足 invariant，予以更新。</li>
 </ol>
-<p><img alt="" src="06/07.png" /> </p>
+<p><img alt="" src="06/07.png" /></p>
 <p>但是這兩筆資料更新後，造成 PO 的 Total 變成 1100，超過 PO 的 approved limit 1000。</p>
 <h4 id="po">一次鎖定整筆 PO 進行更新</h4>
 <p><img alt="" src="06/08.png" /></p>
@@ -1605,6 +1671,44 @@
 <p><img alt="" src="06/11.png" /></p>
 <p><code>Purchase Order Line Item</code> 中保留了一份 <code>price</code>，它是填寫 PO 時的價格，而非最新價格。</p>
 <p>Aggregate 強迫 <code>Purchase Order</code> 與 <code>Purchase Order Line Item</code> 的新增與刪除。而 <code>Part</code> 的新增與刪除是獨立的。</p>
+<h2 id="factory">Factory</h2>
+<p><img alt="" src="06/12.png" /></p>
+<p>Factory 的實作手段: (GoF Design Patterns)<br />
+1. Factory method<br />
+2. Abstract factory<br />
+3. Builder</p>
+<p>整個 Aggregate 通常由 Factory 建立，並回傳 Aggregate root。</p>
+<p><img alt="" src="06/15.png" /></p>
+<h3 id="aggregate">在既有的 Aggregate 中新增元素</h3>
+<p><img alt="" src="06/13.png" /></p>
+<p>在 Aggregate root 增加 Factory method，用以新增元素。</p>
+<p>但是，Factory method 產生的元素可以不必屬於 Aggregate。</p>
+<p><img alt="" src="06/14.png" /></p>
+<p><code>TradeOrder</code> 不屬於 <code>Brokerage Account</code> 的 Aggregate。但是讓 <code>Brokerage Account</code> 產生 <code>TradeOrder</code> 是很自然的事情。因為</p>
+<ul>
+<li><code>TradeOrder</code> 建立需要 <code>Brokerage Account</code> 的資訊。</li>
+<li><code>Brokerage Account</code> 控制交易是否允許。</li>
+</ul>
+<h3 id="aggregate_1">重建 Aggregate</h3>
+<p><img alt="" src="06/16.png" /></p>
+<p>CUST: customer?</p>
+<p><img alt="" src="06/17.png" /></p>
+<h2 id="repository">Repository</h2>
+<p><img alt="" src="06/18.png" /></p>
+<p>寫死的查詢，只接收固定參數的查詢。</p>
+<p><img alt="" src="06/19.png" /></p>
+<p>Specification-based 的查詢，讓 repository 更通用化。</p>
+<p><img alt="" src="06/20.png" /></p>
+<h3 id="repository_1">Repository 的實作</h3>
+<p><img alt="" src="06/21.png" /></p>
+<p>理想的 Repository 向 client 隱藏所有細節，無論資料是存在物件資料庫、關聯式資料庫、或是在記憶體中。</p>
+<h2 id="factory-vs-repository">Factory v.s. Repository</h2>
+<p>Factory 負責建立物件。<br />
+Repository 負責保存物件、查詢物件、刪除物件。即使物件被保留在外部媒介(資料庫等)，也應該讓 client 覺得物件就是在記憶體中。</p>
+<p>Repository 可以委託(delegate) Factory 來建立物件。<br />
+<img alt="" src="06/22.png" /></p>
+<p>Client 從 Factory 建立物件後，需要知道應透過 Repository 保存物件。<br />
+<img alt="" src="06/23.png" /></p>
 
 
 
@@ -1627,7 +1731,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月28日</span>
   </span>
 
     
