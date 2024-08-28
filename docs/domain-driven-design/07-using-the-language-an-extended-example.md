@@ -56,7 +56,7 @@ Application layer 負責向 domain layer 問問題，domain layer 負責回答�
 
 ## 區分 Entity 與 Value Object
 
-檢視每一個物件: (判斷方法: 可以互換的物件是 Value Object，不行的是 Entity)
+檢視每一個物件: (判斷方法: 可以共用的物件是 Value Object，不行的是 Entity)
 
 - **Customer**
     - Entity
