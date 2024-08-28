@@ -40,4 +40,42 @@ Model 已經涵蓋實作需要的概念。假定我們有適當的機制保存�
 
 Model 的 refinement, design, implementation 是在迭代開發的過程中互相配合、同步進行的。也就是說，Model 不會是完全設計好，然後再交由下一個階段進行實作，而是應隨著開發不斷地發展、改進與調整。
 
-這個範例從一個相對比較成熟的 Model 開始。並且，為了聚焦本章的重點，範例限制 Model 的修改動機必須是「為了使 Model 能與具體的實作相互關聯」，然後使用 building block patterns 進行修改 (即 Entity, Value Object, Aggregation, Repository)。
+這個範例從一個相對比較成熟的 Model 開始。並且，為了聚焦本章的重點，範例限制 Model 的修改動機必須是「為了使 Model 能與具體的實作相互關聯」，然後使用 building block patterns 進行修改 (即 Entity, Value Object, Aggregation, Repository 等)。
+
+## Isolating the Domain: Introducing the Applications
+
+使用 Layered Architecture 將 domain 與其他部分區隔。
+
+以下是三個 application layer 的 class:
+
+1. **Tracking Query**: 查詢 **Cargo** 的處理情況。
+2. **Booking Application**: 註冊新的 **Cargo** 讓系統處理。
+3. **Incident Logging Application**: 紀錄 **Cargo** 處理的事件。
+
+Application layer 負責向 domain layer 問問題，domain layer 負責回答問題。
+
+## 區分 Entity 與 Value Object
+
+檢視每一個物件: (判斷方法: 可以互換的物件是 Value Object，不行的是 Entity)
+
+- **Customer**
+    - Entity
+    - 唯一識別碼: customer ID
+- **Cargo**
+    - Entity
+    - 唯一識別碼: tracking ID
+- **Handling Event** 與 **Carrier Movement**
+    - Entity
+    - 唯一識別碼
+        - **Carrier Movement**: schedule ID (從 shipping schedule 中的 code)
+        - **Handling Event**: Cargo tracking ID + completion time + type
+- **Location**
+    - Value Object
+- **Delivery History**
+    - Entity
+    - 唯一識別碼: Cargo tracking ID (**Delivery History** 與 **Cargo** 一對一關聯，沒有自己的唯一識別碼。**Delivery History** 的識別碼來自 **Cargo**)
+- **Delivery Specification**
+    - Value Object (可以有兩個 **Cargo** 送往相同的地點，因此共用同一個 Specification)
+- **Role** 與其他屬性
+    - Value Object
+    - 其他屬性，像是 time, name
