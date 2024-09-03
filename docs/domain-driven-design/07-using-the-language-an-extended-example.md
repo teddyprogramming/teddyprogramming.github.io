@@ -48,9 +48,9 @@ Model 的 refinement, design, implementation 是在迭代開發的過程中互�
 
 以下是三個 application layer 的 class:
 
-1. `Tracking Query`: 查詢 `Cargo` 的處理情況。
-2. `Booking Application`: 註冊新的 `Cargo` 讓系統處理。
-3. `Incident Logging Application`: 紀錄 `Cargo` 處理的事件。
+1. **Tracking Query**: 查詢 `Cargo` 的處理情況。
+2. **Booking Application**: 註冊新的 `Cargo` 讓系統處理。
+3. **Activity Logging Application**: 紀錄 `Cargo` 處理的事件。
 
 Application layer 負責向 domain layer 問問題，domain layer 負責回答問題。
 
@@ -99,3 +99,20 @@ Aggregate root 是 Entity 且有自己的唯一識別碼: `Customer`, `Cargo`, `
 `Handling Event` 最後被設計成自己為 aggregate，因為業務上有需要查詢 `Cargo` 處理狀態，需要透過 `Handling Event`。
 
 ![](07/03.png)
+
+## Repository
+
+只有 Aggregate root 會有 Repository。
+
+![](07/04.png)
+
+沙盤推演，這些 Repository 是否能滿足需求。
+
+- **Booking Application**
+    - 客戶 `Customer` (`Customer Repository`)
+    - 預定貨物要運送到 `Location` (`Location Repository`)
+- **Activity Logging Application**
+    - 使用 `Carrier Movement Repository` 查詢要裝貨的 `Carrier Movement`。
+    - 使用 `Cargo Repository` 紀錄已完成裝貨。
+
+沒有 `Handling Event Repository`，在這次迭代中 `Handling Event` 是與 `Delivery History` 關聯產生集合 且 沒有查詢 `Handling Event` 的需求。
