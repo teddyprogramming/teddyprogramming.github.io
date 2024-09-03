@@ -50,7 +50,7 @@ Model 的 refinement, design, implementation 是在迭代開發的過程中互�
 
 1. **Tracking Query**: 查詢 `Cargo` 的處理情況。
 2. **Booking Application**: 註冊新的 `Cargo` 讓系統處理。
-3. **Activity Logging Application**: 紀錄 `Cargo` 處理的事件。
+3. **Incident Logging Application**: 紀錄 `Cargo` 處理的事件。
 
 Application layer 負責向 domain layer 問問題，domain layer 負責回答問題。
 
@@ -125,7 +125,7 @@ Aggregate root 是 Entity 且有自己的唯一識別碼: `Customer`, `Cargo`, `
 
 `Delivery Specification` 是 Value Object，最簡單做法是，建立新的 `Delivery Specification` 並且更新 `Cargo` 的 `Delivery Specification`。
 
-### 應用程式功能範例: 重複業務
+### 應用程式功能範例: 重複業務 (Repeat Business)
 
 允許使用者在 `Repository` 中找到一個 `Cargo` 並基於它產生新的 `Cargo`。
 
@@ -136,3 +136,82 @@ Aggregate 邊界內的物件與屬性，都要小心考慮:
 - 產生新的 `Tracking ID`。
 
 複製 `Carge` Aggregate 並沒有對外部物件產生副作用。
+
+## 建立物件
+
+### Cargo
+
+#### `Cargo` 的 constructor
+
+```java
+public Cargo(String trackingId) {
+    this.trackingId = trackingId;
+    this.deliveryHistory = new DeliveryHistory(this);
+    this.customerrolers = new HashMap<Role, Customer>();
+}
+```
+
+- `DeliveryHistory` 與 `Cargo` 雙向關聯。
+- `Cargo` Aggregate 包含 `DeliveryHistory`，所以 `Cargo` 要負責生成 `DeliveryHistory`。
+
+#### Repeat Business
+
+為了滿足重複業務 (Repeat Business) 的需求，可以使用 Factory。以下提供幾種實作方式:
+
+=== "使用 Factory Method"
+
+    ```java
+    public Cargo copyPrototype(String newTrackingId)
+    ```
+
+=== "使用 Factory"
+
+    ```java
+    public Cargo newCargo(Cargo prototype, String newTrackingId)
+    ```
+
+=== "使用 Factory (自動產生 tracking id)"
+
+    ```java
+    public Cargo newCargo(Cargo prototype)
+    ```
+
+    回傳的 `Cargo` 會有新的 `trackingId`。
+
+以上回傳的 `Cargo` 都實作
+
+1. 空的 `DispatchHistory`
+2. `DeliverySpecification` 為 `null`
+
+### Handling Event
+
+建立 Entity 需要把所有 identity 都傳入。
+
+Handling Event 的 identity 是 `Cargo` 的 tracking ID, `Completion Time`, `Type`。
+
+```java
+public HandlingEvent(Cargo handled, String eventType, Date completionTime) {
+    this.handled = handled;
+    this.completionTime = completionTime;
+    this.eventType = eventType;
+}
+```
+
+對於 Entity，非 identity 的屬性，通常可以之後再設定。
+
+另一種做法，在 `HandlingEvent` 中，加入 Factory Method 提供必要屬性，建立 `HandlingEvent`。 以下是建立一個 loading event 的 Factory Method:
+
+```java
+public static HandlingEvent newLoading(
+    Cargo handled, CarrierMovement loadedOnto, Date completionTime
+) {
+    HandlingEvent result = new HandlingEvent(handled, LOADING_EVENT, completionTime);
+    result.setCarrierMovement(loadedOnto);
+    return result;
+}
+```
+
+`DeliveryHistory` 與 `HandlingEvent` 有一個單向關聯。因此，建立 `HandlingEvent` 時，透過 `Cargo` 取得 `DeliveryHistory`，然後將 `HandlingEvent` 加入其中。
+
+![](07/05.png)
+
