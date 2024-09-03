@@ -116,3 +116,23 @@ Aggregate root 是 Entity 且有自己的唯一識別碼: `Customer`, `Cargo`, `
     - 使用 `Cargo Repository` 紀錄已完成裝貨。
 
 沒有 `Handling Event Repository`，在這次迭代中 `Handling Event` 是與 `Delivery History` 關聯產生集合 且 沒有查詢 `Handling Event` 的需求。
+
+## 場景演練 (Working Through Scenarios)
+
+經常演練 Scenario，確保 Model 能夠有效的解決問題。
+
+### 應用程式功能範例: 更改 Cargo 的目的地
+
+`Delivery Specification` 是 Value Object，最簡單做法是，建立新的 `Delivery Specification` 並且更新 `Cargo` 的 `Delivery Specification`。
+
+### 應用程式功能範例: 重複業務
+
+允許使用者在 `Repository` 中找到一個 `Cargo` 並基於它產生新的 `Cargo`。
+
+Aggregate 邊界內的物件與屬性，都要小心考慮:
+
+- 應建立新的，空的 `Delivery History`，舊的歷史不適用在新的 `Cargo` 上。
+- 應複製 `Customer Role` 的 Map，並且保留 key 與 value 的 reference。也就是，參考到與原 `Cargo` 相同的 `Customer`，因為他是屬於 Aggregate 邊界外的 Entity。
+- 產生新的 `Tracking ID`。
+
+複製 `Carge` Aggregate 並沒有對外部物件產生副作用。
