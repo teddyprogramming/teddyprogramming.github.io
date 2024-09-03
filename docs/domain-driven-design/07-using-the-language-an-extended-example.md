@@ -215,3 +215,12 @@ public static HandlingEvent newLoading(
 
 ![](07/05.png)
 
+## 重構: Cargo aggregate 的另一種設計
+
+如前所述，增加 `HandlingEvent` 必須要更新 `DeliveryHistory`，使得修改牽扯 `Cargo` Aggregate。若同時有其他 client 在修改 `Cargo`，因為競爭狀況，造成 `HandlingEvent` 建立延遲或者失敗。因此，能夠在不產生競爭況狀況下，增加 `HandlingEvent` 是重要的需求，我們要考慮另一種設計。
+
+- 在 `DeliveryHistory` 中不使用 `HandlingEvent` 的集合，而用 query 替代。
+
+為了讓 `DeleryHistory` 能夠查詢 `HandlingEvent`，需要增加 `HandlingEvent` 的 Repository。此外，Repository 也可以用來最佳化，提供最有效率的查詢方式。
+
+![](07/06.png)
