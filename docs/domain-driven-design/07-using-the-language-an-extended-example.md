@@ -224,3 +224,65 @@ public static HandlingEvent newLoading(
 為了讓 `DeleryHistory` 能夠查詢 `HandlingEvent`，需要增加 `HandlingEvent` 的 Repository。此外，Repository 也可以用來最佳化，提供最有效率的查詢方式。
 
 ![](07/06.png)
+
+## Module
+
+以下是稍微大一點的 Shipping Model。以下物件根據其套用的 Pattern 進行分類:
+
+![](07/07.png)
+
+Module 本身沒有傳達出 domain knowledge。
+
+![](07/08.png)
+
+Module 的名稱應成為團隊語言的一部份。例如：「我們公司替客戶(`Customer`)送貨(`Shipping`)，所以能向他們收取費用(`Bill`)。我們的銷售與行銷人員與客戶(`Customer`)協商並簽署合約。操作人員負責將貨物運送(`Shipping`)到指定的目的地。後勤人員負責帳單(`Billing`)，根據與客戶(`Customer`)簽約的價格，寄送發票。」
+
+## 增加功能: Allocation Checking
+
+銷售部門使用其他軟體來管理客戶關係、銷售計劃等。其中一項功能為收益管理(yield management)，可以讓公司根據「貨物類型、出發地、目的地」或「以分類作為輸入的其他因素」來制定不同貨物類型的運送配額。配額構成各類貨物的運送目標，這樣就不會造成「低利潤貨物過多」、「高利潤貨物過少」、「預定量不足 (還有可以運送很多貨物)」、「預定量過載」等。
+
+現在，要將收益管理的功能整合進開發的系統，讓客戶在預約寄送貨物時，可以根據配額 (allocation) 決定是否接受預約。
+
+![](07/09.png)
+
+
+### 串接兩個系統
+
+<font style="color:#FF7F50">:material-exclamation:</font> 系統與 `Sales Management System` 連接的介面，會想到以 `Sales Management Interface` 來命名。
+<font style="color:green">:material-check:</font> 命名成 `Allocation Checker` 反映它在系統的職責。
+
+### 加強 Model: Segmenting the Business
+
+![](07/10.png)
+
+`Enterprise Segment` 是 Value Object。(Analysis Patterns, Fowler 1996)
+
+```java title="Enterprise Segment 示意"
+public class EnterpriseSegment {
+    private final String region;
+    private final String productType;
+    private final String customerCategory;
+    ...
+}
+```
+
+`EnterpriseSegment` 定義了判斷運送量的依據標準，透過 `EnterpriseSegment` 可以查詢已預約量與配額。例如:
+
+- `{region=台北, productType=冷凍食品, customerCategory=一般用戶} 配額 50 公斤`
+- `{region=台北, productType=電子產品, customerCategory=一般用戶} 配額 100 公斤`
+
+這個設計的問題:
+
+- 接受或拒絕 `Cargo` 的預約是 Domain 的責任，而非 application layer (即 `Booking Application`) 的責任。
+- `EnterpriseSegment` 是如何生成的，沒有清楚說明。也就是，`Booking Application` 如何知道 `Cargo` 的分類，進而產生 `EnterpriseSegment`。
+
+這兩個設計問題，適合給 `Allocation Checker` 處理。
+
+![](07/11.png)
+
+1. 透過 `Cargo` 取得 `EnterpriseSegment` (`Allocation Checker` 知道 `Cargo` 的配額所屬的分類)
+2. 透過 `EnterpriseSegment` 查詢配額
+3. 透過 `Cargo` 跟已預約的量，檢查訂單是否接收或拒絕。
+    - `Allocation Checker` 知道如何從 `Cargo` 生成 `EnterpriseSegment`，所以這裡傳入的是 `Cargo`。
+
+!!! note "`EnterpriseSegment` 在這裡應該可以理解成 Request Payload，把 request 所需要的最小資料封裝成物件。這樣的做法可以不暴露處理 request 的實作內部，讓 client 的程式碼不容易因為內部結構修改而受影響。"
