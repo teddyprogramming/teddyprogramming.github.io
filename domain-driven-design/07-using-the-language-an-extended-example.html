@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="04-isolating-the-domain.html">
+        <link rel="prev" href="06-the-life-cycle-of-a-domain-object.html">
       
       
-        <link rel="next" href="06-the-life-cycle-of-a-domain-object.html">
+        <link rel="next" href="../clean-architecture/34.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>5 A Model Expressed in Software - Teddy 的筆記本</title>
+        <title>7 Using the Language - An Extended Example - Teddy 的筆記本</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ch-5-a-model-expressed-in-software" class="md-skip">
+        <a href="#ch-7-using-the-language-an-extended-example" class="md-skip">
           跳轉到
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5 A Model Expressed in Software
+              7 Using the Language - An Extended Example
             
           </span>
         </div>
@@ -458,30 +458,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    5 A Model Expressed in Software
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="05-a-model-expressed-in-software.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -490,92 +470,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#associations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Associations (關聯)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Associations (關聯)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#brokerage-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      範例: Brokerage Account 中的關聯
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entities-aka-reference-objects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entities (a.k.a Reference Objects)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#value-objects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Value Objects
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      範例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -606,10 +500,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="07-using-the-language-an-extended-example.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    7 Using the Language - An Extended Example
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="07-using-the-language-an-extended-example.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -618,6 +532,221 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cargo-shipping-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cargo Shipping System (貨物運送系統)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isolating-the-domain-introducing-the-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Isolating the Domain: Introducing the Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-value-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      區分 Entity 與 Value Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      關聯
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregate-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregate Boundaries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-through-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      場景演練 (Working Through Scenarios)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="場景演練 (Working Through Scenarios)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cargo" class="md-nav__link">
+    <span class="md-ellipsis">
+      應用程式功能範例: 更改 Cargo 的目的地
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat-business" class="md-nav__link">
+    <span class="md-ellipsis">
+      應用程式功能範例: 重複業務 (Repeat Business)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      建立物件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立物件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cargo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cargo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cargo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cargo-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cargo 的 constructor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat-business_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repeat Business
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Event
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cargo-aggregate" class="md-nav__link">
+    <span class="md-ellipsis">
+      重構: Cargo aggregate 的另一種設計
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allocation-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      增加功能: Allocation Checking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="增加功能: Allocation Checking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      串接兩個系統
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-segmenting-the-business" class="md-nav__link">
+    <span class="md-ellipsis">
+      加強 Model: Segmenting the Business
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1535,131 +1664,259 @@
                   
 
 
-<h1 id="ch-5-a-model-expressed-in-software">Ch 5: A Model Expressed in Software</h1>
-<h2 id="associations">Associations (關聯)</h2>
+<h1 id="ch-7-using-the-language-an-extended-example">Ch 7: Using the Language: An Extended Example</h1>
+<h2 id="cargo-shipping-system">Cargo Shipping System (貨物運送系統)</h2>
+<p>我們要替一家貨運公司開發軟體，最初的需求如下:</p>
 <ol>
-<li>bidirectional association (雙向關聯) 到 unidirectional association (單向關聯)</li>
+<li>追蹤貨物的處理狀態</li>
+<li>預約寄送貨物</li>
+<li>當貨物抵達某個地方時，自動寄送發票給客戶</li>
 </ol>
-<p><img alt="" src="05/01.png" /></p>
-<p>美國有很多任總統。國家與總統是雙向的關係。但是，當提到 George Washington (喬治・華盛頓) 時，很少會問是哪個國家的總統。關聯的方向，反映了領域中自然的走訪傾向。</p>
-<ol>
-<li>qualified relationship (限定關係)</li>
-</ol>
-<p><img alt="" src="05/02.png" /></p>
-<p>一個國家在一個期間只會有一位總統。限定條件將「一對多」的關係簡化成「一對一」的關係。</p>
-<h3 id="brokerage-account">範例: Brokerage Account 中的關聯</h3>
-<p><img alt="" src="05/03.png" /></p>
-<p>符合模型的一種實作:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Set</span><span class="w"> </span><span class="n">investments</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// Constructors, etc. omitted</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">getInvestments</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">investments</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>同樣也符合模型，但是從關聯式資料庫取出資料的另一種實作:</p>
-<p><img alt="" src="05/04.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">customerSocialSecurityNumber</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// Omit constructors, etc.</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span>
-<span class="w">            </span><span class="s">&quot;SELECT * FROM CUSTOMER WHERE&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">            </span><span class="s">&quot;SS_NUMBER=&#39;&quot;</span><span class="o">+</span><span class="n">customerSocialSecurityNumber</span><span class="o">+</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findSingleCustomerFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">getInvestments</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span>
-<span class="w">            </span><span class="s">&quot;SELECT * FROM INVESTMENT WHERE&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">            </span><span class="s">&quot;BROKERAGE_ACCOUNT=&#39;&quot;</span><span class="o">+</span><span class="n">accountNumber</span><span class="o">+</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findInvestmentsFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>透過限定 Brokerage Account 與 Investment 的關聯，簡化多重性。限定每支股票只能對應一筆投資。</p>
-<p><img alt="" src="05/05.png" /></p>
-<p>程式碼調整如下:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Java</label><label for="__tabbed_1_2">SQL-based</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
-<span class="hll"><span class="w">    </span><span class="n">Map</span><span class="w"> </span><span class="n">investments</span><span class="p">;</span>
-</span>
-<span class="w">    </span><span class="c1">// Omitting constructors, etc.</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Investment</span><span class="w"> </span><span class="nf">getInvestment</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">stockSymbol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">Investment</span><span class="p">)</span><span class="n">investments</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">stockSymbol</span><span class="p">);</span>
-</span><span class="hll"><span class="w">    </span><span class="p">}</span>
-</span><span class="p">}</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">customerSocialSecurityNumber</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">//Omitting constructors, etc.</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Customer</span><span class="w"> </span><span class="nf">getCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM CUSTOMER WHERE SS_NUMBER=&#39;&quot;</span>
-<span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="n">customerSocialSecurityNumber</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findSingleCustomerFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Investment</span><span class="w"> </span><span class="nf">getInvestment</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">stockSymbol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM INVESTMENT &quot;</span>
-</span><span class="hll"><span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;WHERE BROKERAGE_ACCOUNT=&#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">accountNumber</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span>
-</span><span class="hll"><span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;AND STOCK_SYMBOL=&#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stockSymbol</span><span class="w"> </span><span class="o">+</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
-</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">QueryService</span><span class="p">.</span><span class="na">findInvestmentFor</span><span class="p">(</span><span class="n">sqlQuery</span><span class="p">);</span>
-</span><span class="hll"><span class="w">    </span><span class="p">}</span>
-</span><span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h2 id="entities-aka-reference-objects">Entities (a.k.a Reference Objects)</h2>
-<p><img alt="" src="05/06.png" /></p>
-<p>將與識別相關的屬性與 Entity 關聯在一起。</p>
+<p>用來表示 Domain Model 的 class diagram 如下:</p>
+<p><img alt="" src="07/01.png" /></p>
+<p>透過 Domain Model 我們可能使用以下的描述:</p>
 <ul>
-<li><code>customerId</code> 是 <code>Customer</code> 的唯一識別碼(identifier)。</li>
-<li><code>name</code> 通常是識別人的方式之一。</li>
-<li>這裡，將 <code>contact phone</code> 與 <code>contact address</code> 與 <code>Customer</code> 關聯在一起。<ul>
-<li>這兩個屬性取決實際的應用。例如 <code>Customer</code> 有很多不同目的用途的 <code>contact phone</code>，有可能就與識別 <code>Customer</code> 的方式無關，應將其保持在原來的 <code>Sales Contact</code> 中。</li>
+<li><code>Cargo</code> (貨物) 涉及多個 <code>Customer</code> (客戶)，每一個 <code>Customer</code> 扮演著不同的 <code>Role</code> (角色)。</li>
+<li><code>Cargo</code> (貨物) 的 <code>Goal</code> (目標) 已指定。</li>
+<li>透過一組滿足 <code>Specification</code> (規格) 的 <code>Carrier Movement</code> (運輸動作) 將達成 <code>Delivery Goal</code> (運送目標)。</li>
+</ul>
+<p>圖中的每個物件的意義:</p>
+<ul>
+<li><code>Handling Event</code> (處理事件): 描述對 <code>Cargo</code> 採取的處理，像是<ul>
+<li>loading it onto a ship (將貨物裝上船)</li>
+<li>clearing it through customs (將貨物通過海關檢查並獲得許可)</li>
+<li>loading (裝貨)</li>
+<li>unloading (卸貨)</li>
+<li>being claimed by the receiver (被收貨人提走)</li>
+</ul>
+</li>
+<li><code>Delivery Specification</code> (運送規格): 描述 <code>delivery goal</code> (運送目標)，包含了 <code>destination</code> (目的地) 與 <code>arrival time</code> (抵達時間)。</li>
+<li><code>Customer</code>: <code>Role</code> (角色) 區隔了 <code>Customer</code> (客戶) 在運送扮演的身份。<ul>
+<li><code>Role</code> 可以是 shipper (託運人), receiver (收貨人), payer (付款人) 等。</li>
+<li><code>Customer</code> 與 <code>Cargo</code> 的關係是「qualified (限定的) many-to-one」而非「many-to-many」。</li>
+</ul>
+</li>
+<li><code>Carrier Movement</code> (運輸行動): 描述 <code>Carrier</code> (如，卡車或船) 從一 <code>Location</code> (地點) 到另一 <code>Location</code> (地點) 的旅程。<ul>
+<li>
+<details class="tip">
+<summary>看圖說明</summary>
+<br />
+<img alt="" src="07/01-carrier-movement.png" /><br />
+<code>Cargo</code> 經過多個 <code>Handling Event</code> 處理，透過 <code>Carrier</code> 的 <code>Carrier Movement</code> 在 <code>Location</code> 之間移動。</details>
+</li>
+</ul>
+</li>
+<li><code>Delivery History</code> (運送歷史紀錄): 描述 <code>Cargo</code> 在運送過程的。</li>
+</ul>
+<p>Model 已經涵蓋實作需要的概念。假定我們有適當的機制保存物件與搜尋物件。</p>
+<p>Model 的 refinement, design, implementation 是在迭代開發的過程中互相配合、同步進行的。也就是說，Model 不會是完全設計好，然後再交由下一個階段進行實作，而是應隨著開發不斷地發展、改進與調整。</p>
+<p>這個範例從一個相對比較成熟的 Model 開始。並且，為了聚焦本章的重點，範例限制 Model 的修改動機必須是「為了使 Model 能與具體的實作相互關聯」，然後使用 building block patterns 進行修改 (即 Entity, Value Object, Aggregation, Repository 等)。</p>
+<h2 id="isolating-the-domain-introducing-the-applications">Isolating the Domain: Introducing the Applications</h2>
+<p>使用 Layered Architecture 將 domain 與其他部分區隔。</p>
+<p>以下是三個 application layer 的 class:</p>
+<ol>
+<li><strong>Tracking Query</strong>: 查詢 <code>Cargo</code> 的處理情況。</li>
+<li><strong>Booking Application</strong>: 註冊新的 <code>Cargo</code> 讓系統處理。</li>
+<li><strong>Incident Logging Application</strong>: 紀錄 <code>Cargo</code> 處理的事件。</li>
+</ol>
+<p>Application layer 負責向 domain layer 問問題，domain layer 負責回答問題。</p>
+<h2 id="entity-value-object">區分 Entity 與 Value Object</h2>
+<p>檢視每一個物件: (判斷方法: 可以共用的物件是 Value Object，不行的是 Entity)</p>
+<ul>
+<li><code>Customer</code><ul>
+<li>Entity</li>
+<li>唯一識別碼: customer ID</li>
+</ul>
+</li>
+<li><code>Cargo</code><ul>
+<li>Entity</li>
+<li>唯一識別碼: tracking ID</li>
+</ul>
+</li>
+<li><code>Handling Event</code> 與 <code>Carrier Movement</code><ul>
+<li>Entity</li>
+<li>唯一識別碼<ul>
+<li><code>Carrier Movement</code>: schedule ID (從 shipping schedule 中的 code)</li>
+<li><code>Handling Event</code>: Cargo tracking ID + completion time + type</li>
 </ul>
 </li>
 </ul>
-<p>將與識別不相關的屬性，從 Entity 移出。</p>
-<h2 id="value-objects">Value Objects</h2>
-<ul>
-<li>value object 是不可變的(immutable)。</li>
-<li>不需要 identity</li>
-<li>不要設計得像 Entity 一樣複雜</li>
+</li>
+<li><code>Location</code><ul>
+<li>Entity</li>
 </ul>
-<p><img alt="" src="05/07.png" /></p>
-<p>Value Object 是一個概念整體。<code>street</code>, <code>city</code>, <code>state</code> 不應該是 <code>Person</code> 的個別屬性，它們應該是一個整體 - <code>Address</code>。這裡 <code>Customer</code> 為 Entity，<code>Address</code> 為 Value Object。</p>
-<p>Value Object 提供最佳化的一種選擇 - Flyweight Pattern (GoF)。</p>
-<h2 id="service">Service</h2>
-<p>在 Ubiquitous Language 中表達操作，是動詞，而非名詞。</p>
-<p>不同 Layer 層有各自的 Servie。這裡說的是 Domain Layer 中的 Service。</p>
-<p>Domain Service 避免客戶端與 Entity Objects, Value Objects 耦合。</p>
-<h3 id="_1">範例</h3>
-<p>銀行使用寄電子郵件的應用程式，當帳戶餘額低於臨界值，即發送通知信給客戶。</p>
-<p><img alt="" src="05/08.svg" /></p>
+</li>
+<li><code>Delivery History</code><ul>
+<li>Entity</li>
+<li>唯一識別碼: Cargo tracking ID (<code>Delivery History</code> 與 <code>Cargo</code> 一對一關聯，沒有自己的唯一識別碼。<code>Delivery History</code> 的識別碼來自 <code>Cargo</code>)</li>
+</ul>
+</li>
+<li><code>Delivery Specification</code><ul>
+<li>Value Object (可以有兩個 <code>Cargo</code> 送往相同的地點，因此共用同一個 Specification)</li>
+</ul>
+</li>
+<li><code>Role</code> 與其他屬性<ul>
+<li>Value Object</li>
+<li>其他屬性，包含像是 time, name</li>
+</ul>
+</li>
+</ul>
+<h2 id="_1">關聯</h2>
+<p>指定關聯方向。圖中說明每個關聯方向的原因。</p>
+<p><img alt="" src="07/02.png" /></p>
+<ul>
+<li><code>Carrier Movement - Handling Event</code><ul>
+<li>如果要從 <code>Carrier</code> 追蹤貨物，就需要 <code>Carrier Movement -&gt; Handling Event</code>，但是我們的業務不需要。</li>
+<li>業務需要追蹤 <code>Cargo</code> 的狀態，需要透過 <code>Cargo -&gt; Delivery History -&gt; Handling Event -&gt; Carrier Movement -&gt; Location</code> 知道目前 <code>Cargo</code> 的位址。</li>
+</ul>
+</li>
+</ul>
+<h2 id="aggregate-boundaries">Aggregate Boundaries</h2>
+<p>Aggregate root 是 Entity 且有自己的唯一識別碼: <code>Customer</code>, <code>Cargo</code>, <code>Carrier Movement</code>, <code>Location</code></p>
+<p><code>Cargo</code> 的 aggregate 可以把所有因為 <code>Cargo</code> 而存在的事物劃入邊界中，包含 <code>Delivery History</code>, <code>Delivery Specification</code>, <code>Handling Event</code>。</p>
+<p><code>Handling Event</code> 最後被設計成自己為 aggregate，因為業務上有需要查詢 <code>Cargo</code> 處理狀態，需要透過 <code>Handling Event</code>。</p>
+<p><img alt="" src="07/03.png" /></p>
+<h2 id="repository">Repository</h2>
+<p>只有 Aggregate root 會有 Repository。</p>
+<p><img alt="" src="07/04.png" /></p>
+<p>沙盤推演，這些 Repository 是否能滿足需求。</p>
+<ul>
+<li><strong>Booking Application</strong><ul>
+<li>客戶 <code>Customer</code> (<code>Customer Repository</code>)</li>
+<li>預定貨物要運送到 <code>Location</code> (<code>Location Repository</code>)</li>
+</ul>
+</li>
+<li><strong>Activity Logging Application</strong><ul>
+<li>使用 <code>Carrier Movement Repository</code> 查詢要裝貨的 <code>Carrier Movement</code>。</li>
+<li>使用 <code>Cargo Repository</code> 紀錄已完成裝貨。</li>
+</ul>
+</li>
+</ul>
+<p>沒有 <code>Handling Event Repository</code>，在這次迭代中 <code>Handling Event</code> 是與 <code>Delivery History</code> 關聯產生集合 且 沒有查詢 <code>Handling Event</code> 的需求。</p>
+<h2 id="working-through-scenarios">場景演練 (Working Through Scenarios)</h2>
+<p>經常演練 Scenario，確保 Model 能夠有效的解決問題。</p>
+<h3 id="cargo">應用程式功能範例: 更改 Cargo 的目的地</h3>
+<p><code>Delivery Specification</code> 是 Value Object，最簡單做法是，建立新的 <code>Delivery Specification</code> 並且更新 <code>Cargo</code> 的 <code>Delivery Specification</code>。</p>
+<h3 id="repeat-business">應用程式功能範例: 重複業務 (Repeat Business)</h3>
+<p>允許使用者在 <code>Repository</code> 中找到一個 <code>Cargo</code> 並基於它產生新的 <code>Cargo</code>。</p>
+<p>Aggregate 邊界內的物件與屬性，都要小心考慮:</p>
+<ul>
+<li>應建立新的，空的 <code>Delivery History</code>，舊的歷史不適用在新的 <code>Cargo</code> 上。</li>
+<li>應複製 <code>Customer Role</code> 的 Map，並且保留 key 與 value 的 reference。也就是，參考到與原 <code>Cargo</code> 相同的 <code>Customer</code>，因為他是屬於 Aggregate 邊界外的 Entity。</li>
+<li>產生新的 <code>Tracking ID</code>。</li>
+</ul>
+<p>複製 <code>Carge</code> Aggregate 並沒有對外部物件產生副作用。</p>
+<h2 id="_2">建立物件</h2>
+<h3 id="cargo_1">Cargo</h3>
+<h4 id="cargo-constructor"><code>Cargo</code> 的 constructor</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">Cargo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">trackingId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">trackingId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trackingId</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">deliveryHistory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DeliveryHistory</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">customerrolers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Role</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>DeliveryHistory</code> 與 <code>Cargo</code> 雙向關聯。</li>
+<li><code>Cargo</code> Aggregate 包含 <code>DeliveryHistory</code>，所以 <code>Cargo</code> 要負責生成 <code>DeliveryHistory</code>。</li>
+</ul>
+<h4 id="repeat-business_1">Repeat Business</h4>
+<p>為了滿足重複業務 (Repeat Business) 的需求，可以使用 Factory。以下提供幾種實作方式:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">使用 Factory Method</label><label for="__tabbed_1_2">使用 Factory</label><label for="__tabbed_1_3">使用 Factory (自動產生 tracking id)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cargo</span><span class="w"> </span><span class="nf">copyPrototype</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">newTrackingId</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cargo</span><span class="w"> </span><span class="nf">newCargo</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">prototype</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">newTrackingId</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cargo</span><span class="w"> </span><span class="nf">newCargo</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">prototype</span><span class="p">)</span>
+</code></pre></div>
+<p>回傳的 <code>Cargo</code> 會有新的 <code>trackingId</code>。</p>
+</div>
+</div>
+</div>
+<p>以上回傳的 <code>Cargo</code> 都實作</p>
+<ol>
+<li>空的 <code>DispatchHistory</code></li>
+<li><code>DeliverySpecification</code> 為 <code>null</code></li>
+</ol>
+<h3 id="handling-event">Handling Event</h3>
+<p>建立 Entity 需要把所有 identity 都傳入。</p>
+<p>Handling Event 的 identity 是 <code>Cargo</code> 的 tracking ID, <code>Completion Time</code>, <code>Type</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">HandlingEvent</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">handled</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">eventType</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">completionTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">handled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handled</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">completionTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">completionTime</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">eventType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventType</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>對於 Entity，非 identity 的屬性，通常可以之後再設定。</p>
+<p>另一種做法，在 <code>HandlingEvent</code> 中，加入 Factory Method 提供必要屬性，建立 <code>HandlingEvent</code>。 以下是建立一個 loading event 的 Factory Method:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">HandlingEvent</span><span class="w"> </span><span class="nf">newLoading</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Cargo</span><span class="w"> </span><span class="n">handled</span><span class="p">,</span><span class="w"> </span><span class="n">CarrierMovement</span><span class="w"> </span><span class="n">loadedOnto</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">completionTime</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">HandlingEvent</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HandlingEvent</span><span class="p">(</span><span class="n">handled</span><span class="p">,</span><span class="w"> </span><span class="n">LOADING_EVENT</span><span class="p">,</span><span class="w"> </span><span class="n">completionTime</span><span class="p">);</span>
+<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="na">setCarrierMovement</span><span class="p">(</span><span class="n">loadedOnto</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>DeliveryHistory</code> 與 <code>HandlingEvent</code> 有一個單向關聯。因此，建立 <code>HandlingEvent</code> 時，透過 <code>Cargo</code> 取得 <code>DeliveryHistory</code>，然後將 <code>HandlingEvent</code> 加入其中。</p>
+<p><img alt="" src="07/05.png" /></p>
+<h2 id="cargo-aggregate">重構: Cargo aggregate 的另一種設計</h2>
+<p>如前所述，增加 <code>HandlingEvent</code> 必須要更新 <code>DeliveryHistory</code>，使得修改牽扯 <code>Cargo</code> Aggregate。若同時有其他 client 在修改 <code>Cargo</code>，因為競爭狀況，造成 <code>HandlingEvent</code> 建立延遲或者失敗。因此，能夠在不產生競爭況狀況下，增加 <code>HandlingEvent</code> 是重要的需求，我們要考慮另一種設計。</p>
+<ul>
+<li>在 <code>DeliveryHistory</code> 中不使用 <code>HandlingEvent</code> 的集合，而用 query 替代。</li>
+</ul>
+<p>為了讓 <code>DeleryHistory</code> 能夠查詢 <code>HandlingEvent</code>，需要增加 <code>HandlingEvent</code> 的 Repository。此外，Repository 也可以用來最佳化，提供最有效率的查詢方式。</p>
+<p><img alt="" src="07/06.png" /></p>
+<h2 id="module">Module</h2>
+<p>以下是稍微大一點的 Shipping Model。以下物件根據其套用的 Pattern 進行分類:</p>
+<p><img alt="" src="07/07.png" /></p>
+<p>Module 本身沒有傳達出 domain knowledge。</p>
+<p><img alt="" src="07/08.png" /></p>
+<p>Module 的名稱應成為團隊語言的一部份。例如：「我們公司替客戶(<code>Customer</code>)送貨(<code>Shipping</code>)，所以能向他們收取費用(<code>Bill</code>)。我們的銷售與行銷人員與客戶(<code>Customer</code>)協商並簽署合約。操作人員負責將貨物運送(<code>Shipping</code>)到指定的目的地。後勤人員負責帳單(<code>Billing</code>)，根據與客戶(<code>Customer</code>)簽約的價格，寄送發票。」</p>
+<h2 id="allocation-checking">增加功能: Allocation Checking</h2>
+<p>銷售部門使用其他軟體來管理客戶關係、銷售計劃等。其中一項功能為收益管理(yield management)，可以讓公司根據「貨物類型、出發地、目的地」或「以分類作為輸入的其他因素」來制定不同貨物類型的運送配額。配額構成各類貨物的運送目標，這樣就不會造成「低利潤貨物過多」、「高利潤貨物過少」、「預定量不足 (還有可以運送很多貨物)」、「預定量過載」等。</p>
+<p>現在，要將收益管理的功能整合進開發的系統，讓客戶在預約寄送貨物時，可以根據配額 (allocation) 決定是否接受預約。</p>
+<p><img alt="" src="07/09.png" /></p>
+<h3 id="_3">串接兩個系統</h3>
+<p><font style="color:#FF7F50"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v11h-2zm2 14v2h-2v-2z"/></svg></span></font> 系統與 <code>Sales Management System</code> 連接的介面，會想到以 <code>Sales Management Interface</code> 來命名。<br />
+<font style="color:green"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></font> 命名成 <code>Allocation Checker</code> 反映它在系統的職責。</p>
+<h3 id="model-segmenting-the-business">加強 Model: Segmenting the Business</h3>
+<p><img alt="" src="07/10.png" /></p>
+<p><code>Enterprise Segment</code> 是 Value Object。(Analysis Patterns, Fowler 1996)</p>
+<div class="highlight"><span class="filename">Enterprise Segment 示意</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EnterpriseSegment</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">region</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">productType</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customerCategory</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>EnterpriseSegment</code> 定義了判斷運送量的依據標準，透過 <code>EnterpriseSegment</code> 可以查詢已預約量與配額。例如:</p>
+<ul>
+<li><code>{region=台北, productType=冷凍食品, customerCategory=一般用戶} 配額 50 公斤</code></li>
+<li><code>{region=台北, productType=電子產品, customerCategory=一般用戶} 配額 100 公斤</code></li>
+</ul>
+<p>這個設計的問題:</p>
+<ul>
+<li>接受或拒絕 <code>Cargo</code> 的預約是 Domain 的責任，而非 application layer (即 <code>Booking Application</code>) 的責任。</li>
+<li><code>EnterpriseSegment</code> 是如何生成的，沒有清楚說明。也就是，<code>Booking Application</code> 如何知道 <code>Cargo</code> 的分類，進而產生 <code>EnterpriseSegment</code>。</li>
+</ul>
+<p>這兩個設計問題，適合給 <code>Allocation Checker</code> 處理。</p>
+<p><img alt="" src="07/11.png" /></p>
+<ol>
+<li>透過 <code>Cargo</code> 取得 <code>EnterpriseSegment</code> (<code>Allocation Checker</code> 知道 <code>Cargo</code> 的配額所屬的分類)</li>
+<li>透過 <code>EnterpriseSegment</code> 查詢配額</li>
+<li>透過 <code>Cargo</code> 跟已預約的量，檢查訂單是否接收或拒絕。<ul>
+<li><code>Allocation Checker</code> 知道如何從 <code>Cargo</code> 生成 <code>EnterpriseSegment</code>，所以這裡傳入的是 <code>Cargo</code>。</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title"><code>EnterpriseSegment</code> 在這裡應該可以理解成 Request Payload，把 request 所需要的最小資料封裝成物件。這樣的做法可以不暴露處理 request 的實作內部，讓 client 的程式碼不容易因為內部結構修改而受影響。</p>
+</div>
 
 
 
@@ -1682,7 +1939,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月18日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月4日</span>
   </span>
 
     
@@ -1692,7 +1949,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月18日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年8月28日</span>
   </span>
 
     
