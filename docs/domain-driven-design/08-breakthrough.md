@@ -88,3 +88,72 @@
 ![](08/07.png)
 
 借貸方享有 `Facility` 權利所支付的費用，依照 `Facility` 的股份，而不是放貸方出了多少錢。
+
+### 更深層的模型
+
+這個過程，有兩個深層的理解:
+
+1. "Investments" 與 "Loan Investments" 都是一種 share (股份) 的概念
+2. share 無所不在: share of a facility, shares of a loan, shares of a payment distribution
+
+![](08/08.png)
+
+!!! example "範例"
+
+    Loan 的股份分配:
+        - Company A: 500 萬
+        - Company B: 300 萬
+        - Company C: 200 萬
+
+    ```plantuml
+    object ":Share" as shareA {
+        owner = Company A
+        amount = 500 萬
+    }
+    object ":Share" as shareB {
+        owner = Company B
+        amount = 300 萬
+    }
+    object ":Share" as shareC {
+        owner = Company C
+        amount = 200 萬
+    }
+    object ":Amount Pie" as amoutPie {
+    }
+    amoutPie o-- shareA
+    amoutPie o-- shareB
+    amoutPie o-- shareC
+    ```
+
+    Facility 的股份分配:
+        - Company A: 50%
+        - Company B: 30%
+        - Company C: 20%
+
+    ```plantuml
+    object ":Share" as shareA {
+        owner = Company A
+        amount = 0.5
+    }
+    object ":Share" as shareB {
+        owner = Company B
+        amount = 0.3
+    }
+    object ":Share" as shareC {
+        owner = Company C
+        amount = 0.2
+    }
+    object ":Percent Pie" as percentPie {
+    }
+    percentPie o-- shareA
+    percentPie o-- shareB
+    percentPie o-- shareC
+    ```
+
+股份模型與新的貸款模型:
+
+![](08/09.png)
+
+新模型不再需要 `Loan Adjustment` 等特殊處理的邏輯。
+
+新模型不再包含 `Load Investment`。書中表示，在這個過程，他們在意識到 `Loan Investment` 並非銀行專業術語，雖然領域專家已經多次表示他們不明白 `Loan Investment` 的意思，但是他們還是尊重軟體的專業，假設這個對於軟體是有幫助的。事實是，`Loan Investment` 之所以產生，是因為對領域沒有完全的理解。領域專家認為新的模型非常合理，舊的模型太技術性。
