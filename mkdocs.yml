@@ -30,6 +30,7 @@ nav:
       - 5 A Model Expressed in Software: domain-driven-design/05-a-model-expressed-in-software.md
       - 6 The Life Cycle of a Domain Object: domain-driven-design/06-the-life-cycle-of-a-domain-object.md
       - 7 Using the Language - An Extended Example: domain-driven-design/07-using-the-language-an-extended-example.md
+      - 8 Breakthrough: domain-driven-design/08-breakthrough.md
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
