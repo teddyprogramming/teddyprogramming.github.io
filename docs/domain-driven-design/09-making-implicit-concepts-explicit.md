@@ -151,3 +151,13 @@ object ":Cargo" as cargo {
 ![](09/09.png)
 
 重構後的程式，每晚腳本會走訪每一個 `Asset`，並執行 `calculateAccrualsThrough(Date)`，其回傳 `Accural` 的集合，其金額會被過帳到對應的分類帳(ledger)中。
+
+## Example: Earning Interest by the Book
+
+!!! quote "Accrual Basis Accounting"
+
+    This method recognizes income when it is earned, even if it is not paid. All expenses also show when they are incurred whether they have been paid for or billed to be paid at a later date. Any obligation due, including taxes, will be shown as expense.
+
+    -- Finance and Accounting: How to Keep Your Books and Manage Your Finances Without an MBA, a CPA or a Ph.D., by Suzanne Caplan (Adams Media, 2000)
+
+![](09/10.png)
