@@ -73,4 +73,81 @@ object ":Cargo" as cargo {
 
 ![](09/04.svg)
 
+## Example: Earning Interest the Hard Way
 
+假定一家金融公司，該公司投資於商業貸款(commercial loans)和其他利息資產(interest-bearing assets)。公司有一個應用程式用來追蹤這些投資與收益。每晚，程式會執行腳本，計算當天的利息(interest)和費用(fees)，並記錄到公司的財務軟體。
+
+![](09/05.png)
+
+晚上的腳本，程式走訪每個 `Asset`，並執行 `calculateInterestForDate()` 計算當天的利息(interest)。腳本將回傳值(the amount earned) 與指定的 ledger 名稱，傳送給財務軟體的 Service 公開的介面。財務軟體將 amount 過到 ledger 中。相似的流程，腳本計算每一個 `Asset` 的費用(fee)，並記錄到不同的 ledger 中。
+
+開發人員在計算利息遭遇越來越複雜的問題，他懷疑是否有更適合的模型，所以他請教專家。
+
+!!! quote
+
+    **Developer**: Our **Interest Calculator** is getting out of hand.
+
+    **Expert**: That is a complicated part. We still have more cases we’ve been holding back.
+
+    **Developer**: I know. We can add new interest types by substituting a different **Interest Calculator**. But what we’re having the most trouble with right now is all these special cases when they don’t pay the interest on schedule.
+
+    **Expert**: Those really aren’t special cases. There’s a lot of flexibility in when people pay.
+
+    **Developer**: Back when we factored out the **Interest Calculator** from the **Asset**, it helped a lot. We may need to break it up more.
+
+    **Expert**: OK.
+
+    **Developer**: I was thinking you might have a way of talking about this interest calculation.
+
+    **Expert**: What do you mean?
+
+    **Developer**: Well, for example, we’re tracking the interest (利息) due but unpaid within an accounting period (會計期間). Do you have a name for that?
+
+    **Expert**: Well, we don’t really do it like that. The interest earned and the payment are quite separate postings.
+
+    **Developer**: So you don’t need that number?
+
+    **Expert**: Well, sometimes we might look at it, but it isn’t the way we do business.
+
+    **Developer**: OK, so if the payment (付款) and interest (利息) are separate, maybe we should model them that way. How does this look? [_Sketching on whiteboard_]
+
+    ![](09/06.png)
+
+    **Expert**: It makes sense, I guess. But you just moved it from one place to another.
+
+    **Developer**: Except now the **Interest Calculator** only keeps track of interest earned, and the **Payment** keeps that number separately. It hasn’t simplified it a lot, but does it better reflect your business practice?
+
+    **Expert**: Ah. I see. Could we have interest history, too? Like the **Payment History**.
+
+    **Developer**: Yes, that has been requested as a new feature. But that could have been added onto the original design.
+
+    **Expert**: Oh. Well, when I saw interest and **Payment History** separated like that, I thought you were breaking up the interest to organize it more like the **Payment History**. Do you know anything about accrual basis accounting (應計制會計)?
+
+    **Developer**: Please explain.
+
+    **Expert**: Each day, or whenever the schedule calls for, we have an interest accrual (應計利息) that gets posted to a ledger (收支總帳). The payments are posted a different way. This aggregate (合計) you have here is a little awkward.
+
+    **Developer**: You’re saying that if we keep a list of “accruals,” they could be aggregated or . . . “posted” as needed.
+
+    **Expert**: Probably posted on the accrual date, but yes, aggregated anytime. Fees work the same way, posted to a different ledger, of course.
+
+    **Developer**: Actually, the interest calculation would be simpler if it was done just for one day, or period. And then we could just hang on to them all. How about this?
+
+    ![](09/07.png)
+
+    **Expert**: Sure. It looks good. I’m not sure why this would be easier for you. But basically, what makes any asset valuable is what it can accrue in interest, fees, and so on.
+
+    **Developer**: You said fees work the same way? They . . . what was it . . . post to different ledgers (分類帳)?
+
+    ![](09/08.png)
+
+    **Developer**: With this model, we get the interest calculation, or rather, the accrual calculation logic that was in the **Interest Calculator** separated from tracking. And I hadn’t noticed until now how much duplication there is in the **Fee Calculator**. Also, now the different kinds of fees can easily be added.
+
+    **Expert**: Yes, the calculation was correct before, but I can see everything now.
+
+
+最終，開發人員得到以下模型:
+
+![](09/09.png)
+
+重構後的程式，每晚腳本會走訪每一個 `Asset`，並執行 `calculateAccrualsThrough(Date)`，其回傳 `Accural` 的集合，其金額會被過帳到對應的分類帳(ledger)中。
