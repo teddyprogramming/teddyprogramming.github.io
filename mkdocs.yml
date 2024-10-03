@@ -5,6 +5,8 @@ use_directory_urls: false
 # https://squidfunk.github.io/mkdocs-material/
 theme:
   name: 'material'
+  palette:
+    - scheme: slate
   language: 'zh-TW'
   features:
     - content.code.select
@@ -96,8 +98,8 @@ plugins:
   - blog
   - plantuml:
       puml_url: https://www.plantuml.com/plantuml/
-      num_workers: 8
       puml_keyword: plantuml
+      auto_dark: true
   - git-revision-date-localized:
       locale: zh
       enable_creation_date: true
