@@ -4,7 +4,7 @@ use_directory_urls: false
 
 # https://squidfunk.github.io/mkdocs-material/
 theme:
-  name: 'material'
+  name: material
   palette:
     - scheme: slate
   language: 'zh-TW'

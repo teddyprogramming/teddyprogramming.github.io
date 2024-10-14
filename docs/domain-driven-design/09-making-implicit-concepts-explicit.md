@@ -161,3 +161,58 @@ object ":Cargo" as cargo {
     -- Finance and Accounting: How to Keep Your Books and Manage Your Finances Without an MBA, a CPA or a Ph.D., by Suzanne Caplan (Adams Media, 2000)
 
 ![](09/10.png)
+
+## 將不明顯的概念表示在模型中
+
+### 明確表示出限制
+
+![](09/11.png)
+
+圖中將 `Bucket` (桶子) 的 `contents` (內容) 不能超過 `capacity` (容量) 的限制明確表示出來。
+
+以下程式碼實作 model 的限制條件。
+
+```java title="模型的實作"
+class Bucket {
+  private float capacity;
+  private float contents;
+
+  public void pourIn(float addedVolume) {
+    if(contents + addedVolume > capacity) {
+      contents = capacity;
+    } else {
+      contents = contents + addedVolume;
+    }
+  }
+}
+```
+
+以下版本的實作，讓程式碼與模型的關係更加明顯。
+
+```java title="比較好的實作: 將規則抽成 method"
+class Bucket {
+  private float capacity;
+  private float contents;
+
+  public void pourIn(float addedVolume) {
+    float volumePresent = contents + addedVolume;
+    contents = constrainedToCapacity(volumePresent);
+  }
+
+  private float constrainedToCapacity(float volumePlacedIn) {
+    if(volumePlacedIn > capacity) {
+      return capacity;
+    } else {
+      return volumePlacedIn;
+    }
+  }
+}
+```
+
+如此，這條規則就有名有姓了。
+
+### 範例: Overbooking Policy
+
+第一章提到的範例: 運輸業務常見的業務慣例，預定超出運輸能力 10% 的貨物。
+
+![](09/12.png)
