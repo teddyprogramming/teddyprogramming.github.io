@@ -69,7 +69,7 @@ object ":Cargo" as cargo {
 |----------|-----------|----------|------------|
 | 123      | V1        | 捷運中山站    | 捷運台北車站     |
 | 123      | V2        | 捷運台北車站   | 高鐵台北車站     |
-| 123      | V3        | 高鐵台北車站   | 高鐵左營站     |
+| 123      | V3        | 高鐵台北車站   | 高鐵左營站      |
 
 ![](09/04.svg)
 
@@ -145,7 +145,6 @@ object ":Cargo" as cargo {
 
     **Expert**: Yes, the calculation was correct before, but I can see everything now.
 
-
 最終，開發人員得到以下模型:
 
 ![](09/09.png)
@@ -216,3 +215,36 @@ class Bucket {
 第一章提到的範例: 運輸業務常見的業務慣例，預定超出運輸能力 10% 的貨物。
 
 ![](09/12.png)
+
+## Specification
+
+![](09/13.png)
+
+用來描述 **Boolean test**。例如，`Invoice` 類別，有一個演算法判別是否已經過期。
+
+```java
+public boolean isOverduce() {
+  Date currentDate = new Date();
+  return currentDate.after(dueDate);
+}
+```
+
+在 `Invoice` 類別中，可能有另一個 method `isDelinquent()`，也是用來檢查是否過期 (是否拖欠款項)。隨著發展，可能參雜其他邏輯，像是寬限期(grace period)、或參考付款歷史紀錄等。而且，可能還會開始相依其他 domain object、subsystems等。然而，長出來的這些相依關係，可能與 `Invoice` 本身的意涵沒什麼關聯。
+
+商業邏輯通常不適合放在 Entity 或 Value Object 中。但是，把商業邏輯移出 domain layer 的作法更糟糕。
+
+將 Boolean test 提取到單獨的 Value Object 中。此物件用於計算另一個物件，評估某個條件是否為真。
+
+![](09/14.png)
+
+圖中的 `Invoice Delinquency` 稱作 Specification，用來測試物件，檢查他們是否滿足指定的條件。換句話說，Specification 就是一個 Predicate。
+
+將拖欠規則提取成 Specification，更詳細的描述規則。以下範例使用 object diagram 說明。
+
+- 發票 inv123 在 2001/4/6 評估，已過期 32 天。
+- 信譽良好的客戶寬限期是 60 天，非信譽良好的客戶寬限期是 20 天。
+- enron 非信譽良好的客戶，只有 20 天的寬限期。
+
+由於已過 20 天寬限期， inv123 為拖欠票據。
+
+![](09/15.png)
