@@ -99,7 +99,8 @@ plugins:
   - plantuml:
       puml_url: https://www.plantuml.com/plantuml/
       puml_keyword: plantuml
-      auto_dark: true
+      interaction:
+        enabled: false
   - git-revision-date-localized:
       locale: zh
       enable_creation_date: true

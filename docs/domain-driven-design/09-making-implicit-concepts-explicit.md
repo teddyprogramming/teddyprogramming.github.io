@@ -248,3 +248,140 @@ public boolean isOverduce() {
 由於已過 20 天寬限期， inv123 為拖欠票據。
 
 ![](09/15.png)
+
+## 套用與實作 Specification
+
+Specification 的三種目的:
+
+1. 驗證 (validation)
+2. 選擇 (selection) 或 查詢 (query)
+3. 建立 (creation)
+
+### Validation
+
+![](09/16.png)
+
+```java title="Domain Layer 的程式碼"
+class DelinquentInvoiceSpecification extends InvoiceSpecification {
+  private Date currentDate;
+  // An instance is used and discarded on a single date
+
+  public DelinquentInvoiceSpecification(Date currentDate) {
+    this.currentDate = currentDate;
+  }
+
+  public boolean isSatisfiedBy(Invoice candidate) {
+    int gracePeriod = candidate.customer().getPaymentGracePeriod();
+    Date firmDeadline = DateUtility.addDaysToDate( candidate.dueDate(), gracePeriod);
+    return currentDate.after(firmDeadline);
+  }
+}
+```
+
+當我們需要標記拖欠款項的客戶，會在 Application layer 有類似以下的程式碼。
+
+```java title="Application layer 的程式碼"
+public boolean accountIsDelinquent(Customer customer) {
+   Date today = new Date();
+   Specification delinquentSpec = new DelinquentInvoiceSpecification(today);
+   Iterator it = customer.getInvoices().iterator();
+   while (it.hasNext()) {
+      Invoice candidate = (Invoice) it.next();
+      if (delinquentSpec.isSatisfiedBy(candidate))
+        return true;
+   }
+   return false;
+}
+```
+
+### Selection or Querying
+
+需求是列出所有拖欠款項的客戶。
+
+```java
+public Set selectSatisfying(InvoiceSpecification spec) {
+  Set results = new HashSet();
+  Iterator it = invoices.iterator();
+  while(it.hasNext()) {
+    Invoice candidate = (Invoice) it.next();
+    if(spec.isSatisfiedBy(candidate))
+      result.add(candidate);
+  }
+  return results;
+}
+
+Set delinquentInvoices = invoiceRepository.selectSatisfying(new DelinquentInvoiceSpecification(currentDate));
+```
+
+![](09/17.png)
+
+```java
+public String asSQL() {
+    return "SELECT * FROM INVOICE, CUSTOMER" +
+           " WHERE INVOICE.CUST_ID = CUSTOMER.ID" +
+           " AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD" +
+           "  < " + SQLUtility.dateAsSQL(currentDate);
+}
+```
+
+以上作法的問題: SQL 暴露到 Domain Layer。
+
+以下程式碼將 SQL 放到 Repository 中，改進了這個問題。
+
+```java
+public class InvoiceRepository {
+
+  public Set selectWhereGracePeriodPast(Date aDate){
+    //This is not a rule, just a specialized query
+    String sql = whereGracePeriodPast_SQL(aDate);
+    ResultSet queryResultSet = SQLDatabaseInterface.instance().executeQuery(sql);
+    return buildInvoicesFromResultSet(queryResultSet);
+  }
+
+  public String whereGracePeriodPast_SQL(Date aDate) {
+    return "SELECT * FROM INVOICE, CUSTOMER" +
+           "  WHERE INVOICE.CUST_ID = CUSTOMER.ID" +
+           "  AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD" +
+           "    < " + SQLUtility.dateAsSQL(aDate);
+  }
+
+  public Set selectSatisfying(InvoiceSpecification spec) {
+    return spec.satisfyingElementsFrom(this);
+  }
+}
+
+public class DelinquentInvoiceSpecification {
+  // Basic DelinquentInvoiceSpecification code here
+
+  public Set satisfyingElementsFrom(InvoiceRepository repository) {
+    //Delinquency rule is defined as: "grace period past as of current date"
+    return repository.selectWhereGracePeriodPast(currentDate);
+  }
+}
+```
+
+```plantuml
+skinparam style strictuml
+skinparam sequenceParticipant underline
+
+participant "client" as client
+participant "spec : Delinquent\nInvoice Specification" as spec
+participant ": Invoice Repository" as repo
+participant "DB Interface" as db
+
+client -> spec **: create
+client -> repo++: selectSatisfying(spec)
+repo -[#red]> spec++: <font color=red>satisfyingElementsFrom(this)</font>
+spec -[#red]> repo++: <font color=red><b>selectWhereGracePeriodPast(currentDate)</b></font>
+repo -[#red]> repo: <font color=red>sqlString = whereGracePeriodPast_SQL(currentDate)</font>
+repo -> db: executeQuery(sqlString)
+db --> repo: a ResultSet
+repo -> repo: buildInvoicesFromResultSet(a ResultSet)
+return <font color=red>collection of Invoices</font>
+return <font color=red>collection of Invoices</font>
+return collection of Invoices
+```
+
+雖然 SQL 實作沒有擺在 Specification 中，但是 Specification 已經表明超過寬限期即為拖欠款項。
+
+然而，這種作法還有問題: `InvoiceRepository.whereGracePeriodPast_SQL` 只適用在特定的需求情境。

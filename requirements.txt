@@ -1,4 +1,4 @@
 mkdocs
 mkdocs-material
-mkdocs_puml
+mkdocs_puml@ git+https://github.com/teddyprogramming/mkdocs_puml.git@2.1.0
 mkdocs-git-revision-date-localized-plugin
