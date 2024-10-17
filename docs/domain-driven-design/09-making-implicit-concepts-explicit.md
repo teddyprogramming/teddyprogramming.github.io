@@ -384,4 +384,73 @@ return collection of Invoices
 
 雖然 SQL 實作沒有擺在 Specification 中，但是 Specification 已經表明超過寬限期即為拖欠款項。
 
-然而，這種作法還有問題: `InvoiceRepository.whereGracePeriodPast_SQL` 只適用在特定的需求情境。
+然而，這種作法還有問題: `InvoiceRepository.whereGracePeriodPast_SQL` 只適用在特定的需求情境。以下程式碼，將過濾的程式碼放到 Specification 中，改進此問題。
+
+```java
+public class InvoiceRepository {
+
+  public Set selectWhereDueDateIsBefore(Date aDate) {
+    String sql = whereDueDateIsBefore_SQL(aDate);
+    ResultSet queryResultSet = SQLDatabaseInterface.instance().executeQuery(sql);
+    return buildInvoicesFromResultSet(queryResultSet);
+  }
+
+  public String whereDueDateIsBefore_SQL(Date aDate) {
+    return "SELECT * FROM INVOICE" +
+           "  WHERE INVOICE.DUE_DATE" +
+           "     < " + SQLUtility.dateAsSQL(aDate);
+   }
+
+  public Set selectSatisfying(InvoiceSpecification spec) {
+    return spec.satisfyingElementsFrom(this);
+  }
+}
+
+public class DelinquentInvoiceSpecification {
+  //Basic DelinquentInvoiceSpecification code here
+
+  public Set satisfyingElementsFrom(InvoiceRepository repository) {
+    Collection pastDueInvoices = repository.selectWhereDueDateIsBefore(currentDate);
+
+    Set delinquentInvoices = new HashSet();
+    Iterator it = pastDueInvoices.iterator();
+    while (it.hasNext()) {
+      Invoice anInvoice = (Invoice) it.next();
+      if (this.isSatisfiedBy(anInvoice))
+        delinquentInvoices.add(anInvoice);
+    }
+    return delinquentInvoices;
+  }
+}
+```
+
+```plantuml
+skinparam style strictuml
+skinparam sequenceParticipant underline
+
+participant "client" as client
+participant "spec : Delinquent\nInvoice Specification" as spec
+participant ": Invoice Repository" as repo
+participant "DB Interface" as db
+
+client -> spec **: create
+client -> repo++: selectSatisfying(spec)
+
+repo -[#red]> spec++: <font color=red>satisfyingElementsFrom(this)</font>
+
+spec -[#red]> repo++: <font color=red><b>selectWhereDueDateIsBefore(currentDate)</b></font>
+repo -[#red]> repo: <font color=red>sqlString = whereDueDateIsBefore_SQL(currentDate)</font>
+repo -> db: executeQuery(sqlString)
+db --> repo: a ResultSet
+repo -> repo: buildInvoicesFromResultSet(a ResultSet)
+return <font color=red>collection of Invoices</font>
+loop each invoice
+opt isSatisfiedBy(invoice)
+spec -[#red]> spec: <font color=red>delinquentInvoices.add(invoice)</font>
+end opt
+end loop
+return <font color=red>delinquentInvoices</font>
+return collection of Invoices
+```
+
+此做法會將更多的 invoice 載入記憶體中，然後再進行過濾，相較於前一版的程式效能會比較不好一點。用「效率」交換「更好的責任分離」需要根據情境評估取捨。
