@@ -34,6 +34,7 @@ nav:
       - 7 Using the Language - An Extended Example: domain-driven-design/07-using-the-language-an-extended-example.md
       - 8 Breakthrough: domain-driven-design/08-breakthrough.md
       - 9 Making Implicit Concepts Explicit: domain-driven-design/09-making-implicit-concepts-explicit.md
+      - 10 Supple Design: domain-driven-design/10-supple-design.md
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
