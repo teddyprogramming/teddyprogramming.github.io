@@ -1,0 +1,2265 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="08-breakthrough.html">
+      
+      
+        <link rel="next" href="10-supple-design.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>9 Making Implicit Concepts Explicit - Teddy 的筆記本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch-9-making-implicit-concepts-explicit" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Teddy 的筆記本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9 Making Implicit Concepts Explicit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Teddy 的筆記本
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JetBrains 快捷鍵
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide/jet-brains/ideavim.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IdeaVim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pod Topology Spread Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Domain-Driven Design
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Domain-Driven Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-crunching-knowledge.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Crunching Knowledge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Communication and the Use of Language
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Binding Model and Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-isolating-the-domain.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Isolating the Domain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-a-model-expressed-in-software.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 A Model Expressed in Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 The Life Cycle of a Domain Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-using-the-language-an-extended-example.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Using the Language - An Extended Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-breakthrough.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 Breakthrough
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    9 Making Implicit Concepts Explicit
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09-making-implicit-concepts-explicit.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    9 Making Implicit Concepts Explicit
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-hearing-a-missing-concept-in-the-shipping-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Hearing a Missing Concept in the Shipping Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-earning-interest-the-hard-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Earning Interest the Hard Way
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-earning-interest-by-the-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Earning Interest by the Book
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      將不明顯的概念表示在模型中
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="將不明顯的概念表示在模型中">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      明確表示出限制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overbooking-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: Overbooking Policy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      套用與實作 Specification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="套用與實作 Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-or-querying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selection or Querying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemical-warehouse-packer" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: Chemical Warehouse Packer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-working-prototype-of-the-warehouse-packer" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: A Working Prototype of the Warehouse Packer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-supple-design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Supple Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clean Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Clean Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    34 The Missing Chapter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Effective Java, 3rd
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Effective Java, 3rd
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_1" id="__nav_5_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Creating And Destroying Objects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Creating And Destroying Objects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 1 - Consider static factory methods instead of constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 2 - Consider a builder when faced with many constructor parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 3 - Enforce the singleton property with a private constructor or an enum type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 4 - Enforce noninstantiability with a private constructor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 5 - Prefer dependency injection to hardwiring resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 6 - Avoid creating unnecessary objects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 7 - Eliminate obsolete object references
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 8 - Avoid finalizers and cleaners
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 9 - Prefer try-with-resources to try-finally
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Methods Common To All Objects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Methods Common To All Objects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 10 - Obey the general contract when overriding equals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 11 - Always override hashCode when you override equals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 12 = Always override toString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 13 - Override clone judiciously
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 14 - Consider implementing Comparable
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Classes and Interface
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Classes and Interface
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 15 - Minimize the accessibility of classes and members
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 16 - In public classes, use accessor methods, not public fields
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_4" id="__nav_5_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item 55 - Return optionals judiciously
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Spring Boot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Scheduler
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Scheduler
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_1" id="__nav_6_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quartz
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Quartz
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello World!
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JDBC JobStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ch-9-making-implicit-concepts-explicit">Ch 9: Making Implicit Concepts Explicit</h1>
+<h2 id="example-hearing-a-missing-concept-in-the-shipping-model">Example: Hearing a Missing Concept in the Shipping Model</h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>The team had already developed a working application that could book a cargo. They were starting to build an “operations support” application that would help juggle the work orders for loading and unloading cargos at the origin and destination and at transfers between ships.</p>
+<p>The booking application used a routing engine to plan the trip for a cargo. Each leg of the journey was stored in a row of a database table, indicating the ID of the vessel voyage (a particular voyage by a particular ship) slated to carry the cargo, the location where it would be loaded, and the location where it would be unloaded.</p>
+<p><img alt="" src="09/01.png" /></p>
+<p><strong>Developer</strong>: I want to make sure the “cargo bookings” table has all the data that the operations application will need.</p>
+<p><strong>Expert</strong>: They’re going to need the whole itinerary for the <code>Cargo</code>. What information does it have now?</p>
+<p><strong>Developer</strong>: The cargo ID, the vessel voyage, the loading port, and the unloading port for each leg.</p>
+<p><strong>Expert</strong>: What about the date? Operations will need to contract handling work based on the expected times.</p>
+<p><strong>Developer</strong>: Well, that can be derived from the schedule of the vessel voyage. The table data is normalized.</p>
+<p><strong>Expert</strong>: Yes, it is normal to need the date. Operations people use these kinds of itineraries to plan for upcoming handling work.</p>
+<p><strong>Developer</strong>: Yeah . . . OK, they’ll definitely have access to the dates. The operations management application will be able to provide the whole loading and unloading sequence, with the date of each handling operation. The “itinerary,” I guess you would say.</p>
+<p><strong>Expert</strong>: Good. The itinerary is the main thing they’ll need. Actually, you know, the booking application has a menu item that will print an itinerary or e-mail it to the customer. Can you use that somehow?</p>
+<p><strong>Developer</strong>: That’s just a report, I think. We won’t be able to base the operations application on that.</p>
+<p>[Developer looks thoughtful, then excited.]</p>
+<p><strong>Developer</strong>: So, this itinerary is really the link between booking and operations.</p>
+<p><strong>Expert</strong>: Yes, and some customer relations, too.</p>
+<p><strong>Developer</strong>: [Sketching a diagram on the whiteboard.] So would you say it is something like this?</p>
+<p><img alt="" src="09/02.png" /></p>
+<p><strong>Expert</strong>: Yes, that looks basically right. For each leg you’d like to see the vessel voyage, the load and unload location, and time.</p>
+<p><strong>Developer</strong>: So once we create the <code>Leg</code> object, it can derive the times from the vessel voyage schedule. We can make the <code>Itinerary</code> object our main point of contact with the operations application. And we can rewrite that itinerary report to use this, so we’ll get the domain logic back into the domain layer.</p>
+<p><strong>Expert</strong>: I didn’t follow all of that, but you are right that the two main uses for the <code>Itinerary</code> are in the report in booking and in the operations application.</p>
+<p><strong>Developer</strong>: Hey! We can make the <code>Routing Service</code> interface return an itinerary object instead of putting the data in the database table. That way the routing engine doesn’t need to know about our tables.</p>
+<p><strong>Expert</strong>: Huh?</p>
+<p><strong>Developer</strong>: I mean, I’ll make the routing engine just return an <code>Itinerary</code>. Then it can be saved in the database by the booking application when the rest of the booking is saved.</p>
+<p><strong>Expert</strong>: You mean it isn’t that way now?!</p>
+<p>The developer then went off to talk with the other developers involved in the routing process. They hashed out the changes to the model and the implications for the design, calling on the shipping experts when needed. They came up with the diagram.</p>
+<p><img alt="" src="09/03.png" /></p>
+</div>
+<div class='puml-container'><div class="puml light" style="">429. <html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verifying Browse</title><style>body{display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background-color:#f4f4f4}.p-c{text-align:center}.s-c{border:1px solid #ddd;padding:20px;border-radius:10px;background-color:#fff;display:inline-block}.spinner{border:8px solid #5ca731;border-top:8px solid transparent;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;margin:30px auto}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}h1{font-family:'Arial',sans-serif;color:#333;margin:20px 0;font-size:18px;display:inline-block}footer{background-color:#5ca731;color:#fff;padding:10px;text-align:center;width:100%;position:fixed;bottom:0}</style><script>document.cookie="ezoDodos=bc9eb03145b0dc91d0bbf631c88aefbca3172a07__1732029308;max-age=2592000;path=/;domain=.plantuml.com";setTimeout(function(){location.reload();},2000);</script></head><body><div class="p-c"><div class="s-c"><h1>Verifying Browser, This Won't Take Long</h1><div class="spinner"></div></div></div><footer>Protected by Ezoic</footer></body></html></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="114px" preserveAspectRatio="xMidYMid meet" style="width:202px;height:114px;background:#1B1B1B;" version="1.1" viewBox="0 0 202 114" width="202px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="114" style="stroke:none;stroke-width:1.0;" width="202" x="0" y="0"/><g id="elem_cargo"><rect fill="#313139" height="93.4844" style="stroke:#E7E7E7;stroke-width:0.5;" width="181.0729" x="7" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46.2793" x="74.3968" y="21.9951">:Cargo</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="187.0729" y1="27.2969" y2="27.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99.8525" x="13" y="44.292">cargoId = 123</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130.4909" x="13" y="60.5889">origin = 捷運中山佔</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169.0729" x="13" y="76.8857">destination = 高鐵左營站</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108.5546" x="13" y="93.1826">weight = 500克</text></g></g></svg></div></div>
+
+<table>
+<thead>
+<tr>
+<th>Cargo ID</th>
+<th>Voyage Id</th>
+<th>Load Loc</th>
+<th>Unload Loc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>V1</td>
+<td>捷運中山站</td>
+<td>捷運台北車站</td>
+</tr>
+<tr>
+<td>123</td>
+<td>V2</td>
+<td>捷運台北車站</td>
+<td>高鐵台北車站</td>
+</tr>
+<tr>
+<td>123</td>
+<td>V3</td>
+<td>高鐵台北車站</td>
+<td>高鐵左營站</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="09/04.svg" /></p>
+<h2 id="example-earning-interest-the-hard-way">Example: Earning Interest the Hard Way</h2>
+<p>假定一家金融公司，該公司投資於商業貸款(commercial loans)和其他利息資產(interest-bearing assets)。公司有一個應用程式用來追蹤這些投資與收益。每晚，程式會執行腳本，計算當天的利息(interest)和費用(fees)，並記錄到公司的財務軟體。</p>
+<p><img alt="" src="09/05.png" /></p>
+<p>晚上的腳本，程式走訪每個 <code>Asset</code>，並執行 <code>calculateInterestForDate()</code> 計算當天的利息(interest)。腳本將回傳值(the amount earned) 與指定的 ledger 名稱，傳送給財務軟體的 Service 公開的介面。財務軟體將 amount 過到 ledger 中。相似的流程，腳本計算每一個 <code>Asset</code> 的費用(fee)，並記錄到不同的 ledger 中。</p>
+<p>開發人員在計算利息遭遇越來越複雜的問題，他懷疑是否有更適合的模型，所以他請教專家。</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p><strong>Developer</strong>: Our <strong>Interest Calculator</strong> is getting out of hand.</p>
+<p><strong>Expert</strong>: That is a complicated part. We still have more cases we’ve been holding back.</p>
+<p><strong>Developer</strong>: I know. We can add new interest types by substituting a different <strong>Interest Calculator</strong>. But what we’re having the most trouble with right now is all these special cases when they don’t pay the interest on schedule.</p>
+<p><strong>Expert</strong>: Those really aren’t special cases. There’s a lot of flexibility in when people pay.</p>
+<p><strong>Developer</strong>: Back when we factored out the <strong>Interest Calculator</strong> from the <strong>Asset</strong>, it helped a lot. We may need to break it up more.</p>
+<p><strong>Expert</strong>: OK.</p>
+<p><strong>Developer</strong>: I was thinking you might have a way of talking about this interest calculation.</p>
+<p><strong>Expert</strong>: What do you mean?</p>
+<p><strong>Developer</strong>: Well, for example, we’re tracking the interest (利息) due but unpaid within an accounting period (會計期間). Do you have a name for that?</p>
+<p><strong>Expert</strong>: Well, we don’t really do it like that. The interest earned and the payment are quite separate postings.</p>
+<p><strong>Developer</strong>: So you don’t need that number?</p>
+<p><strong>Expert</strong>: Well, sometimes we might look at it, but it isn’t the way we do business.</p>
+<p><strong>Developer</strong>: OK, so if the payment (付款) and interest (利息) are separate, maybe we should model them that way. How does this look? [<em>Sketching on whiteboard</em>]</p>
+<p><img alt="" src="09/06.png" /></p>
+<p><strong>Expert</strong>: It makes sense, I guess. But you just moved it from one place to another.</p>
+<p><strong>Developer</strong>: Except now the <strong>Interest Calculator</strong> only keeps track of interest earned, and the <strong>Payment</strong> keeps that number separately. It hasn’t simplified it a lot, but does it better reflect your business practice?</p>
+<p><strong>Expert</strong>: Ah. I see. Could we have interest history, too? Like the <strong>Payment History</strong>.</p>
+<p><strong>Developer</strong>: Yes, that has been requested as a new feature. But that could have been added onto the original design.</p>
+<p><strong>Expert</strong>: Oh. Well, when I saw interest and <strong>Payment History</strong> separated like that, I thought you were breaking up the interest to organize it more like the <strong>Payment History</strong>. Do you know anything about accrual basis accounting (應計制會計)?</p>
+<p><strong>Developer</strong>: Please explain.</p>
+<p><strong>Expert</strong>: Each day, or whenever the schedule calls for, we have an interest accrual (應計利息) that gets posted to a ledger (收支總帳). The payments are posted a different way. This aggregate (合計) you have here is a little awkward.</p>
+<p><strong>Developer</strong>: You’re saying that if we keep a list of “accruals,” they could be aggregated or . . . “posted” as needed.</p>
+<p><strong>Expert</strong>: Probably posted on the accrual date, but yes, aggregated anytime. Fees work the same way, posted to a different ledger, of course.</p>
+<p><strong>Developer</strong>: Actually, the interest calculation would be simpler if it was done just for one day, or period. And then we could just hang on to them all. How about this?</p>
+<p><img alt="" src="09/07.png" /></p>
+<p><strong>Expert</strong>: Sure. It looks good. I’m not sure why this would be easier for you. But basically, what makes any asset valuable is what it can accrue in interest, fees, and so on.</p>
+<p><strong>Developer</strong>: You said fees work the same way? They . . . what was it . . . post to different ledgers (分類帳)?</p>
+<p><img alt="" src="09/08.png" /></p>
+<p><strong>Developer</strong>: With this model, we get the interest calculation, or rather, the accrual calculation logic that was in the <strong>Interest Calculator</strong> separated from tracking. And I hadn’t noticed until now how much duplication there is in the <strong>Fee Calculator</strong>. Also, now the different kinds of fees can easily be added.</p>
+<p><strong>Expert</strong>: Yes, the calculation was correct before, but I can see everything now.</p>
+</div>
+<p>最終，開發人員得到以下模型:</p>
+<p><img alt="" src="09/09.png" /></p>
+<p>重構後的程式，每晚腳本會走訪每一個 <code>Asset</code>，並執行 <code>calculateAccrualsThrough(Date)</code>，其回傳 <code>Accural</code> 的集合，其金額會被過帳到對應的分類帳(ledger)中。</p>
+<h2 id="example-earning-interest-by-the-book">Example: Earning Interest by the Book</h2>
+<div class="admonition quote">
+<p class="admonition-title">Accrual Basis Accounting</p>
+<p>This method recognizes income when it is earned, even if it is not paid. All expenses also show when they are incurred whether they have been paid for or billed to be paid at a later date. Any obligation due, including taxes, will be shown as expense.</p>
+<p>-- Finance and Accounting: How to Keep Your Books and Manage Your Finances Without an MBA, a CPA or a Ph.D., by Suzanne Caplan (Adams Media, 2000)</p>
+</div>
+<p><img alt="" src="09/10.png" /></p>
+<h2 id="_1">將不明顯的概念表示在模型中</h2>
+<h3 id="_2">明確表示出限制</h3>
+<p><img alt="" src="09/11.png" /></p>
+<p>圖中將 <code>Bucket</code> (桶子) 的 <code>contents</code> (內容) 不能超過 <code>capacity</code> (容量) 的限制明確表示出來。</p>
+<p>以下程式碼實作 model 的限制條件。</p>
+<div class="highlight"><span class="filename">模型的實作</span><pre><span></span><code><span class="kd">class</span> <span class="nc">Bucket</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">contents</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pourIn</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">addedVolume</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">contents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addedVolume</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">capacity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addedVolume</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>以下版本的實作，讓程式碼與模型的關係更加明顯。</p>
+<div class="highlight"><span class="filename">比較好的實作: 將規則抽成 method</span><pre><span></span><code><span class="kd">class</span> <span class="nc">Bucket</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">contents</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pourIn</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">addedVolume</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">volumePresent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addedVolume</span><span class="p">;</span>
+<span class="w">    </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constrainedToCapacity</span><span class="p">(</span><span class="n">volumePresent</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">constrainedToCapacity</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">volumePlacedIn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">volumePlacedIn</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">capacity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">volumePlacedIn</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>如此，這條規則就有名有姓了。</p>
+<h3 id="overbooking-policy">範例: Overbooking Policy</h3>
+<p>第一章提到的範例: 運輸業務常見的業務慣例，預定超出運輸能力 10% 的貨物。</p>
+<p><img alt="" src="09/12.png" /></p>
+<h2 id="specification">Specification</h2>
+<p><img alt="" src="09/13.png" /></p>
+<p>用來描述 <strong>Boolean test</strong>。例如，<code>Invoice</code> 類別，有一個演算法判別是否已經過期。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isOverduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Date</span><span class="w"> </span><span class="n">currentDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">currentDate</span><span class="p">.</span><span class="na">after</span><span class="p">(</span><span class="n">dueDate</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>在 <code>Invoice</code> 類別中，可能有另一個 method <code>isDelinquent()</code>，也是用來檢查是否過期 (是否拖欠款項)。隨著發展，可能參雜其他邏輯，像是寬限期(grace period)、或參考付款歷史紀錄等。而且，可能還會開始相依其他 domain object、subsystems等。然而，長出來的這些相依關係，可能與 <code>Invoice</code> 本身的意涵沒什麼關聯。</p>
+<p>商業邏輯通常不適合放在 Entity 或 Value Object 中。但是，把商業邏輯移出 domain layer 的作法更糟糕。</p>
+<p>將 Boolean test 提取到單獨的 Value Object 中。此物件用於計算另一個物件，評估某個條件是否為真。</p>
+<p><img alt="" src="09/14.png" /></p>
+<p>圖中的 <code>Invoice Delinquency</code> 稱作 Specification，用來測試物件，檢查他們是否滿足指定的條件。換句話說，Specification 就是一個 Predicate。</p>
+<p>將拖欠規則提取成 Specification，更詳細的描述規則。以下範例使用 object diagram 說明。</p>
+<ul>
+<li>發票 inv123 在 2001/4/6 評估，已過期 32 天。</li>
+<li>信譽良好的客戶寬限期是 60 天，非信譽良好的客戶寬限期是 20 天。</li>
+<li>enron 非信譽良好的客戶，只有 20 天的寬限期。</li>
+</ul>
+<p>由於已過 20 天寬限期， inv123 為拖欠票據。</p>
+<p><img alt="" src="09/15.png" /></p>
+<h2 id="specification_1">套用與實作 Specification</h2>
+<p>Specification 的三種目的:</p>
+<ol>
+<li>驗證 (validation)</li>
+<li>選擇 (selection) 或 查詢 (query)</li>
+<li>建立 (creation)</li>
+</ol>
+<h3 id="validation">Validation</h3>
+<p><img alt="" src="09/16.png" /></p>
+<div class="highlight"><span class="filename">Domain Layer 的程式碼</span><pre><span></span><code><span class="kd">class</span> <span class="nc">DelinquentInvoiceSpecification</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">InvoiceSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">currentDate</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// An instance is used and discarded on a single date</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">DelinquentInvoiceSpecification</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="n">currentDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">currentDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentDate</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isSatisfiedBy</span><span class="p">(</span><span class="n">Invoice</span><span class="w"> </span><span class="n">candidate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">gracePeriod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">candidate</span><span class="p">.</span><span class="na">customer</span><span class="p">().</span><span class="na">getPaymentGracePeriod</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Date</span><span class="w"> </span><span class="n">firmDeadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateUtility</span><span class="p">.</span><span class="na">addDaysToDate</span><span class="p">(</span><span class="w"> </span><span class="n">candidate</span><span class="p">.</span><span class="na">dueDate</span><span class="p">(),</span><span class="w"> </span><span class="n">gracePeriod</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">currentDate</span><span class="p">.</span><span class="na">after</span><span class="p">(</span><span class="n">firmDeadline</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>當我們需要標記拖欠款項的客戶，會在 Application layer 有類似以下的程式碼。</p>
+<div class="highlight"><span class="filename">Application layer 的程式碼</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">accountIsDelinquent</span><span class="p">(</span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">Date</span><span class="w"> </span><span class="n">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">();</span>
+<span class="w">   </span><span class="n">Specification</span><span class="w"> </span><span class="n">delinquentSpec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DelinquentInvoiceSpecification</span><span class="p">(</span><span class="n">today</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customer</span><span class="p">.</span><span class="na">getInvoices</span><span class="p">().</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Invoice</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Invoice</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">delinquentSpec</span><span class="p">.</span><span class="na">isSatisfiedBy</span><span class="p">(</span><span class="n">candidate</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="selection-or-querying">Selection or Querying</h3>
+<p>需求是列出所有拖欠款項的客戶。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">selectSatisfying</span><span class="p">(</span><span class="n">InvoiceSpecification</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Set</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="p">();</span>
+<span class="w">  </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">invoices</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Invoice</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Invoice</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="na">isSatisfiedBy</span><span class="p">(</span><span class="n">candidate</span><span class="p">))</span>
+<span class="w">      </span><span class="n">result</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">candidate</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">results</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Set</span><span class="w"> </span><span class="n">delinquentInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">invoiceRepository</span><span class="p">.</span><span class="na">selectSatisfying</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DelinquentInvoiceSpecification</span><span class="p">(</span><span class="n">currentDate</span><span class="p">));</span>
+</code></pre></div>
+<p><img alt="" src="09/17.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">asSQL</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;SELECT * FROM INVOICE, CUSTOMER&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot; WHERE INVOICE.CUST_ID = CUSTOMER.ID&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot; AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot;  &lt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SQLUtility</span><span class="p">.</span><span class="na">dateAsSQL</span><span class="p">(</span><span class="n">currentDate</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>以上作法的問題: SQL 暴露到 Domain Layer。</p>
+<p>以下程式碼將 SQL 放到 Repository 中，改進了這個問題。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InvoiceRepository</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">selectWhereGracePeriodPast</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="n">aDate</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">//This is not a rule, just a specialized query</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">whereGracePeriodPast_SQL</span><span class="p">(</span><span class="n">aDate</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">queryResultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SQLDatabaseInterface</span><span class="p">.</span><span class="na">instance</span><span class="p">().</span><span class="na">executeQuery</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">buildInvoicesFromResultSet</span><span class="p">(</span><span class="n">queryResultSet</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">whereGracePeriodPast_SQL</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="n">aDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;SELECT * FROM INVOICE, CUSTOMER&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot;  WHERE INVOICE.CUST_ID = CUSTOMER.ID&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot;  AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot;    &lt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SQLUtility</span><span class="p">.</span><span class="na">dateAsSQL</span><span class="p">(</span><span class="n">aDate</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">selectSatisfying</span><span class="p">(</span><span class="n">InvoiceSpecification</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">spec</span><span class="p">.</span><span class="na">satisfyingElementsFrom</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DelinquentInvoiceSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Basic DelinquentInvoiceSpecification code here</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">satisfyingElementsFrom</span><span class="p">(</span><span class="n">InvoiceRepository</span><span class="w"> </span><span class="n">repository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//Delinquency rule is defined as: &quot;grace period past as of current date&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">repository</span><span class="p">.</span><span class="na">selectWhereGracePeriodPast</span><span class="p">(</span><span class="n">currentDate</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="454px" preserveAspectRatio="xMidYMid meet" style="width:969px;height:454px;background:#FFFFFF;" version="1.1" viewBox="0 0 969 454" width="969px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#FFFFFF" height="229.9297" style="stroke:#181818;stroke-width:1.0;" width="10" x="170.9722" y="170.4531"/><rect fill="#FFFFFF" height="288.1953" style="stroke:#181818;stroke-width:1.0;" width="10" x="518.9844" y="141.3203"/><rect fill="#FFFFFF" height="171.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="523.9844" y="199.5859"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="31" x2="31" y1="52.5938" y2="447.5156"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="175.7778" x2="175.7778" y1="101.3906" y2="447.5156"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="523.6133" x2="523.6133" y1="52.5938" y2="447.5156"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="912.0894" x2="912.0894" y1="52.5938" y2="447.5156"/><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="52.4521" x="5" y="21.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="38.4521" x="12" y="41.292">client</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.7422" x="447.6133" y="21.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="138.7422" x="454.6133" y="41.292">: Invoice Repository</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="101.5137" x="862.0894" y="21.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="87.5137" x="869.0894" y="41.292">DB Interface</text><rect fill="#FFFFFF" height="229.9297" style="stroke:#181818;stroke-width:1.0;" width="10" x="170.9722" y="170.4531"/><rect fill="#FFFFFF" height="288.1953" style="stroke:#181818;stroke-width:1.0;" width="10" x="518.9844" y="141.3203"/><rect fill="#FFFFFF" height="171.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="523.9844" y="199.5859"/><polygon fill="#181818" points="84.7778,79.7266,94.7778,83.7266,84.7778,87.7266" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="31.2261" x2="90.7778" y1="83.7266" y2="83.7266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41.5518" x="38.2261" y="78.6606">create</text><rect fill="#E2E2F0" height="46.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.3887" x="96.7778" y="62.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="122.8896" x="114.5273" y="82.5889">spec : Delinquent</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="144.3887" x="103.7778" y="98.8857">Invoice Specification</text><polygon fill="#181818" points="506.9844,137.3203,516.9844,141.3203,506.9844,145.3203" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="31.2261" x2="512.9844" y1="141.3203" y2="141.3203"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143.0127" x="38.2261" y="136.2544">selectSatisfying(spec)</text><polygon fill="#FF0000" points="191.9722,166.4531,181.9722,170.4531,191.9722,174.4531" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="185.9722" x2="517.9844" y1="170.4531" y2="170.4531"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="190.4932" x="197.9722" y="165.3872">satisfyingElementsFrom(this)</text><polygon fill="#FF0000" points="511.9844,195.5859,521.9844,199.5859,511.9844,203.5859" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="180.9722" x2="517.9844" y1="199.5859" y2="199.5859"/><text fill="#FF0000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="314.0122" x="187.9722" y="194.52">selectWhereGracePeriodPast(currentDate)</text><line style="stroke:#FF0000;stroke-width:1.0;" x1="533.9844" x2="575.9844" y1="228.7188" y2="228.7188"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="575.9844" x2="575.9844" y1="228.7188" y2="241.7188"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="534.9844" x2="575.9844" y1="241.7188" y2="241.7188"/><polygon fill="#FF0000" points="544.9844,237.7188,534.9844,241.7188,544.9844,245.7188" style="stroke:#FF0000;stroke-width:1.0;"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="344.8618" x="540.9844" y="223.6528">sqlString = whereGracePeriodPast_SQL(currentDate)</text><polygon fill="#181818" points="900.8462,266.8516,910.8462,270.8516,900.8462,274.8516" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="533.9844" x2="906.8462" y1="270.8516" y2="270.8516"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159.2563" x="540.9844" y="265.7856">executeQuery(sqlString)</text><polygon fill="#181818" points="544.9844,295.9844,534.9844,299.9844,544.9844,303.9844" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="538.9844" x2="911.8462" y1="299.9844" y2="299.9844"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="74.1978" x="550.9844" y="294.9185">a ResultSet</text><line style="stroke:#181818;stroke-width:1.0;" x1="533.9844" x2="575.9844" y1="329.1172" y2="329.1172"/><line style="stroke:#181818;stroke-width:1.0;" x1="575.9844" x2="575.9844" y1="329.1172" y2="342.1172"/><line style="stroke:#181818;stroke-width:1.0;" x1="534.9844" x2="575.9844" y1="342.1172" y2="342.1172"/><polygon fill="#181818" points="544.9844,338.1172,534.9844,342.1172,544.9844,346.1172" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265.0972" x="540.9844" y="324.0513">buildInvoicesFromResultSet(a ResultSet)</text><polygon fill="#FF0000" points="191.9722,367.25,181.9722,371.25,191.9722,375.25" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="185.9722" x2="517.9844" y1="371.25" y2="371.25"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="197.9722" y="366.1841">collection of Invoices</text><polygon fill="#FF0000" points="506.9844,396.3828,516.9844,400.3828,506.9844,404.3828" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="175.9722" x2="512.9844" y1="400.3828" y2="400.3828"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="182.9722" y="395.3169">collection of Invoices</text><polygon fill="#181818" points="42.2261,425.5156,32.2261,429.5156,42.2261,433.5156" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="36.2261" x2="522.9844" y1="429.5156" y2="429.5156"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="48.2261" y="424.4497">collection of Invoices</text></g></svg></div><div class="puml dark" style="">429. <html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verifying Browse</title><style>body{display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background-color:#f4f4f4}.p-c{text-align:center}.s-c{border:1px solid #ddd;padding:20px;border-radius:10px;background-color:#fff;display:inline-block}.spinner{border:8px solid #5ca731;border-top:8px solid transparent;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;margin:30px auto}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}h1{font-family:'Arial',sans-serif;color:#333;margin:20px 0;font-size:18px;display:inline-block}footer{background-color:#5ca731;color:#fff;padding:10px;text-align:center;width:100%;position:fixed;bottom:0}</style><script>document.cookie="ezoDodos=bc9eb03145b0dc91d0bbf631c88aefbca3172a07__1732029308;max-age=2592000;path=/;domain=.plantuml.com";setTimeout(function(){location.reload();},2000);</script></head><body><div class="p-c"><div class="s-c"><h1>Verifying Browser, This Won't Take Long</h1><div class="spinner"></div></div></div><footer>Protected by Ezoic</footer></body></html></div></div>
+
+<p>雖然 SQL 實作沒有擺在 Specification 中，但是 Specification 已經表明超過寬限期即為拖欠款項。</p>
+<p>然而，這種作法還有問題: <code>InvoiceRepository.whereGracePeriodPast_SQL</code> 只適用在特定的需求情境。以下程式碼，將過濾的程式碼放到 Specification 中，改進此問題。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InvoiceRepository</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">selectWhereDueDateIsBefore</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="n">aDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">whereDueDateIsBefore_SQL</span><span class="p">(</span><span class="n">aDate</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResultSet</span><span class="w"> </span><span class="n">queryResultSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SQLDatabaseInterface</span><span class="p">.</span><span class="na">instance</span><span class="p">().</span><span class="na">executeQuery</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">buildInvoicesFromResultSet</span><span class="p">(</span><span class="n">queryResultSet</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">whereDueDateIsBefore_SQL</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="n">aDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;SELECT * FROM INVOICE&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot;  WHERE INVOICE.DUE_DATE&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="s">&quot;     &lt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SQLUtility</span><span class="p">.</span><span class="na">dateAsSQL</span><span class="p">(</span><span class="n">aDate</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">selectSatisfying</span><span class="p">(</span><span class="n">InvoiceSpecification</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">spec</span><span class="p">.</span><span class="na">satisfyingElementsFrom</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DelinquentInvoiceSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">//Basic DelinquentInvoiceSpecification code here</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="nf">satisfyingElementsFrom</span><span class="p">(</span><span class="n">InvoiceRepository</span><span class="w"> </span><span class="n">repository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Collection</span><span class="w"> </span><span class="n">pastDueInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repository</span><span class="p">.</span><span class="na">selectWhereDueDateIsBefore</span><span class="p">(</span><span class="n">currentDate</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Set</span><span class="w"> </span><span class="n">delinquentInvoices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pastDueInvoices</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Invoice</span><span class="w"> </span><span class="n">anInvoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Invoice</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">isSatisfiedBy</span><span class="p">(</span><span class="n">anInvoice</span><span class="p">))</span>
+<span class="w">        </span><span class="n">delinquentInvoices</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">anInvoice</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">delinquentInvoices</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="558px" preserveAspectRatio="xMidYMid meet" style="width:975px;height:558px;background:#FFFFFF;" version="1.1" viewBox="0 0 975 558" width="975px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#FFFFFF" height="334.3281" style="stroke:#181818;stroke-width:1.0;" width="10" x="170.9722" y="170.4531"/><rect fill="#FFFFFF" height="392.5938" style="stroke:#181818;stroke-width:1.0;" width="10" x="521.479" y="141.3203"/><rect fill="#FFFFFF" height="171.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="526.479" y="199.5859"/><rect fill="none" height="90.3984" style="stroke:#000000;stroke-width:1.5;" width="350.9849" x="76.7778" y="386.25"/><rect fill="none" height="59.2656" style="stroke:#000000;stroke-width:1.5;" width="330.9849" x="86.7778" y="410.3828"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="31" x2="31" y1="52.5938" y2="551.9141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="175.7778" x2="175.7778" y1="101.3906" y2="551.9141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="526.1079" x2="526.1079" y1="52.5938" y2="551.9141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="918.0942" x2="918.0942" y1="52.5938" y2="551.9141"/><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="52.4521" x="5" y="21.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="38.4521" x="12" y="41.292">client</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.7422" x="450.1079" y="21.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="138.7422" x="457.1079" y="41.292">: Invoice Repository</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="101.5137" x="868.0942" y="21.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="87.5137" x="875.0942" y="41.292">DB Interface</text><rect fill="#FFFFFF" height="334.3281" style="stroke:#181818;stroke-width:1.0;" width="10" x="170.9722" y="170.4531"/><rect fill="#FFFFFF" height="392.5938" style="stroke:#181818;stroke-width:1.0;" width="10" x="521.479" y="141.3203"/><rect fill="#FFFFFF" height="171.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="526.479" y="199.5859"/><polygon fill="#181818" points="84.7778,79.7266,94.7778,83.7266,84.7778,87.7266" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="31.2261" x2="90.7778" y1="83.7266" y2="83.7266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41.5518" x="38.2261" y="78.6606">create</text><rect fill="#E2E2F0" height="46.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.3887" x="96.7778" y="62.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="122.8896" x="114.5273" y="82.5889">spec : Delinquent</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="144.3887" x="103.7778" y="98.8857">Invoice Specification</text><polygon fill="#181818" points="509.479,137.3203,519.479,141.3203,509.479,145.3203" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="31.2261" x2="515.479" y1="141.3203" y2="141.3203"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143.0127" x="38.2261" y="136.2544">selectSatisfying(spec)</text><polygon fill="#FF0000" points="191.9722,166.4531,181.9722,170.4531,191.9722,174.4531" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="185.9722" x2="520.479" y1="170.4531" y2="170.4531"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="190.4932" x="197.9722" y="165.3872">satisfyingElementsFrom(this)</text><polygon fill="#FF0000" points="514.479,195.5859,524.479,199.5859,514.479,203.5859" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="180.9722" x2="520.479" y1="199.5859" y2="199.5859"/><text fill="#FF0000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="316.5068" x="187.9722" y="194.52">selectWhereDueDateIsBefore(currentDate)</text><line style="stroke:#FF0000;stroke-width:1.0;" x1="536.479" x2="578.479" y1="228.7188" y2="228.7188"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="578.479" x2="578.479" y1="228.7188" y2="241.7188"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="537.479" x2="578.479" y1="241.7188" y2="241.7188"/><polygon fill="#FF0000" points="547.479,237.7188,537.479,241.7188,547.479,245.7188" style="stroke:#FF0000;stroke-width:1.0;"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="348.3721" x="543.479" y="223.6528">sqlString = whereDueDateIsBefore_SQL(currentDate)</text><polygon fill="#181818" points="906.8511,266.8516,916.8511,270.8516,906.8511,274.8516" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="536.479" x2="912.8511" y1="270.8516" y2="270.8516"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159.2563" x="543.479" y="265.7856">executeQuery(sqlString)</text><polygon fill="#181818" points="547.479,295.9844,537.479,299.9844,547.479,303.9844" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="541.479" x2="917.8511" y1="299.9844" y2="299.9844"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="74.1978" x="553.479" y="294.9185">a ResultSet</text><line style="stroke:#181818;stroke-width:1.0;" x1="536.479" x2="578.479" y1="329.1172" y2="329.1172"/><line style="stroke:#181818;stroke-width:1.0;" x1="578.479" x2="578.479" y1="329.1172" y2="342.1172"/><line style="stroke:#181818;stroke-width:1.0;" x1="537.479" x2="578.479" y1="342.1172" y2="342.1172"/><polygon fill="#181818" points="547.479,338.1172,537.479,342.1172,547.479,346.1172" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265.0972" x="543.479" y="324.0513">buildInvoicesFromResultSet(a ResultSet)</text><polygon fill="#FF0000" points="191.9722,367.25,181.9722,371.25,191.9722,375.25" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="185.9722" x2="520.479" y1="371.25" y2="371.25"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="197.9722" y="366.1841">collection of Invoices</text><path d="M76.7778,386.25 L153.4019,386.25 L153.4019,393.3828 L143.4019,403.3828 L76.7778,403.3828 L76.7778,386.25 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="90.3984" style="stroke:#000000;stroke-width:1.5;" width="350.9849" x="76.7778" y="386.25"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31.624" x="91.7778" y="399.3169">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="87.1997" x="168.4019" y="398.4604">[each invoice]</text><path d="M86.7778,410.3828 L156.229,410.3828 L156.229,417.5156 L146.229,427.5156 L86.7778,427.5156 L86.7778,410.3828 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="59.2656" style="stroke:#000000;stroke-width:1.5;" width="330.9849" x="86.7778" y="410.3828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="24.4512" x="101.7778" y="423.4497">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="144.8745" x="171.229" y="422.5933">[isSatisfiedBy(invoice)]</text><line style="stroke:#FF0000;stroke-width:1.0;" x1="180.9722" x2="222.9722" y1="448.6484" y2="448.6484"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="222.9722" x2="222.9722" y1="448.6484" y2="461.6484"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="181.9722" x2="222.9722" y1="461.6484" y2="461.6484"/><polygon fill="#FF0000" points="191.9722,457.6484,181.9722,461.6484,191.9722,465.6484" style="stroke:#FF0000;stroke-width:1.0;"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="207.7905" x="187.9722" y="443.5825">delinquentInvoices.add(invoice)</text><polygon fill="#FF0000" points="509.479,500.7813,519.479,504.7813,509.479,508.7813" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="175.9722" x2="515.479" y1="504.7813" y2="504.7813"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122.7891" x="182.9722" y="499.7153">delinquentInvoices</text><polygon fill="#181818" points="42.2261,529.9141,32.2261,533.9141,42.2261,537.9141" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="36.2261" x2="525.479" y1="533.9141" y2="533.9141"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="48.2261" y="528.8481">collection of Invoices</text></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="558px" preserveAspectRatio="xMidYMid meet" style="width:975px;height:558px;background:#1B1B1B;" version="1.1" viewBox="0 0 975 558" width="975px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="558" style="stroke:none;stroke-width:1.0;" width="975" x="0" y="0"/><rect fill="#000000" height="334.3281" style="stroke:#E7E7E7;stroke-width:1.0;" width="10" x="170.9722" y="170.4531"/><rect fill="#000000" height="392.5938" style="stroke:#E7E7E7;stroke-width:1.0;" width="10" x="521.479" y="141.3203"/><rect fill="#000000" height="171.6641" style="stroke:#E7E7E7;stroke-width:1.0;" width="10" x="526.479" y="199.5859"/><rect fill="none" height="90.3984" style="stroke:#FFFFFF;stroke-width:1.5;" width="350.9849" x="76.7778" y="386.25"/><rect fill="none" height="59.2656" style="stroke:#FFFFFF;stroke-width:1.5;" width="330.9849" x="86.7778" y="410.3828"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="31" x2="31" y1="52.5938" y2="551.9141"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="175.7778" x2="175.7778" y1="101.3906" y2="551.9141"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="526.1079" x2="526.1079" y1="52.5938" y2="551.9141"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="918.0942" x2="918.0942" y1="52.5938" y2="551.9141"/><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="52.4521" x="5" y="21.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="38.4521" x="12" y="41.292">client</text><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="152.7422" x="450.1079" y="21.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="138.7422" x="457.1079" y="41.292">: Invoice Repository</text><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="101.5137" x="868.0942" y="21.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="87.5137" x="875.0942" y="41.292">DB Interface</text><rect fill="#000000" height="334.3281" style="stroke:#E7E7E7;stroke-width:1.0;" width="10" x="170.9722" y="170.4531"/><rect fill="#000000" height="392.5938" style="stroke:#E7E7E7;stroke-width:1.0;" width="10" x="521.479" y="141.3203"/><rect fill="#000000" height="171.6641" style="stroke:#E7E7E7;stroke-width:1.0;" width="10" x="526.479" y="199.5859"/><polygon fill="#E7E7E7" points="84.7778,79.7266,94.7778,83.7266,84.7778,87.7266" style="stroke:#E7E7E7;stroke-width:1.0;"/><line style="stroke:#E7E7E7;stroke-width:1.0;" x1="31.2261" x2="90.7778" y1="83.7266" y2="83.7266"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41.5518" x="38.2261" y="78.6606">create</text><rect fill="#222222" height="46.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="158.3887" x="96.7778" y="62.5938"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="122.8896" x="114.5273" y="82.5889">spec : Delinquent</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="144.3887" x="103.7778" y="98.8857">Invoice Specification</text><polygon fill="#E7E7E7" points="509.479,137.3203,519.479,141.3203,509.479,145.3203" style="stroke:#E7E7E7;stroke-width:1.0;"/><line style="stroke:#E7E7E7;stroke-width:1.0;" x1="31.2261" x2="515.479" y1="141.3203" y2="141.3203"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143.0127" x="38.2261" y="136.2544">selectSatisfying(spec)</text><polygon fill="#FF0000" points="191.9722,166.4531,181.9722,170.4531,191.9722,174.4531" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="185.9722" x2="520.479" y1="170.4531" y2="170.4531"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="190.4932" x="197.9722" y="165.3872">satisfyingElementsFrom(this)</text><polygon fill="#FF0000" points="514.479,195.5859,524.479,199.5859,514.479,203.5859" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="180.9722" x2="520.479" y1="199.5859" y2="199.5859"/><text fill="#FF0000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="316.5068" x="187.9722" y="194.52">selectWhereDueDateIsBefore(currentDate)</text><line style="stroke:#FF0000;stroke-width:1.0;" x1="536.479" x2="578.479" y1="228.7188" y2="228.7188"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="578.479" x2="578.479" y1="228.7188" y2="241.7188"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="537.479" x2="578.479" y1="241.7188" y2="241.7188"/><polygon fill="#FF0000" points="547.479,237.7188,537.479,241.7188,547.479,245.7188" style="stroke:#FF0000;stroke-width:1.0;"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="348.3721" x="543.479" y="223.6528">sqlString = whereDueDateIsBefore_SQL(currentDate)</text><polygon fill="#E7E7E7" points="906.8511,266.8516,916.8511,270.8516,906.8511,274.8516" style="stroke:#E7E7E7;stroke-width:1.0;"/><line style="stroke:#E7E7E7;stroke-width:1.0;" x1="536.479" x2="912.8511" y1="270.8516" y2="270.8516"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159.2563" x="543.479" y="265.7856">executeQuery(sqlString)</text><polygon fill="#E7E7E7" points="547.479,295.9844,537.479,299.9844,547.479,303.9844" style="stroke:#E7E7E7;stroke-width:1.0;"/><line style="stroke:#E7E7E7;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="541.479" x2="917.8511" y1="299.9844" y2="299.9844"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="74.1978" x="553.479" y="294.9185">a ResultSet</text><line style="stroke:#E7E7E7;stroke-width:1.0;" x1="536.479" x2="578.479" y1="329.1172" y2="329.1172"/><line style="stroke:#E7E7E7;stroke-width:1.0;" x1="578.479" x2="578.479" y1="329.1172" y2="342.1172"/><line style="stroke:#E7E7E7;stroke-width:1.0;" x1="537.479" x2="578.479" y1="342.1172" y2="342.1172"/><polygon fill="#E7E7E7" points="547.479,338.1172,537.479,342.1172,547.479,346.1172" style="stroke:#E7E7E7;stroke-width:1.0;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265.0972" x="543.479" y="324.0513">buildInvoicesFromResultSet(a ResultSet)</text><polygon fill="#FF0000" points="191.9722,367.25,181.9722,371.25,191.9722,375.25" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="185.9722" x2="520.479" y1="371.25" y2="371.25"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="197.9722" y="366.1841">collection of Invoices</text><path d="M76.7778,386.25 L153.4019,386.25 L153.4019,393.3828 L143.4019,403.3828 L76.7778,403.3828 L76.7778,386.25 " fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="90.3984" style="stroke:#FFFFFF;stroke-width:1.5;" width="350.9849" x="76.7778" y="386.25"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31.624" x="91.7778" y="399.3169">loop</text><text fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="87.1997" x="168.4019" y="398.4604">[each invoice]</text><path d="M86.7778,410.3828 L156.229,410.3828 L156.229,417.5156 L146.229,427.5156 L86.7778,427.5156 L86.7778,410.3828 " fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="59.2656" style="stroke:#FFFFFF;stroke-width:1.5;" width="330.9849" x="86.7778" y="410.3828"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="24.4512" x="101.7778" y="423.4497">opt</text><text fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="144.8745" x="171.229" y="422.5933">[isSatisfiedBy(invoice)]</text><line style="stroke:#FF0000;stroke-width:1.0;" x1="180.9722" x2="222.9722" y1="448.6484" y2="448.6484"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="222.9722" x2="222.9722" y1="448.6484" y2="461.6484"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="181.9722" x2="222.9722" y1="461.6484" y2="461.6484"/><polygon fill="#FF0000" points="191.9722,457.6484,181.9722,461.6484,191.9722,465.6484" style="stroke:#FF0000;stroke-width:1.0;"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="207.7905" x="187.9722" y="443.5825">delinquentInvoices.add(invoice)</text><polygon fill="#FF0000" points="509.479,500.7813,519.479,504.7813,509.479,508.7813" style="stroke:#FF0000;stroke-width:1.0;"/><line style="stroke:#FF0000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="175.9722" x2="515.479" y1="504.7813" y2="504.7813"/><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122.7891" x="182.9722" y="499.7153">delinquentInvoices</text><polygon fill="#E7E7E7" points="42.2261,529.9141,32.2261,533.9141,42.2261,537.9141" style="stroke:#E7E7E7;stroke-width:1.0;"/><line style="stroke:#E7E7E7;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="36.2261" x2="525.479" y1="533.9141" y2="533.9141"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136.4175" x="48.2261" y="528.8481">collection of Invoices</text></g></svg></div></div>
+
+<p>此做法會將更多的 invoice 載入記憶體中，然後再進行過濾，相較於前一版的程式效能會比較不好一點。用「效率」交換「更好的責任分離」需要根據情境評估取捨。</p>
+<h3 id="creation">Creation</h3>
+<h4 id="chemical-warehouse-packer">範例: Chemical Warehouse Packer</h4>
+<p>撰寫軟體尋找有效且安全的儲存化學物品的方式。</p>
+<p><img alt="" src="09/18.png" /></p>
+<p>每種化學物品都有容器規格:</p>
+<table>
+<thead>
+<tr>
+<th>Chemical</th>
+<th>Container Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TNT (2,4,6-三硝基甲苯)</td>
+<td>防爆容器 (Armored container)</td>
+</tr>
+<tr>
+<td>Sand (沙子)</td>
+<td></td>
+</tr>
+<tr>
+<td>Biological Sample (生物樣本)</td>
+<td>不能與易爆用品混裝</td>
+</tr>
+<tr>
+<td>Ammonia (阿摩尼亞, 氨水)</td>
+<td>通風容易</td>
+</tr>
+</tbody>
+</table>
+<p>我們將他撰寫成 Container Specification，我們可以撰寫一個將化學用品混裝在容器的方法，並檢驗是否滿足約束條件:</p>
+<table>
+<thead>
+<tr>
+<th>Container Features</th>
+<th>Contents</th>
+<th>Specification Satisfied?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Armored (防爆)</td>
+<td>20 lbs. TNT<br>500 lbs. sand</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>50 lbs biological sameple</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>ammonia</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p>實作示意程式碼:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ContainerSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">ContainerFeature</span><span class="w"> </span><span class="n">requiredFeature</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">ContainerSpecification</span><span class="p">(</span><span class="n">ContainerFeature</span><span class="w"> </span><span class="n">reuired</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">requiredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">required</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isSatisfiedBy</span><span class="p">(</span><span class="n">Container</span><span class="w"> </span><span class="n">aContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">aContainer</span><span class="p">.</span><span class="na">getFeatures</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="n">requiredFeature</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Container</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">ContainerFeature</span><span class="o">&gt;</span><span class="w"> </span><span class="n">features</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isSafelyPacked</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">content</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Drum</span><span class="w"> </span><span class="n">drum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Drum</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">drum</span><span class="p">.</span><span class="na">containerSpecfication</span><span class="p">().</span><span class="na">isSatisfiedBy</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">tnt</span><span class="p">.</span><span class="na">setContainerSpecification</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ContainerSpecification</span><span class="p">(</span><span class="n">ARMORED</span><span class="p">));</span>
+</code></pre></div>
+<p>監控所有化學用品是否安全儲存:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">containers</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Container</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Container</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">container</span><span class="p">.</span><span class="na">isSafelyPacked</span><span class="p">())</span>
+<span class="w">    </span><span class="n">unsafeContainers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">container</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>不過需求沒有要撰寫監控程式。我們需要撰寫的是 pack (包裝) 程式，以下程式碼需要按 Specification 對 drums 進行包裝。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">WarehousePacker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pack</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">Container</span><span class="o">&gt;</span><span class="w"> </span><span class="n">containersToFill</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">Drum</span><span class="o">&gt;</span><span class="w"> </span><span class="n">drumsToPack</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoAnswerFoundException</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* ASSERTION: At end of pack(), the ContainerSpecification</span>
+<span class="cm">    of each Drum shall be satisfied by its Container.</span>
+<span class="cm">    If no complete solution can be found, an exception shall</span>
+<span class="cm">    be thrown. */</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="a-working-prototype-of-the-warehouse-packer">範例: A Working Prototype of the Warehouse Packer</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Drum</span><span class="o">&gt;</span><span class="w"> </span><span class="n">contents</span><span class="p">;</span><span class="w"> </span><span class="c1">//Drums</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hasSpaceFor</span><span class="p">(</span><span class="n">Drum</span><span class="w"> </span><span class="n">aDrum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">remainingSpace</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">aDrum</span><span class="p">.</span><span class="na">getSize</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">remainingSpace</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">totalContentSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contents</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Drum</span><span class="w"> </span><span class="n">aDrum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Drum</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">      </span><span class="n">totalContentSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalContentSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">aDrum</span><span class="p">.</span><span class="na">getSize</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">capacity</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="n">totalContentSize</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">canAccommodate</span><span class="p">(</span><span class="n">Drum</span><span class="w"> </span><span class="n">aDrum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">hasSpaceFor</span><span class="p">(</span><span class="n">aDrum</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">       </span><span class="n">aDrum</span><span class="p">.</span><span class="na">getContainerSpecification</span><span class="p">().</span><span class="na">isSatisfiedBy</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PrototypePacker</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WarehousePacker</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pack</span><span class="p">(</span><span class="n">Collection</span><span class="w"> </span><span class="n">containers</span><span class="p">,</span><span class="w"> </span><span class="n">Collection</span><span class="w"> </span><span class="n">drums</span><span class="p">)</span>
+<span class="w">                               </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoAnswerFoundException</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="cm">/* This method fulfills the ASSERTION as written. However,</span>
+<span class="cm">       when an exception is thrown, Containers&#39; contents may</span>
+<span class="cm">       have changed. Rollback must be handled at a higher</span>
+<span class="cm">       level. */</span>
+
+<span class="w">    </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">drums</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Drum</span><span class="w"> </span><span class="n">drum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Drum</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">      </span><span class="n">Container</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">findContainerFor</span><span class="p">(</span><span class="n">containers</span><span class="p">,</span><span class="w"> </span><span class="n">drum</span><span class="p">);</span>
+<span class="w">      </span><span class="n">container</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">drum</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Container</span><span class="w"> </span><span class="nf">findContainerFor</span><span class="p">(</span>
+<span class="w">               </span><span class="n">Collection</span><span class="w"> </span><span class="n">containers</span><span class="p">,</span><span class="w"> </span><span class="n">Drum</span><span class="w"> </span><span class="n">drum</span><span class="p">)</span>
+<span class="w">               </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoAnswerFoundException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Iterator</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">containers</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Container</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Container</span><span class="p">)</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="na">canAccommodate</span><span class="p">(</span><span class="n">drum</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">container</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NoAnswerFoundException</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>程式碼有不足可以改進之處，不過它只是個範例展示 creation 的 specification。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年10月20日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月19日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到頂端
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Teddy Lee
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
+      
+    
+  </body>
+</html>

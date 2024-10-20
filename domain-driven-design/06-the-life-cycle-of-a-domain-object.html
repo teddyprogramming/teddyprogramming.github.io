@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -24,7 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -43,6 +46,8 @@
       
     
     
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -53,7 +58,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -104,6 +116,18 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -701,6 +725,48 @@
   
   <span class="md-ellipsis">
     8 Breakthrough
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-making-implicit-concepts-explicit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 Making Implicit Concepts Explicit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-supple-design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Supple Design
   </span>
   
 
@@ -1674,7 +1740,7 @@
 <p>假定資料庫儲存了一筆 Purchase Order 的情況。</p>
 <p><img alt="" src="06/05.png" /></p>
 <p>Object diagram</p>
-<div class="puml"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="267px" preserveAspectRatio="true" style="background: #ffffff" version="1.1" viewBox="0 0 513 267" width="513px" zoomAndPan="magnify"><defs/><g><g id="elem_po"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="198.5771" x="158.16" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184.5771" x="165.16" y="21.9951">0012946 : Purchase Order</text><line style="stroke:#181818;stroke-width:0.5;" x1="159.16" x2="355.7371" y1="27.2969" y2="27.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.9648" x="164.16" y="44.292">approved limit = 1000</text></g><g id="elem_g"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="106.6133" x="70.14" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92.6133" x="77.14" y="231.1851">Guitars : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="71.14" x2="175.7533" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="76.14" y="253.482">price = 100</text></g><g id="elem_t"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="134.627" x="324.13" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.627" x="331.13" y="231.1851">Trombones : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="325.13" x2="457.757" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="330.13" y="253.482">price = 200</text></g><g id="elem_i1"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="7" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="14" y="126.5851">001 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="238.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="13" y="148.882">quantity = 3</text></g><g id="elem_i2"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="275" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="282" y="126.5851">002 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="276" x2="506.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="281" y="148.882">quantity = 2</text></g><g id="link_po_i1"><path codeLine="21" d="M229.03,52.05 C206.29,69.46 179.3143,90.1129 156.5843,107.5129 " fill="none" id="po-to-i1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="151.82,111.16,161.3979,108.8655,155.7903,108.1207,156.535,102.5131,151.82,111.16" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_po_i2"><path codeLine="22" d="M285.86,52.05 C308.6,69.46 335.5757,90.1129 358.3057,107.5129 " fill="none" id="po-to-i2" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="363.07,111.16,358.355,102.5131,359.0997,108.1207,353.4921,108.8655,363.07,111.16" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_i1_g"><path codeLine="23" d="M123.45,156.65 C123.45,174.06 123.45,198.35 123.45,215.76 " fill="none" id="i1-g" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_i2_t"><path codeLine="24" d="M391.45,156.65 C391.45,174.06 391.45,198.35 391.45,215.76 " fill="none" id="i2-t" style="stroke:#181818;stroke-width:1.0;"/></g></g></svg></div>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="267px" preserveAspectRatio="xMidYMid meet" style="width:513px;height:267px;background:#FFFFFF;" version="1.1" viewBox="0 0 513 267" width="513px" zoomAndPan="magnify" class="diagram"><defs/><g><g id="elem_po"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="198.5771" x="158.16" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184.5771" x="165.16" y="21.9951">0012946 : Purchase Order</text><line style="stroke:#181818;stroke-width:0.5;" x1="159.16" x2="355.7371" y1="27.2969" y2="27.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.9648" x="164.16" y="44.292">approved limit = 1000</text></g><g id="elem_g"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="106.6133" x="70.14" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92.6133" x="77.14" y="231.1851">Guitars : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="71.14" x2="175.7533" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="76.14" y="253.482">price = 100</text></g><g id="elem_t"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="134.627" x="324.13" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.627" x="331.13" y="231.1851">Trombones : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="325.13" x2="457.757" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="330.13" y="253.482">price = 200</text></g><g id="elem_i1"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="7" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="14" y="126.5851">001 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="238.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="13" y="148.882">quantity = 3</text></g><g id="elem_i2"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="275" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="282" y="126.5851">002 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="276" x2="506.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="281" y="148.882">quantity = 2</text></g><g id="link_po_i1"><path codeLine="22" d="M229.03,52.05 C206.29,69.46 179.3143,90.1129 156.5843,107.5129 " fill="none" id="po-to-i1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="151.82,111.16,161.3979,108.8655,155.7903,108.1207,156.535,102.5131,151.82,111.16" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_po_i2"><path codeLine="23" d="M285.86,52.05 C308.6,69.46 335.5757,90.1129 358.3057,107.5129 " fill="none" id="po-to-i2" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="363.07,111.16,358.355,102.5131,359.0997,108.1207,353.4921,108.8655,363.07,111.16" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_i1_g"><path codeLine="24" d="M123.45,156.65 C123.45,174.06 123.45,198.35 123.45,215.76 " fill="none" id="i1-g" style="stroke:#181818;stroke-width:1.0;"/></g><g id="link_i2_t"><path codeLine="25" d="M391.45,156.65 C391.45,174.06 391.45,198.35 391.45,215.76 " fill="none" id="i2-t" style="stroke:#181818;stroke-width:1.0;"/></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="267px" preserveAspectRatio="xMidYMid meet" style="width:513px;height:267px;background:#1B1B1B;" version="1.1" viewBox="0 0 513 267" width="513px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="267" style="stroke:none;stroke-width:1.0;" width="513" x="0" y="0"/><g id="elem_po"><rect fill="#313139" height="44.5938" style="stroke:#E7E7E7;stroke-width:0.5;" width="198.5771" x="158.16" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184.5771" x="165.16" y="21.9951">0012946 : Purchase Order</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="159.16" x2="355.7371" y1="27.2969" y2="27.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.9648" x="164.16" y="44.292">approved limit = 1000</text></g><g id="elem_g"><rect fill="#313139" height="44.5938" style="stroke:#E7E7E7;stroke-width:0.5;" width="106.6133" x="70.14" y="216.19"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92.6133" x="77.14" y="231.1851">Guitars : Part</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="71.14" x2="175.7533" y1="236.4869" y2="236.4869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="76.14" y="253.482">price = 100</text></g><g id="elem_t"><rect fill="#313139" height="44.5938" style="stroke:#E7E7E7;stroke-width:0.5;" width="134.627" x="324.13" y="216.19"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.627" x="331.13" y="231.1851">Trombones : Part</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="325.13" x2="457.757" y1="236.4869" y2="236.4869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="330.13" y="253.482">price = 200</text></g><g id="elem_i1"><rect fill="#313139" height="44.5938" style="stroke:#E7E7E7;stroke-width:0.5;" width="232.8936" x="7" y="111.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="14" y="126.5851">001 : Purchase Order Line Item</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="238.8936" y1="131.8869" y2="131.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="13" y="148.882">quantity = 3</text></g><g id="elem_i2"><rect fill="#313139" height="44.5938" style="stroke:#E7E7E7;stroke-width:0.5;" width="232.8936" x="275" y="111.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="282" y="126.5851">002 : Purchase Order Line Item</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="276" x2="506.8936" y1="131.8869" y2="131.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="281" y="148.882">quantity = 2</text></g><g id="link_po_i1"><path codeLine="22" d="M229.03,52.05 C206.29,69.46 179.3143,90.1129 156.5843,107.5129 " fill="none" id="po-to-i1" style="stroke:#E7E7E7;stroke-width:1.0;"/><polygon fill="#E7E7E7" points="151.82,111.16,161.3979,108.8655,155.7903,108.1207,156.535,102.5131,151.82,111.16" style="stroke:#E7E7E7;stroke-width:1.0;"/></g><g id="link_po_i2"><path codeLine="23" d="M285.86,52.05 C308.6,69.46 335.5757,90.1129 358.3057,107.5129 " fill="none" id="po-to-i2" style="stroke:#E7E7E7;stroke-width:1.0;"/><polygon fill="#E7E7E7" points="363.07,111.16,358.355,102.5131,359.0997,108.1207,353.4921,108.8655,363.07,111.16" style="stroke:#E7E7E7;stroke-width:1.0;"/></g><g id="link_i1_g"><path codeLine="24" d="M123.45,156.65 C123.45,174.06 123.45,198.35 123.45,215.76 " fill="none" id="i1-g" style="stroke:#E7E7E7;stroke-width:1.0;"/></g><g id="link_i2_t"><path codeLine="25" d="M391.45,156.65 C391.45,174.06 391.45,198.35 391.45,215.76 " fill="none" id="i2-t" style="stroke:#E7E7E7;stroke-width:1.0;"/></g></g></svg></div></div>
 
 <h4 id="_3">操作期間忽略其他資料庫變化造成的問題</h4>
 <p><img alt="" src="06/06.png" /></p>
@@ -1834,14 +1900,16 @@ Repository 負責保存物件、查詢物件、刪除物件。即使物件被保
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
       
     
   </body>

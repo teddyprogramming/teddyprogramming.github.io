@@ -9,18 +9,25 @@
       
       
       
+        <link rel="prev" href="09-making-implicit-concepts-explicit.html">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+        <link rel="next" href="../clean-architecture/34.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Teddy 的筆記本</title>
+        <title>10 Supple Design - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -39,7 +46,9 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -49,13 +58,25 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#ch-10-supple-design" class="md-skip">
+          跳轉到
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -69,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -89,12 +110,24 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              10 Supple Design
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -166,7 +199,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -219,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ide/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../ide/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -240,7 +273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ide/jet-brains/ideavim.html" class="md-nav__link">
+      <a href="../ide/jet-brains/ideavim.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -303,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -328,17 +361,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -352,7 +387,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Domain-Driven Design
@@ -366,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="01-crunching-knowledge.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -387,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -408,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -429,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+      <a href="04-isolating-the-domain.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -450,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
+      <a href="05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -471,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+      <a href="06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -492,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/07-using-the-language-an-extended-example.html" class="md-nav__link">
+      <a href="07-using-the-language-an-extended-example.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -513,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="domain-driven-design/08-breakthrough.html" class="md-nav__link">
+      <a href="08-breakthrough.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,6 +557,136 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-making-implicit-concepts-explicit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 Making Implicit Concepts Explicit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    10 Supple Design
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="10-supple-design.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    10 Supple Design
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intention-revealing-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intention-Revealing Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intention-Revealing Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#refactoring-a-paint-mixing-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: Refactoring: A Paint-Mixing (調漆) Application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-effect-free-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Side-Effect-Free Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Side-Effect-Free Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#refactoring-the-paint-mixing-application-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      範例: Refactoring the Paint-Mixing Application Again
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -576,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -709,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -730,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -751,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -772,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,7 +958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -814,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -835,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -856,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -877,7 +1042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -941,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -983,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/012.html" class="md-nav__link">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1025,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1089,7 +1254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1110,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1174,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="java/effective-java/055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1323,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1344,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1381,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1411,7 +1576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1439,10 +1604,87 @@
                   
 
 
-  <h1>Home</h1>
+<h1 id="ch-10-supple-design">Ch 10: Supple Design</h1>
+<p>一些有助於達到 supple design 的 patterns。</p>
+<p><img alt="" src="10/01.png" /></p>
+<h2 id="intention-revealing-interfaces">Intention-Revealing Interfaces</h2>
+<h3 id="refactoring-a-paint-mixing-application">範例: Refactoring: A Paint-Mixing (調漆) Application</h3>
+<p>一個油漆商店的程式，可以展示給客戶標準調漆後的結果。以下是初始設計，他有一個單一 domain  class。</p>
+<p><img alt="" src="10/02.png" /></p>
+<p>我們要知道 <code>paint(Point)</code> 做什麼的唯一方法就是去讀他實作程式碼:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="n">Paint</span><span class="w"> </span><span class="n">paint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">paint</span><span class="p">.</span><span class="na">getV</span><span class="p">();</span><span class="w"> </span><span class="c1">//After mixing, volume is summed</span>
+<span class="w">  </span><span class="c1">// Omitted many lines of complicated color mixing logic</span>
+<span class="w">  </span><span class="c1">// ending with the assignment of new r, b, and y values.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>程式碼看起來像是，兩個 <code>Paint</code> 混合後，體積 (volume) 增加了，顏色混合了。另一個角度，替這個 method 撰寫測試。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testPaint</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Create a pure yellow paint with volume=100</span>
+<span class="w">   </span><span class="n">Paint</span><span class="w"> </span><span class="n">yellow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Paint</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// Create a pure blue paint with volume=100</span>
+<span class="w">   </span><span class="n">Paint</span><span class="w"> </span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Paint</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span>
 
-<p>Teddy Lee (teddyprogramming<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 15c.81 0 1.5-.3 2.11-.89.59-.61.89-1.3.89-2.11s-.3-1.5-.89-2.11C13.5 9.3 12.81 9 12 9s-1.5.3-2.11.89C9.3 10.5 9 11.19 9 12s.3 1.5.89 2.11c.61.59 1.3.89 2.11.89m0-13c2.75 0 5.1 1 7.05 2.95S22 9.25 22 12v1.45c0 1-.35 1.85-1 2.55-.7.67-1.5 1-2.5 1-1.2 0-2.19-.5-2.94-1.5-1 1-2.18 1.5-3.56 1.5-1.37 0-2.55-.5-3.54-1.46C7.5 14.55 7 13.38 7 12c0-1.37.5-2.55 1.46-3.54C9.45 7.5 10.63 7 12 7c1.38 0 2.55.5 3.54 1.46C16.5 9.45 17 10.63 17 12v1.45c0 .41.16.77.46 1.08s.65.47 1.04.47c.42 0 .77-.16 1.07-.47s.43-.67.43-1.08V12c0-2.19-.77-4.07-2.35-5.65S14.19 4 12 4s-4.07.77-5.65 2.35S4 9.81 4 12s.77 4.07 2.35 5.65S9.81 20 12 20h5v2h-5c-2.75 0-5.1-1-7.05-2.95S2 14.75 2 12s1-5.1 2.95-7.05S9.25 2 12 2"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4h-2v4h-2V9h4V7z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7a2 2 0 0 0-2 2v8h2V9h2v7h2V9h2v8h2V9a2 2 0 0 0-2-2z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2zm0 2h2v2h-2z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 7v2h-1v6h1v2h-4v-2h1V9h-1V7z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v10h6v-2h-4V7z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" style="
-    width: inherit;"><circle r="1.5" cx="9" cy="18" fill="black" /></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1h-2v1h-2V9h2v1h2V9a2 2 0 0 0-2-2z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm0 2h2v6h-2z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7a2 2 0 0 0-2 2v8h2V9h2v7h2V9h2v8h2V9a2 2 0 0 0-2-2z"/></svg></span>)</p>
+<span class="w">   </span><span class="c1">// Mix the blue into the yellow</span>
+<span class="w">   </span><span class="n">yellow</span><span class="p">.</span><span class="na">paint</span><span class="p">(</span><span class="n">blue</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// Result should be volume of 200.0 of green paint</span>
+<span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mf">200.0</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">.</span><span class="na">getV</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.01</span><span class="p">);</span>
+<span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">.</span><span class="na">getB</span><span class="p">());</span>
+<span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span>
+<span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">.</span><span class="na">getR</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>但是，這個測試程式碼並沒有告訴我們 <code>paint</code> 做了什麼。讓我們重新編寫測試，使得他是以 client 的角度來看待。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testPaint</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Start with a pure yellow paint with volume=100</span>
+<span class="w">   </span><span class="n">Paint</span><span class="w"> </span><span class="n">ourPaint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Paint</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// Take a pure blue paint with volume=100</span>
+<span class="w">   </span><span class="n">Paint</span><span class="w"> </span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Paint</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// Mix the blue into the yellow</span>
+<span class="hll"><span class="w">   </span><span class="n">ourPaint</span><span class="p">.</span><span class="na">mixIn</span><span class="p">(</span><span class="n">blue</span><span class="p">);</span>
+</span>
+<span class="w">   </span><span class="c1">// Result should be volume of 200.0 of green paint</span>
+<span class="hll"><span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mf">200.0</span><span class="p">,</span><span class="w"> </span><span class="n">ourPaint</span><span class="p">.</span><span class="na">getVolume</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.01</span><span class="p">);</span>
+</span><span class="hll"><span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">ourPaint</span><span class="p">.</span><span class="na">getBlue</span><span class="p">());</span>
+</span><span class="hll"><span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">ourPaint</span><span class="p">.</span><span class="na">getYellow</span><span class="p">());</span>
+</span><span class="hll"><span class="w">   </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ourPaint</span><span class="p">.</span><span class="na">getRed</span><span class="p">());</span>
+</span><span class="p">}</span>
+</code></pre></div>
+<p><img alt="" src="10/03.png" /></p>
+<h2 id="side-effect-free-functions">Side-Effect-Free Functions</h2>
+<h3 id="refactoring-the-paint-mixing-application-again">範例: Refactoring the Paint-Mixing Application Again</h3>
+<p><img alt="" src="10/04.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">mixIn</span><span class="p">(</span><span class="n">Paint</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">volume</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">getVolume</span><span class="p">());</span>
+<span class="w">  </span><span class="c1">// Many lines of complicated color-mixing logic</span>
+<span class="w">  </span><span class="c1">// ending with the assignment of new red, blue,</span>
+<span class="w">  </span><span class="c1">// and yellow values.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="" src="10/05.png" /></p>
+<p>Color 是很重要的概念，把它抽出變成一個明確的物件。</p>
+<p><img alt="" src="10/06.png" /></p>
+<p>油漆的調色，與 RGB 調色是不同的，需要反映在名稱上，將其命名成 <code>Pigment Color</code> (顏料顏色)。Color 對應的操作也一併移出。<code>Pigment Color</code> 是 Value Object，是 immutable object，提供Side-Effect-Free Functions。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PigmentColor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">PigmentColor</span><span class="w"> </span><span class="nf">mixedWith</span><span class="p">(</span><span class="n">PigmentColor</span><span class="w"> </span><span class="n">other</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">double</span><span class="w"> </span><span class="n">ratio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Many lines of complicated color-mixing logic</span>
+<span class="w">    </span><span class="c1">// ending with the creation of a new PigmentColor object</span>
+<span class="w">    </span><span class="c1">// with appropriate new red, blue, and yellow values.</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Paint</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">mixIn</span><span class="p">(</span><span class="n">Paint</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">volume</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">getVolume</span><span class="p">();</span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">getVolume</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">volume</span><span class="p">;</span>
+<span class="w">     </span><span class="n">pigmentColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pigmentColor</span><span class="p">.</span><span class="na">mixedWith</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">pigmentColor</span><span class="p">(),</span><span class="w"> </span><span class="n">ratio</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="" src="10/07.png" /></p>
 
 
 
@@ -1450,6 +1692,38 @@
 
 
 
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年10月20日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年10月20日</span>
+  </span>
+
+    
+    
+    
+  </aside>
 
 
 
@@ -1494,14 +1768,16 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
     
     
-      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
       
     
   </body>
