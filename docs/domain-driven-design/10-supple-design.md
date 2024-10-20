@@ -63,3 +63,47 @@ public void testPaint() {
 ```
 
 ![](10/03.png)
+
+## Side-Effect-Free Functions
+
+### 範例: Refactoring the Paint-Mixing Application Again
+
+![](10/04.png)
+
+```java
+public void mixIn(Paint other) {
+  volume = volume.plus(other.getVolume());
+  // Many lines of complicated color-mixing logic
+  // ending with the assignment of new red, blue,
+  // and yellow values.
+}
+```
+
+![](10/05.png)
+
+這個領域中，顏色是一個很重要的概念，把它變成明確的物件。
+
+![](10/06.png)
+
+油漆的調色，與 RGB 調色是不同的，需要在名稱反映出來，故命名 `Pigment Color` (顏料顏色)。`Pigment Color` 是 Value Object，是 immutable object。
+
+```java
+public class PigmentColor {
+  public PigmentColor mixedWith(PigmentColor other,
+                                double ratio) {
+    // Many lines of complicated color-mixing logic
+    // ending with the creation of a new PigmentColor object
+    // with appropriate new red, blue, and yellow values.
+  }
+}
+
+public class Paint {
+  public void mixIn(Paint other) {
+     volume = volume + other.getVolume();
+     double ratio = other.getVolume() / volume;
+     pigmentColor = pigmentColor.mixedWith(other.pigmentColor(), ratio);
+  }
+}
+```
+
+![](10/07.png)
