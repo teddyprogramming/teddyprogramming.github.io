@@ -81,11 +81,11 @@ public void mixIn(Paint other) {
 
 ![](10/05.png)
 
-這個領域中，顏色是一個很重要的概念，把它變成明確的物件。
+Color 是很重要的概念，把它抽出變成一個明確的物件。
 
 ![](10/06.png)
 
-油漆的調色，與 RGB 調色是不同的，需要在名稱反映出來，故命名 `Pigment Color` (顏料顏色)。`Pigment Color` 是 Value Object，是 immutable object。
+油漆的調色，與 RGB 調色是不同的，需要反映在名稱上，將其命名成 `Pigment Color` (顏料顏色)。Color 對應的操作也一併移出。`Pigment Color` 是 Value Object，是 immutable object，提供Side-Effect-Free Functions。
 
 ```java
 public class PigmentColor {
