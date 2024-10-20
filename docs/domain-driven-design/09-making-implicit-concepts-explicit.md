@@ -454,3 +454,88 @@ return collection of Invoices
 ```
 
 此做法會將更多的 invoice 載入記憶體中，然後再進行過濾，相較於前一版的程式效能會比較不好一點。用「效率」交換「更好的責任分離」需要根據情境評估取捨。
+
+### Creation
+
+#### 範例: Chemical Warehouse Packer
+
+撰寫軟體尋找有效且安全的儲存化學物品的方式。
+
+![](09/18.png)
+
+每種化學物品都有容器規格:
+
+| Chemical                 | Container Specification  |
+|--------------------------|--------------------------|
+| TNT (2,4,6-三硝基甲苯)        | 防爆容器 (Armored container) |
+| Sand (沙子)                |                          |
+| Biological Sample (生物樣本) | 不能與易爆用品混裝                |
+| Ammonia (阿摩尼亞, 氨水)       | 通風容易                     |
+
+我們將他撰寫成 Container Specification，我們可以撰寫一個將化學用品混裝在容器的方法，並檢驗是否滿足約束條件:
+
+| Container Features | Contents                     | Specification Satisfied? |
+|--------------------|------------------------------|--------------------------|
+| Armored (防爆)       | 20 lbs. TNT<br>500 lbs. sand | ✓                        |
+|                    | 50 lbs biological sameple    | ✓                        |
+|                    | ammonia                      | ✗                        |
+
+實作示意程式碼:
+
+```java
+public class ContainerSpecification {
+  private ContainerFeature requiredFeature;
+
+  public ContainerSpecification(ContainerFeature reuired) {
+    requiredFeature = required;
+  }
+
+  boolean isSatisfiedBy(Container aContainer) {
+    return aContainer.getFeatures().contains(requiredFeature);
+  }
+}
+
+public class Container {
+
+  private Collection<ContainerFeature> features;
+
+  boolean isSafelyPacked() {
+    Iterator it = content.iterator();
+    while (it.hasNext()) {
+      Drum drum = (Drum) it.next();
+      if (!drum.containerSpecfication().isSatisfiedBy(this))
+        return false;
+    }
+    return true;
+  }
+}
+
+tnt.setContainerSpecification(new ContainerSpecification(ARMORED));
+```
+
+監控所有化學用品是否安全儲存:
+
+```java
+Iterator it = containers.iterator();
+while (it.hasNext()) {
+  Container container = (Container) it.next();
+  if (!container.isSafelyPacked())
+    unsafeContainers.add(container);
+}
+```
+
+不過需求沒有要撰寫監控程式。我們需要撰寫的是 pack (包裝) 程式，以下程式碼需要按 Specification 對 drums 進行包裝。
+
+```java
+public interface WarehousePacker {
+  public void pack(
+    Collection<Container> containersToFill,
+    Collection<Drum> drumsToPack
+  ) throws NoAnswerFoundException;
+
+    /* ASSERTION: At end of pack(), the ContainerSpecification
+    of each Drum shall be satisfied by its Container.
+    If no complete solution can be found, an exception shall
+    be thrown. */
+}
+```
