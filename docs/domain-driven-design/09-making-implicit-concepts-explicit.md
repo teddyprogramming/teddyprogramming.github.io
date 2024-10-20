@@ -539,3 +539,64 @@ public interface WarehousePacker {
     be thrown. */
 }
 ```
+
+#### 範例: A Working Prototype of the Warehouse Packer
+
+```java
+public class Container {
+  private double capacity;
+  private Set<Drum> contents; //Drums
+
+  public boolean hasSpaceFor(Drum aDrum) {
+    return remainingSpace() >= aDrum.getSize();
+  }
+
+  public double remainingSpace() {
+    double totalContentSize = 0.0;
+    Iterator it = contents.iterator();
+    while (it.hasNext()) {
+      Drum aDrum = (Drum) it.next();
+      totalContentSize = totalContentSize + aDrum.getSize();
+    }
+    return capacity – totalContentSize;
+  }
+
+  public boolean canAccommodate(Drum aDrum) {
+     return hasSpaceFor(aDrum) &&
+       aDrum.getContainerSpecification().isSatisfiedBy(this);
+  }
+}
+
+public class PrototypePacker implements WarehousePacker {
+
+  public void pack(Collection containers, Collection drums)
+                               throws NoAnswerFoundException {
+
+    /* This method fulfills the ASSERTION as written. However,
+       when an exception is thrown, Containers' contents may
+       have changed. Rollback must be handled at a higher
+       level. */
+
+    Iterator it = drums.iterator();
+    while (it.hasNext()) {
+      Drum drum = (Drum) it.next();
+      Container container =
+        findContainerFor(containers, drum);
+      container.add(drum);
+    }
+  }
+  public Container findContainerFor(
+               Collection containers, Drum drum)
+               throws NoAnswerFoundException {
+    Iterator it = containers.iterator();
+    while (it.hasNext()) {
+      Container container = (Container) it.next();
+      if (container.canAccommodate(drum))
+        return container;
+    }
+    throw new NoAnswerFoundException();
+  }
+}
+```
+
+程式碼有不足可以改進之處，不過它只是個範例展示 creation 的 specification。
