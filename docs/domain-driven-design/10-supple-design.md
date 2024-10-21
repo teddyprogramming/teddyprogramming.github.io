@@ -107,3 +107,36 @@ public class Paint {
 ```
 
 ![](10/07.png)
+
+## Assertions
+
+### 範例: Back to Paint Mixing
+
+![](10/08.png)
+
+在前面的範例中，`p1.maxIn(p2)` 操作後，`p2` 的狀態變化並沒有說明。對於現實的理解，混合動作應當是一個油漆(`p2`)加到另一個油漆(`p1`)中。因此，`p1` 的體積應加上 `p2` 的體積，並且 `p2` 的體積應歸零。但是目前實作是，`p1` 的體積會加上 `p2` 的體積，而 `p2` 的體積保持不變。然而，修改參數的作法會有副作用 (side-effect)，會增加程式不好的風險。
+
+雖然修改參數(`p2`)的作法會有副作用，不好，但是卻是符合直覺。我們可以宣告一個固定規則(invariant) [^1]:
+
+    Total volume of paint is unchanged by mixing.
+
+[^1]: 第六章提到，invariant 是在 Aggregate 內部物件必須遵守的規則。
+
+經過調查，原本那個實作，是為了印出油漆調色前與調色後的清單，這樣可以幫助使用者知道顏色是怎麼混合出來的。因此，要滿足混合後總體積不變的規則，就無法滿足應用的需求。例子中，尷尬的狀況源於概念遺失(missing concepts)，需要新的模型來表達。
+
+![](10/09.png)
+
+```java
+public void testMixingVolume {
+  PigmentColor yellow = new PigmentColor(0, 50, 0);
+  PigmentColor blue = new PigmentColor(0, 0, 50);
+
+  StockPaint paint1 = new StockPaint(1.0, yellow);
+  StockPaint paint2 = new StockPaint(1.5, blue);
+  MixedPaint mix = new MixedPaint();
+
+  mix.mixIn(paint1);
+  mix.mixIn(paint2);
+  assertEquals(2.5, mix.getVolume(), 0.01);
+}
+```
