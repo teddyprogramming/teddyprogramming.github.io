@@ -38,6 +38,7 @@ nav:
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
   - Problem Frames:
+      - 06 Frame Flavours and Development Descriptions: problem-frames/06-frame-flavours-and-development-descriptions.md
       - 09 Particular Concerns: problem-frames/09-particular-concerns.md
   - Java:
       - Effective Java, 3rd:
