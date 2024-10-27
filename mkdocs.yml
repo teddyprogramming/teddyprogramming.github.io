@@ -37,6 +37,8 @@ nav:
       - 10 Supple Design: domain-driven-design/10-supple-design.md
   - Clean Architecture:
       - 34 The Missing Chapter: clean-architecture/34.md
+  - Problem Frames:
+      - 09 Particular Concerns: problem-frames/09-particular-concerns.md
   - Java:
       - Effective Java, 3rd:
           - Creating And Destroying Objects:
