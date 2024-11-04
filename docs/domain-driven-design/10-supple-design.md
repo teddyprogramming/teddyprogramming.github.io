@@ -140,3 +140,17 @@ public void testMixingVolume {
   assertEquals(2.5, mix.getVolume(), 0.01);
 }
 ```
+
+## Conceptual Contour (概念輪廓)
+
+### 範例: The contours of accruals
+
+![](10/10.png)
+
+![](10/11.png)
+
+![](10/12.png)
+
+## Standalone classes
+
+消除依賴，減少理解物件需要花費的力氣。
