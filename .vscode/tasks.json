@@ -7,6 +7,11 @@
             "label": "mkdocs serve",
             "type": "shell",
             "command": "./.venv/bin/python -m mkdocs serve -a localhost:8880"
+        },
+        {
+            "label": "git push",
+            "type": "shell",
+            "command": "git push"
         }
     ]
 }
