@@ -19,9 +19,12 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
-  - IDE:
+  - Tools:
       - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
-      - IdeaVim: ide/jet-brains/ideavim.md
+      - Vim:
+        - zsh: vim/zsh.md
+        - VSCode: vim/vscode.md
+        - IdeaVim: vim/ideavim.md
   - Kubernetes:
       - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Domain-Driven Design:
