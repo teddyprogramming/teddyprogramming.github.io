@@ -26,6 +26,7 @@ nav:
         - VSCode: vim/vscode.md
         - IdeaVim: vim/ideavim.md
   - Kubernetes:
+      - Apply: kubernetes/apply.md
       - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Domain-Driven Design:
       - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
