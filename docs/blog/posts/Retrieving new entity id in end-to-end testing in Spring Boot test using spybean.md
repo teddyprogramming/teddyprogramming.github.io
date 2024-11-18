@@ -16,12 +16,12 @@ public class IntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
+
     @Test
     public void test() throws Exception {
         mockMvc.perform(post("/data").content("Hello world!")) // (1)!
                .andExpect(status().isOk());
-        
+
         // 透過另外一個 API 撈資料，確認
     }
 }
@@ -40,15 +40,15 @@ public class IntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
+
     @SpyBean // (1)!
     private DataRepository dataRepository;
-    
+
     @Test
     public void test() throws Exception {
         mockMvc.perform(post("/data").content("Hello world!"))
                .andExpect(status().isOk());
-        
+
         ArgumentCaptor<Data> dataCaptor = ArgumentCaptor.forClass(Data.class);
         verify(dataRepository).save(dataCaptor.capture()); // (2)!
         Integer caseId = savedEntity.getValue().getId(); // (3)!
