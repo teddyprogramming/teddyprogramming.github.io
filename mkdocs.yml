@@ -15,6 +15,7 @@ theme:
     - toc.integrate
     - navigation.top
     - content.footnote.tooltips
+    - content.tooltips
 
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
@@ -73,6 +74,7 @@ nav:
             #       - Job vs Bean Job
             # TODO: tes
       - Testing: spring-boot/testing/index.md
+  - Feature Toggles: feature-toggles/main.md
   - Blog: blog/index.md
 
 markdown_extensions:
@@ -97,6 +99,11 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - footnotes
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - abbr
 
 plugins:
   - search
@@ -118,5 +125,7 @@ extra:
   generator: false
 
 extra_javascript:
-  - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - css/style.css
