@@ -2128,34 +2128,37 @@
 <li>long-live toggle</li>
 </ul>
 </div>
-<p>```javascript title="Version 4 (Strategy)<br />
-const features = fetchFeatureTogglesFromSomewhere();<br />
-const featureDecisions = createFeatureDecisions(features);<br />
-const factory = createFeatureAwareFactoryBasedOn(featureDecisions)<br />
-const emailler = factory.invoiceEmailler()</p>
-<p>function createInvoiceEmailler(additionalContentEnhancer) {<br />
-    return {<br />
-        generateInvoiceEmail() {<br />
-            const baseEmail = buildEmailForInvoice(this.invoice);<br />
-            return additionalContentEnhancer(baseEmail);<br />
-        },<br />
-        // ... other invoice emailer methods ...<br />
-    };</p>
-<p>}</p>
-<p>function identityFn(x) { return x; }</p>
-<p>function createFeatureAwareFactoryBasedOn(featureDecisions) {<br />
-    return {<br />
-        invoiceEmailler() {<br />
-            if (featureDecisions.includeOrderCancellationInEmail()) {<br />
-                return createInvoiceEmailler(addOrderCancellationContentToEmail);<br />
-            } else {<br />
-                return createInvoiceEmailler(identityFn);<br />
-            }<br />
-        },<br />
-        // ... other factory methods ...<br />
-    };<br />
-}<br />
-```</p>
+<div class="highlight"><span class="filename">Version 4 (Strategy)</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fetchFeatureTogglesFromSomewhere</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">featureDecisions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createFeatureDecisions</span><span class="p">(</span><span class="nx">features</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createFeatureAwareFactoryBasedOn</span><span class="p">(</span><span class="nx">featureDecisions</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">emailler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">factory</span><span class="p">.</span><span class="nx">invoiceEmailler</span><span class="p">()</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">createInvoiceEmailler</span><span class="p">(</span><span class="nx">additionalContentEnhancer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">generateInvoiceEmail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">buildEmailForInvoice</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">invoice</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">additionalContentEnhancer</span><span class="p">(</span><span class="nx">baseEmail</span><span class="p">);</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// ... other invoice emailer methods ...</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">identityFn</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">createFeatureAwareFactoryBasedOn</span><span class="p">(</span><span class="nx">featureDecisions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">invoiceEmailler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">featureDecisions</span><span class="p">.</span><span class="nx">includeOrderCancellationInEmail</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">createInvoiceEmailler</span><span class="p">(</span><span class="nx">addOrderCancellationContentToEmail</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">createInvoiceEmailler</span><span class="p">(</span><span class="nx">identityFn</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// ... other factory methods ...</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="_3">參考</h2>
 <ul>
 <li><a href="https://martinfowler.com/articles/feature-toggles.html">Feature Toggles (aka Feature Flags)</a></li>
@@ -2182,7 +2185,7 @@ const emailler = factory.invoiceEmailler()</p>
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月27日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月28日</span>
   </span>
 
     
