@@ -343,7 +343,7 @@ describe( 'invoice emailling', function() {
     - toggle 數量很多 或
     - long-live toggle
 
-```javascript title="Version 4 (Strategy)
+```javascript title="Version 4 (Strategy)"
 const features = fetchFeatureTogglesFromSomewhere();
 const featureDecisions = createFeatureDecisions(features);
 const factory = createFeatureAwareFactoryBasedOn(featureDecisions)
