@@ -26,6 +26,7 @@ nav:
         - zsh: vim/zsh.md
         - VSCode: vim/vscode.md
         - IdeaVim: vim/ideavim.md
+        - 進階: vim/advanced.md
   - Kubernetes:
       - Apply: kubernetes/apply.md
       - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
