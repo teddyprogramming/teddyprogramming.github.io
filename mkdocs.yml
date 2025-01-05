@@ -66,9 +66,8 @@ nav:
               - Item 16 - In public classes, use accessor methods, not public fields: java/effective-java/016.md
           - Methods:
               - Item 55 - Return optionals judiciously: java/effective-java/055.md
-  - Spring Boot:
-      - Basic:
-        - Introduction: spring-boot/basic/introduction.md
+  - Spring:
+      - Spring Boot Basic: spring-boot/spring-boot-basic.md
       - Scheduler:
           - Quartz:
               - Hello World!: spring-boot/scheduler/hello_world.md
