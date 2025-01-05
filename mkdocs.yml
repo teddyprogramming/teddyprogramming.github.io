@@ -67,6 +67,8 @@ nav:
           - Methods:
               - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Spring Boot:
+      - Basic:
+        - Introduction: spring-boot/basic/introduction.md
       - Scheduler:
           - Quartz:
               - Hello World!: spring-boot/scheduler/hello_world.md
