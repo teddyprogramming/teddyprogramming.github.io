@@ -1,0 +1,2 @@
+- [AssertJ Postfix Completion Plugin](https://plugins.jetbrains.com/plugin/8093-assertj-postfix-completion-plugin)
+- [Custom Postfix Templates](https://plugins.jetbrains.com/plugin/9862-custom-postfix-templates)

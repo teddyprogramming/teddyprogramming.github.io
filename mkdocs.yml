@@ -20,13 +20,15 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
-  - Tools:
-      - JetBrains 快捷鍵: ide/jet-brains/shortcuts.md
+  - Development:
+      - JetBrains:
+        - 快捷鍵: development/jet-brains/shortcuts.md
+        - Postfix Completion: development/jet-brains/postfix-completion.md
       - Vim:
-        - zsh: vim/zsh.md
-        - VSCode: vim/vscode.md
-        - IdeaVim: vim/ideavim.md
-        - 進階: vim/advanced.md
+        - zsh: development/vim/zsh.md
+        - VSCode: development/vim/vscode.md
+        - IdeaVim: development/vim/ideavim.md
+        - 進階: development/vim/advanced.md
   - Kubernetes:
       - Apply: kubernetes/apply.md
       - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
@@ -68,6 +70,7 @@ nav:
               - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Spring:
       - Spring Boot Basic: spring-boot/spring-boot-basic.md
+      - 新增 Spring Boot microservices 專案: spring-boot/set-up-microservices-project.md
       - Spring Webflux: spring-boot/spring-webflux.md
       - Scheduler:
           - Quartz:
