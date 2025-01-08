@@ -68,6 +68,8 @@ nav:
               - Item 16 - In public classes, use accessor methods, not public fields: java/effective-java/016.md
           - Methods:
               - Item 55 - Return optionals judiciously: java/effective-java/055.md
+  - Python:
+    - pyenv: python/pyenv.md
   - Spring:
       - Spring Boot Basic: spring-boot/spring-boot-basic.md
       - 新增 Spring Boot microservices 專案: spring-boot/set-up-microservices-project.md
