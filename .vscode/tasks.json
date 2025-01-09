@@ -12,6 +12,11 @@
             "label": "git push",
             "type": "shell",
             "command": "git push"
+        },
+        {
+            "label": "git commit",
+            "type": "shell",
+            "command": "git commit -am 'update'"
         }
     ]
 }

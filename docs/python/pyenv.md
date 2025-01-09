@@ -42,5 +42,5 @@ $ pyenv glocal 3.11.11
 進到專案目錄
 
 ```shell
-$ pyenv local 3.11.1
+$ pyenv local 3.11.11
 ```
