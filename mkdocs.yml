@@ -7,7 +7,7 @@ theme:
   name: material
   palette:
     - scheme: slate
-  language: 'zh-TW'
+  language: "zh-TW"
   features:
     - content.code.select
     - content.code.annotate
@@ -22,13 +22,13 @@ theme:
 nav:
   - Development:
       - JetBrains:
-        - 快捷鍵: development/jet-brains/shortcuts.md
-        - Postfix Completion: development/jet-brains/postfix-completion.md
+          - 快捷鍵: development/jet-brains/shortcuts.md
+          - Postfix Completion: development/jet-brains/postfix-completion.md
       - Vim:
-        - zsh: development/vim/zsh.md
-        - VSCode: development/vim/vscode.md
-        - IdeaVim: development/vim/ideavim.md
-        - 進階: development/vim/advanced.md
+          - zsh: development/vim/zsh.md
+          - VSCode: development/vim/vscode.md
+          - IdeaVim: development/vim/ideavim.md
+          - 進階: development/vim/advanced.md
   - Kubernetes:
       - Apply: kubernetes/apply.md
       - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
@@ -69,7 +69,7 @@ nav:
           - Methods:
               - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Python:
-    - pyenv: python/pyenv.md
+      - pyenv: python/pyenv.md
   - Spring:
       - Spring Boot Basic: spring-boot/spring-boot-basic.md
       - 新增 Spring Boot microservices 專案: spring-boot/set-up-microservices-project.md
@@ -83,6 +83,8 @@ nav:
             # TODO: tes
       - Testing: spring-boot/testing/index.md
   - Feature Toggles: feature-toggles/main.md
+  - Kata:
+      - Microservices with Spring Boot 3 and Spring Cloud: kata/Microservices with Spring Boot 3 and Spring Cloud - Third Edition/index.md
   - Blog: blog/index.md
 
 markdown_extensions:
@@ -112,6 +114,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - abbr
+  - mdx_wikilink_plus:
+      end_url: .html
 
 plugins:
   - search
@@ -124,11 +128,12 @@ plugins:
   - git-revision-date-localized:
       locale: zh
       enable_creation_date: true
+      strict: false
       exclude:
         - index.md
         - blog/**/*
 
-copyright: Copyright &copy; 2024 Teddy Lee
+copyright: Copyright &copy; 2024-2025 Teddy Lee
 extra:
   generator: false
 

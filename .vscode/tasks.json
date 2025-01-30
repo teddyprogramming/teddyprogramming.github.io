@@ -6,7 +6,7 @@
         {
             "label": "mkdocs serve",
             "type": "shell",
-            "command": "./.venv/bin/python -m mkdocs serve -a localhost:8880"
+            "command": "./.venv/bin/python -m mkdocs serve -c -s -a localhost:8880"
         },
         {
             "label": "git push",
