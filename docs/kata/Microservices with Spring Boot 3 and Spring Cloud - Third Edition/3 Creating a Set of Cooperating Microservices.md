@@ -13,12 +13,18 @@ pc --> rd
 
 Ports:
 
-- Product Composite: `7000`
-- Product: `7001`
-- Recommendation: `7002`
-- Review: `7003`
+- Product Composite: `6000`
+- Product: `6001`
+- Recommendation: `6002`
+- Review: `6003`
 
-# Kata 1: Using Spring Initializr to generate skeleton code
+!!! note "書本使用 port 7000, 7001, 7002, 7003"
+
+    因為 macos 中，port 7000 被 airplay 佔用了，所以改用 `6000`, `6001`, `6002`, `6003`
+
+# 建立 microservice 專案
+
+按下面目錄結構新增 4 個 microservices 專案。
 
 ```text
 /
@@ -29,56 +35,52 @@ Ports:
 ```
 
 - 使用 Spring Initializr 建立專案
-- 專案相依: `actuator`, `webflux`
+- 專案相依 `actuator`, `webflux`
 - 使用 gradle 編譯專案
 
-    ??? tip
+    ??? tip "使用 `./gradlew build`"
 
         ```shell
         cd product-service; ./gradlew build; cd -; cd recommendation-service; ./gradlew build; cd -; cd review-service; ./gradlew build; cd -; cd product-composite service; ./gradlew build; cd -;
         ```
 
-# Kata 2: Setting up multi-project builds in Gradle
+# 單一指令編譯專案
 
 調整專案結構，使可以用單一指令 `./gradlew build` 編譯所有專案。
 
-# Kata 3: Adding RESTful APIs
+!!! note "IntelliJ 可能需要將 gradle 設定清除後重新開啟 IDE。"
 
-## Kata 3.1: Product API
+# Adding RESTful APIs
 
-將 product-service 的 port 設定成 `7001`。
+## Product API
+
+將 product-service 的 port 設定成 `6001`。
 
 ```plantuml
 hide circle
 
-package api {
-    interface ProductService {
-        getProduct(productId: Int): Product
-    }
-    note right of ProductService::getProduct
-    GET /product/{productId}
-    end note
+class ProductService {
+    getProduct(productId: Int): Product
+}
+note right of ProductService::getProduct
+GET /product/{productId}
+end note
 
-    class Product {
-        productId: Int
-        name: String
-        weight: Int
-        serviceAddress: String
-    }
-
-    ProductService ..> Product
+class Product {
+    productId: Int
+    name: String
+    weight: Int
+    serviceAddress: String
 }
 
-package product-service {
-    class ProductServiceImpl
-}
-
-ProductService <|.. ProductServiceImpl
+ProductService ..> Product
 ```
 
-### Test 3.1.1: Normal case for product = 1
+!!! note "書中作者將 Controller 視作 Service，因此命名成 `ProductService`。"
 
-在 `@SpringBootTest` 增加 `webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT` 參數，並新增以下測試，然後實作讓測試通過。
+### Test: Get product
+
+讓測試通過。
 
 ```kotlin hl_lines="6-15"
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -99,19 +101,20 @@ class ProductServiceApplicationTests {
 }
 ```
 
-- 使用 mock data，主要提供一個 normal case，在 product id = 1 的情況下，可以取得資料。
+- 設定 `@SpringBootTest` 參數 `webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT`。
+- Autowire `WebTestClient`。
+- 目前沒有 persistence layer，用假資料即可。
+- 實作 `ServiceUtil` 封裝 `serviceAddress` 的細節。
 
-    !!! note "書中 Controller 視為 Service，因此命名為 `ProductService` 且放在 `service` 套件下"
+    - 格式為 `${hostName}/${ipAddress}:${port}`
 
-- 實作 `ServiceUtil` 取得 host name 與 IP。
+        ??? tip "使用 `InetAddress` 取得 `hostName` 與 `ipAddress`"
+            取得 host name: `InetAddress.getLocalHost().getHostName()`
+            取得 host IP: `InetAddress.getLocalHost().getHostAddress()`
 
-    ??? tip "使用 `InetAddress`"
-        取得 host name: `InetAddress.getLocalHost().getHostName()`
-        取得 host IP: `InetAddress.getLocalHost().getHostAddress()`
+### Test: Get product not found
 
-### Test 3.1.2: Product not found for product = 13
-
-新增以下測試，並實作讓測試通過。
+讓測試通過。
 
 ```kotlin
 @Test
@@ -128,52 +131,56 @@ fun getProductNotFound() {
 }
 ```
 
-- `NotFoundException`
+- 宣告 `NotFoundException`，在 product 找不到時拋出。
+- 使用 `@RestControllerAdvice` 處理例外狀況
 
-```plantuml
-hide circle
+    ??? tip "使用 `@RestControllerAdvice` 處理 product not found 的 response"
 
-class HttpErrorInfo {
-    timestamp: ZonedDateTime
-    path: String
-    httpStatus: HttpStatus
-    message: String
-}
-```
+        ```kotlin
+        @RestControllerAdvice
+        class GlobalControllerExceptionHandler {
 
-??? tip "使用 `@RestControllerAdvice` 處理 product not found 的 response"
+            @ResponseStatus(HttpStatus.NOT_FOUND)
+            @ExceptionHandler(NotFoundException::class)
+            @ResponseBody
+            fun handleNotFoundException(
+                request: ServerHttpRequest,
+                e: NotFoundException
+            ): HttpErrorInfo {
+                return HttpErrorInfo(
+                    ZonedDateTime.now(),
+                    request.path.pathWithinApplication().value(),
+                    HttpStatus.NOT_FOUND,
+                    requireNotNull(e.message)
+                )
+            }
 
-    ```kotlin
-    @RestControllerAdvice
-    class GlobalControllerExceptionHandler {
-
-        @ResponseStatus(HttpStatus.NOT_FOUND)
-        @ExceptionHandler(NotFoundException::class)
-        @ResponseBody
-        fun handleNotFoundException(
-            request: ServerHttpRequest,
-            e: NotFoundException
-        ): HttpErrorInfo {
-            return HttpErrorInfo(
-                ZonedDateTime.now(),
-                request.path.pathWithinApplication().value(),
-                HttpStatus.NOT_FOUND,
-                requireNotNull(e.message)
+            data class HttpErrorInfo(
+                val timestamp: ZonedDateTime,
+                val path: String,
+                val httpStatus: HttpStatus,
+                val message: String,
             )
         }
+        ```
 
-        data class HttpErrorInfo(
-            val timestamp: ZonedDateTime,
-            val path: String,
-            val httpStatus: HttpStatus,
-            val message: String,
-        )
+- 例外狀況回傳 `HttpErrorInfo`
+
+    ```plantuml
+    hide circle
+
+    class HttpErrorInfo {
+        timestamp: ZonedDateTime
+        path: String
+        httpStatus: HttpStatus
+        message: String
     }
     ```
 
-### Test 3.1.3: Negative product id
 
-新增以下測試，並實作讓測試通過。
+### Test: Get product negative product id
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -190,11 +197,12 @@ fun getProductInvalidParameterNegativeValue() {
 }
 ```
 
-- `InvalidInputException`
+- 宣告 `InvalidInputException`，在 `productId` 為負數時拋出。
+- 處理例外拋出時回傳的資料。
 
-### Test 3.1.4: Product Id type mismatch
+### Test: Get product invalid parameter productId type mismatch
 
-新增以下測試，並實作讓測試通過。
+讓測試通過。
 
 ```kotlin
 @Test
@@ -211,51 +219,73 @@ fun getProductInvalidParameterString() {
 }
 ```
 
-!!! tip "server.error.include-message=always"
+- 資料型態不吻合會被 Spring 擋下，預設錯誤訊息沒有 `message` 欄位，通過設定可以加入。
+    - `server.error.include-message=always`
 
-### 3.1.5: 手動測試
+## Refactor: 新增程式碼共用的 module
 
-```shell
-curl http://localhost:7001/product/1
-curl http://localhost:7001/product/13
-curl http://localhost:7001/product/-1
-curl http://localhost:7001/product/not-integer
-```
+### `util` module
 
-## Kata 3.2: Review API
+- 新增 `util` module。
+
+    - 注意 `plugins` 與 `dependencies` 的內容與下面一致，可以減少很多詭異事件..
+
+        ```gradle title="build.gradle.kts" hl_lines="3 7 9"
+        plugins {
+            kotlin("jvm") version "1.9.25"
+            id("io.spring.dependency-management") version "1.1.7"
+        }
+
+        dependencies {
+            implementation(platform("org.springframework.boot:spring-boot-dependencies:3.4.2"))
+            implementation("org.jetbrains.kotlin:kotlin-reflect")
+            implementation("org.springframework:spring-context")
+            implementation("org.springframework:spring-web")
+            testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+            testImplementation("io.projectreactor:reactor-test")
+            testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+        }
+        ```
+
+- 將 `ServiceUtil` 移到 `util` 下
+    - IntelliJ 熱鍵: ++f6++
+- 執行測試確保 Refactor 結果沒有破壞功能。
+    - 如果測試失敗，應該是需要設定 product-service 的 scan package，包含 `ServiceUtil` 所在的 package。
+
+### `api` module
+
+- 新增 `api` module
+- 將 Exception Handler, `NotFoundException`, `InvalidInputException` 移到 `api` 下。
+- 執行測試
+
+## Review API
 
 ```plantuml
 hide circle
 
-package api {
-
-    interface ReviewService {
-        getReviews(productId: Int): List<Review>
-    }
-    note right of ReviewService::getReviews
-    GET /review?productId={productId}
-    end note
-
-    class Review {
-        productId: Int
-        reviewId: Int
-        author: String
-        subject: String
-        content: String
-        serviceAddress: String
-    }
-
-    ReviewService ..> Review
+class ReviewService {
+    getReviews(productId: Int): List<Review>
 }
 
-package review-service {
-    class ReviewServiceImpl
+note right of ReviewService::getReviews
+GET /review?productId={productId}
+end note
+
+class Review {
+    productId: Int
+    reviewId: Int
+    author: String
+    subject: String
+    content: String
+    serviceAddress: String
 }
 
-ReviewService <|.. ReviewServiceImpl
+ReviewService ..> Review
 ```
 
-### Test 3.2.1: Normal case for product id = 1
+### Test: Get review
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -272,26 +302,9 @@ fun getReviewByProductId() {
 }
 ```
 
-- 將 `ServiceUtil` 抽到 `util` 模組，讓不同的模組可以共用。
+### Test: Get review not found
 
-    ??? tip "手動新增 `util` module"
-
-        需要增加下面設定
-
-        ```gradle title="build.gradle.kts"
-        plugins {
-            id("io.spring.dependency-management") version "1.1.7"
-        }
-
-        dependencies {
-            implementation(platform("org.springframework.boot:spring-boot-dependencies:3.4.2"))
-            implementation("org.springframework:spring-contextt")
-        }
-        ```
-
-        留意 `ServiceUtil` 是否在 sacn package 下。
-
-### Test 3.2.2: product id not found
+讓測試通過。
 
 ```kotlin
 @Test
@@ -307,7 +320,9 @@ fun `get review not found`() {
 }
 ```
 
-### Test 3.2.3: product id is negative
+### Test: Product id is negative
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -324,9 +339,9 @@ fun `get review invalid parameter negative value`() {
 }
 ```
 
-- 把 exception 及其 handler 移到 util 下共用
+### Test: Prodict id is not integer
 
-### Test 3.2.4: prodict id is not integer
+讓測試通過。
 
 ```kotlin
 @Test
@@ -343,11 +358,13 @@ fun `get review invalid parameter string`() {
 }
 ```
 
-### Test 3.2.5: missig product id
+### Test: Missig product id
+
+讓測試通過。(不需改程式碼)
 
 ```kotlin
 @Test
-fun `get review missing parameter`() {
+fun `get reiew missing parameter`() {
     client.get()
         .uri("/review")
         .accept(MediaType.APPLICATION_JSON)
@@ -360,45 +377,37 @@ fun `get review missing parameter`() {
 }
 ```
 
-- 不需要實作
-
-## Kata 3.3: Recommendation API
+## Recommendation API
 
 ```plantuml
 hide circle
 
-package api {
-    interface RecommendationService {
-        getRecommendations(productId: Int): List<Recommendation>
-    }
-    note right of RecommendationService::getRecommendations
-    GET /recommendation?productId={productId}
-    end note
+interface RecommendationService {
+    getRecommendations(productId: Int): List<Recommendation>
+}
+note right of RecommendationService::getRecommendations
+GET /recommendation?productId={productId}
+end note
 
-    class Recommendation {
-        productId: Int
-        recommendationId: Int
-        author: String
-        rate: Int
-        content: String
-        serviceAddress: String
-    }
-
-    RecommendationService ..> Recommendation
+class Recommendation {
+    productId: Int
+    recommendationId: Int
+    author: String
+    rate: Int
+    content: String
+    serviceAddress: String
 }
 
-package recommendation-service {
-    class RecommendationServiceImpl
-}
-
-RecommendationService <|.. RecommendationServiceImpl
+RecommendationService ..> Recommendation
 ```
 
-### Kata 3.3.1: get recommendation by product id
+### Test: Get recommendations
+
+讓測試通過。
 
 ```kotlin
 @Test
-fun `get recommendation by product id`() {
+fun `get recommendations by product id`() {
     client.get()
         .uri("/recommendation?productId=1")
         .accept(MediaType.APPLICATION_JSON)
@@ -411,11 +420,13 @@ fun `get recommendation by product id`() {
 }
 ```
 
-### Kata 3.3.2: get recommentation not found
+### Test: Get recommentations not found
+
+讓測試通過。
 
 ```kotlin
 @Test
-fun `get recommendation not found`() {
+fun `get recommendations not found`() {
     client.get()
         .uri("/recommendation?productId=113")
         .accept(MediaType.APPLICATION_JSON)
@@ -427,7 +438,9 @@ fun `get recommendation not found`() {
 }
 ```
 
-### Kata 3.3.3: get recommentation invalid parameter negative product id
+### Test: Negative product id
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -444,7 +457,9 @@ fun `get recommendation invalid parameter negative value`() {
 }
 ```
 
-### Kata 3.3.4: get recommentation invalid parameter string
+### Test: Product id is not integer
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -461,7 +476,9 @@ fun `get recommendation invalid parameter string`() {
 }
 ```
 
-### Kata 3.3.5: get recommendation missing parameter
+### Test: Missing prodict id
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -478,18 +495,72 @@ fun `get recommendation missing parameter`() {
 }
 ```
 
-## Kata 3.4: Product Composite API
+## Refactor: 抽 Service interface
 
 ```plantuml
 hide circle
 
 package api {
-    interface ProductCompositeService {
+    interface ProductService #orange {
+        getProduct(productId: Int): Product
+    }
+    interface RecommendationService #orange {
+        getRecommendations(productId: Int): List<Recommendation>
+    }
+    interface ReviewService #orange {
+        getReviews(productId: Int): List<Review>
+    }
+
+    class Product #orange
+    class Recommendation #orange
+    class Review #orange
+
+    ProductService .> Product
+    RecommendationService .> Recommendation
+    ReviewService .> Review
+}
+
+package product-service {
+    class "ProductService<font color=orange>Impl</font>" as ProductServiceImpl
+}
+package recommendation-service {
+    class "RecommendationService<font color=orange>Impl</font>" as RecommendationServiceImpl
+}
+package review-service {
+    class "ReviewService<font color=orange>Impl</font>" as ReviewServiceImpl
+}
+
+ProductService <|.. ProductServiceImpl
+RecommendationService <|.. RecommendationServiceImpl
+ReviewService <|.. ReviewServiceImpl
+```
+
+- 將 `ProductService`, `RecommendationService`, `ReviewService` 抽成 interface 放到 `api` 下。
+    - 先重新命名既有的 class，加上後墜 `Impl`。(使用 ++shift+f6++ 或 vim ++"\\rn"++ )
+    - 抽 interface (使用 ++ctrl+t++ > Extract Interface...)
+- 將 `Product`, `Recomendation`, `Review` 移動到 `api` 下。
+    - 使用 ++f6++
+
+## Product Composite API
+
+```plantuml
+hide circle
+
+package api {
+    interface ProductService
+    interface RecommendationService
+    interface ReviewService
+}
+
+package product-composite {
+    class ProductCompositeService {
         getProduct(productId: Int): ProductAggregate
     }
     note right of ProductCompositeService::ProductAggregate
     GET /product-composite/{productId}
     end note
+
+    class ProductCompositeIntegration
 
     class ProductAggregate {
         productId: Int
@@ -520,80 +591,35 @@ package api {
     }
 
     ProductCompositeService ..> ProductAggregate
+    ProductCompositeService --> ProductCompositeIntegration
     ProductAggregate --> RecommendationSummary
     ProductAggregate --> ReviewSummary
     ProductAggregate --> ServiceAddresses
 }
 
-package product-composite {
-    class ProductCompositeServiceImpl
-}
-
 package product {
-    class ProductService
+    class ProductServiceImpl
 }
 
 package review {
-    class ReviewService
+    class ReviewServiceImpl
 }
 
 package recommendation {
-    class RecommendationService
+    class RecommendationServiceImpl
 }
 
-ProductCompositeService <|.. ProductCompositeServiceImpl
-ProductCompositeServiceImpl ..> ProductService
-ProductCompositeServiceImpl ..> ReviewService
-ProductCompositeServiceImpl ..> RecommendationService
+ProductService <|.. ProductServiceImpl
+RecommendationService <|.. RecommendationServiceImpl
+ReviewService <|.. ReviewServiceImpl
+ProductService <|.. ProductCompositeIntegration
+RecommendationService <|.. ProductCompositeIntegration
+ReviewService <|.. ProductCompositeIntegration
 ```
 
-### Refactor: 抽 Service interfaces
+### Test: Get product
 
-```plantuml
-hide circle
-
-package api {
-    interface ProductService #red {
-        getProduct(productId: Int): Product
-    }
-    interface RecommendationService #red {
-        getRecommendations(productId: Int): List<Recommendation>
-    }
-    interface ReviewService #red {
-        getReviews(productId: Int): List<Review>
-    }
-}
-
-package product-service {
-    class "ProductService<font color=red>Impl</font>" as ps
-}
-
-package recommendation-service {
-    class "RecommendationService<font color=red>Impl</font>" as rec
-}
-
-package review-service {
-    class "ReviewService<font color=red>Impl</font>" as rev
-}
-
-ProductService <|.. ps
-RecommendationService <|.. rec
-ReviewService <|.. rev
-```
-
-- `Product`, `Recommendation`, `Review` 搬到 `api` 下
-- 抽 interface: `ProductService`, `RecommendationService`, `ReviewService`
-    - 先將原本的物件改名增加後綴 `Impl`
-    - 抽 interface 到 `api` 套件
-- 執行測試，確定 Refactor 後測試依然通過 `./gradlew test`
-
-??? tip "IntelliJ 熱鍵"
-
-    Move class: ++f6++
-    Rename: ++shift+f6++ (vim ++"\\rn"++)
-    抽 Interface: ++ctrl+t++ > Extract Interface...
-
-### Test 3.4.1: Get product by productId
+讓測試通過。
 
 ```kotlin
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -658,10 +684,12 @@ class ProductCompositeServiceApplicationTests {
 - 逐步實作，分三個 subtask: `$.productId`, `$.recommendations.length()`, `$.reviews.length()`，一次做一個，還沒有做的 assertion 先註解起來。
 - 定義 properties: microservices 的 host 與 port
 - Spring 建議的 Mock Server
-    - [WireMockk](https://docs.spring.io/spring-cloud-contract/docs/current/reference/html/project-features.html#features-wiremock) 測試使用這個
+    - [WireMockk](https://docs.spring.io/spring-cloud-contract/docs/current/reference/html/project-features.html#features-wiremock) 這裡的測試使用這個
     - [MockWebServer](https://docs.spring.io/spring-framework/reference/web/webflux-webclient/client-testing.html)
 
-### Test 3.4.2: Get product not found
+### Test: Get product not found
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -687,7 +715,9 @@ fun `get product not found`() {
 }
 ```
 
-### Test 3.4.3: Get product invalid parameter
+### Test: Get product invalid parameter
+
+讓測試通過。
 
 ```kotlin
 @Test
@@ -712,3 +742,50 @@ fun `get product invalid parameter`() {
         .jsonPath("$.message").isEqualTo("Invalid: -1")
 }
 ```
+
+## Disable gradle build to generate plain jar file
+
+預設 `gradle build` 會產生兩個 jar 檔案:
+
+1. ordinary JAR file
+2. plain JAR file containing only the class files resulting from compiling the Java files in the Spring Boot application
+
+我們不需要第 2 個 jar 檔。設定 `build.gradle.kts` 讓 `gradle build` 僅產生第一個 jar 檔案。
+
+??? tip
+
+    在跟目錄新增檔案，加入以下設定。
+
+    ```gradle title="build.gradle.kts"
+    subprojects {
+        afterEvaluate {
+            if (plugins.hasPlugin("org.springframework.boot")) {
+                tasks.getByName("jar") {
+                    enabled = false
+                }
+            }
+        }
+    }
+    ```
+
+## 手動測試
+
+- 啟動 microservices
+
+    ```shell
+    $ for jar in $(find . -name "*-service-*.jar"); do
+        java -jar $jar &
+    done
+    ```
+
+- 測試 product-service, recommendation-service, review-service, product-composite-service 的 API。
+
+- 停掉所有 microservices
+
+    ```shell
+    pkill -P $$
+    ```
+
+## 半自動化測試
+
+TODO()
