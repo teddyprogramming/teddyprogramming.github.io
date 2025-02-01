@@ -22,7 +22,7 @@ Ports:
 
     因為 macos 中，port 7000 被 airplay 佔用了，所以改用 `6000`, `6001`, `6002`, `6003`
 
-# 建立 microservice 專案
+## 建立 microservice 專案
 
 按下面目錄結構新增 4 個 microservices 專案。
 
@@ -44,15 +44,15 @@ Ports:
         cd product-service; ./gradlew build; cd -; cd recommendation-service; ./gradlew build; cd -; cd review-service; ./gradlew build; cd -; cd product-composite service; ./gradlew build; cd -;
         ```
 
-# 單一指令編譯專案
+## 單一指令編譯專案
 
 調整專案結構，使可以用單一指令 `./gradlew build` 編譯所有專案。
 
 !!! note "IntelliJ 可能需要將 gradle 設定清除後重新開啟 IDE。"
 
-# Adding RESTful APIs
+## Adding RESTful APIs
 
-## Product API
+### Product API
 
 將 product-service 的 port 設定成 `6001`。
 
@@ -78,7 +78,7 @@ ProductService ..> Product
 
 !!! note "書中作者將 Controller 視作 Service，因此命名成 `ProductService`。"
 
-### Test: Get product
+#### Test: Get product
 
 讓測試通過。
 
@@ -112,7 +112,7 @@ class ProductServiceApplicationTests {
             取得 host name: `InetAddress.getLocalHost().getHostName()`
             取得 host IP: `InetAddress.getLocalHost().getHostAddress()`
 
-### Test: Get product not found
+#### Test: Get product not found
 
 讓測試通過。
 
@@ -178,7 +178,7 @@ fun getProductNotFound() {
     ```
 
 
-### Test: Get product negative product id
+#### Test: Get product negative product id
 
 讓測試通過。
 
@@ -200,7 +200,7 @@ fun getProductInvalidParameterNegativeValue() {
 - 宣告 `InvalidInputException`，在 `productId` 為負數時拋出。
 - 處理例外拋出時回傳的資料。
 
-### Test: Get product invalid parameter productId type mismatch
+#### Test: Get product invalid parameter productId type mismatch
 
 讓測試通過。
 
@@ -222,9 +222,9 @@ fun getProductInvalidParameterString() {
 - 資料型態不吻合會被 Spring 擋下，預設錯誤訊息沒有 `message` 欄位，通過設定可以加入。
     - `server.error.include-message=always`
 
-## Refactor: 新增程式碼共用的 module
+### Refactor: 新增程式碼共用的 module
 
-### `util` module
+#### `util` module
 
 - 新增 `util` module。
 
@@ -252,13 +252,13 @@ fun getProductInvalidParameterString() {
 - 執行測試確保 Refactor 結果沒有破壞功能。
     - 如果測試失敗，應該是需要設定 product-service 的 scan package，包含 `ServiceUtil` 所在的 package。
 
-### `api` module
+#### `api` module
 
 - 新增 `api` module
 - 將 Exception Handler, `NotFoundException`, `InvalidInputException` 移到 `api` 下。
 - 執行測試
 
-## Review API
+### Review API
 
 ```plantuml
 hide circle
@@ -283,7 +283,7 @@ class Review {
 ReviewService ..> Review
 ```
 
-### Test: Get review
+#### Test: Get review
 
 讓測試通過。
 
@@ -302,7 +302,7 @@ fun getReviewByProductId() {
 }
 ```
 
-### Test: Get review not found
+#### Test: Get review not found
 
 讓測試通過。
 
@@ -320,7 +320,7 @@ fun `get review not found`() {
 }
 ```
 
-### Test: Product id is negative
+#### Test: Product id is negative
 
 讓測試通過。
 
@@ -339,7 +339,7 @@ fun `get review invalid parameter negative value`() {
 }
 ```
 
-### Test: Prodict id is not integer
+#### Test: Prodict id is not integer
 
 讓測試通過。
 
@@ -358,7 +358,7 @@ fun `get review invalid parameter string`() {
 }
 ```
 
-### Test: Missig product id
+#### Test: Missig product id
 
 讓測試通過。(不需改程式碼)
 
@@ -377,7 +377,7 @@ fun `get reiew missing parameter`() {
 }
 ```
 
-## Recommendation API
+### Recommendation API
 
 ```plantuml
 hide circle
@@ -401,7 +401,7 @@ class Recommendation {
 RecommendationService ..> Recommendation
 ```
 
-### Test: Get recommendations
+#### Test: Get recommendations
 
 讓測試通過。
 
@@ -420,7 +420,7 @@ fun `get recommendations by product id`() {
 }
 ```
 
-### Test: Get recommentations not found
+#### Test: Get recommentations not found
 
 讓測試通過。
 
@@ -438,7 +438,7 @@ fun `get recommendations not found`() {
 }
 ```
 
-### Test: Negative product id
+#### Test: Negative product id
 
 讓測試通過。
 
@@ -457,7 +457,7 @@ fun `get recommendation invalid parameter negative value`() {
 }
 ```
 
-### Test: Product id is not integer
+#### Test: Product id is not integer
 
 讓測試通過。
 
@@ -476,7 +476,7 @@ fun `get recommendation invalid parameter string`() {
 }
 ```
 
-### Test: Missing prodict id
+#### Test: Missing prodict id
 
 讓測試通過。
 
@@ -495,7 +495,7 @@ fun `get recommendation missing parameter`() {
 }
 ```
 
-## Refactor: 抽 Service interface
+### Refactor: 抽 Service interface
 
 ```plantuml
 hide circle
@@ -541,7 +541,7 @@ ReviewService <|.. ReviewServiceImpl
 - 將 `Product`, `Recomendation`, `Review` 移動到 `api` 下。
     - 使用 ++f6++
 
-## Product Composite API
+### Product Composite API
 
 ```plantuml
 hide circle
@@ -617,7 +617,7 @@ RecommendationService <|.. ProductCompositeIntegration
 ReviewService <|.. ProductCompositeIntegration
 ```
 
-### Test: Get product
+#### Test: Get product
 
 讓測試通過。
 
@@ -687,7 +687,7 @@ class ProductCompositeServiceApplicationTests {
     - [WireMockk](https://docs.spring.io/spring-cloud-contract/docs/current/reference/html/project-features.html#features-wiremock) 這裡的測試使用這個
     - [MockWebServer](https://docs.spring.io/spring-framework/reference/web/webflux-webclient/client-testing.html)
 
-### Test: Get product not found
+#### Test: Get product not found
 
 讓測試通過。
 
@@ -715,7 +715,7 @@ fun `get product not found`() {
 }
 ```
 
-### Test: Get product invalid parameter
+#### Test: Get product invalid parameter
 
 讓測試通過。
 
@@ -788,4 +788,114 @@ fun `get product invalid parameter`() {
 
 ## 半自動化測試
 
-TODO()
+### 透過 `curl` 得到 request 的 response 與 http code
+
+- 執行 `http://localhost:6000/product-composite/1` 將 response 與 http code 存到變數
+
+??? tip
+
+    ```bash
+    #!/usr/bin/env bash
+
+    result=$(eval curl http://localhost:6000/product-composite/1 -s -w "%{http_code}")
+    http_code=${result:(-3)}
+    response=${result%???}
+
+    echo "$response"
+    echo "$http_code"
+    ```
+
+    - `-w "%{http_code}"` 在結果後輸出 http code
+    - `http_code=${result:(-3)}` 擷取 result 的後三碼 http code
+    - `response=${result%???}` 移除 result 結尾三碼
+
+### 撰寫 `assertCurl` 驗證 http code 符合預期
+
+- `assertCurl ${expectedCode} ${curl}`
+- 符合預期，顯示 "Test OK"
+- 不符合預期，顯示 "Test FAILED"，並提供以下訊息供 debug
+    - 預期的 code 與實際的 code，
+    - curl 指令
+    - response body
+- function
+
+    ```bash
+    function name() {
+        $1 # first argument
+        $2 # second argument
+    }
+    ```
+
+- if-else statement
+
+    ```bash
+    if [ condition ]
+    then
+        statement
+    else
+        statement
+    fi
+    ```
+
+    - Equal evaluation: `=`
+
+??? tip
+
+    ```bash
+    function assertCurl() {
+        expected_code=$1
+        result=$(eval "$2" -s -w "%{http_code}")
+        http_code=${result:(-3)}
+        response=${result%???}
+
+        if [ "$http_code" = "$expected_code" ]
+        then
+            echo "Test OK"
+        else
+            echo "Test FAILED, expected code: $expected_code, got: $http_code"
+            echo "- Failing command: $2"
+            echo "- Response: $response"
+        fi
+    }
+
+    assertCurl 200 "curl http://localhost:6000/product-composite/1"
+    ```
+
+### 撰寫 `assertEqual` 驗證兩個值是否相等
+
+- 驗證 `productId` 為 `1`
+    - `$(echo "$response" | jq ".productId")` 從 response 擷取 `productId` 值
+- 驗證 `recommendations` 長度為 `3`
+    - `$(echo "$response" | jq ".recommendations | length")`
+- 驗證 `reviews` 長度為 `3`
+
+### Test: product not found
+
+- `productId` 為 `13` 時，not found
+- status code: `404`
+- assert message:
+    - `jq -r ".."`: 用 `-r` 可以避免輸出字串的前後有雙引號
+
+### Test: product no recommendation
+
+- `productId` 為 `113`
+- status code: `200`
+- assert recommendations 長度 `0`, reviews 長度 `3`
+
+### Test: product no reviews
+
+- `productId` 為 `213`
+- status code: `200`
+- assert recommendation 長度 `3`, reviews 長度 `0`
+
+### Test: product id is negative
+
+- `prodictId` 為 `-1`
+- status code: `422`
+- assert message
+
+### Test: product is in not integer
+
+- `productId` 為 `no-integer`
+- status code: `400`
+- assert message
