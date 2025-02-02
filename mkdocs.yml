@@ -132,6 +132,7 @@ plugins:
       exclude:
         - index.md
         - blog/**/*
+  - termynal
 
 copyright: Copyright &copy; 2024-2025 Teddy Lee
 extra:
