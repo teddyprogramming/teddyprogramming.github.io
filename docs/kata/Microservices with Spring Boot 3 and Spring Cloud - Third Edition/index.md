@@ -5,3 +5,4 @@
 [3. Creating a Set of Cooperating Microservices](3 Creating a Set of Cooperating Microservices.md)
 [4. Deploying Our Microservices Using Docker](4 Deploying Our Microservices Using Docker.md)
 [5. Adding an API Description Using OpenAPI](5 Adding an API Description Using OpenAPI.md)
+[6. Adding Persistence](6 Adding Persistence.md)
