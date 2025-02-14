@@ -19,6 +19,21 @@ r --> rm
 
 ## 實作 Product service 的 persistence layer
 
+```plantuml
+hide circle
+interface ProductRepository implements PagingAndSortingRepository, CrudRepository {
+    findByProductId(productId: int): Optional<ProductEntity>
+}
+class "<font color=gray>@Document(collection=products)</font>\nProductEntity" as entity {
+    <font color=gray>@Id</font> id: String
+    <font color=gray>@Version</font> version: Integer
+    <font color=gray>@Indexed(unique=true)</font> productId: int
+    name: String
+    weight: int
+}
+ProductRepository ..> entity
+```
+
 ### 測試: 新增 Product
 
 實作測試，並讓測試通過。
@@ -204,31 +219,6 @@ fun pagination() {
     }
 }
 ```
-
-### 其他
-
-- 增加 MongoDb 的相依
-
-- 宣告 DB entity 物件
-
-    ```plantuml
-    hide circle
-    class ProductRepository implements PagingAndSortingRepository, CrudRepository {
-        findByProductId(productId: int): Optional<ProductEntity>
-    }
-    class "<font color=gray>@Document(collection=products)</font>\nProductEntity" as entity {
-        <font color=gray>@Id</font> id: String
-        <font color=gray>@Version</font> version: Integer
-        <font color=gray>@Indexed(unique=true)</font> productId: int
-        name: String
-        weight: int
-    }
-    ProductRepository ..> entity
-    ```
-
-- 使用 **MapStruct** 將 DB entity 的物件轉換成 API 的 DAO 物件。
-
-- 使用 testcontainer 讓在測試執行 MongoDB
 
 ## 實作 Recommendation service 的 persistence layer
 
