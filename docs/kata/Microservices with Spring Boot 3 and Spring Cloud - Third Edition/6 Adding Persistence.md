@@ -79,7 +79,6 @@ class ProductRepositoryTest {
         testImplementation("org.testcontainers:junit-jupiter")
         testImplementation("org.springframework.boot:spring-boot-testcontainers")
         testImplementation("org.testcontainers:mongodb")
-
         ```
 
     ??? info "MongoDbContainerConfig"
@@ -217,6 +216,97 @@ fun pagination() {
         it.hasNext() shouldBe false
         nextPageRequest = it.nextPageable()
     }
+}
+```
+
+### 測試: 查詢不存在的 Proudct
+
+```kotlin
+// ...
+@TestMethodOrder(OrderAnnotation::class)
+@Import(MongoDbContainerConfig::class)
+class ProductServiceImplApplicationTests {
+
+    // ...
+
+    @Test
+    @Order(1)
+    fun `get not-existing product`() {
+        client.get()
+            .uri("/product/1")
+            .accept(APPLICATION_JSON)
+            .exchange()
+            .expectStatus().isNotFound()
+    }
+
+    // ...
+}
+```
+
+- 在測試執行，需搭配 MongoDB test container，故標上 `@Import(MongoDbContainerConfig::class)`。
+
+    ???tip "`MongoDbContainerConfig` 相關程式碼"
+
+        ```gradle title="build.gradle.kts"
+        testImplementation("org.testcontainers:junit-jupiter")
+        testImplementation("org.springframework.boot:spring-boot-testcontainers")
+        testImplementation("org.testcontainers:mongodb")
+        ```
+
+        ```kotlin title="MongoDbContainerConfig.kt"
+        import org.springframework.boot.test.context.TestConfiguration
+        import org.springframework.boot.testcontainers.service.connection.ServiceConnection
+        import org.springframework.context.annotation.Bean
+        import org.testcontainers.containers.MongoDBContainer
+
+        @TestConfiguration
+        class MongoDbContainerConfig {
+            @Bean
+            @ServiceConnection
+            fun container(): MongoDBContainer {
+                return MongoDBContainer("mongo:6.0.4")
+            }
+        }
+        ```
+- 原本既有的查詢 productId = 1 的測試，先標上 `@Disabled` 讓測試不要執行。
+- mapstruct
+
+    ???tip
+
+        ```gradle title="build.gradle.kts"
+        plugins {
+            kotlin("kapt") version "1.9.25"
+        }
+
+        dependencies {
+            implementation("org.mapstruct:mapstruct:1.6.3")
+            kapt("org.mapstruct:mapstruct-processor:1.6.3")
+        }
+
+        kapt {
+            arguments {
+                arg("mapstruct.defaultComponentModel", "spring")
+                arg("mapstruct.defaultInjectionStrategy", "field")
+            }
+        }
+        ```
+
+        - [mapstruct 官方 kotlin gradle 範例](https://github.com/mapstruct/mapstruct-examples/blob/main/mapstruct-kotlin-gradle/build.gradle.kts)
+
+### 測試: 新增 Product API
+
+```kotlin
+@Test
+fun `create product`() {
+    client.post()
+        .uri("/product")
+        .bodyValue(Product(1, "Product 1", 100, "SA"))
+        .accept(APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isOk()
+        .expectHeader().contentType(APPLICATION_JSON)
+
+    productRepository.findById("1").isPresent shouldBe true
 }
 ```
 
