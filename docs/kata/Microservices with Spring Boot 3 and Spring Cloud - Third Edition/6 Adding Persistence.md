@@ -17,250 +17,48 @@ rd --> rdm
 r --> rm
 ```
 
-## 實作 Product service 的 persistence layer
+## Product Service
 
-```plantuml
-hide circle
-interface ProductRepository implements PagingAndSortingRepository, CrudRepository {
-    findByProductId(productId: int): Optional<ProductEntity>
-}
-class "<font color=gray>@Document(collection=products)</font>\nProductEntity" as entity {
-    <font color=gray>@Id</font> id: String
-    <font color=gray>@Version</font> version: Integer
-    <font color=gray>@Indexed(unique=true)</font> productId: int
-    name: String
-    weight: int
-}
-ProductRepository ..> entity
-```
+### 功能: 新增 Product
 
-### 測試: 新增 Product
+#### 測試: Reopsitory 新增 Product
 
-實作測試，並讓測試通過。
-
-```kotlin hl_lines="1-2 7-21"
+```kotlin
 @DataMongoTest
-@Import(MongoDbContainerConfig::class)
+@Import(MongoDbConfiguration::class)
+@TestMethodOrder(OrderAnnotation::class)
 class ProductRepositoryTest {
     @Autowired
-    lateinit var productRepository: ProductRepository
-
-    @Test
-    fun create() {
-        val product = ProductEntity(
-            productId = "1",
-            name = "Product 1",
-            weight = 100
-        )
-        val savedEntity = productRepository.save(product)
-
-        savedEntity.id shouldNotBe null
-        savedEntity.version shouldBe 1
-        savedEntity.productId shouldBe "1"
-        savedEntity.name shouldBe "Product 1"
-        savedEntity.weight shouldBe 100
-    }
-}
-```
-
-- Spring data (MongoDb)
-
-    ??? info "gradle dependencies"
-
-        ```gradle
-        implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
-        ```
-
-- MongoDb testcontainer
-
-    ??? info "gradle dependencies"
-
-        ```gradle
-        testImplementation("org.testcontainers:junit-jupiter")
-        testImplementation("org.springframework.boot:spring-boot-testcontainers")
-        testImplementation("org.testcontainers:mongodb")
-        ```
-
-    ??? info "MongoDbContainerConfig"
-
-        ```gradle title="MongoDbConfiguration.kt"
-        import org.springframework.boot.test.context.TestConfiguration
-        import org.springframework.boot.testcontainers.service.connection.ServiceConnection
-        import org.springframework.context.annotation.Bean
-        import org.testcontainers.containers.MongoDBContainer
-
-        @TestConfiguration
-        class MongoDbContainerConfig {
-            @Bean
-            @ServiceConnection
-            fun container(): MongoDBContainer {
-                return MongoDBContainer("mongo:6.0.4")
-            }
-        }
-        ```
-
-### 測試: 更新 Product
-
-```kotlin
-class ProductRepositoryTest {
-    // ...
-
-    companion object {
-        private lateinit var savedEntity: ProductEntity
-    }
-
-    @Test
-    @Order(2)
-    fun update() {
-        savedEntity = productRepository.save(savedEntity.copy(name = "Product 2"))
-
-        savedEntity.version shouldBe 2
-        savedEntity.name shouldBe "Product 2"
-    }
-}
-```
-
-- 將 `create` 測試的 `savedEntity` 變數 extract 成 static variable。
-- 將 `create` 標上 `@Order(1)`。
-- 在 class 標 `@TestMethodOrder(MethodOrderer.OrderAnnotation::class)` 讓 `@Order` 作用。
-
-### 測試: 取得 Product
-
-```kotlin
-@Test
-@Order(3)
-fun get() {
-    val result = productRepository.findById(savedEntity.id!!)
-
-    result.isPresent shouldBe true
-    result.get() shouldBe savedEntity
-}
-```
-
-### 測試: 重複的 key
-
-```kotlin
-import org.springframework.dao.DuplicateKeyException
-
-@Test
-@Order(4)
-fun `duplicate id`() {
-    shouldThrow<DuplicateKeyException> {
-        productRepository.save(savedEntity.copy(version = 0))
-    }
-}
-```
-
-### 測試: 樂觀鎖(optimistic lock)
-
-```kotlin
-@Test
-@Order(5)
-fun `optimistic lock`() {
-    val entity1 = productRepository.findById(savedEntity.id!!).get()
-    val entity2 = productRepository.findById(savedEntity.id!!).get()
-
-    savedEntity = productRepository.save(entity1) // version + 1
-    shouldThrow<OptimisticLockingFailureException> {
-        productRepository.save(entity2) // use old version to save
-    }
-}
-```
-
-### 測試: 刪除 Product
-
-```kotlin
-@Test
-@Order(6)
-fun delete() {
-    productRepository.delete(savedEntity)
-
-    productRepository.existsById(savedEntity.id!!) shouldBe false
-}
-```
-
-### 測試: pagination
-
-```kotlin
-@Test
-@Order(7)
-fun pagination() {
-    productRepository.saveAll(
-        (1001..1007)
-            .shuffled()
-            .map { i -> ProductEntity("$i", "Product $i", i) }
-            .toList()
-    )
-
-    var nextPageRequest: Pageable = PageRequest.of(0, 3, Sort.by(Sort.Order.asc("productId")))
-    productRepository.findAll(nextPageRequest) should {
-        it.totalPages shouldBe 3
-        it.content shouldHaveSize 3
-        it.content.map { it.productId } shouldBe listOf("1001", "1002", "1003")
-        it.hasNext() shouldBe true
-        nextPageRequest = it.nextPageable()
-    }
-
-    productRepository.findAll(nextPageRequest) should {
-        it.totalPages shouldBe 3
-        it.content shouldHaveSize 3
-        it.content.map { it.productId } shouldBe listOf("1004", "1005", "1006")
-        it.hasNext() shouldBe true
-        nextPageRequest = it.nextPageable()
-    }
-
-    productRepository.findAll(nextPageRequest) should {
-        it.totalPages shouldBe 3
-        it.content shouldHaveSize 1
-        it.content.map { it.productId } shouldBe listOf("1007")
-        it.hasNext() shouldBe false
-        nextPageRequest = it.nextPageable()
-    }
-}
-```
-
-### 測試: 查詢不存在的 Proudct
-
-```kotlin
-// ...
-@TestMethodOrder(OrderAnnotation::class)
-@Import(MongoDbContainerConfig::class)
-class ProductServiceImplApplicationTests {
-
-    // ...
+    private lateinit var productRepository: ProductRepository
 
     @Test
     @Order(1)
-    fun `get not-existing product`() {
-        client.get()
-            .uri("/product/1")
-            .accept(APPLICATION_JSON)
-            .exchange()
-            .expectStatus().isNotFound()
+    fun `add product`() {
+        val entity = productRepository.save(ProductEntity(productId = 1, name = "product-1", weight = 100))
+        productRepository.existsById(entity.id!!) shouldBe true
     }
-
-    // ...
 }
 ```
 
-- 在測試執行，需搭配 MongoDB test container，故標上 `@Import(MongoDbContainerConfig::class)`。
+- 新增 String Data MongoDB 相依
 
-    ???tip "`MongoDbContainerConfig` 相關程式碼"
+    ???tip
 
-        ```gradle title="build.gradle.kts"
-        testImplementation("org.testcontainers:junit-jupiter")
-        testImplementation("org.springframework.boot:spring-boot-testcontainers")
-        testImplementation("org.testcontainers:mongodb")
-        ```
+        在 build.gradle.kts 的 dependencies 區塊中 ++cmd+n++ > Add Starters... > String Data MongoDB > 勾選 > OK > ++cmd+i++
 
-        ```kotlin title="MongoDbContainerConfig.kt"
-        import org.springframework.boot.test.context.TestConfiguration
-        import org.springframework.boot.testcontainers.service.connection.ServiceConnection
-        import org.springframework.context.annotation.Bean
-        import org.testcontainers.containers.MongoDBContainer
+- 新增 String testcontainers 相依
 
+    ???tip
+
+        在 build.gradle.kts 的 dependencies 區塊中 ++cmd+n++ > Add Starters... > Testcontainers > 勾選 > OK > ++cmd+i++
+
+- 實作 `MongoDbConfiguration`
+
+    ???tip
+
+        ```kotlin title="MongoDbConfiguration.kt"
         @TestConfiguration
-        class MongoDbContainerConfig {
+        class MongoDbConfiguration {
             @Bean
             @ServiceConnection
             fun container(): MongoDBContainer {
@@ -268,12 +66,58 @@ class ProductServiceImplApplicationTests {
             }
         }
         ```
-- 原本既有的查詢 productId = 1 的測試，先標上 `@Disabled` 讓測試不要執行。
-- mapstruct
+
+- 實作 `ProductRepository`, `ProductEntity`
 
     ???tip
 
-        ```gradle title="build.gradle.kts"
+        ```kotlin title="ProductRepository.kt"
+        interface ProductRepository : MongoRepository<ProductEntity, String>
+        ```
+
+        ```kotlin title="ProductEntity.kt"
+        import org.springframework.data.annotation.Id
+        import org.springframework.data.annotation.Version
+        import org.springframework.data.mongodb.core.mapping.Document
+
+        @Document("product")
+        data class ProductEntity(
+            @Id
+            val id: String? = null,
+            @Version
+            val version: Long = 0,
+            val productId: Int,
+            val name: String,
+            val weight: Int,
+        )
+        ```
+
+#### 測試: Mapper 將 CreateProductrequest 轉換成 ProductEntity
+
+```kotlin
+@SpringBootTest
+class ProductMapperTest {
+    @Autowired
+    lateinit var productMapper: ProductMapper
+
+    @Test
+    fun toEntity() {
+        productMapper.toEntity(CreateProductRequest(productId = 1, name = "product-1", weight = 100)) should {
+            it.id shouldBe null
+            it.version shouldBe 0
+            it.productId shouldBe 1
+            it.name shouldBe "product-1"
+            it.weight shouldBe 100
+        }
+    }
+}
+```
+
+- 新增 mapstruct dependencies
+
+    ???tip
+
+        ```kotin title="build.gradle.kts"
         plugins {
             kotlin("kapt") version "1.9.25"
         }
@@ -286,87 +130,201 @@ class ProductServiceImplApplicationTests {
         kapt {
             arguments {
                 arg("mapstruct.defaultComponentModel", "spring")
-                arg("mapstruct.defaultInjectionStrategy", "field")
             }
         }
         ```
 
-        - [mapstruct 官方 kotlin gradle 範例](https://github.com/mapstruct/mapstruct-examples/blob/main/mapstruct-kotlin-gradle/build.gradle.kts)
+- 實作 Mapper
 
-### 測試: 新增 Product API
+    ???tip
+
+        ```kotlin title="ProductMapper.kt"
+        import org.example.productservice.persistence.ProductEntity
+        import org.mapstruct.Mapper
+
+        @Mapper
+        interface ProductMapper {
+            fun toEntity(createProductRequest: CreateProductRequest): ProductEntity
+        }
+        ```
+
+#### 測試: Mapper 將 ProductEntity 轉換成 Product
 
 ```kotlin
 @Test
-fun `create product`() {
-    client.post()
-        .uri("/product")
-        .bodyValue(Product(1, "Product 1", 100, "SA"))
-        .accept(APPLICATION_JSON)
+fun toProduct() {
+    productMapper.toProduct(ProductEntity(id = "1", version = 1, productId = 1, name = "product-1", weight = 100)) should {
+        it.productId shouldBe 1
+        it.name shouldBe "product-1"
+        it.weight shouldBe 100
+    }
+}
+```
+
+- 實作 toProduct
+
+    ??? tip
+
+        ```kotlin
+        @Mappings(
+            Mapping(target = "serviceAddress", constant = "")
+        )
+        fun toProduct(productEntity: ProductEntity): Product
+        ```
+
+#### 測試: API 實作新增 Product
+
+```kotlin
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestMethodOrder(OrderAnnotation::class)
+@Import(MongoDbConfiguration::class)
+class ProductServiceImplApplicationTests {
+
+    @Test
+    @Order(2) // (1)!
+    fun `create product`() {
+        client.post()
+            .uri("/product")
+            .accept(APPLICATION_JSON)
+            .bodyValue(CreateProductRequest(productId = 1, name = "product-1", weight = 100))
+            .exchange()
+            .expectStatus().isOk()
+            .expectHeader().contentType(APPLICATION_JSON)
+            .expectBody()
+            .jsonPath("$.productId").isEqualTo(1)
+            .jsonPath("$.name").isEqualTo("product-1")
+            .jsonPath("$.weight").isEqualTo(100)
+    }
+
+    // ...
+}
+```
+
+1. 這裡 `@Order` 給 2，後面會需要在前面測試不存在的 case
+
+- 在 `ProductService` 新增 `createProduct` 方法
+- 如果需要，調整 `CreateProductRequest` 所放的 module
+- 在 `ProductServiceImpl` 中實作 `createProduct` 的 API
+- 搭配 `ProductMapper`, `ProductRepository` 實作 `createProduct`
+
+    ???tip
+
+        ```kotlin title="ProductServiceImpl.kt"
+        @PostMapping("/product")
+        override fun createProduct(@RequestBody request: CreateProductRequest): Product {
+            return productRepository.save(request.toEntity()).toProduct()
+        }
+
+        private fun CreateProductRequest.toEntity(): ProductEntity {
+            return productMapper.toEntity(this)
+        }
+
+        private fun ProductEntity.toProduct(): Product {
+            return productMapper.toProduct(this).copy(serviceAddress = serviceUtil.getServiceAddress())
+        }
+        ```
+
+### 功能: 查詢 Product
+
+#### 測試: Repository 查詢 Product by productId
+
+
+```kotlin title="ProdcutRepository.kt"
+@Test
+@Order(2)
+fun `get product`() {
+    productRepository.findByProductId(savedEntity.productId).get() should {
+        it.productId shouldBe 1
+        it.name shouldBe "product-1"
+        it.weight shouldBe 100
+    }
+}
+```
+
+- 在 `ProductRepository` 新增 `findByProductId` 的方法
+
+#### 測試: API 實作查詢 Product
+
+```kotlin title="ProductServiceImplApplicationTests.kt"
+class ProductServiceImplApplicationTests {
+    @Test
+    @Order(1) // (1)!
+    fun `get product not exist`() {
+        client.get()
+            .uri("/product/1")
+            .accept(APPLICATION_JSON)
+            .exchange()
+            .expectStatus().isNotFound()
+            .expectHeader().contentType(APPLICATION_JSON)
+            .expectBody()
+            .jsonPath("$.path").isEqualTo("/product/1")
+            .jsonPath("$.message").isEqualTo("Product with productId=1 not found")
+    }
+
+    // ...
+
+    @Test
+    @Order(3) // (2)!
+    fun `get product by productId`() {
+        // ...
+    }
+}
+```
+
+1. 在新增 Product 前，測試 Product 不存在
+2. 原本查詢的測試，放在新增 Product 後執行
+
+<!-- 避免下面受上面的影響，將下面的條列式內容被當作程式碼的註解，所以這裡做一個隔開的作用 -->
+
+- 調整 `getProduct` 的實作
+- 刪除 `productId == 13` 回傳找不到 Product 的判斷。
+
+    ???tip
+
+        ```kotlin hl_lines="6-8" title="ProductServiceImpl.kt"
+        @GetMapping("/product/{productId}")
+        override fun getProduct(@PathVariable productId: Int): Product {
+            if (productId < 1) {
+                throw InvalidInputException("Invalid productId: $productId")
+            }
+            return productRepository.findByProductId(productId).orElseThrow {
+                NotFoundException("Product with productId=$productId not found")
+            }.toProduct()
+        }
+        ```
+
+### 功能: 刪除 Product
+
+#### 測試: Repository 刪除 Product
+
+```kotlin
+@Test
+@Order(3)
+fun `delete product`() {
+    productRepository.deleteByProductId(savedEntity.productId)
+    productRepository.existsById(savedEntity.id!!) shouldBe false
+}
+```
+
+#### 測試: API 刪除 Product
+
+```kotlin
+@Test
+@Order(4)
+fun `delete product`() {
+    client.delete()
+        .uri("/product/1")
         .exchange()
         .expectStatus().isOk()
-        .expectHeader().contentType(APPLICATION_JSON)
-
-    productRepository.findById("1").isPresent shouldBe true
 }
-```
 
-## 實作 Recommendation service 的 persistence layer
-
-```plantuml
-hide circle
-class RecommendationRepository implements PagingAndSortingRepository, CrudRepository {
-    findByProductId(productId: int): List<RecommendationEntity>
+@Test
+@Order(5)
+fun `deleted product is not exist`() {
+    client.get()
+        .uri("/product/1")
+        .accept(APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isNotFound()
 }
-class "<font color=gray>@Document(collection=recommendations)</font>\nRecommendationEntity" as entity {
-    <font color=gray>@Id</font> id: String
-    <font color=gray>@Version</font> version: Integer
-    productId: int
-    recommendationId: int
-    author: String
-    rating: int
-    content: String
-}
-note bottom of entity
-index:
-@CompoundIndex(name = "prod-rec-id", unique = true, def = "{'productId': 1, 'recommendationId' : 1}")
-end note
-RecommendationRepository ..> entity
-```
-
-- `{productId: 1, recommendationId: 1}` 代表 `productId` 與 `recommendationId` 皆遞增
-
-## 實作 Review service 的 persistence layer
-
-```plantuml
-hide circle
-class ReviewRepository implements CrudRepository {
-    <font color=gray>@Transactional(readOnly=true)</font> findByProductId(productId: int): List<ReviewEntity>
-}
-class "<font color=gray>@Entity</font>\n<font color=gray>@Table(name=reviews)</font>\nReviewEntity" as entity {
-    <font color=gray>@Id</font> <font color=gray>@GeneratedValue</font> id: int
-    <font color=gray>@Version</font> version: int
-    productId: int
-    reviewId: int
-    author: String
-    subject: String
-    content: String
-}
-note bottom of entity
-index:
-@Table(name = "reviews", <font color=greenyellow>indexes = { @Index(name = "reviews_unique_idx", unique = true, columnList = "productId,reviewId") }</font>)
-end note
-
-ReviewRepository ..> entity
-```
-
-## 透過 docker 對 MongoDB 查詢
-
-```shell
-$ docker-compose exec mongodb mongosh product-db --quiet --eval "db.products.find()"
-```
-
-## 透過 docker 對 MySQL 查詢
-
-```shell
-$ docker-compose exec mysql mysql -uuser -p review-db -e "select * from reviews"
 ```
