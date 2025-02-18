@@ -86,11 +86,27 @@ class ProductRepositoryTest {
             val id: String? = null,
             @Version
             val version: Long = 0,
+            @Indexed(unique = true)
             val productId: Int,
             val name: String,
             val weight: Int,
         )
         ```
+
+        ```properties title="application.properties"
+        spring.data.mongodb.auto-index-creation=true
+        ```
+#### 測試: Repository 新增重複的 Product
+
+```kotlin
+@Test
+@Order(2)
+fun `add duplicate product`() {
+    shouldThrow<DuplicateKeyException> {
+        productRepository.save(ProductEntity(productId = 1, name = "product-1", weight = 100))
+    }
+}
+```
 
 #### 測試: Mapper 將 CreateProductrequest 轉換成 ProductEntity
 
@@ -224,14 +240,34 @@ class ProductServiceImplApplicationTests {
         }
         ```
 
+#### 測試: API 實作新增重複 Product ID
+
+```kotlin
+@Test
+@Order(3)
+fun `duplicate error`() {
+    client.post()
+        .uri("/product")
+        .accept(APPLICATION_JSON)
+        .bodyValue(CreateProductRequest(productId = 1, name = "product-1", weight = 100))
+        .exchange()
+        .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
+        .expectHeader().contentType(APPLICATION_JSON)
+        .expectBody()
+        .jsonPath("$.path").isEqualTo("/product")
+        .jsonPath("$.message").isEqualTo("Duplicate key, Product Id: 1")
+}
+```
+
+- 捕捉 `DuplicateKeyException` 拋出 `InvalidInputException`
+
 ### 功能: 查詢 Product
 
 #### 測試: Repository 查詢 Product by productId
 
-
 ```kotlin title="ProdcutRepository.kt"
 @Test
-@Order(2)
+@Order(3)
 fun `get product`() {
     productRepository.findByProductId(savedEntity.productId).get() should {
         it.productId shouldBe 1
