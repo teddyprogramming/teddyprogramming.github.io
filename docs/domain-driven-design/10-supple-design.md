@@ -154,3 +154,11 @@ public void testMixingVolume {
 ## Standalone classes
 
 消除依賴，減少理解物件需要花費的力氣。
+
+## Closure of Operation (閉合操作)
+
+集合中任兩個元素組合時，結果仍在這個集合之中，這種操作稱「閉合操作」。
+
+閉合操作可以降低對操作的理解門檻。
+
+
