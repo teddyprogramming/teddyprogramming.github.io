@@ -153,12 +153,54 @@ public void testMixingVolume {
 
 ## Standalone classes
 
+依賴關係 :material-arrow-up-right: 思考負擔 :material-arrow-up-right: 能處裡的複雜度 :material-arrow-down-right:。
+
+為了理解一個物件，而必須保留在大腦之中的其他概念，都是在增加思考負擔。
+
 消除依賴，減少理解物件需要花費的力氣。
+
+盡力把最複雜的計算提煉到 Standalone class 中，我們可以對此物件進行獨立的分析與測試。例如，原本範例油漆(paint) 與 顏色(color) 緊密相關，我們從中將顏料(pigment)提取出來，變成顯式的概念。
 
 ## Closure of Operation (閉合操作)
 
-集合中任兩個元素組合時，結果仍在這個集合之中，這種操作稱「閉合操作」。
+集合中任兩個元素組合時，結果仍在這個集合之中，這種操作稱「閉合操作」。 閉合操作可以降低對操作的理解門檻。
 
-閉合操作可以降低對操作的理解門檻。
+### 範例: 過濾薪水低於 40,000 的員工
 
+過濾(filter)是閉合操作。
 
+#### <font style="color: red">:octicons-x-16:</font> 使用必要的 Iterator 概念
+
+```java
+Set employees = (some Set of Employee object);
+Set lowPaidEmployees = new HashSet();
+Iterator it = employees.iterator();
+while (it.hasNext()) {
+    Employee anEmployee = it.next();
+    if (anEmployee.salary() < 40000) {
+        lowPaidEmployees.add(anEmployee);
+    }
+}
+```
+
+#### <font style="color: green">:octicons-check-16:</font> 不增加新的概念
+
+lambda 是基礎函數類型，不會增加開發人員思考負擔。
+
+=== "Smelltakl (書本範例)"
+
+    ```smelltalk
+    employees := (some Set of Employee objects).
+    lowPaidEmployees := employees select:
+        [:anEmployee | anEmployee salary < 40000].
+    ```
+
+=== "Java"
+
+    ```java
+    Set employees = (some Set of Employee object);
+    Set lowPaidEmployees = employees
+        .stream()
+        .filter(anEmployee -> anEmployee.salary() < 40000)
+        .toSet();
+    ```

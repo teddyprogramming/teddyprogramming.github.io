@@ -48,6 +48,59 @@ Ports:
 
 調整專案結構，使可以用單一指令 `./gradlew build` 編譯所有專案。
 
+將每個 project 中的以下檔案搬移到最外面:
+
+1. gradle/
+2. gradlew
+3. gradlew.bat
+4. .gitignore
+
+(只有從一個 project 搬移出來，其他的刪除即可。刪除 .gradle 目錄)
+
+在最外層新增 settings.gradle.kts:
+
+```kotlin
+include(":product-service")
+include(":review-service")
+include(":recommendation-service")
+include(":product-composite-service")
+```
+
+```plantuml
+@startsalt
+{
+{T
++ microservices
+++ product-service
++++ <del>.gitignore</del> __(搬移到外層)__
++++ <del>gradle</del> __(搬移到外層)__
++++ <del>gradlew</del> __(搬移到外層)__
++++ <del>gradlew.bat</del> __(搬移到外層)__
+++ review-service
++++ <del>.gitignore</del> __(刪除)__
++++ <del>gradle</del> __(刪除)__
++++ <del>gradlew</del> __(刪除)__
++++ <del>gradlew.bat</del> __(刪除)__
+++ recommendation-service
++++ <del>.gitignore</del> __(刪除)__
++++ <del>gradle</del> __(刪除)__
++++ <del>gradlew</del> __(刪除)__
++++ <del>gradlew.bat</del> __(刪除)__
+++ product-composite-service
++++ <del>.gitignore</del> __(刪除)__
++++ <del>gradle</del> __(刪除)__
++++ <del>gradlew</del> __(刪除)__
++++ <del>gradlew.bat</del> __(刪除)__
+++ .gitignore __(從內層搬移出來)__
+++ gradle __(從內層搬移出來)__
+++ gradlew __(從內層搬移出來)__
+++ gradlew.bat __(從內層搬移出來)__
+++ settings.gradle.kts __(新增)__
+}
+}
+@endsalt
+```
+
 !!! note "IntelliJ 可能需要將 gradle 設定清除後重新開啟 IDE。"
 
 ## Adding RESTful APIs

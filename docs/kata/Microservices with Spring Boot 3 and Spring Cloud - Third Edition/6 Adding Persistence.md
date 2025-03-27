@@ -17,6 +17,51 @@ rd --> rdm
 r --> rm
 ```
 
+```plantuml
+hide circle
+
+class ProductCompositeService {
+    <color:red>createProduct(body: CreateProductCompositeRequest)</color>
+    getProduct(productId: Int): ProductAggregate
+    <color:red>deleteProduct(productId: int)</color>
+}
+
+class ProductService {
+    <color:red>createProduct(body: CreateProductRequest)</color>
+    getProduct(productId: int): Product
+    <color:red>deleteProduct(productId: int)</color>
+}
+
+class ReviewService {
+    <color:red>createReview(body: CreateReviewRequest)</color>
+    getReviews(productId: int): List<Review>
+    <color:red>deleteReviews(productId: int)</color>
+}
+
+class RecommendationService {
+    <color:red>createRecommendation(body: CreateRecommendationRequest)</color>
+    getRecommendations(productId: int): List<Recommendation>
+    <color:red>deleteRecommendations(productId: int)</color>
+}
+
+ProductCompositeService --> ProductService
+ProductCompositeService --> ReviewService
+ProductCompositeService --> RecommendationService
+```
+
+- `ProductService`
+    - 新增 (`productId` unique)
+    - 查詢
+    - 刪除
+- `ReviewService`
+    - 新增 (`productId` + `reviewId` unique)
+    - 查詢
+    - 刪除
+- `Recommendation`
+    - 新增 (`productId` + `recommendationId` unique)
+    - 查詢
+    - 刪除
+
 ## Product Service
 
 ### 功能: 新增 Product
