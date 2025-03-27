@@ -131,6 +131,14 @@ ProductService ..> Product
 
 !!! note "書中作者將 Controller 視作 Service，因此命名成 `ProductService`。"
 
+| Case                  | Result                                        |
+| :-------------------- | :-------------------------------------------- |
+| /products/1           | 200, productId = 1                            |
+| /products/13          | 404, product not found                        |
+| /prodcuts/-1          | 422 (UNPROCESSABLE_ENTITY), invalid productId |
+| /products/not-integer | 400, type mismatch                            |
+
+
 #### Test: Get product
 
 讓測試通過。
