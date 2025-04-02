@@ -11,20 +11,18 @@ pc --> r
 pc --> rd
 ```
 
-Ports:
+| Service           | Port |
+| :---------------- | :--- |
+| Product Composite | 6000 |
+| Product           | 6001 |
+| Recommendation    | 6002 |
+| Review            | 6003 |
 
-- Product Composite: `6000`
-- Product: `6001`
-- Recommendation: `6002`
-- Review: `6003`
-
-!!! note "書本使用 port 7000, 7001, 7002, 7003"
-
-    因為 macos 中，port 7000 被 airplay 佔用了，所以改用 `6000`, `6001`, `6002`, `6003`
+> 書本使用 7000 ~ 7003，但因為 macos 上，7000 被 airplay 使用，所以改用 6000 ~ 6003
 
 ## 建立 microservice 專案
 
-按下面目錄結構新增 4 個 microservices 專案。
+新增四個 Spring Boot 專案，目錄結構如下:
 
 ```text
 /
@@ -34,11 +32,10 @@ Ports:
 └── review-service
 ```
 
-- 使用 Spring Initializr 建立專案
 - 專案相依 `actuator`, `webflux`
 - 使用 gradle 編譯專案
 
-    ??? tip "使用 `./gradlew build`"
+    ??? tip "使用 `./gradlew build` 編譯"
 
         ```shell
         cd product-service; ./gradlew build; cd -; cd recommendation-service; ./gradlew build; cd -; cd review-service; ./gradlew build; cd -; cd product-composite service; ./gradlew build; cd -;
@@ -47,24 +44,6 @@ Ports:
 ## 單一指令編譯專案
 
 調整專案結構，使可以用單一指令 `./gradlew build` 編譯所有專案。
-
-將每個 project 中的以下檔案搬移到最外面:
-
-1. gradle/
-2. gradlew
-3. gradlew.bat
-4. .gitignore
-
-(只有從一個 project 搬移出來，其他的刪除即可。刪除 .gradle 目錄)
-
-在最外層新增 settings.gradle.kts:
-
-```kotlin
-include(":product-service")
-include(":review-service")
-include(":recommendation-service")
-include(":product-composite-service")
-```
 
 ```plantuml
 @startsalt
@@ -101,7 +80,14 @@ include(":product-composite-service")
 @endsalt
 ```
 
-!!! note "IntelliJ 可能需要將 gradle 設定清除後重新開啟 IDE。"
+在最外層新增 settings.gradle.kts:
+
+```kotlin
+include(":product-service")
+include(":review-service")
+include(":recommendation-service")
+include(":product-composite-service")
+```
 
 ## Adding RESTful APIs
 
@@ -116,7 +102,7 @@ class ProductService {
     getProduct(productId: Int): Product
 }
 note right of ProductService::getProduct
-GET /product/{productId}
+GET /products/{productId}
 end note
 
 class Product {
@@ -283,161 +269,6 @@ fun getProductInvalidParameterString() {
 - 資料型態不吻合會被 Spring 擋下，預設錯誤訊息沒有 `message` 欄位，通過設定可以加入。
     - `server.error.include-message=always`
 
-### Refactor: 新增程式碼共用的 module
-
-#### `util` module
-
-- 新增 `util` module。
-
-    - 注意 `plugins` 與 `dependencies` 的內容與下面一致，可以減少很多詭異事件..
-
-        ```gradle title="build.gradle.kts" hl_lines="3 7 9"
-        plugins {
-            kotlin("jvm") version "1.9.25"
-            id("io.spring.dependency-management") version "1.1.7"
-        }
-
-        dependencies {
-            implementation(platform("org.springframework.boot:spring-boot-dependencies:3.4.2"))
-            implementation("org.jetbrains.kotlin:kotlin-reflect")
-            implementation("org.springframework:spring-context")
-            implementation("org.springframework:spring-web")
-            testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-            testImplementation("io.projectreactor:reactor-test")
-            testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-        }
-        ```
-
-- 將 `ServiceUtil` 移到 `util` 下
-    - IntelliJ 熱鍵: ++f6++
-- 執行測試確保 Refactor 結果沒有破壞功能。
-    - 如果測試失敗，應該是需要設定 product-service 的 scan package，包含 `ServiceUtil` 所在的 package。
-
-#### `api` module
-
-- 新增 `api` module
-- 將 Exception Handler, `NotFoundException`, `InvalidInputException` 移到 `api` 下。
-- 執行測試
-
-### Review API
-
-```plantuml
-hide circle
-
-class ReviewService {
-    getReviews(productId: Int): List<Review>
-}
-
-note right of ReviewService::getReviews
-GET /review?productId={productId}
-end note
-
-class Review {
-    productId: Int
-    reviewId: Int
-    author: String
-    subject: String
-    content: String
-    serviceAddress: String
-}
-
-ReviewService ..> Review
-```
-
-#### Test: Get review
-
-讓測試通過。
-
-```kotlin
-@Test
-fun getReviewByProductId() {
-    client.get()
-        .uri("/review?productId=1")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isOk
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.length()").isEqualTo(3)
-        .jsonPath("$[0].productId").isEqualTo(1)
-}
-```
-
-#### Test: Get review not found
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get review not found`() {
-    client.get()
-        .uri("/review?productId=213")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isOk()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.length()").isEqualTo(0)
-}
-```
-
-#### Test: Product id is negative
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get review invalid parameter negative value`() {
-    client.get()
-        .uri("/review?productId=-1")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/review")
-        .jsonPath("$.message").isEqualTo("Invalid productId: -1")
-}
-```
-
-#### Test: Prodict id is not integer
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get review invalid parameter string`() {
-    client.get()
-        .uri("/review?productId=no-integer")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isBadRequest()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/review")
-        .jsonPath("$.message").isEqualTo("Type mismatch.")
-}
-```
-
-#### Test: Missig product id
-
-讓測試通過。(不需改程式碼)
-
-```kotlin
-@Test
-fun `get reiew missing parameter`() {
-    client.get()
-        .uri("/review")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isBadRequest()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/review")
-        .jsonPath("$.message").isEqualTo("Required query parameter 'productId' is not present.")
-}
-```
-
 ### Recommendation API
 
 ```plantuml
@@ -447,7 +278,7 @@ interface RecommendationService {
     getRecommendations(productId: Int): List<Recommendation>
 }
 note right of RecommendationService::getRecommendations
-GET /recommendation?productId={productId}
+GET /recommendations?productId={productId}
 end note
 
 class Recommendation {
@@ -461,6 +292,38 @@ class Recommendation {
 
 RecommendationService ..> Recommendation
 ```
+
+| Case                                   | Result                        |
+| :------------------------------------- | :---------------------------- |
+| /recommendations?productId=1           | 200, len=3, [0].productId = 1 |
+| /recommendations?productId=113         | 200, len=0                    |
+| /recommendations?productId=-1          | 422, Invalid productId = -1   |
+| /recommendations?productId=not-integer | 400, Type mismatch.           |
+
+- 重構:
+
+    1. 將 `serviceAddress` 的組合程式碼抽出成 component
+
+        ??? tip "video"
+            <video controls>
+                <source src="3_001.mp4" type="video/mp4">
+                你的瀏覽器不支援此影片格式。
+            </video>
+
+    2. 將 `ServiceAddress` 移動到 `util` 共用 module
+
+        ??? tip "video"
+            <video controls>
+                <source src="3_002.mp4" type="video/mp4">
+            </video>
+
+    3. 將 Exceptions, Exception Handler 移動到 `util` 共用
+
+        ??? tip "video"
+            <video controls>
+                <source src="3_003.mp4" type="video/mp4">
+            </video>
+
 
 #### Test: Get recommendations
 
@@ -552,6 +415,137 @@ fun `get recommendation missing parameter`() {
         .expectHeader().contentType(MediaType.APPLICATION_JSON)
         .expectBody()
         .jsonPath("$.path").isEqualTo("/recommendation")
+        .jsonPath("$.message").isEqualTo("Required query parameter 'productId' is not present.")
+}
+```
+
+### Review API
+
+```plantuml
+hide circle
+
+class ReviewService {
+    getReviews(productId: Int): List<Review>
+}
+
+note right of ReviewService::getReviews
+GET /reviews?productId={productId}
+end note
+
+class Review {
+    productId: Int
+    reviewId: Int
+    author: String
+    subject: String
+    content: String
+    serviceAddress: String
+}
+
+ReviewService ..> Review
+```
+
+| Case                           | Result                                                    |
+| :----------------------------- | :-------------------------------------------------------- |
+| /reviews?productId=1           | 200, len = 3, [0].productId = 1                           |
+| /reviews?productId=213         | 200, len = 0                                              |
+| /reviews?productId=-1          | 422, Invalid productId = -1                               |
+| /reviews?productId=not-integer | 400, Type mismatch                                        |
+| /reviews                       | 400, Required query parameter 'productId' is not present. |
+
+??? tip
+
+    - `?productId=` 使用 `@RequestParam`
+
+#### Test: Get review
+
+讓測試通過。
+
+```kotlin
+@Test
+fun getReviewByProductId() {
+    client.get()
+        .uri("/review?productId=1")
+        .accept(MediaType.APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isOk
+        .expectHeader().contentType(MediaType.APPLICATION_JSON)
+        .expectBody()
+        .jsonPath("$.length()").isEqualTo(3)
+        .jsonPath("$[0].productId").isEqualTo(1)
+}
+```
+
+#### Test: Get review not found
+
+讓測試通過。
+
+```kotlin
+@Test
+fun `get review not found`() {
+    client.get()
+        .uri("/review?productId=213")
+        .accept(MediaType.APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isOk()
+        .expectHeader().contentType(MediaType.APPLICATION_JSON)
+        .expectBody()
+        .jsonPath("$.length()").isEqualTo(0)
+}
+```
+
+#### Test: Product id is negative
+
+讓測試通過。
+
+```kotlin
+@Test
+fun `get review invalid parameter negative value`() {
+    client.get()
+        .uri("/review?productId=-1")
+        .accept(MediaType.APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
+        .expectHeader().contentType(MediaType.APPLICATION_JSON)
+        .expectBody()
+        .jsonPath("$.path").isEqualTo("/review")
+        .jsonPath("$.message").isEqualTo("Invalid productId: -1")
+}
+```
+
+#### Test: Prodict id is not integer
+
+讓測試通過。
+
+```kotlin
+@Test
+fun `get review invalid parameter string`() {
+    client.get()
+        .uri("/review?productId=no-integer")
+        .accept(MediaType.APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isBadRequest()
+        .expectHeader().contentType(MediaType.APPLICATION_JSON)
+        .expectBody()
+        .jsonPath("$.path").isEqualTo("/review")
+        .jsonPath("$.message").isEqualTo("Type mismatch.")
+}
+```
+
+#### Test: Missig product id
+
+讓測試通過。(不需改程式碼)
+
+```kotlin
+@Test
+fun `get reiew missing parameter`() {
+    client.get()
+        .uri("/review")
+        .accept(MediaType.APPLICATION_JSON)
+        .exchange()
+        .expectStatus().isBadRequest()
+        .expectHeader().contentType(MediaType.APPLICATION_JSON)
+        .expectBody()
+        .jsonPath("$.path").isEqualTo("/review")
         .jsonPath("$.message").isEqualTo("Required query parameter 'productId' is not present.")
 }
 ```
@@ -677,6 +671,12 @@ ProductService <|.. ProductCompositeIntegration
 RecommendationService <|.. ProductCompositeIntegration
 ReviewService <|.. ProductCompositeIntegration
 ```
+
+| Case                  | Result                                                         |
+| :-------------------- | :------------------------------------------------------------- |
+| /product-composite/1  | 200, productId = 1, len(recommendations) = 3, len(reviews) = 3 |
+| /product-composite/13 | 404, Not found productId = 13.                                 |
+| /product-composite/-1 | 422, Invalid productId = -1                                    |
 
 #### Test: Get product
 
