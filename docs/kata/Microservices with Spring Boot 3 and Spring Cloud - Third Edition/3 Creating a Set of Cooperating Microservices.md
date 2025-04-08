@@ -293,12 +293,13 @@ class Recommendation {
 RecommendationService ..> Recommendation
 ```
 
-| Case                                   | Result                        |
-| :------------------------------------- | :---------------------------- |
-| /recommendations?productId=1           | 200, len=3, [0].productId = 1 |
-| /recommendations?productId=113         | 200, len=0                    |
-| /recommendations?productId=-1          | 422, Invalid productId = -1   |
-| /recommendations?productId=not-integer | 400, Type mismatch.           |
+| Case                                   | Result                                                    |
+| :------------------------------------- | :-------------------------------------------------------- |
+| /recommendations?productId=1           | 200, len=3, [0].productId = 1                             |
+| /recommendations?productId=113         | 200, len=0                                                |
+| /recommendations?productId=-1          | 422, Invalid productId = -1                               |
+| /recommendations                       | 400, Required query parameter 'productId' is not present. |
+| /recommendations?productId=not-integer | 400, Type mismatch.                                       |
 
 - 重構:
 
@@ -324,100 +325,9 @@ RecommendationService ..> Recommendation
                 <source src="3_003.mp4" type="video/mp4">
             </video>
 
+??? tip
 
-#### Test: Get recommendations
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get recommendations by product id`() {
-    client.get()
-        .uri("/recommendation?productId=1")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isOk()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.length()").isEqualTo(3)
-        .jsonPath("$[0].productId").isEqualTo(1)
-}
-```
-
-#### Test: Get recommentations not found
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get recommendations not found`() {
-    client.get()
-        .uri("/recommendation?productId=113")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isOk()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.length()").isEqualTo(0)
-}
-```
-
-#### Test: Negative product id
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get recommendation invalid parameter negative value`() {
-    client.get()
-        .uri("/recommendation?productId=-1")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/recommendation")
-        .jsonPath("$.message").isEqualTo("Invalid productId: -1")
-}
-```
-
-#### Test: Product id is not integer
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get recommendation invalid parameter string`() {
-    client.get()
-        .uri("/recommendation?productId=no-integer")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isBadRequest()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/recommendation")
-        .jsonPath("$.message").isEqualTo("Type mismatch.")
-}
-```
-
-#### Test: Missing prodict id
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get recommendation missing parameter`() {
-    client.get()
-        .uri("/recommendation")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isBadRequest()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/recommendation")
-        .jsonPath("$.message").isEqualTo("Required query parameter 'productId' is not present.")
-}
-```
+    - `?productId=` 使用 `@RequestParam`
 
 ### Review API
 
@@ -449,106 +359,8 @@ ReviewService ..> Review
 | /reviews?productId=1           | 200, len = 3, [0].productId = 1                           |
 | /reviews?productId=213         | 200, len = 0                                              |
 | /reviews?productId=-1          | 422, Invalid productId = -1                               |
-| /reviews?productId=not-integer | 400, Type mismatch                                        |
 | /reviews                       | 400, Required query parameter 'productId' is not present. |
-
-??? tip
-
-    - `?productId=` 使用 `@RequestParam`
-
-#### Test: Get review
-
-讓測試通過。
-
-```kotlin
-@Test
-fun getReviewByProductId() {
-    client.get()
-        .uri("/review?productId=1")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isOk
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.length()").isEqualTo(3)
-        .jsonPath("$[0].productId").isEqualTo(1)
-}
-```
-
-#### Test: Get review not found
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get review not found`() {
-    client.get()
-        .uri("/review?productId=213")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isOk()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.length()").isEqualTo(0)
-}
-```
-
-#### Test: Product id is negative
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get review invalid parameter negative value`() {
-    client.get()
-        .uri("/review?productId=-1")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/review")
-        .jsonPath("$.message").isEqualTo("Invalid productId: -1")
-}
-```
-
-#### Test: Prodict id is not integer
-
-讓測試通過。
-
-```kotlin
-@Test
-fun `get review invalid parameter string`() {
-    client.get()
-        .uri("/review?productId=no-integer")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isBadRequest()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/review")
-        .jsonPath("$.message").isEqualTo("Type mismatch.")
-}
-```
-
-#### Test: Missig product id
-
-讓測試通過。(不需改程式碼)
-
-```kotlin
-@Test
-fun `get reiew missing parameter`() {
-    client.get()
-        .uri("/review")
-        .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .expectStatus().isBadRequest()
-        .expectHeader().contentType(MediaType.APPLICATION_JSON)
-        .expectBody()
-        .jsonPath("$.path").isEqualTo("/review")
-        .jsonPath("$.message").isEqualTo("Required query parameter 'productId' is not present.")
-}
-```
+| /reviews?productId=not-integer | 400, Type mismatch                                        |
 
 ### Refactor: 抽 Service interface
 
