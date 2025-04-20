@@ -116,6 +116,7 @@ markdown_extensions:
   - abbr
   - mdx_wikilink_plus:
       end_url: .html
+  - pymdownx.magiclink
 
 plugins:
   - search

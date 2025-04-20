@@ -301,6 +301,8 @@ RecommendationService ..> Recommendation
 | /recommendations                       | 400, Required query parameter 'productId' is not present. |
 | /recommendations?productId=not-integer | 400, Type mismatch.                                       |
 
+!!! tip "`?productId=` 使用 `@RequestParam`"
+
 - 重構:
 
     1. 將 `serviceAddress` 的組合程式碼抽出成 component
@@ -324,10 +326,6 @@ RecommendationService ..> Recommendation
             <video controls>
                 <source src="3_003.mp4" type="video/mp4">
             </video>
-
-??? tip
-
-    - `?productId=` 使用 `@RequestParam`
 
 ### Review API
 
@@ -489,6 +487,17 @@ ReviewService <|.. ProductCompositeIntegration
 | /product-composite/1  | 200, productId = 1, len(recommendations) = 3, len(reviews) = 3 |
 | /product-composite/13 | 404, Not found productId = 13.                                 |
 | /product-composite/-1 | 422, Invalid productId = -1                                    |
+
+- Spring 建議的 Mock Server
+    - [WireMockk](https://docs.spring.io/spring-cloud-contract/docs/current/reference/html/project-features.html#features-wiremock)
+        - https://wiremock.org/docs/spring-boot/
+    - [MockWebServer](https://docs.spring.io/spring-framework/reference/web/webflux-webclient/client-testing.html)
+
+重構:
+
+- 抽 `ProductService`
+    - `@RestController`
+    - HTTP interface
 
 #### Test: Get product
 
