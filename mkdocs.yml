@@ -28,6 +28,7 @@ nav:
           - zsh: development/vim/zsh.md
           - VSCode: development/vim/vscode.md
           - IdeaVim: development/vim/ideavim.md
+          - neovim: development/vim/neovim.md
           - 進階: development/vim/advanced.md
   - Kubernetes:
       - Apply: kubernetes/apply.md
