@@ -30,6 +30,7 @@ nav:
           - IdeaVim: development/vim/ideavim.md
           - neovim: development/vim/neovim.md
           - 進階: development/vim/advanced.md
+      - Terminal: development/terminal.md
   - Kubernetes:
       - Apply: kubernetes/apply.md
       - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
