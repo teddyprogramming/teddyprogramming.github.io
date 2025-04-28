@@ -504,6 +504,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/terminal.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terminal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2085,7 +2108,7 @@
 
 
 <h1 id="3-creating-a-set-of-cooperating-microservices">3. Creating a Set of Cooperating Microservices</h1>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="165px" preserveAspectRatio="xMidYMid meet" style="width:430px;height:165px;background:#FFFFFF;" version="1.1" viewBox="0 0 430 165" width="430px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="pc" data-source-line="2" data-uid="ent0002" id="entity_pc"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.877" x="94.42" y="7"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="247.297" y="12"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="245.297" y="14"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="245.297" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132.877" x="109.42" y="39.9951">Product Composite</text></g><g class="entity" data-entity="p" data-source-line="3" data-uid="ent0003" id="entity_p"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93.71" x="7" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="80.71" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="22" y="146.2851">Product</text></g><g class="entity" data-entity="r" data-source-line="4" data-uid="ent0004" id="entity_r"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90.5791" x="135.57" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="206.1491" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="204.1491" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="204.1491" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="150.57" y="146.2851">Review</text></g><g class="entity" data-entity="rd" data-source-line="5" data-uid="ent0005" id="entity_rd"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163.6484" x="261.03" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="404.6784" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="402.6784" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="402.6784" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="276.03" y="146.2851">Recommendation</text></g><g class="link" data-entity-1="pc" data-entity-2="p" data-source-line="7" data-uid="lnk6" id="link_pc_p"><path d="M153.3,53.78 C132,71.27 107.2872,91.5626 85.9972,109.0426" fill="none" id="pc-to-p" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="81.36,112.85,90.8541,110.2304,85.2244,109.6772,85.7776,104.0475,81.36,112.85" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="r" data-source-line="8" data-uid="lnk7" id="link_pc_r"><path d="M180.85,53.78 C180.85,71.27 180.85,89.37 180.85,106.85" fill="none" id="pc-to-r" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="180.85,112.85,184.85,103.85,180.85,107.85,176.85,103.85,180.85,112.85" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="rd" data-source-line="9" data-uid="lnk8" id="link_pc_rd"><path d="M216.01,53.78 C243.18,71.27 275.5752,92.122 302.7252,109.602" fill="none" id="pc-to-rd" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="307.77,112.85,302.3681,104.6147,303.566,110.1433,298.0374,111.3412,307.77,112.85" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2125,55 +2148,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: e50e5b05-03cb-4a82-b899-0a6a4e7bb2b9</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: d5b95560-3921-4485-9648-7bf6cf47bb37</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 25557188-1dc2-4030-9912-1ac4bfa2c75b</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2231,7 +2207,101 @@
 </ul>
 <h2 id="_1">單一指令編譯專案</h2>
 <p>調整專案結構，使可以用單一指令 <code>./gradlew build</code> 編譯所有專案。</p>
-<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SALT" height="374px" preserveAspectRatio="xMidYMid meet" style="width:201px;height:374px;background:#FFFFFF;" version="1.1" viewBox="0 0 201 374" width="201px" zoomAndPan="magnify" class="diagram"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83.1328" x="16" y="17.1387">microservices</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="93.7324" x="26" y="31.1074">product-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="45.0762">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="45.0762"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="97.5" y="45.0762">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="59.0449">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="59.0449"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="78.0527" y="59.0449">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="73.0137">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="73.0137"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="87.8672" y="73.0137">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="86.9824">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="86.9824"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="111.3574" y="86.9824">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="87.2637" x="26" y="100.9512">review-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="114.9199">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="114.9199"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="97.5" y="114.9199">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="128.8887">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="128.8887"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="78.0527" y="128.8887">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="142.8574">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="142.8574"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="87.8672" y="142.8574">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="156.8262">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="156.8262"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="111.3574" y="156.8262">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149.8945" x="26" y="170.7949">recommendation-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="184.7637">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="184.7637"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="97.5" y="184.7637">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="198.7324">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="198.7324"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="78.0527" y="198.7324">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="212.7012">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="212.7012"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="87.8672" y="212.7012">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="226.6699">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="226.6699"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="111.3574" y="226.6699">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="160.3242" x="26" y="240.6387">product-composite-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="254.6074">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="254.6074"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="97.5" y="254.6074">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="268.5762">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="268.5762"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="78.0527" y="268.5762">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="282.5449">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="282.5449"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="87.8672" y="282.5449">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="296.5137">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="296.5137"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="111.3574" y="296.5137">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="57.6855" x="26" y="310.4824">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="87.5" y="310.4824">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="38.2383" x="26" y="324.4512">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="68.0527" y="324.4512">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48.0527" x="26" y="338.4199">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="77.8672" y="338.4199">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="71.543" x="26" y="352.3887">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="101.3574" y="352.3887">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111.627" x="26" y="366.3574">settings.gradle.kts</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="141.4414" y="366.3574">(新增)</text><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="9" y="11.9844"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="25.9531"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="26.9531"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="26.9531" y2="26.9531"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="40.9219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="40.9219" y2="40.9219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="54.8906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="54.8906" y2="54.8906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="68.8594"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="68.8594" y2="68.8594"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="82.8281"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="82.8281" y2="82.8281"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="95.7969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="96.7969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="96.7969" y2="96.7969"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="110.7656"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="110.7656" y2="110.7656"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="124.7344"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="124.7344" y2="124.7344"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="138.7031"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="138.7031" y2="138.7031"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="152.6719"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="152.6719" y2="152.6719"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="165.6406"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="166.6406"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="166.6406" y2="166.6406"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="180.6094"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="180.6094" y2="180.6094"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="194.5781"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="194.5781" y2="194.5781"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="208.5469"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="208.5469" y2="208.5469"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="222.5156"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="222.5156" y2="222.5156"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="235.4844"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="236.4844"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="236.4844" y2="236.4844"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="250.4531"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="250.4531" y2="250.4531"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="264.4219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="264.4219" y2="264.4219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="278.3906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="278.3906" y2="278.3906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="292.3594"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="292.3594" y2="292.3594"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="306.3281"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="306.3281" y2="306.3281"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="320.2969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="320.2969" y2="320.2969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="334.2656"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="334.2656" y2="334.2656"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="348.2344"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="348.2344" y2="348.2344"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="362.2031"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="362.2031" y2="362.2031"/></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SALT" height="374px" preserveAspectRatio="xMidYMid meet" style="width:201px;height:374px;background:#FFFFFF;" version="1.1" viewBox="0 0 201 374" width="201px" zoomAndPan="magnify" class="diagram"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83.1328" x="16" y="17.1387">microservices</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="93.7324" x="26" y="31.1074">product-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="45.0762">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="45.0762"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="97.5" y="45.0762">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="59.0449">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="59.0449"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="78.0527" y="59.0449">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="73.0137">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="73.0137"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="87.8672" y="73.0137">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="86.9824">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="86.9824"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="69.3637" x="111.3574" y="86.9824">(搬移到外層)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="87.2637" x="26" y="100.9512">review-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="114.9199">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="114.9199"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="97.5" y="114.9199">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="128.8887">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="128.8887"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="78.0527" y="128.8887">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="142.8574">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="142.8574"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="87.8672" y="142.8574">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="156.8262">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="156.8262"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="111.3574" y="156.8262">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149.8945" x="26" y="170.7949">recommendation-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="184.7637">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="184.7637"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="97.5" y="184.7637">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="198.7324">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="198.7324"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="78.0527" y="198.7324">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="212.7012">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="212.7012"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="87.8672" y="212.7012">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="226.6699">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="226.6699"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="111.3574" y="226.6699">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="160.3242" x="26" y="240.6387">product-composite-service</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="57.6855" x="36" y="254.6074">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="93.6855" y="254.6074"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="97.5" y="254.6074">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="38.2383" x="36" y="268.5762">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="74.2383" y="268.5762"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="78.0527" y="268.5762">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="48.0527" x="36" y="282.5449">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="84.0527" y="282.5449"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="87.8672" y="282.5449">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="line-through" textLength="71.543" x="36" y="296.5137">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="107.543" y="296.5137"> </text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="111.3574" y="296.5137">(刪除)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="57.6855" x="26" y="310.4824">.gitignore</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="87.5" y="310.4824">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="38.2383" x="26" y="324.4512">gradle</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="68.0527" y="324.4512">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48.0527" x="26" y="338.4199">gradlew</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="77.8672" y="338.4199">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="71.543" x="26" y="352.3887">gradlew.bat</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="93.3639" x="101.3574" y="352.3887">(從內層搬移出來)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111.627" x="26" y="366.3574">settings.gradle.kts</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="33.3635" x="141.4414" y="366.3574">(新增)</text><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="9" y="11.9844"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="25.9531"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="26.9531"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="26.9531" y2="26.9531"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="40.9219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="40.9219" y2="40.9219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="54.8906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="54.8906" y2="54.8906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="68.8594"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="68.8594" y2="68.8594"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="28.9531" y2="82.8281"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="82.8281" y2="82.8281"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="95.7969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="96.7969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="96.7969" y2="96.7969"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="110.7656"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="110.7656" y2="110.7656"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="124.7344"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="124.7344" y2="124.7344"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="138.7031"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="138.7031" y2="138.7031"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="98.7969" y2="152.6719"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="152.6719" y2="152.6719"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="165.6406"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="166.6406"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="166.6406" y2="166.6406"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="180.6094"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="180.6094" y2="180.6094"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="194.5781"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="194.5781" y2="194.5781"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="208.5469"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="208.5469" y2="208.5469"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="168.6406" y2="222.5156"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="222.5156" y2="222.5156"/><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="19" y="235.4844"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="236.4844"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="236.4844" y2="236.4844"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="250.4531"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="250.4531" y2="250.4531"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="264.4219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="264.4219" y2="264.4219"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="278.3906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="278.3906" y2="278.3906"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="20" y1="238.4844" y2="292.3594"/><line style="stroke:#888888;stroke-width:1;" x1="20" x2="28" y1="292.3594" y2="292.3594"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="306.3281"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="306.3281" y2="306.3281"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="320.2969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="320.2969" y2="320.2969"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="334.2656"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="334.2656" y2="334.2656"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="348.2344"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="348.2344" y2="348.2344"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="362.2031"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="362.2031" y2="362.2031"/></g></svg></div></div>
+<div class='puml-container'><div class="puml light" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: a29d0071-f617-4370-84fb-e7eab24d44d9</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:26</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div><div class="puml dark" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: b1d2fd2d-eef5-4ce5-b6dc-49938c0faa5d</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:26</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div></div>
 
 <p>在最外層新增 settings.gradle.kts:</p>
 <div class="highlight"><pre><span></span><code><span class="n">include</span><span class="p">(</span><span class="s">&quot;:product-service&quot;</span><span class="p">)</span>
@@ -2282,8 +2352,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 2131d077-1f11-464f-8980-75dc1a34c890</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 16d7b7cb-1e9c-4f89-8776-594d44a513bc</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2329,8 +2399,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: a6c4dafe-f439-4fa3-bca6-0009ba7b2ebc</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: f8ce7cbd-1ef9-4665-8a29-29b2c6297bc2</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2455,7 +2525,7 @@
 </li>
 <li>
 <p>例外狀況回傳 <code>HttpErrorInfo</code></p>
-<p><div class='puml-container'><div class="puml light" style="">520. 
+<p><div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="128px" preserveAspectRatio="xMidYMid meet" style="width:230px;height:128px;background:#FFFFFF;" version="1.1" viewBox="0 0 230 128" width="230px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="HttpErrorInfo" data-source-line="4" data-uid="ent0002" id="entity_HttpErrorInfo"><rect fill="#F1F1F1" height="107.4844" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="209.3672" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91.5674" x="65.8999" y="24.9951">HttpErrorInfo</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="215.3672" y1="33.2969" y2="33.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197.3672" x="13" y="50.292">timestamp: ZonedDateTime</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.7764" x="13" y="66.5889">path: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.5205" x="13" y="82.8857">httpStatus: HttpStatus</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113.8662" x="13" y="99.1826">message: String</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="215.3672" y1="106.4844" y2="106.4844"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2495,55 +2565,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 43ca4344-f3f0-494f-b5d9-6cbbec8edf27</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 6efe35f3-11e4-4f0f-a71c-0fec9af0e22d</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 61a9a4af-5df4-4481-b8d7-bf21734c34f9</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2593,7 +2616,7 @@
 </li>
 </ul>
 <h3 id="recommendation-api">Recommendation API</h3>
-<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="272px" preserveAspectRatio="xMidYMid meet" style="width:834px;height:272px;background:#FFFFFF;" version="1.1" viewBox="0 0 834 272" width="834px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="RecommendationService" data-source-line="4" data-uid="ent0002" id="entity_RecommendationService"><rect fill="#F1F1F1" height="58.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="452.4326" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="175.3896" x="145.5215" y="24.9951">RecommendationService</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="458.4326" y1="33.2969" y2="33.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="458.4326" y1="41.2969" y2="41.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="440.4326" x="13" y="58.292">getRecommendations(productId: Int): List&lt;Recommendation&gt;</text></g><path d="M494.86,18.73 L494.86,27.2964 L453.4326,53.4453 L494.86,35.2964 L494.86,43.8628 A0,0 0 0 0 494.86,43.8628 L827.5807,43.8628 A0,0 0 0 0 827.5807,43.8628 L827.5807,28.73 L817.5807,18.73 L494.86,18.73 A0,0 0 0 0 494.86,18.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M817.5807,18.73 L817.5807,28.73 L827.5807,28.73 L817.5807,18.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="311.7207" x="500.86" y="35.7969">GET /recommendations?productId={productId}</text><g class="entity" data-entity="Recommendation" data-source-line="11" data-uid="ent0005" id="entity_Recommendation"><rect fill="#F1F1F1" height="140.0781" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.3506" x="147.04" y="125.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="171.3911" y="143.5851">Recommendation</text><line style="stroke:#181818;stroke-width:0.5;" x1="148.04" x2="318.3906" y1="151.8869" y2="151.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94.8281" x="153.04" y="168.882">productId: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160.3506" x="153.04" y="185.1789">recommendationId: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97.084" x="153.04" y="201.4757">author: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56.0957" x="153.04" y="217.7726">rate: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104.5488" x="153.04" y="234.0695">content: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.4043" x="153.04" y="250.3664">serviceAddress: String</text><line style="stroke:#181818;stroke-width:0.5;" x1="148.04" x2="318.3906" y1="257.6681" y2="257.6681"/></g><g class="link" data-entity-1="RecommendationService" data-entity-2="Recommendation" data-source-line="20" data-uid="lnk6" id="link_RecommendationService_Recommendation"><path codeLine="20" d="M233.22,65.79 C233.22,82.44 233.22,98.23 233.22,119.15" fill="none" id="RecommendationService-to-Recommendation" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="233.22,125.15,237.22,116.15,233.22,120.15,229.22,116.15,233.22,125.15" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
+<div class='puml-container'><div class="puml light" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2633,8 +2656,55 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: a0500386-29cd-4ded-9cd5-b252b4eb1752</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 3ff1b665-47d0-424e-8354-980373eef7bd</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:26</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div><div class="puml dark" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: 41948b97-1e44-49b9-8d1a-cdd1f5f9f828</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2751,8 +2821,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 4409136c-0da6-4878-86f9-861dc26ea3df</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 16c874b5-9910-48ca-be26-21f0c4ed22d0</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2798,8 +2868,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 53c638ec-97b5-4c13-9349-25a75de1592e</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:42</p>
+        <p><strong>Error ID</strong>: c73fa9c6-e08d-41da-8d9e-8956030c248f</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2838,7 +2908,7 @@
 </tbody>
 </table>
 <h3 id="refactor-service-interface">Refactor: 抽 Service interface</h3>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="239px" preserveAspectRatio="xMidYMid meet" style="width:1482px;height:239px;background:#FFFFFF;" version="1.1" viewBox="0 0 1482 239" width="1482px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="cluster" data-entity="api" data-source-line="4" data-uid="ent0002" id="cluster_api"><path d="M8.5,6 L33.7676,6 A3.75,3.75 0 0 1 36.2676,8.5 L43.2676,28.2969 L1472.5,28.2969 A2.5,2.5 0 0 1 1475,30.7969 L1475,113.09 A2.5,2.5 0 0 1 1472.5,115.59 L8.5,115.59 A2.5,2.5 0 0 1 6,113.09 L6,8.5 A2.5,2.5 0 0 1 8.5,6" fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="6" x2="43.2676" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="24.2676" x="10" y="20.9951">api</text></g><g class="cluster" data-entity="product-service" data-source-line="24" data-uid="ent0012" id="cluster_product-service"><path d="M66.5,139.59 L191.2852,139.59 A3.75,3.75 0 0 1 193.7852,142.09 L200.7852,161.8869 L235.5,161.8869 A2.5,2.5 0 0 1 238,164.3869 L238,230.39 A2.5,2.5 0 0 1 235.5,232.89 L66.5,232.89 A2.5,2.5 0 0 1 64,230.39 L64,142.09 A2.5,2.5 0 0 1 66.5,139.59" fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="64" x2="200.7852" y1="161.8869" y2="161.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="123.7852" x="68" y="154.5851">product-service</text></g><g class="cluster" data-entity="recommendation-service" data-source-line="27" data-uid="ent0014" id="cluster_recommendation-service"><path d="M516.5,139.59 L713.2607,139.59 A3.75,3.75 0 0 1 715.7607,142.09 L722.7607,161.8869 L755.5,161.8869 A2.5,2.5 0 0 1 758,164.3869 L758,230.39 A2.5,2.5 0 0 1 755.5,232.89 L516.5,232.89 A2.5,2.5 0 0 1 514,230.39 L514,142.09 A2.5,2.5 0 0 1 516.5,139.59" fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="514" x2="722.7607" y1="161.8869" y2="161.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="195.7607" x="518" y="154.5851">recommendation-service</text></g><g class="cluster" data-entity="review-service" data-source-line="30" data-uid="ent0016" id="cluster_review-service"><path d="M1132.5,139.59 L1248.5146,139.59 A3.75,3.75 0 0 1 1251.0146,142.09 L1258.0146,161.8869 L1297.5,161.8869 A2.5,2.5 0 0 1 1300,164.3869 L1300,230.39 A2.5,2.5 0 0 1 1297.5,232.89 L1132.5,232.89 A2.5,2.5 0 0 1 1130,230.39 L1130,142.09 A2.5,2.5 0 0 1 1132.5,139.59" fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="1130" x2="1258.0146" y1="161.8869" y2="161.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="115.0146" x="1134" y="154.5851">review-service</text></g><g class="entity" data-entity="ProductService" data-source-line="5" data-uid="ent0003" id="entity_ProductService"><rect fill="#FFA500" height="58.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="257.3281" x="22.34" y="41"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="105.4512" x="98.2785" y="58.9951">ProductService</text><line style="stroke:#181818;stroke-width:0.5;" x1="23.34" x2="278.6681" y1="67.2969" y2="67.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="23.34" x2="278.6681" y1="75.2969" y2="75.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245.3281" x="28.34" y="92.292">getProduct(productId: Int): Product</text></g><g class="entity" data-entity="RecommendationService" data-source-line="8" data-uid="ent0004" id="entity_RecommendationService"><rect fill="#FFA500" height="58.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="452.4326" x="409.78" y="41"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="175.3896" x="548.3015" y="58.9951">RecommendationService</text><line style="stroke:#181818;stroke-width:0.5;" x1="410.78" x2="861.2126" y1="67.2969" y2="67.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="410.78" x2="861.2126" y1="75.2969" y2="75.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="440.4326" x="415.78" y="92.292">getRecommendations(productId: Int): List&lt;Recommendation&gt;</text></g><g class="entity" data-entity="ReviewService" data-source-line="11" data-uid="ent0005" id="entity_ReviewService"><rect fill="#FFA500" height="58.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="306.2939" x="1061.85" y="41"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="102.3203" x="1163.8368" y="58.9951">ReviewService</text><line style="stroke:#181818;stroke-width:0.5;" x1="1062.85" x2="1367.1439" y1="67.2969" y2="67.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="1062.85" x2="1367.1439" y1="75.2969" y2="75.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="294.2939" x="1067.85" y="92.292">getReviews(productId: Int): List&lt;Review&gt;</text></g><g class="entity" data-entity="Product" data-source-line="15" data-uid="ent0006" id="entity_Product"><rect fill="#FFA500" height="42.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="59.71" x="315.15" y="49.15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="318.15" y="67.1451">Product</text><line style="stroke:#181818;stroke-width:0.5;" x1="316.15" x2="373.86" y1="75.4469" y2="75.4469"/><line style="stroke:#181818;stroke-width:0.5;" x1="316.15" x2="373.86" y1="83.4469" y2="83.4469"/></g><g class="entity" data-entity="Recommendation" data-source-line="16" data-uid="ent0007" id="entity_Recommendation"><rect fill="#FFA500" height="42.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="129.6484" x="897.18" y="49.15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="900.18" y="67.1451">Recommendation</text><line style="stroke:#181818;stroke-width:0.5;" x1="898.18" x2="1025.8284" y1="75.4469" y2="75.4469"/><line style="stroke:#181818;stroke-width:0.5;" x1="898.18" x2="1025.8284" y1="83.4469" y2="83.4469"/></g><g class="entity" data-entity="Review" data-source-line="17" data-uid="ent0008" id="entity_Review"><rect fill="#FFA500" height="42.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="56.5791" x="1402.71" y="49.15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="1405.71" y="67.1451">Review</text><line style="stroke:#181818;stroke-width:0.5;" x1="1403.71" x2="1458.2891" y1="75.4469" y2="75.4469"/><line style="stroke:#181818;stroke-width:0.5;" x1="1403.71" x2="1458.2891" y1="83.4469" y2="83.4469"/></g><g class="entity" data-entity="ProductServiceImpl" data-source-line="25" data-uid="ent0013" id="entity_ProductServiceImpl"><rect fill="#F1F1F1" height="42.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="141.9941" x="80" y="174.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105.4512" x="83" y="192.5851">ProductService</text><text fill="#FFA500" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30.543" x="188.4512" y="192.5851">Impl</text><line style="stroke:#181818;stroke-width:0.5;" x1="81" x2="220.9941" y1="200.8869" y2="200.8869"/><line style="stroke:#181818;stroke-width:0.5;" x1="81" x2="220.9941" y1="208.8869" y2="208.8869"/></g><g class="entity" data-entity="RecommendationServiceImpl" data-source-line="28" data-uid="ent0015" id="entity_RecommendationServiceImpl"><rect fill="#F1F1F1" height="42.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="211.9326" x="530.03" y="174.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175.3896" x="533.03" y="192.5851">RecommendationService</text><text fill="#FFA500" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30.543" x="708.4196" y="192.5851">Impl</text><line style="stroke:#181818;stroke-width:0.5;" x1="531.03" x2="740.9626" y1="200.8869" y2="200.8869"/><line style="stroke:#181818;stroke-width:0.5;" x1="531.03" x2="740.9626" y1="208.8869" y2="208.8869"/></g><g class="entity" data-entity="ReviewServiceImpl" data-source-line="31" data-uid="ent0017" id="entity_ReviewServiceImpl"><rect fill="#F1F1F1" height="42.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="138.8633" x="1145.57" y="174.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102.3203" x="1148.57" y="192.5851">ReviewService</text><text fill="#FFA500" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30.543" x="1250.8903" y="192.5851">Impl</text><line style="stroke:#181818;stroke-width:0.5;" x1="1146.57" x2="1283.4333" y1="200.8869" y2="200.8869"/><line style="stroke:#181818;stroke-width:0.5;" x1="1146.57" x2="1283.4333" y1="208.8869" y2="208.8869"/></g><g class="link" data-entity-1="ProductService" data-entity-2="Product" data-source-line="19" data-uid="lnk9" id="link_ProductService_Product"><path codeLine="19" d="M279.83,70.3 C291.45,70.3 297.08,70.3 308.71,70.3" fill="none" id="ProductService-to-Product" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="314.71,70.3,305.71,66.3,309.71,70.3,305.71,74.3,314.71,70.3" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="RecommendationService" data-entity-2="Recommendation" data-source-line="20" data-uid="lnk10" id="link_RecommendationService_Recommendation"><path codeLine="20" d="M862.67,70.3 C874.05,70.3 879.43,70.3 890.82,70.3" fill="none" id="RecommendationService-to-Recommendation" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="896.82,70.3,887.82,66.3,891.82,70.3,887.82,74.3,896.82,70.3" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="ReviewService" data-entity-2="Review" data-source-line="21" data-uid="lnk11" id="link_ReviewService_Review"><path codeLine="21" d="M1368.56,70.3 C1379.78,70.3 1385,70.3 1396.22,70.3" fill="none" id="ReviewService-to-Review" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1402.22,70.3,1393.22,66.3,1397.22,70.3,1393.22,74.3,1402.22,70.3" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="ProductService" data-entity-2="ProductServiceImpl" data-source-line="34" data-uid="lnk18" id="link_ProductService_ProductServiceImpl"><path codeLine="34" d="M151,117.93 C151,140.72 151,154.06 151,174.36" fill="none" id="ProductService-backto-ProductServiceImpl" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="151,99.93,145,117.93,157,117.93,151,99.93" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="RecommendationService" data-entity-2="RecommendationServiceImpl" data-source-line="35" data-uid="lnk19" id="link_RecommendationService_RecommendationServiceImpl"><path codeLine="35" d="M636,117.93 C636,140.72 636,154.06 636,174.36" fill="none" id="RecommendationService-backto-RecommendationServiceImpl" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="636,99.93,630,117.93,642,117.93,636,99.93" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="ReviewService" data-entity-2="ReviewServiceImpl" data-source-line="36" data-uid="lnk20" id="link_ReviewService_ReviewServiceImpl"><path codeLine="36" d="M1215,117.93 C1215,140.72 1215,154.06 1215,174.36" fill="none" id="ReviewService-backto-ReviewServiceImpl" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1215,99.93,1209,117.93,1221,117.93,1215,99.93" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2878,14 +2948,14 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 3e6a073c-05b7-45fc-a641-8892babb81c4</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:42</p>
+        <p><strong>Error ID</strong>: 4b893063-e172-44d1-b4a8-192dfde3bdf7</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
 </body>
 </html>
-</div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="239px" preserveAspectRatio="xMidYMid meet" style="width:1482px;height:239px;background:#1B1B1B;" version="1.1" viewBox="0 0 1482 239" width="1482px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="239" style="stroke:none;stroke-width:1;" width="1482" x="0" y="0"/><g class="cluster" data-entity="api" data-source-line="4" data-uid="ent0002" id="cluster_api"><path d="M8.5,6 L33.7676,6 A3.75,3.75 0 0 1 36.2676,8.5 L43.2676,28.2969 L1472.5,28.2969 A2.5,2.5 0 0 1 1475,30.7969 L1475,113.09 A2.5,2.5 0 0 1 1472.5,115.59 L8.5,115.59 A2.5,2.5 0 0 1 6,113.09 L6,8.5 A2.5,2.5 0 0 1 8.5,6" fill="none" style="stroke:#FFFFFF;stroke-width:1.5;"/><line style="stroke:#FFFFFF;stroke-width:1.5;" x1="6" x2="43.2676" y1="28.2969" y2="28.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="24.2676" x="10" y="20.9951">api</text></g><g class="cluster" data-entity="product-service" data-source-line="24" data-uid="ent0012" id="cluster_product-service"><path d="M66.5,139.59 L191.2852,139.59 A3.75,3.75 0 0 1 193.7852,142.09 L200.7852,161.8869 L235.5,161.8869 A2.5,2.5 0 0 1 238,164.3869 L238,230.39 A2.5,2.5 0 0 1 235.5,232.89 L66.5,232.89 A2.5,2.5 0 0 1 64,230.39 L64,142.09 A2.5,2.5 0 0 1 66.5,139.59" fill="none" style="stroke:#FFFFFF;stroke-width:1.5;"/><line style="stroke:#FFFFFF;stroke-width:1.5;" x1="64" x2="200.7852" y1="161.8869" y2="161.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="123.7852" x="68" y="154.5851">product-service</text></g><g class="cluster" data-entity="recommendation-service" data-source-line="27" data-uid="ent0014" id="cluster_recommendation-service"><path d="M516.5,139.59 L713.2607,139.59 A3.75,3.75 0 0 1 715.7607,142.09 L722.7607,161.8869 L755.5,161.8869 A2.5,2.5 0 0 1 758,164.3869 L758,230.39 A2.5,2.5 0 0 1 755.5,232.89 L516.5,232.89 A2.5,2.5 0 0 1 514,230.39 L514,142.09 A2.5,2.5 0 0 1 516.5,139.59" fill="none" style="stroke:#FFFFFF;stroke-width:1.5;"/><line style="stroke:#FFFFFF;stroke-width:1.5;" x1="514" x2="722.7607" y1="161.8869" y2="161.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="195.7607" x="518" y="154.5851">recommendation-service</text></g><g class="cluster" data-entity="review-service" data-source-line="30" data-uid="ent0016" id="cluster_review-service"><path d="M1132.5,139.59 L1248.5146,139.59 A3.75,3.75 0 0 1 1251.0146,142.09 L1258.0146,161.8869 L1297.5,161.8869 A2.5,2.5 0 0 1 1300,164.3869 L1300,230.39 A2.5,2.5 0 0 1 1297.5,232.89 L1132.5,232.89 A2.5,2.5 0 0 1 1130,230.39 L1130,142.09 A2.5,2.5 0 0 1 1132.5,139.59" fill="none" style="stroke:#FFFFFF;stroke-width:1.5;"/><line style="stroke:#FFFFFF;stroke-width:1.5;" x1="1130" x2="1258.0146" y1="161.8869" y2="161.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="115.0146" x="1134" y="154.5851">review-service</text></g><g class="entity" data-entity="ProductService" data-source-line="5" data-uid="ent0003" id="entity_ProductService"><rect fill="#FFA500" height="58.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="257.3281" x="22.34" y="41"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="105.4512" x="98.2785" y="58.9951">ProductService</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="23.34" x2="278.6681" y1="67.2969" y2="67.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="23.34" x2="278.6681" y1="75.2969" y2="75.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245.3281" x="28.34" y="92.292">getProduct(productId: Int): Product</text></g><g class="entity" data-entity="RecommendationService" data-source-line="8" data-uid="ent0004" id="entity_RecommendationService"><rect fill="#FFA500" height="58.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="452.4326" x="409.78" y="41"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="175.3896" x="548.3015" y="58.9951">RecommendationService</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="410.78" x2="861.2126" y1="67.2969" y2="67.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="410.78" x2="861.2126" y1="75.2969" y2="75.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="440.4326" x="415.78" y="92.292">getRecommendations(productId: Int): List&lt;Recommendation&gt;</text></g><g class="entity" data-entity="ReviewService" data-source-line="11" data-uid="ent0005" id="entity_ReviewService"><rect fill="#FFA500" height="58.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="306.2939" x="1061.85" y="41"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="102.3203" x="1163.8368" y="58.9951">ReviewService</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="1062.85" x2="1367.1439" y1="67.2969" y2="67.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="1062.85" x2="1367.1439" y1="75.2969" y2="75.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="294.2939" x="1067.85" y="92.292">getReviews(productId: Int): List&lt;Review&gt;</text></g><g class="entity" data-entity="Product" data-source-line="15" data-uid="ent0006" id="entity_Product"><rect fill="#FFA500" height="42.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="59.71" x="315.15" y="49.15"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="318.15" y="67.1451">Product</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="316.15" x2="373.86" y1="75.4469" y2="75.4469"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="316.15" x2="373.86" y1="83.4469" y2="83.4469"/></g><g class="entity" data-entity="Recommendation" data-source-line="16" data-uid="ent0007" id="entity_Recommendation"><rect fill="#FFA500" height="42.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="129.6484" x="897.18" y="49.15"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="900.18" y="67.1451">Recommendation</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="898.18" x2="1025.8284" y1="75.4469" y2="75.4469"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="898.18" x2="1025.8284" y1="83.4469" y2="83.4469"/></g><g class="entity" data-entity="Review" data-source-line="17" data-uid="ent0008" id="entity_Review"><rect fill="#FFA500" height="42.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="56.5791" x="1402.71" y="49.15"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="1405.71" y="67.1451">Review</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="1403.71" x2="1458.2891" y1="75.4469" y2="75.4469"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="1403.71" x2="1458.2891" y1="83.4469" y2="83.4469"/></g><g class="entity" data-entity="ProductServiceImpl" data-source-line="25" data-uid="ent0013" id="entity_ProductServiceImpl"><rect fill="#313139" height="42.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="141.9941" x="80" y="174.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105.4512" x="83" y="192.5851">ProductService</text><text fill="#FFA500" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30.543" x="188.4512" y="192.5851">Impl</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="81" x2="220.9941" y1="200.8869" y2="200.8869"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="81" x2="220.9941" y1="208.8869" y2="208.8869"/></g><g class="entity" data-entity="RecommendationServiceImpl" data-source-line="28" data-uid="ent0015" id="entity_RecommendationServiceImpl"><rect fill="#313139" height="42.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="211.9326" x="530.03" y="174.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175.3896" x="533.03" y="192.5851">RecommendationService</text><text fill="#FFA500" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30.543" x="708.4196" y="192.5851">Impl</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="531.03" x2="740.9626" y1="200.8869" y2="200.8869"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="531.03" x2="740.9626" y1="208.8869" y2="208.8869"/></g><g class="entity" data-entity="ReviewServiceImpl" data-source-line="31" data-uid="ent0017" id="entity_ReviewServiceImpl"><rect fill="#313139" height="42.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="138.8633" x="1145.57" y="174.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102.3203" x="1148.57" y="192.5851">ReviewService</text><text fill="#FFA500" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30.543" x="1250.8903" y="192.5851">Impl</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="1146.57" x2="1283.4333" y1="200.8869" y2="200.8869"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="1146.57" x2="1283.4333" y1="208.8869" y2="208.8869"/></g><g class="link" data-entity-1="ProductService" data-entity-2="Product" data-source-line="19" data-uid="lnk9" id="link_ProductService_Product"><path codeLine="19" d="M279.83,70.3 C291.45,70.3 297.08,70.3 308.71,70.3" fill="none" id="ProductService-to-Product" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#E7E7E7" points="314.71,70.3,305.71,66.3,309.71,70.3,305.71,74.3,314.71,70.3" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="RecommendationService" data-entity-2="Recommendation" data-source-line="20" data-uid="lnk10" id="link_RecommendationService_Recommendation"><path codeLine="20" d="M862.67,70.3 C874.05,70.3 879.43,70.3 890.82,70.3" fill="none" id="RecommendationService-to-Recommendation" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#E7E7E7" points="896.82,70.3,887.82,66.3,891.82,70.3,887.82,74.3,896.82,70.3" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="ReviewService" data-entity-2="Review" data-source-line="21" data-uid="lnk11" id="link_ReviewService_Review"><path codeLine="21" d="M1368.56,70.3 C1379.78,70.3 1385,70.3 1396.22,70.3" fill="none" id="ReviewService-to-Review" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#E7E7E7" points="1402.22,70.3,1393.22,66.3,1397.22,70.3,1393.22,74.3,1402.22,70.3" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="ProductService" data-entity-2="ProductServiceImpl" data-source-line="34" data-uid="lnk18" id="link_ProductService_ProductServiceImpl"><path codeLine="34" d="M151,117.93 C151,140.72 151,154.06 151,174.36" fill="none" id="ProductService-backto-ProductServiceImpl" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="151,99.93,145,117.93,157,117.93,151,99.93" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="RecommendationService" data-entity-2="RecommendationServiceImpl" data-source-line="35" data-uid="lnk19" id="link_RecommendationService_RecommendationServiceImpl"><path codeLine="35" d="M636,117.93 C636,140.72 636,154.06 636,174.36" fill="none" id="RecommendationService-backto-RecommendationServiceImpl" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="636,99.93,630,117.93,642,117.93,636,99.93" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="ReviewService" data-entity-2="ReviewServiceImpl" data-source-line="36" data-uid="lnk20" id="link_ReviewService_ReviewServiceImpl"><path codeLine="36" d="M1215,117.93 C1215,140.72 1215,154.06 1215,174.36" fill="none" id="ReviewService-backto-ReviewServiceImpl" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1215,99.93,1209,117.93,1221,117.93,1215,99.93" style="stroke:#E7E7E7;stroke-width:1;"/></g></g></svg></div></div>
+</div></div>
 
 <ul>
 <li>將 <code>ProductService</code>, <code>RecommendationService</code>, <code>ReviewService</code> 抽成 interface 放到 <code>api</code> 下。<ul>
@@ -2939,8 +3009,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 7ddbdd61-c98d-4bc6-828c-ca6c523af73b</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 8a6b62fc-87a5-4efe-9dd1-db01521ec5f3</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2986,8 +3056,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 032d6c2f-eaf1-424c-a7bd-e4247110220d</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 3af0ad72-b619-4440-80ee-36b86a64f53c</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>

@@ -508,6 +508,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/terminal.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terminal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2163,7 +2186,7 @@ $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h2 id="microservices">建立 microservices 專案</h2>
 <p>我們要建立以下關係的 microservices:</p>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="292px" preserveAspectRatio="xMidYMid meet" style="width:393px;height:292px;background:#FFFFFF;" version="1.1" viewBox="0 0 393 292" width="393px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="p" data-source-line="2" data-uid="ent0002" id="entity_p"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74.1543" x="17.61" y="103.3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54.1543" x="27.61" y="126.2951">product</text></g><g class="entity" data-entity="GMN3" data-source-line="3" data-uid="ent0004" id="entity_GMN3"><path d="M6,214.73 L6,270.1284 A0,0 0 0 0 6,270.1284 L89.3721,270.1284 A0,0 0 0 0 89.3721,270.1284 L89.3721,224.73 L79.3721,214.73 L53.27,214.73 L53.65,140 L45.27,214.73 L6,214.73 A0,0 0 0 0 6,214.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M79.3721,214.73 L79.3721,224.73 L89.3721,224.73 L79.3721,214.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62.3721" x="12" y="231.7969">productId</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36.8672" x="12" y="246.9297">name</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43.8306" x="12" y="262.0625">weight</text></g><g class="entity" data-entity="r" data-source-line="5" data-uid="ent0006" id="entity_r"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="66.6074" x="132.38" y="103.3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46.6074" x="142.38" y="126.2951">review</text></g><g class="entity" data-entity="GMN7" data-source-line="6" data-uid="ent0008" id="entity_GMN7"><path d="M124,199.6 L124,285.2641 A0,0 0 0 0 124,285.2641 L207.3721,285.2641 A0,0 0 0 0 207.3721,285.2641 L207.3721,209.6 L197.3721,199.6 L169.69,199.6 L165.69,140 L161.69,199.6 L124,199.6 A0,0 0 0 0 124,199.6" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M197.3721,199.6 L197.3721,209.6 L207.3721,209.6 L197.3721,199.6" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62.3721" x="130" y="216.6669">productId</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55.3643" x="130" y="231.7997">reviewId</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42.8403" x="130" y="246.9325">author</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47.1187" x="130" y="262.0653">sudject</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49.772" x="130" y="277.1981">content</text></g><g class="entity" data-entity="rd" data-source-line="8" data-uid="ent0010" id="entity_rd"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="139.6768" x="238.85" y="103.3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119.6768" x="248.85" y="126.2951">recommendation</text></g><g class="entity" data-entity="GMN11" data-source-line="9" data-uid="ent0012" id="entity_GMN11"><path d="M242.58,199.6 L242.58,285.2641 A0,0 0 0 0 242.58,285.2641 L386.7944,285.2641 A0,0 0 0 0 386.7944,285.2641 L386.7944,209.6 L376.7944,199.6 L316.55,199.6 L309.57,140 L308.55,199.6 L242.58,199.6 A0,0 0 0 0 242.58,199.6" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M376.7944,199.6 L376.7944,209.6 L386.7944,209.6 L376.7944,199.6" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="62.3721" x="248.58" y="216.6669">productId</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123.2144" x="248.58" y="231.7997">recommendationId</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42.8403" x="248.58" y="246.9325">author</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26.4063" x="248.58" y="262.0653">rate</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49.772" x="248.58" y="277.1981">content</text></g><g class="entity" data-entity="pc" data-source-line="11" data-uid="ent0014" id="entity_pc"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163.958" x="83.71" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143.958" x="93.71" y="29.9951">product composition</text></g><g class="link" data-entity-1="pc" data-entity-2="p" data-source-line="13" data-uid="lnk15" id="link_pc_p"><path d="M145.07,43.67 C125.13,60.6 95.09,86.12 75.19,103.03" fill="none" id="pc-p" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="r" data-source-line="14" data-uid="lnk16" id="link_pc_r"><path d="M165.69,43.45 C165.69,60.35 165.69,85.96 165.69,102.94" fill="none" id="pc-r" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="rd" data-source-line="15" data-uid="lnk17" id="link_pc_rd"><path d="M192.25,43.67 C217.93,60.6 256.63,86.12 282.27,103.03" fill="none" id="pc-rd" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2203,55 +2226,8 @@ $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </s
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 2aa0a498-dcc8-4341-868e-dcb209b46931</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:44</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 6f07a4b6-94da-4c37-8d4b-9a69f09bd072</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:42</p>
+        <p><strong>Error ID</strong>: 83828da2-8d06-43d2-826c-2e17ef4a8867</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2300,14 +2276,61 @@ $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </s
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: f8e2b03c-d855-4c1f-9466-87db3fbcf25c</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:44</p>
+        <p><strong>Error ID</strong>: b5a223ee-8745-4e0d-88c1-511f06ee0518</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:28</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
 </body>
 </html>
-</div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SALT" height="81px" preserveAspectRatio="xMidYMid meet" style="width:197px;height:81px;background:#FFFFFF;" version="1.1" viewBox="0 0 197 81" width="197px" zoomAndPan="magnify" class="diagram"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83.1328" x="16" y="17.1387">microservices</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="164.3672" x="26" y="31.1074">product-composite-service/</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="97.7754" x="26" y="45.0762">product-service/</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153.9375" x="26" y="59.0449">recommendation-service/</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="91.3066" x="26" y="73.0137">review-service/</text><rect fill="none" height="2" style="stroke:#888888;stroke-width:1;" width="2" x="9" y="11.9844"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="26.9531"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="26.9531" y2="26.9531"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="40.9219"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="40.9219" y2="40.9219"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="54.8906"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="54.8906" y2="54.8906"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="10" y1="14.9844" y2="68.8594"/><line style="stroke:#888888;stroke-width:1;" x1="10" x2="18" y1="68.8594" y2="68.8594"/></g></svg></div></div>
+</div><div class="puml dark" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: 363772d2-f910-4b2a-81ae-c6e264865214</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:28</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div></div>
 
 <details class="info">
 <summary>產生 4 個 microservices 的 spring boot 專案的具體步驟</summary>
@@ -2444,8 +2467,8 @@ $<span class="w"> </span>find<span class="w"> </span>recommendation-service<span
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: e8d4cf58-b0f7-42dc-b59c-dc7b7e185587</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:44</p>
+        <p><strong>Error ID</strong>: 697cf8df-315b-42f5-8e3f-3bfb5b130de1</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:28</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2491,8 +2514,8 @@ $<span class="w"> </span>find<span class="w"> </span>recommendation-service<span
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: e62cb857-8444-430e-81d4-d68825009a11</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 07:45:41</p>
+        <p><strong>Error ID</strong>: 95ab87c5-2bf8-4eb9-9c2f-e54048122fab</p>
+        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
