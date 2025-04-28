@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="06-the-life-cycle-of-a-domain-object.html">
+        <link rel="prev" href="ideavim.html">
       
       
-        <link rel="next" href="08-breakthrough.html">
+        <link rel="next" href="advanced.html">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>7 Using the Language - An Extended Example - Teddy 的筆記本</title>
+        <title>neovim - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,13 +46,13 @@
       
     
     
-      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../../css/style.css">
     
-      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
     
-      <link rel="stylesheet" href="../termynal.css">
+      <link rel="stylesheet" href="../../termynal.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ch-7-using-the-language-an-extended-example" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳轉到
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7 Using the Language - An Extended Example
+              neovim
             
           </span>
         </div>
@@ -206,7 +206,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -221,18 +221,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
@@ -248,7 +250,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Development
@@ -300,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../jet-brains/shortcuts.html" class="md-nav__link">
         
   
   
@@ -323,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/jet-brains/postfix-completion.html" class="md-nav__link">
+      <a href="../jet-brains/postfix-completion.html" class="md-nav__link">
         
   
   
@@ -351,18 +353,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
@@ -378,7 +382,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_2">
             <span class="md-nav__icon md-icon"></span>
             Vim
@@ -392,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/vim/zsh.html" class="md-nav__link">
+      <a href="zsh.html" class="md-nav__link">
         
   
   
@@ -415,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/vim/vscode.html" class="md-nav__link">
+      <a href="vscode.html" class="md-nav__link">
         
   
   
@@ -438,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/vim/ideavim.html" class="md-nav__link">
+      <a href="ideavim.html" class="md-nav__link">
         
   
   
@@ -458,10 +462,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../development/vim/neovim.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    neovim
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="neovim.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -472,6 +496,168 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window" class="md-nav__link">
+    <span class="md-ellipsis">
+      在 Window 間移動
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      buffer 操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      comment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazyvim" class="md-nav__link">
+    <span class="md-ellipsis">
+      lazyvim
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autocmdslua" class="md-nav__link">
+    <span class="md-ellipsis">
+      autocmds.lua
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keymapslua" class="md-nav__link">
+    <span class="md-ellipsis">
+      keymaps.lua
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionslua" class="md-nav__link">
+    <span class="md-ellipsis">
+      options.lua
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flashlua" class="md-nav__link">
+    <span class="md-ellipsis">
+      flash.lua
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-with-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replace with Register
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minisurround" class="md-nav__link">
+    <span class="md-ellipsis">
+      mini.surround
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdownlint-cli2" class="md-nav__link">
+    <span class="md-ellipsis">
+      markdownlint-cli2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -484,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/vim/advanced.html" class="md-nav__link">
+      <a href="advanced.html" class="md-nav__link">
         
   
   
@@ -560,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes/apply.html" class="md-nav__link">
+      <a href="../../kubernetes/apply.html" class="md-nav__link">
         
   
   
@@ -583,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   
@@ -610,20 +796,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -639,7 +823,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Domain-Driven Design
@@ -653,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-crunching-knowledge.html" class="md-nav__link">
+      <a href="../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
         
   
   
@@ -676,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="../../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   
@@ -699,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="../../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   
@@ -722,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-isolating-the-domain.html" class="md-nav__link">
+      <a href="../../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
         
   
   
@@ -745,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-a-model-expressed-in-software.html" class="md-nav__link">
+      <a href="../../domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   
@@ -768,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+      <a href="../../domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
         
   
   
@@ -788,32 +972,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    7 Using the Language - An Extended Example
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="07-using-the-language-an-extended-example.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../domain-driven-design/07-using-the-language-an-extended-example.html" class="md-nav__link">
         
   
   
@@ -824,221 +986,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#cargo-shipping-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cargo Shipping System (貨物運送系統)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#isolating-the-domain-introducing-the-applications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Isolating the Domain: Introducing the Applications
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entity-value-object" class="md-nav__link">
-    <span class="md-ellipsis">
-      區分 Entity 與 Value Object
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      關聯
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aggregate-boundaries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Aggregate Boundaries
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Repository
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#working-through-scenarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      場景演練 (Working Through Scenarios)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="場景演練 (Working Through Scenarios)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cargo" class="md-nav__link">
-    <span class="md-ellipsis">
-      應用程式功能範例: 更改 Cargo 的目的地
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repeat-business" class="md-nav__link">
-    <span class="md-ellipsis">
-      應用程式功能範例: 重複業務 (Repeat Business)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      建立物件
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="建立物件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cargo_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cargo
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cargo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cargo-constructor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cargo 的 constructor
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repeat-business_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Repeat Business
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#handling-event" class="md-nav__link">
-    <span class="md-ellipsis">
-      Handling Event
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cargo-aggregate" class="md-nav__link">
-    <span class="md-ellipsis">
-      重構: Cargo aggregate 的另一種設計
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Module
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#allocation-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      增加功能: Allocation Checking
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="增加功能: Allocation Checking">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      串接兩個系統
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#model-segmenting-the-business" class="md-nav__link">
-    <span class="md-ellipsis">
-      加強 Model: Segmenting the Business
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1051,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-breakthrough.html" class="md-nav__link">
+      <a href="../../domain-driven-design/08-breakthrough.html" class="md-nav__link">
         
   
   
@@ -1074,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-making-implicit-concepts-explicit.html" class="md-nav__link">
+      <a href="../../domain-driven-design/09-making-implicit-concepts-explicit.html" class="md-nav__link">
         
   
   
@@ -1097,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-supple-design.html" class="md-nav__link">
+      <a href="../../domain-driven-design/10-supple-design.html" class="md-nav__link">
         
   
   
@@ -1165,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clean-architecture/34.html" class="md-nav__link">
+      <a href="../../clean-architecture/34.html" class="md-nav__link">
         
   
   
@@ -1309,7 +1256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/001.html" class="md-nav__link">
+      <a href="../../java/effective-java/001.html" class="md-nav__link">
         
   
   
@@ -1332,7 +1279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/002.html" class="md-nav__link">
+      <a href="../../java/effective-java/002.html" class="md-nav__link">
         
   
   
@@ -1355,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/003.html" class="md-nav__link">
+      <a href="../../java/effective-java/003.html" class="md-nav__link">
         
   
   
@@ -1378,7 +1325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/004.html" class="md-nav__link">
+      <a href="../../java/effective-java/004.html" class="md-nav__link">
         
   
   
@@ -1401,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/005.html" class="md-nav__link">
+      <a href="../../java/effective-java/005.html" class="md-nav__link">
         
   
   
@@ -1424,7 +1371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/006.html" class="md-nav__link">
+      <a href="../../java/effective-java/006.html" class="md-nav__link">
         
   
   
@@ -1447,7 +1394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/007.html" class="md-nav__link">
+      <a href="../../java/effective-java/007.html" class="md-nav__link">
         
   
   
@@ -1470,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/008.html" class="md-nav__link">
+      <a href="../../java/effective-java/008.html" class="md-nav__link">
         
   
   
@@ -1493,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/009.html" class="md-nav__link">
+      <a href="../../java/effective-java/009.html" class="md-nav__link">
         
   
   
@@ -1562,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/010.html" class="md-nav__link">
+      <a href="../../java/effective-java/010.html" class="md-nav__link">
         
   
   
@@ -1585,7 +1532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/011.html" class="md-nav__link">
+      <a href="../../java/effective-java/011.html" class="md-nav__link">
         
   
   
@@ -1608,7 +1555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/012.html" class="md-nav__link">
+      <a href="../../java/effective-java/012.html" class="md-nav__link">
         
   
   
@@ -1631,7 +1578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/013.html" class="md-nav__link">
+      <a href="../../java/effective-java/013.html" class="md-nav__link">
         
   
   
@@ -1654,7 +1601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/014.html" class="md-nav__link">
+      <a href="../../java/effective-java/014.html" class="md-nav__link">
         
   
   
@@ -1723,7 +1670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/015.html" class="md-nav__link">
+      <a href="../../java/effective-java/015.html" class="md-nav__link">
         
   
   
@@ -1746,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/016.html" class="md-nav__link">
+      <a href="../../java/effective-java/016.html" class="md-nav__link">
         
   
   
@@ -1815,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/effective-java/055.html" class="md-nav__link">
+      <a href="../../java/effective-java/055.html" class="md-nav__link">
         
   
   
@@ -1899,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/pyenv.html" class="md-nav__link">
+      <a href="../../python/pyenv.html" class="md-nav__link">
         
   
   
@@ -1967,7 +1914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spring-boot/spring-boot-basic.html" class="md-nav__link">
+      <a href="../../spring-boot/spring-boot-basic.html" class="md-nav__link">
         
   
   
@@ -1990,7 +1937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spring-boot/set-up-microservices-project.html" class="md-nav__link">
+      <a href="../../spring-boot/set-up-microservices-project.html" class="md-nav__link">
         
   
   
@@ -2013,7 +1960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spring-boot/spring-webflux.html" class="md-nav__link">
+      <a href="../../spring-boot/spring-webflux.html" class="md-nav__link">
         
   
   
@@ -2112,7 +2059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   
@@ -2135,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   
@@ -2174,7 +2121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
         
   
   
@@ -2204,7 +2151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../feature-toggles/main.html" class="md-nav__link">
+      <a href="../../feature-toggles/main.html" class="md-nav__link">
         
   
   
@@ -2264,7 +2211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html" class="md-nav__link">
+      <a href="../../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html" class="md-nav__link">
         
   
   
@@ -2296,7 +2243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -2327,259 +2274,132 @@
 
 
 
-<h1 id="ch-7-using-the-language-an-extended-example">Ch 7: Using the Language: An Extended Example</h1>
-<h2 id="cargo-shipping-system">Cargo Shipping System (貨物運送系統)</h2>
-<p>我們要替一家貨運公司開發軟體，最初的需求如下:</p>
-<ol>
-<li>追蹤貨物的處理狀態</li>
-<li>預約寄送貨物</li>
-<li>當貨物抵達某個地方時，自動寄送發票給客戶</li>
-</ol>
-<p>用來表示 Domain Model 的 class diagram 如下:</p>
-<p><img alt="" src="07/01.png" /></p>
-<p>透過 Domain Model 我們可能使用以下的描述:</p>
+  <h1>neovim</h1>
+
+<h2 id="_1">基本操作</h2>
+<p>基本的 vim 操作就不在這裡列舉。</p>
+<h3 id="window">在 Window 間移動</h3>
 <ul>
-<li><code>Cargo</code> (貨物) 涉及多個 <code>Customer</code> (客戶)，每一個 <code>Customer</code> 扮演著不同的 <code>Role</code> (角色)。</li>
-<li><code>Cargo</code> (貨物) 的 <code>Goal</code> (目標) 已指定。</li>
-<li>透過一組滿足 <code>Specification</code> (規格) 的 <code>Carrier Movement</code> (運輸動作) 將達成 <code>Delivery Goal</code> (運送目標)。</li>
+<li>左: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-h">H</kbd></span></li>
+<li>下: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-j">J</kbd></span></li>
+<li>上: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-k">K</kbd></span></li>
+<li>右: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-l">L</kbd></span></li>
 </ul>
-<p>圖中的每個物件的意義:</p>
+<p>分割 window</p>
 <ul>
-<li><code>Handling Event</code> (處理事件): 描述對 <code>Cargo</code> 採取的處理，像是<ul>
-<li>loading it onto a ship (將貨物裝上船)</li>
-<li>clearing it through customs (將貨物通過海關檢查並獲得許可)</li>
-<li>loading (裝貨)</li>
-<li>unloading (卸貨)</li>
-<li>being claimed by the receiver (被收貨人提走)</li>
+<li>分割右邊: <span class="keys"><kbd>&lt;leader&gt;|</kbd></span></li>
+<li>分割下面: <span class="keys"><kbd>&lt;leader&gt;-</kbd></span></li>
+<li>關閉 window: <span class="keys"><kbd>&lt;leader&gt;wq</kbd></span></li>
 </ul>
-</li>
-<li><code>Delivery Specification</code> (運送規格): 描述 <code>delivery goal</code> (運送目標)，包含了 <code>destination</code> (目的地) 與 <code>arrival time</code> (抵達時間)。</li>
-<li><code>Customer</code>: <code>Role</code> (角色) 區隔了 <code>Customer</code> (客戶) 在運送扮演的身份。<ul>
-<li><code>Role</code> 可以是 shipper (託運人), receiver (收貨人), payer (付款人) 等。</li>
-<li><code>Customer</code> 與 <code>Cargo</code> 的關係是「qualified (限定的) many-to-one」而非「many-to-many」。</li>
-</ul>
-</li>
-<li><code>Carrier Movement</code> (運輸行動): 描述 <code>Carrier</code> (如，卡車或船) 從一 <code>Location</code> (地點) 到另一 <code>Location</code> (地點) 的旅程。<ul>
-<li>
-<details class="tip">
-<summary>看圖說明</summary>
-<br />
-<img alt="" src="07/01-carrier-movement.png" /><br />
-<code>Cargo</code> 經過多個 <code>Handling Event</code> 處理，透過 <code>Carrier</code> 的 <code>Carrier Movement</code> 在 <code>Location</code> 之間移動。</details>
-</li>
-</ul>
-</li>
-<li><code>Delivery History</code> (運送歷史紀錄): 描述 <code>Cargo</code> 在運送過程的。</li>
-</ul>
-<p>Model 已經涵蓋實作需要的概念。假定我們有適當的機制保存物件與搜尋物件。</p>
-<p>Model 的 refinement, design, implementation 是在迭代開發的過程中互相配合、同步進行的。也就是說，Model 不會是完全設計好，然後再交由下一個階段進行實作，而是應隨著開發不斷地發展、改進與調整。</p>
-<p>這個範例從一個相對比較成熟的 Model 開始。並且，為了聚焦本章的重點，範例限制 Model 的修改動機必須是「為了使 Model 能與具體的實作相互關聯」，然後使用 building block patterns 進行修改 (即 Entity, Value Object, Aggregation, Repository 等)。</p>
-<h2 id="isolating-the-domain-introducing-the-applications">Isolating the Domain: Introducing the Applications</h2>
-<p>使用 Layered Architecture 將 domain 與其他部分區隔。</p>
-<p>以下是三個 application layer 的 class:</p>
-<ol>
-<li><strong>Tracking Query</strong>: 查詢 <code>Cargo</code> 的處理情況。</li>
-<li><strong>Booking Application</strong>: 註冊新的 <code>Cargo</code> 讓系統處理。</li>
-<li><strong>Incident Logging Application</strong>: 紀錄 <code>Cargo</code> 處理的事件。</li>
-</ol>
-<p>Application layer 負責向 domain layer 問問題，domain layer 負責回答問題。</p>
-<h2 id="entity-value-object">區分 Entity 與 Value Object</h2>
-<p>檢視每一個物件: (判斷方法: 可以共用的物件是 Value Object，不行的是 Entity)</p>
+<h3 id="buffer">buffer 操作</h3>
+<p>在 buffer 間移動:</p>
 <ul>
-<li><code>Customer</code><ul>
-<li>Entity</li>
-<li>唯一識別碼: customer ID</li>
+<li>左: <span class="keys"><kbd>H</kbd></span></li>
+<li>右: <span class="keys"><kbd>L</kbd></span></li>
 </ul>
-</li>
-<li><code>Cargo</code><ul>
-<li>Entity</li>
-<li>唯一識別碼: tracking ID</li>
-</ul>
-</li>
-<li><code>Handling Event</code> 與 <code>Carrier Movement</code><ul>
-<li>Entity</li>
-<li>唯一識別碼<ul>
-<li><code>Carrier Movement</code>: schedule ID (從 shipping schedule 中的 code)</li>
-<li><code>Handling Event</code>: Cargo tracking ID + completion time + type</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>Location</code><ul>
-<li>Entity</li>
-</ul>
-</li>
-<li><code>Delivery History</code><ul>
-<li>Entity</li>
-<li>唯一識別碼: Cargo tracking ID (<code>Delivery History</code> 與 <code>Cargo</code> 一對一關聯，沒有自己的唯一識別碼。<code>Delivery History</code> 的識別碼來自 <code>Cargo</code>)</li>
-</ul>
-</li>
-<li><code>Delivery Specification</code><ul>
-<li>Value Object (可以有兩個 <code>Cargo</code> 送往相同的地點，因此共用同一個 Specification)</li>
-</ul>
-</li>
-<li><code>Role</code> 與其他屬性<ul>
-<li>Value Object</li>
-<li>其他屬性，包含像是 time, name</li>
-</ul>
-</li>
-</ul>
-<h2 id="_1">關聯</h2>
-<p>指定關聯方向。圖中說明每個關聯方向的原因。</p>
-<p><img alt="" src="07/02.png" /></p>
+<p>關閉 buffer: <span class="keys"><kbd>&lt;leader&gt;bd</kbd></span></p>
+<h3 id="comment">comment</h3>
 <ul>
-<li><code>Carrier Movement - Handling Event</code><ul>
-<li>如果要從 <code>Carrier</code> 追蹤貨物，就需要 <code>Carrier Movement -&gt; Handling Event</code>，但是我們的業務不需要。</li>
-<li>業務需要追蹤 <code>Cargo</code> 的狀態，需要透過 <code>Cargo -&gt; Delivery History -&gt; Handling Event -&gt; Carrier Movement -&gt; Location</code> 知道目前 <code>Cargo</code> 的位址。</li>
+<li>在上方插入註解: <span class="keys"><kbd>gcO</kbd></span></li>
+<li>在下方插入註解: <span class="keys"><kbd>gco</kbd></span></li>
 </ul>
-</li>
-</ul>
-<h2 id="aggregate-boundaries">Aggregate Boundaries</h2>
-<p>Aggregate root 是 Entity 且有自己的唯一識別碼: <code>Customer</code>, <code>Cargo</code>, <code>Carrier Movement</code>, <code>Location</code></p>
-<p><code>Cargo</code> 的 aggregate 可以把所有因為 <code>Cargo</code> 而存在的事物劃入邊界中，包含 <code>Delivery History</code>, <code>Delivery Specification</code>, <code>Handling Event</code>。</p>
-<p><code>Handling Event</code> 最後被設計成自己為 aggregate，因為業務上有需要查詢 <code>Cargo</code> 處理狀態，需要透過 <code>Handling Event</code>。</p>
-<p><img alt="" src="07/03.png" /></p>
-<h2 id="repository">Repository</h2>
-<p>只有 Aggregate root 會有 Repository。</p>
-<p><img alt="" src="07/04.png" /></p>
-<p>沙盤推演，這些 Repository 是否能滿足需求。</p>
+<h3 id="lazyvim">lazyvim</h3>
 <ul>
-<li><strong>Booking Application</strong><ul>
-<li>客戶 <code>Customer</code> (<code>Customer Repository</code>)</li>
-<li>預定貨物要運送到 <code>Location</code> (<code>Location Repository</code>)</li>
+<li>Lazy config: <span class="keys"><kbd>&lt;leader&gt;l</kbd></span></li>
+<li>Quit All: <span class="keys"><kbd>&lt;leader&gt;qq</kbd></span></li>
 </ul>
-</li>
-<li><strong>Activity Logging Application</strong><ul>
-<li>使用 <code>Carrier Movement Repository</code> 查詢要裝貨的 <code>Carrier Movement</code>。</li>
-<li>使用 <code>Cargo Repository</code> 紀錄已完成裝貨。</li>
-</ul>
-</li>
-</ul>
-<p>沒有 <code>Handling Event Repository</code>，在這次迭代中 <code>Handling Event</code> 是與 <code>Delivery History</code> 關聯產生集合 且 沒有查詢 <code>Handling Event</code> 的需求。</p>
-<h2 id="working-through-scenarios">場景演練 (Working Through Scenarios)</h2>
-<p>經常演練 Scenario，確保 Model 能夠有效的解決問題。</p>
-<h3 id="cargo">應用程式功能範例: 更改 Cargo 的目的地</h3>
-<p><code>Delivery Specification</code> 是 Value Object，最簡單做法是，建立新的 <code>Delivery Specification</code> 並且更新 <code>Cargo</code> 的 <code>Delivery Specification</code>。</p>
-<h3 id="repeat-business">應用程式功能範例: 重複業務 (Repeat Business)</h3>
-<p>允許使用者在 <code>Repository</code> 中找到一個 <code>Cargo</code> 並基於它產生新的 <code>Cargo</code>。</p>
-<p>Aggregate 邊界內的物件與屬性，都要小心考慮:</p>
-<ul>
-<li>應建立新的，空的 <code>Delivery History</code>，舊的歷史不適用在新的 <code>Cargo</code> 上。</li>
-<li>應複製 <code>Customer Role</code> 的 Map，並且保留 key 與 value 的 reference。也就是，參考到與原 <code>Cargo</code> 相同的 <code>Customer</code>，因為他是屬於 Aggregate 邊界外的 Entity。</li>
-<li>產生新的 <code>Tracking ID</code>。</li>
-</ul>
-<p>複製 <code>Carge</code> Aggregate 並沒有對外部物件產生副作用。</p>
-<h2 id="_2">建立物件</h2>
-<h3 id="cargo_1">Cargo</h3>
-<h4 id="cargo-constructor"><code>Cargo</code> 的 constructor</h4>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">Cargo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">trackingId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">trackingId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trackingId</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">deliveryHistory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DeliveryHistory</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">customerrolers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Role</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="o">&gt;</span><span class="p">();</span>
+<h2 id="config">Config</h2>
+<p><code>~/.config/nvim/lua/config/</code> 下的檔案。</p>
+<h3 id="autocmdslua">autocmds.lua</h3>
+<p>從 insert mode 進入 normal mode 時，自動將輸入法切換成英文。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">vim</span><span class="p">.</span><span class="py">api</span><span class="p">.</span><span class="nf">nvim_create_autocmd</span><span class="p">(</span><span class="s2">&quot;InsertLeave&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">os.execute</span><span class="p">(</span><span class="s2">&quot;im-select com.apple.keylayout.ABC&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">end</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<h3 id="keymapslua">keymaps.lua</h3>
+<p>按 <span class="keys"><kbd>jj</kbd></span> 從 insert mode 進入 normal mode。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">vim</span><span class="p">.</span><span class="py">keymap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;jj&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;Esc&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>在 normal mode 按 <span class="keys"><kbd class="key-tab">Tab</kbd></span> 縮排</p>
+<div class="highlight"><pre><span></span><code><span class="nv">vim</span><span class="p">.</span><span class="py">keymap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;Tab&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&gt;&gt;&quot;</span><span class="p">)</span>
+<span class="nv">vim</span><span class="p">.</span><span class="py">keymap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;S-Tab&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;&lt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="optionslua">options.lua</h3>
+<p>預設的設定，markdown 會隱藏 code block 的 ``` 符號，會造成編輯上的混亂。以下設定讓 markdown 的內容顯示不會有東西被隱藏。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">vim</span><span class="p">.</span><span class="py">opt</span><span class="p">.</span><span class="py">conceallevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+<h2 id="plugins">Plugins</h2>
+<h3 id="flashlua">flash.lua</h3>
+<p>因為 <span class="keys"><kbd class="key-s">S</kbd></span> 預設的 vim 動作會被這個 plugin 覆蓋成 flash jump。所以以下設定將 <span class="keys"><kbd class="key-s">S</kbd></span> 動作還原成 vim 預設的刪除目前字元並進入 insert 模式，然後將 flash jump 動作換成 ++\++。</p>
+<p>新增檔案: <code>~/.config/nvim/lua/plugins/flash.lua</code></p>
+<div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;folk/flash.nvim&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">keys</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">vim</span><span class="p">.</span><span class="nf">tbl_filter</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">keymap</span><span class="p">)</span>
+<span class="w">      </span><span class="kr">return</span><span class="w"> </span><span class="nv">keymap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="s2">&quot;s&quot;</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="nv">keys</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">keys</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;o&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="kr">function</span><span class="p">()</span>
+<span class="w">        </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;flash&quot;</span><span class="p">).</span><span class="nf">jump</span><span class="p">()</span>
+<span class="w">      </span><span class="kr">end</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Flash&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">keys</span>
+<span class="w">  </span><span class="kr">end</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li><code>DeliveryHistory</code> 與 <code>Cargo</code> 雙向關聯。</li>
-<li><code>Cargo</code> Aggregate 包含 <code>DeliveryHistory</code>，所以 <code>Cargo</code> 要負責生成 <code>DeliveryHistory</code>。</li>
-</ul>
-<h4 id="repeat-business_1">Repeat Business</h4>
-<p>為了滿足重複業務 (Repeat Business) 的需求，可以使用 Factory。以下提供幾種實作方式:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">使用 Factory Method</label><label for="__tabbed_1_2">使用 Factory</label><label for="__tabbed_1_3">使用 Factory (自動產生 tracking id)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cargo</span><span class="w"> </span><span class="nf">copyPrototype</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">newTrackingId</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cargo</span><span class="w"> </span><span class="nf">newCargo</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">prototype</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">newTrackingId</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Cargo</span><span class="w"> </span><span class="nf">newCargo</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">prototype</span><span class="p">)</span>
-</code></pre></div>
-<p>回傳的 <code>Cargo</code> 會有新的 <code>trackingId</code>。</p>
-</div>
-</div>
-</div>
-<p>以上回傳的 <code>Cargo</code> 都實作</p>
-<ol>
-<li>空的 <code>DispatchHistory</code></li>
-<li><code>DeliverySpecification</code> 為 <code>null</code></li>
-</ol>
-<h3 id="handling-event">Handling Event</h3>
-<p>建立 Entity 需要把所有 identity 都傳入。</p>
-<p>Handling Event 的 identity 是 <code>Cargo</code> 的 tracking ID, <code>Completion Time</code>, <code>Type</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">HandlingEvent</span><span class="p">(</span><span class="n">Cargo</span><span class="w"> </span><span class="n">handled</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">eventType</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">completionTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">handled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handled</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">completionTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">completionTime</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">eventType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventType</span><span class="p">;</span>
+<h3 id="replace-with-register">Replace with Register</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;neovim/nvim-lspconfig&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<span class="w">      </span><span class="kd">local</span><span class="w"> </span><span class="nv">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;lazyvim.plugins.lsp.keymaps&quot;</span><span class="p">).</span><span class="nf">get</span><span class="p">()</span>
+<span class="w">      </span><span class="nv">keys</span><span class="p">[</span><span class="o">#</span><span class="nv">keys</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;gr&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;echasnovski/mini.operators&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;gr&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Replace operator&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nv">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>對於 Entity，非 identity 的屬性，通常可以之後再設定。</p>
-<p>另一種做法，在 <code>HandlingEvent</code> 中，加入 Factory Method 提供必要屬性，建立 <code>HandlingEvent</code>。 以下是建立一個 loading event 的 Factory Method:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">HandlingEvent</span><span class="w"> </span><span class="nf">newLoading</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Cargo</span><span class="w"> </span><span class="n">handled</span><span class="p">,</span><span class="w"> </span><span class="n">CarrierMovement</span><span class="w"> </span><span class="n">loadedOnto</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">completionTime</span>
-<span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">HandlingEvent</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HandlingEvent</span><span class="p">(</span><span class="n">handled</span><span class="p">,</span><span class="w"> </span><span class="n">LOADING_EVENT</span><span class="p">,</span><span class="w"> </span><span class="n">completionTime</span><span class="p">);</span>
-<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="na">setCarrierMovement</span><span class="p">(</span><span class="n">loadedOnto</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<h3 id="minisurround">mini.surround</h3>
+<p>遵循 ideavim, vscode vim 的熱鍵。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;echasnovski/mini.surround&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">mappings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ys&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">delete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ds&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cs&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>DeliveryHistory</code> 與 <code>HandlingEvent</code> 有一個單向關聯。因此，建立 <code>HandlingEvent</code> 時，透過 <code>Cargo</code> 取得 <code>DeliveryHistory</code>，然後將 <code>HandlingEvent</code> 加入其中。</p>
-<p><img alt="" src="07/05.png" /></p>
-<h2 id="cargo-aggregate">重構: Cargo aggregate 的另一種設計</h2>
-<p>如前所述，增加 <code>HandlingEvent</code> 必須要更新 <code>DeliveryHistory</code>，使得修改牽扯 <code>Cargo</code> Aggregate。若同時有其他 client 在修改 <code>Cargo</code>，因為競爭狀況，造成 <code>HandlingEvent</code> 建立延遲或者失敗。因此，能夠在不產生競爭況狀況下，增加 <code>HandlingEvent</code> 是重要的需求，我們要考慮另一種設計。</p>
-<ul>
-<li>在 <code>DeliveryHistory</code> 中不使用 <code>HandlingEvent</code> 的集合，而用 query 替代。</li>
-</ul>
-<p>為了讓 <code>DeleryHistory</code> 能夠查詢 <code>HandlingEvent</code>，需要增加 <code>HandlingEvent</code> 的 Repository。此外，Repository 也可以用來最佳化，提供最有效率的查詢方式。</p>
-<p><img alt="" src="07/06.png" /></p>
-<h2 id="module">Module</h2>
-<p>以下是稍微大一點的 Shipping Model。以下物件根據其套用的 Pattern 進行分類:</p>
-<p><img alt="" src="07/07.png" /></p>
-<p>Module 本身沒有傳達出 domain knowledge。</p>
-<p><img alt="" src="07/08.png" /></p>
-<p>Module 的名稱應成為團隊語言的一部份。例如：「我們公司替客戶(<code>Customer</code>)送貨(<code>Shipping</code>)，所以能向他們收取費用(<code>Bill</code>)。我們的銷售與行銷人員與客戶(<code>Customer</code>)協商並簽署合約。操作人員負責將貨物運送(<code>Shipping</code>)到指定的目的地。後勤人員負責帳單(<code>Billing</code>)，根據與客戶(<code>Customer</code>)簽約的價格，寄送發票。」</p>
-<h2 id="allocation-checking">增加功能: Allocation Checking</h2>
-<p>銷售部門使用其他軟體來管理客戶關係、銷售計劃等。其中一項功能為收益管理(yield management)，可以讓公司根據「貨物類型、出發地、目的地」或「以分類作為輸入的其他因素」來制定不同貨物類型的運送配額。配額構成各類貨物的運送目標，這樣就不會造成「低利潤貨物過多」、「高利潤貨物過少」、「預定量不足 (還有可以運送很多貨物)」、「預定量過載」等。</p>
-<p>現在，要將收益管理的功能整合進開發的系統，讓客戶在預約寄送貨物時，可以根據配額 (allocation) 決定是否接受預約。</p>
-<p><img alt="" src="07/09.png" /></p>
-<h3 id="_3">串接兩個系統</h3>
-<p><font style="color:#FF7F50"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4h2v11h-2zm2 14v2h-2v-2z"/></svg></span></font> 系統與 <code>Sales Management System</code> 連接的介面，會想到以 <code>Sales Management Interface</code> 來命名。<br />
-<font style="color:green"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z"/></svg></span></font> 命名成 <code>Allocation Checker</code> 反映它在系統的職責。</p>
-<h3 id="model-segmenting-the-business">加強 Model: Segmenting the Business</h3>
-<p><img alt="" src="07/10.png" /></p>
-<p><code>Enterprise Segment</code> 是 Value Object。(Analysis Patterns, Fowler 1996)</p>
-<div class="highlight"><span class="filename">Enterprise Segment 示意</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EnterpriseSegment</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">region</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">productType</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customerCategory</span><span class="p">;</span>
-<span class="w">    </span><span class="p">...</span>
+<h3 id="markdownlint-cli2">markdownlint-cli2</h3>
+<p>markdown 預設在 <a href="http://xxx">http://xxx</a> 的前後加上 &lt; .. &gt;，使用以下設定關閉</p>
+<div class="highlight"><span class="filename">~/.config/nvim/lua/plugins/markdown.lua</span><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">HOME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">os.getenv</span><span class="p">(</span><span class="s2">&quot;HOME&quot;</span><span class="p">)</span>
+<span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;mfussenegger/nvim-lint&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">linters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">[</span><span class="s2">&quot;markdownlint-cli2&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;--config&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">HOME</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;/.config/nvim/lua/plugins/markdownlint-cli2.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>EnterpriseSegment</code> 定義了判斷運送量的依據標準，透過 <code>EnterpriseSegment</code> 可以查詢已預約量與配額。例如:</p>
-<ul>
-<li><code>{region=台北, productType=冷凍食品, customerCategory=一般用戶} 配額 50 公斤</code></li>
-<li><code>{region=台北, productType=電子產品, customerCategory=一般用戶} 配額 100 公斤</code></li>
-</ul>
-<p>這個設計的問題:</p>
-<ul>
-<li>接受或拒絕 <code>Cargo</code> 的預約是 Domain 的責任，而非 application layer (即 <code>Booking Application</code>) 的責任。</li>
-<li><code>EnterpriseSegment</code> 是如何生成的，沒有清楚說明。也就是，<code>Booking Application</code> 如何知道 <code>Cargo</code> 的分類，進而產生 <code>EnterpriseSegment</code>。</li>
-</ul>
-<p>這兩個設計問題，適合給 <code>Allocation Checker</code> 處理。</p>
-<p><img alt="" src="07/11.png" /></p>
-<ol>
-<li>透過 <code>Cargo</code> 取得 <code>EnterpriseSegment</code> (<code>Allocation Checker</code> 知道 <code>Cargo</code> 的配額所屬的分類)</li>
-<li>透過 <code>EnterpriseSegment</code> 查詢配額</li>
-<li>透過 <code>Cargo</code> 跟已預約的量，檢查訂單是否接收或拒絕。<ul>
-<li><code>Allocation Checker</code> 知道如何從 <code>Cargo</code> 生成 <code>EnterpriseSegment</code>，所以這裡傳入的是 <code>Cargo</code>。</li>
-</ul>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title"><code>EnterpriseSegment</code> 在這裡應該可以理解成 Request Payload，把 request 所需要的最小資料封裝成物件。這樣的做法可以不暴露處理 request 的實作內部，讓 client 的程式碼不容易因為內部結構修改而受影響。</p>
-</div>
+<div class="highlight"><span class="filename">~/.config/nvim/lua/plugins/markdownlint-cli2.yaml</span><pre><span></span><code><span class="nt">config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">MD054</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">autolink</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>其他設定參考: <a href="https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md">Rules</a></p>
 
 
 
@@ -2602,7 +2422,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年9月4日 17:59:20">2024年9月4日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月28日 14:44:56">2025年4月28日</span>
   </span>
 
     
@@ -2612,7 +2432,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年8月28日 17:58:33">2024年8月28日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月28日 14:44:56">2025年4月28日</span>
   </span>
 
     
@@ -2665,16 +2485,16 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../assets/mkdocs_puml/puml.js"></script>
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
       
-        <script src="../termynal.js"></script>
+        <script src="../../termynal.js"></script>
       
     
   </body>

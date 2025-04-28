@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">
+        <link rel="prev" href="../../../2024/11/18/run-appliocation-on-kubernetes.html">
       
-      
-        <link rel="next" href="../../../2025/04/27/oh-my-zsh--fzf.html">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Run appliocation on kubernetes - Teddy 的筆記本</title>
+        <title>Oh my zsh + fzf - Teddy 的筆記本</title>
       
     
     
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-appliocation-on-kubernetes" class="md-skip">
+        <a href="#oh-my-zsh-fzf" class="md-skip">
           跳轉到
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Run appliocation on kubernetes
+              Oh my zsh + fzf
             
           </span>
         </div>
@@ -2113,22 +2111,10 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2024-11-18 00:00:00+00:00" class="md-ellipsis">2024年11月18日</time>
+                        <time datetime="2025-04-27 00:00:00+00:00" class="md-ellipsis">2025年4月27日</time>
                       </div>
                     </li>
                     
-                    
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
-                          <span class="md-ellipsis">
-                            於
-                            
-                              <a href="../../../category/spring-boot.html">Spring Boot</a>, 
-                              <a href="../../../category/kubernetes.html">Kubernetes</a>, 
-                              <a href="../../../category/docker.html">Docker</a></span>
-                        </div>
-                      </li>
                     
                     
                       
@@ -2166,27 +2152,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#spring-boot-image" class="md-nav__link">
+  <a href="#fzf" class="md-nav__link">
     <span class="md-ellipsis">
-      將 Spring Boot 打包成 image
+      安裝 fzf
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#image-image-hub" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      將 image 推上 image hub
+      搜尋
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kubernetes" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      在 kubernetes 上執行目標程式
+      多選模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      搜尋歷史命令
     </span>
   </a>
   
@@ -2207,56 +2202,39 @@
 
 
 
-<h1 id="run-appliocation-on-kubernetes">Run appliocation on kubernetes</h1>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
-<!-- more -->
-<p>這裡我們假定使用 Sping Boot 進行開發。為了把 app 放到 kubernetes 上執行，我們需要進行以下動作:</p>
+<h1 id="oh-my-zsh-fzf">Oh my zsh + fzf</h1>
+<h2 id="fzf">安裝 fzf</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>fzf
+</code></pre></div>
+<p>編輯 <code>~/.zshrc</code> 找到 <code>plugins</code> 加上 <code>fzf</code></p>
+<div class="highlight"><pre><span></span><code>plugins=(... fzf)
+</code></pre></div>
+<h2 id="_1">搜尋</h2>
+<p>在命令列打指令</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fzf
+</code></pre></div>
+<p>或使用 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span></p>
+<p>語法:</p>
 <ul>
-<li>將 Spring Boot 的 app 打包成 image</li>
-<li>將 image 推上 image hub (例如 dockerhub)</li>
+<li><code>sbtrkt</code>: (fuzzy-match) Items that match <code>sbtrkt</code></li>
+<li><code>'wild</code>: (exact-match) Items that include <code>wild</code></li>
+<li><code>'wild'</code>: (exact-boundary-match) Items that include <code>wild</code> at word boundaries</li>
+<li><code>^music</code>: (prefix-exact-match) Items that start with <code>music</code></li>
+<li><code>.mp3$</code>: (suffix-exact-match) Items that end with <code>.mp3</code></li>
+<li><code>!fire</code>: (inverse-exact-match) Items that do not include <code>fire</code></li>
+<li><code>!^music</code>: (inverse-prefix-exact-match) Items that do not start with <code>music</code></li>
+<li><code>!.mp3</code>: (inverse-suffix-exact-match) Items that do not end with <code>.mp3</code></li>
 </ul>
-<h2 id="spring-boot-image">將 Spring Boot 打包成 image</h2>
-<p>執行 <code>gradle build</code> 後，程式的 jar 會產生在 build/lib 目錄下。透過 jar 就可以將程式跑起來。以下 Dockerfile，將此 jar 打包成 image，當跑起來時，執行該 jar。</p>
-<div class="highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">openjdk:21</span>
-<span class="k">COPY</span><span class="w"> </span>build/libs/*-SNAPSHOT.jar<span class="w"> </span>/app.jar
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="s2">&quot;-jar&quot;</span><span class="p">,</span><span class="s2">&quot;/app.jar&quot;</span><span class="p">]</span>
-</code></pre></div>
-<p>我們在 <code>build.gradle.kts</code> 增加 <code>buildImage</code> task，進行打包 image 的動作。</p>
-<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;image&gt;&quot;</span>
+<p>多個搜尋條件使用 空白 作為間隔，邏輯是 AND 效果。如果要 OR 效果，使用 <code>|</code> 串接。</p>
+<p><code>^core go$ | rb$ | py$</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vim<span class="w"> </span>**&lt;TAB&gt;
 
-<span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="s">&quot;buildImage&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;docker&quot;</span>
-<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Build the Docker image&quot;</span>
-<span class="w">    </span><span class="n">dependsOn</span><span class="p">(</span><span class="s">&quot;build&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">doFirst</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">exec</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">commandLine</span><span class="p">(</span><span class="s">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;docker buildx build -t </span><span class="si">$</span><span class="n">image</span><span class="s"> --platform linux/amd64 .&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+$<span class="w"> </span>vim<span class="w"> </span>../fzf**&lt;TAB&gt;
 </code></pre></div>
-<p>將 <code>&lt;image&gt;</code> 替換成目標 image 的名稱。<code>buildImage</code> 相依 <code>build</code>，在執行 task 之前，會建置產生最新的 jar 檔。為了在 kubernetes 上執行 image，設定 image 的目標平台為 <code>--platform linux/amd64</code>。</p>
-<h2 id="image-image-hub">將 image 推上 image hub</h2>
-<p>在 <code>build.gradle.kts</code> 增加 <code>pushImage</code> task，將打包的 image 推上 remote repository 中。task 相依前一步的 <code>buildImage</code> task，確保使用最新的 image。</p>
-<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code>tasks.register(&quot;pushImage&quot;) {
-    group = &quot;docker&quot;
-    description = &quot;Push the Docker image&quot;
-    dependsOn(&quot;buildImage&quot;)
-    doFirst {
-        exec {
-            val username = &quot;&lt;username&gt;&quot;
-            val password = &quot;&lt;password&gt;&quot;
-            commandLine(&quot;sh&quot;, &quot;-c&quot;, &quot;docker login -u $username -p $password&quot;)
-            commandLine(&quot;sh&quot;, &quot;-c&quot;, &quot;docker push $image&quot;)
-        }
-    }
-}
-</code></pre></div>
-<h2 id="kubernetes">在 kubernetes 上執行目標程式</h2>
-<p>執行以下動作，即可執行程式:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--rm<span class="w"> </span>--image<span class="o">=</span>&lt;image&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;
-</code></pre></div>
-<p>替換 <code>&lt;name&gt;</code>, <code>&lt;image&gt;</code>, <code>&lt;namespace&gt;</code></p>
+<h2 id="_2">多選模式</h2>
+<p><code>$ fzf -m</code></p>
+<h2 id="_3">搜尋歷史命令</h2>
+<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-r">R</kbd></span></p>
 
 
 

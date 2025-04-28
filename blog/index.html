@@ -459,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/vim/neovim.md" class="md-nav__link">
+      <a href="../development/vim/neovim.html" class="md-nav__link">
         
   
   
@@ -2096,6 +2096,64 @@
       <header class="md-typeset">
         <h1 id="blog">Blog</h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-27 00:00:00+00:00">2025年4月27日</time></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 1 分鐘閱讀時間
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="oh-my-zsh-fzf"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html">Oh my zsh + fzf</a></h2>
+<h3 id="fzf"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#fzf">安裝 fzf</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>fzf
+</code></pre></div>
+<p>編輯 <code>~/.zshrc</code> 找到 <code>plugins</code> 加上 <code>fzf</code></p>
+<div class="highlight"><pre><span></span><code>plugins=(... fzf)
+</code></pre></div>
+<h3 id="_1"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#_1">搜尋</a></h3>
+<p>在命令列打指令</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fzf
+</code></pre></div>
+<p>或使用 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span></p>
+<p>語法:</p>
+<ul>
+<li><code>sbtrkt</code>: (fuzzy-match) Items that match <code>sbtrkt</code></li>
+<li><code>'wild</code>: (exact-match) Items that include <code>wild</code></li>
+<li><code>'wild'</code>: (exact-boundary-match) Items that include <code>wild</code> at word boundaries</li>
+<li><code>^music</code>: (prefix-exact-match) Items that start with <code>music</code></li>
+<li><code>.mp3$</code>: (suffix-exact-match) Items that end with <code>.mp3</code></li>
+<li><code>!fire</code>: (inverse-exact-match) Items that do not include <code>fire</code></li>
+<li><code>!^music</code>: (inverse-prefix-exact-match) Items that do not start with <code>music</code></li>
+<li><code>!.mp3</code>: (inverse-suffix-exact-match) Items that do not end with <code>.mp3</code></li>
+</ul>
+<p>多個搜尋條件使用 空白 作為間隔，邏輯是 AND 效果。如果要 OR 效果，使用 <code>|</code> 串接。</p>
+<p><code>^core go$ | rb$ | py$</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vim<span class="w"> </span>**&lt;TAB&gt;
+
+$<span class="w"> </span>vim<span class="w"> </span>../fzf**&lt;TAB&gt;
+</code></pre></div>
+<h3 id="_2"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#_2">多選模式</a></h3>
+<p><code>$ fzf -m</code></p>
+<h3 id="_3"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#_3">搜尋歷史命令</a></h3>
+<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-r">R</kbd></span></p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
