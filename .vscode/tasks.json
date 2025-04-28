@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "mkdocs serve",
+            "label": "run serve",
             "type": "shell",
             "command": "./.venv/bin/python -m mkdocs serve -c -s -a localhost:8880"
         },
