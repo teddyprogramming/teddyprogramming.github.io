@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -561,7 +561,7 @@
   
   
   <span class="md-ellipsis">
-    Kubernetes
+    DevOps
     
   </span>
   
@@ -571,6 +571,113 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Terraform
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/terraform" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kubernetes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Kubernetes
           </label>
@@ -617,6 +724,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2336,7 +2451,7 @@
 </div>
 <h2 id="_1">探討: 執行時間超過下一次排程的時間的行為</h2>
 <p>假設我們設定每 10 秒跑一個 job。並且，每個 job 執行時間需要 15 秒。也就是說，job 的執行時間必定會覆蓋到下一次觸發的時間。在沒有特別設定的情況下，經過 30 秒後，將會有 3 個 job 被跑起來。job 與 job 的時間時間是會重疊的。</p>
-<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="GANTT" height="99px" preserveAspectRatio="xMidYMid meet" style="width:562px;height:99px;background:#FFFFFF;" version="1.1" viewBox="0 0 562 99" width="562px" zoomAndPan="magnify" class="diagram"><defs/><g><line style="stroke:#C0C0C0;stroke-width:1;" x1="0" x2="0" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="16" x2="16" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="32" x2="32" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="48" x2="48" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="64" x2="64" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="80" x2="80" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="96" x2="96" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="112" x2="112" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="128" x2="128" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="144" x2="144" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="160" x2="160" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="176" x2="176" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="192" x2="192" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="208" x2="208" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="224" x2="224" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="240" x2="240" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="256" x2="256" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="272" x2="272" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="288" x2="288" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="304" x2="304" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="320" x2="320" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="336" x2="336" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="352" x2="352" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="368" x2="368" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="384" x2="384" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="400" x2="400" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="416" x2="416" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="432" x2="432" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="448" x2="448" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="464" x2="464" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="480" x2="480" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="496" x2="496" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="512" x2="512" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="528" x2="528" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="544" x2="544" y1="6" y2="91.2188"/><line style="stroke:#C0C0C0;stroke-width:1;" x1="560" x2="560" y1="6" y2="91.2188"/><line style="stroke:#000000;stroke-width:2;stroke-dasharray:2.0,2.0;" x1="0" x2="0" y1="16" y2="83.2188"/><line style="stroke:#000000;stroke-width:2;stroke-dasharray:2.0,2.0;" x1="160" x2="160" y1="16" y2="83.2188"/><line style="stroke:#000000;stroke-width:2;stroke-dasharray:2.0,2.0;" x1="320" x2="320" y1="16" y2="83.2188"/><line style="stroke:#000000;stroke-width:2;stroke-dasharray:2.0,2.0;" x1="480" x2="480" y1="16" y2="83.2188"/><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="4.8188" y="9.2822">1</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="20.8188" y="9.2822">2</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="36.8188" y="9.2822">3</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="52.8188" y="9.2822">4</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="68.8188" y="9.2822">5</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="84.8188" y="9.2822">6</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="100.8188" y="9.2822">7</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="116.8188" y="9.2822">8</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="132.8188" y="9.2822">9</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="145.6377" y="9.2822">10</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="161.6377" y="9.2822">11</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="177.6377" y="9.2822">12</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="193.6377" y="9.2822">13</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="209.6377" y="9.2822">14</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="225.6377" y="9.2822">15</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="241.6377" y="9.2822">16</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="257.6377" y="9.2822">17</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="273.6377" y="9.2822">18</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="289.6377" y="9.2822">19</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="305.6377" y="9.2822">20</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="321.6377" y="9.2822">21</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="337.6377" y="9.2822">22</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="353.6377" y="9.2822">23</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="369.6377" y="9.2822">24</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="385.6377" y="9.2822">25</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="401.6377" y="9.2822">26</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="417.6377" y="9.2822">27</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="433.6377" y="9.2822">28</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="449.6377" y="9.2822">29</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="465.6377" y="9.2822">30</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="481.6377" y="9.2822">31</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="497.6377" y="9.2822">32</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="513.6377" y="9.2822">33</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="529.6377" y="9.2822">34</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="545.6377" y="9.2822">35</text><polygon fill="#000000" points="8,18,13,23,8,28,3,23" style="stroke:#000000;stroke-width:1;"/><polygon fill="#000000" points="168,18,173,23,168,28,163,23" style="stroke:#000000;stroke-width:1;"/><polygon fill="#000000" points="328,18,333,23,328,28,323,23" style="stroke:#000000;stroke-width:1;"/><polygon fill="#000000" points="488,18,493,23,488,28,483,23" style="stroke:#000000;stroke-width:1;"/><rect fill="#E2E2F0" height="12.8047" style="stroke:none;stroke-width:1;" width="236" x="2" y="34.8047"/><rect fill="none" height="12.8047" style="stroke:#181818;stroke-width:1;" width="236" x="2" y="34.8047"/><rect fill="#E2E2F0" height="12.8047" style="stroke:none;stroke-width:1;" width="236" x="162" y="51.6094"/><rect fill="none" height="12.8047" style="stroke:#181818;stroke-width:1;" width="236" x="162" y="51.6094"/><rect fill="#E2E2F0" height="12.8047" style="stroke:none;stroke-width:1;" width="236" x="322" y="68.4141"/><rect fill="none" height="12.8047" style="stroke:#181818;stroke-width:1;" width="236" x="322" y="68.4141"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7178" x="16" y="28.2104">T1</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7178" x="176" y="28.2104">T2</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7178" x="336" y="28.2104">T3</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="13.7178" x="496" y="28.2104">T4</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27.4517" x="6" y="45.0151">Job 1</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27.4517" x="166" y="61.8198">Job 2</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27.4517" x="326" y="78.6245">Job 3</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="4.8188" y="95.501">1</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="20.8188" y="95.501">2</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="36.8188" y="95.501">3</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="52.8188" y="95.501">4</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="68.8188" y="95.501">5</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="84.8188" y="95.501">6</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="100.8188" y="95.501">7</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="116.8188" y="95.501">8</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="6.3623" x="132.8188" y="95.501">9</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="145.6377" y="95.501">10</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="161.6377" y="95.501">11</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="177.6377" y="95.501">12</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="193.6377" y="95.501">13</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="209.6377" y="95.501">14</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="225.6377" y="95.501">15</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="241.6377" y="95.501">16</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="257.6377" y="95.501">17</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="273.6377" y="95.501">18</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="289.6377" y="95.501">19</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="305.6377" y="95.501">20</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="321.6377" y="95.501">21</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="337.6377" y="95.501">22</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="353.6377" y="95.501">23</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="369.6377" y="95.501">24</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="385.6377" y="95.501">25</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="401.6377" y="95.501">26</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="417.6377" y="95.501">27</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="433.6377" y="95.501">28</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="449.6377" y="95.501">29</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="465.6377" y="95.501">30</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="481.6377" y="95.501">31</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="497.6377" y="95.501">32</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="513.6377" y="95.501">33</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="529.6377" y="95.501">34</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="12.7246" x="545.6377" y="95.501">35</text></g></svg></div><div class="puml dark" style="">520. 
+<div class='puml-container'><div class="puml light" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2376,8 +2491,55 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 99014d5a-2b91-403b-844e-08deed1ae5dc</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
+        <p><strong>Error ID</strong>: 3c49bf43-d9dc-42a9-9c10-2030672243a3</p>
+        <p><strong>Timestamp</strong>: 2025-05-13 11:07:20</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div><div class="puml dark" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: a6e464bf-03f3-47f2-9a48-6a1e20eb8549</p>
+        <p><strong>Timestamp</strong>: 2025-05-13 11:07:20</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2434,8 +2596,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: c919f883-70f8-4233-a05f-241b19768104</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
+        <p><strong>Error ID</strong>: 0337ea32-c0c6-4f4b-81fc-9759673d3f32</p>
+        <p><strong>Timestamp</strong>: 2025-05-13 11:07:20</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2481,8 +2643,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 06dc8331-ad37-433e-b844-491665d63305</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 08:15:29</p>
+        <p><strong>Error ID</strong>: 8374acf9-f8fa-4570-81b4-75a0b036b35e</p>
+        <p><strong>Timestamp</strong>: 2025-05-13 11:07:20</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2544,8 +2706,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 0eef66ca-fc9c-4225-853e-056696c593a9</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
+        <p><strong>Error ID</strong>: 342299e9-5b8e-4de3-9a74-0fadf648487d</p>
+        <p><strong>Timestamp</strong>: 2025-05-13 11:07:20</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2591,8 +2753,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: b358e72c-fc02-4a5a-9601-454cdddb0e02</p>
-        <p><strong>Timestamp</strong>: 2025-04-28 08:15:27</p>
+        <p><strong>Error ID</strong>: 3491f346-e655-4544-acba-09b3d18c68e2</p>
+        <p><strong>Timestamp</strong>: 2025-05-13 11:07:20</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2711,10 +2873,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
