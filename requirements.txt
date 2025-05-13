@@ -4,3 +4,4 @@ mkdocs_puml@ git+https://github.com/teddyprogramming/mkdocs_puml.git@2.3.0
 mkdocs-git-revision-date-localized-plugin
 mdx_wikilink_plus
 termynal
+mkdocs-include-dir-to-nav

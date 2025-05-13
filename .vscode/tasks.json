@@ -9,6 +9,11 @@
             "command": "./.venv/bin/python -m mkdocs serve -c -s -a localhost:8880"
         },
         {
+            "label": "pip install",
+            "type": "shell",
+            "command": "./.venv/bin/pip install -r requirements.txt"
+        },
+        {
             "label": "git push",
             "type": "shell",
             "command": "git push"

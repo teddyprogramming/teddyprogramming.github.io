@@ -31,9 +31,12 @@ nav:
           - neovim: development/vim/neovim.md
           - 進階: development/vim/advanced.md
       - Terminal: development/terminal.md
-  - Kubernetes:
-      - Apply: kubernetes/apply.md
-      - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
+  - DevOps:
+    - Terraform:
+        - devops/terraform
+    - Kubernetes:
+        - Apply: kubernetes/apply.md
+        - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Domain-Driven Design:
       - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
       - 2 Communication and the Use of Language: domain-driven-design/02-communication-and-the-use-of-language.md
@@ -136,6 +139,7 @@ plugins:
         - index.md
         - blog/**/*
   - termynal
+  - include_dir_to_nav
 
 copyright: Copyright &copy; 2024-2025 Teddy Lee
 extra:
