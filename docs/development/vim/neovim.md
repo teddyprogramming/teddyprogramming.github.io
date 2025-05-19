@@ -1,3 +1,99 @@
+## noevide
+
+通常 terminal 會吃掉部分的 key，例如 ++cmd++，使用 neovide。
+
+### 快速動作
+
+Automator > 快速動作
+
+```automator
+on run {input, parameters}
+    if input is {} then
+        dialog "請選擇一個資料夾" buttons {"OK"} default button "OK"
+        return
+    end if
+
+    set folderPath to quoted form of POSIX path of (item 1 of input)
+    do shell script "'/Applications/Neovide.app/Contents/MacOS/neovide' " & folderPath
+    return input
+end run
+```
+
+檔案會放在 ~/Library/Services/
+
+## 設定
+
+### Common
+
+```lua title="~/.config/nvim/lua/config/keymaps.lua"
+vim.keymap.set("i", "jj", "<Esc>") -- jj enters normal mode from insert mode
+vim.keymap.set("n", "<D-/>", "gcc+", { remap = true }) -- cmd+/ comment single line
+vim.keymap.set("v", "<D-/>", "gc", { remap = true }) -- cmd+/ comment selected lines
+
+vim.keymap.set("n", "<S-CR>", "o<Esc>") -- shift+enter insert a line after current line
+vim.keymap.set("n", "<D-A-CR>", "O<Esc>") --cmd+option+enter insert a line before current line
+vim.keymap.set("n", "<D-CR>", "i<CR><Esc>^") --cmd+option line break
+```
+
+### Neovide
+
+Copy/Paste using ++cmd+v++, ++cmd+r++
+
+```lua title="~/.config/nvim/lua/config/keymaps.lua"
+if vim.g.neovide then
+  vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
+  vim.keymap.set("v", "<D-c>", '"+y') -- Copy
+  vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
+  vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
+  vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+  vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
+end
+
+-- Allow clipboard copy paste in neovim
+vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+```
+
+### Replace with Register
+
+```lua title="~/.config/nvim/lua/plugins/replace-with-register.lua"
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "grr")
+vim.keymap.del("n", "gri")
+
+return {
+      { "inkarkat/vim-ReplaceWithRegister" },
+      {
+        "neovim/nvim-lspconfig",
+        keys = {
+          { "gr", false },
+        },
+      },
+}
+```
+
+### surround
+
+```lua title="~/.config/nvim/lua/plugins/surround.lua"
+return {
+      { "tpope/vim-surround" },
+}
+```
+
+### 從 insert mode 進入 normal mode 時，自動將輸入法切換成英文
+
+```lua title="~/.config/nvim/lua/config/autocmds.lua"
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    os.execute("im-select com.apple.keylayout.ABC")
+  end,
+})
+```
+
 ## 基本操作
 
 基本的 vim 操作就不在這裡列舉。
@@ -37,19 +133,6 @@
 ## Config
 
 `~/.config/nvim/lua/config/` 下的檔案。
-
-### autocmds.lua
-
-從 insert mode 進入 normal mode 時，自動將輸入法切換成英文。
-
-```lua
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  callback = function()
-    os.execute("im-select com.apple.keylayout.ABC")
-  end,
-})
-```
 
 ### keymaps.lua
 
@@ -138,7 +221,7 @@ return {
 
 ### markdownlint-cli2
 
-markdown 預設在 http://xxx 的前後加上 < .. >，使用以下設定關閉
+markdown 預設在 <http://xxx> 的前後加上 < .. >，使用以下設定關閉
 
 ```lua title="~/.config/nvim/lua/plugins/markdown.lua"
 local HOME = os.getenv("HOME")
@@ -162,4 +245,3 @@ config:
 ```
 
 其他設定參考: [Rules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
-

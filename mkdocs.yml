@@ -32,11 +32,11 @@ nav:
           - 進階: development/vim/advanced.md
       - Terminal: development/terminal.md
   - DevOps:
-    - Terraform:
-        - devops/terraform
-    - Kubernetes:
-        - Apply: kubernetes/apply.md
-        - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
+      - Terraform:
+          - devops/terraform
+      - Kubernetes:
+          - Apply: kubernetes/apply.md
+          - Pod Topology Spread Constraints: kubernetes/pod-topology-spread-constraints.md
   - Domain-Driven Design:
       - 1 Crunching Knowledge: domain-driven-design/01-crunching-knowledge.md
       - 2 Communication and the Use of Language: domain-driven-design/02-communication-and-the-use-of-language.md
@@ -75,10 +75,7 @@ nav:
               - Item 55 - Return optionals judiciously: java/effective-java/055.md
   - Python:
       - pyenv: python/pyenv.md
-  - Spring:
-      - Spring Boot Basic: spring-boot/spring-boot-basic.md
-      - 新增 Spring Boot microservices 專案: spring-boot/set-up-microservices-project.md
-      - Spring Webflux: spring-boot/spring-webflux.md
+  - Spring Boot:
       - Scheduler:
           - Quartz:
               - Hello World!: spring-boot/scheduler/hello_world.md
