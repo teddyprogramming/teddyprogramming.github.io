@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="style_guide.html">
+      
+      
+        <link rel="next" href="../../kubernetes/apply.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Kubernetes - Teddy 的筆記本</title>
+        <title>Workspaces - Teddy 的筆記本</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#backends-supporting-multiple-workspaces" class="md-skip">
           跳轉到
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes
+              Workspaces
             
           </span>
         </div>
@@ -538,18 +542,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -565,7 +571,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             DevOps
@@ -576,18 +582,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -603,7 +611,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Terraform
@@ -617,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/backend.html" class="md-nav__link">
+      <a href="backend.html" class="md-nav__link">
         
   
   
@@ -640,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/import_infrastructure.html" class="md-nav__link">
+      <a href="import_infrastructure.html" class="md-nav__link">
         
   
   
@@ -663,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/intro_to_terraform.html" class="md-nav__link">
+      <a href="intro_to_terraform.html" class="md-nav__link">
         
   
   
@@ -686,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/state.html" class="md-nav__link">
+      <a href="state.html" class="md-nav__link">
         
   
   
@@ -709,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/style_guide.html" class="md-nav__link">
+      <a href="style_guide.html" class="md-nav__link">
         
   
   
@@ -729,10 +737,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../devops/terraform/workspaces.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Workspaces
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="workspaces.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -743,6 +771,60 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#backends-supporting-multiple-workspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backends supporting multiple workspaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-workspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using workspaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-workspace-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current workspace interpolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2306,7 +2388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -2330,67 +2412,102 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="kubernetes">Kubernetes</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-18 00:00:00+00:00">2024年11月18日</time></li>
-        
-          <li class="md-meta__item">
-            於
-            
-              <a href="spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="kubernetes.html" class="md-meta__link">Kubernetes</a>, 
-              <a href="docker.html" class="md-meta__link">Docker</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="run-appliocation-on-kubernetes"><a class="toclink" href="../2024/11/18/run-appliocation-on-kubernetes.html">Run appliocation on kubernetes</a></h2>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../2024/11/18/run-appliocation-on-kubernetes.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
-        
-          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
 
 
-<nav class="md-pagination">
+  <h1>Workspaces</h1>
+
+<p>Each Terraform configuration has an associated backend that defines how Terraform executes operations and where Terraform stores persistent data, like state.</p>
+<ul>
+<li>The persistent data stored in the backend belongs to a workspace.</li>
+<li>The backend initially has only one workspace containing one Terraform state associated with that configuration.</li>
+<li>Some backends support multiple named workspaces, allowing multiple states to be associated with a single configuration.</li>
+<li>The configuration still has only one backend, but you can deploy multiple distinct instances of that configuration without configuring a new backend or changing authentication credentials.</li>
+</ul>
+<h2 id="backends-supporting-multiple-workspaces">Backends supporting multiple workspaces</h2>
+<p>AzureRM, Consul, COS, GCS, Kubernetes, Local, OSS, Postgres, Remote, S3</p>
+<h2 id="using-workspaces">Using workspaces</h2>
+<ul>
+<li>Terraform starts with a single, default workspace named <code>default</code> that you cannot delete.</li>
+<li>If you have not created a new workspace, you are using the default workspace in your Terraform working directory.</li>
+<li>When you run <code>terraform plan</code> in a new workspace, Terraform does not access existing resources in other workspaces. These resources still physically exist, but you must switch workspaces to manage them.</li>
+</ul>
+<h2 id="current-workspace-interpolation">Current workspace interpolation</h2>
+<ul>
+<li>Within your Terraform configuration, you may include the name of the current workspace using the <code>${terraform.workspace}</code> interpolation sequence. This can be used anywhere interpolations are allowed.</li>
+<li>
+<p>Referencing the current workspace is useful for changing behavior based on the workspace.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;example&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terraform.workspace</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">1</span>
+
+<span class="c1">    # ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;example&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;web - ${terraform.workspace}&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="c1">    # ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p><a href="https://developer.hashicorp.com/terraform/language/state/workspaces">https://developer.hashicorp.com/terraform/language/state/workspaces</a></p>
+
+
+
+
+
+
+
   
-</nav>
-        
-      
-    </div>
-  </div>
+    
+  
+  
+    
+  
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

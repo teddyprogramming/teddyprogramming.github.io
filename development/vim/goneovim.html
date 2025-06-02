@@ -16,7 +16,7 @@
     
     
       
-        <title>Kubernetes - Teddy 的筆記本</title>
+        <title>Goneovim - Teddy 的筆記本</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#raycast" class="md-skip">
           跳轉到
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes
+              Goneovim
             
           </span>
         </div>
@@ -296,7 +296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../jet-brains/shortcuts.html" class="md-nav__link">
         
   
   
@@ -319,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/jet-brains/postfix-completion.html" class="md-nav__link">
+      <a href="../jet-brains/postfix-completion.html" class="md-nav__link">
         
   
   
@@ -388,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/zsh.html" class="md-nav__link">
+      <a href="zsh.html" class="md-nav__link">
         
   
   
@@ -411,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/vscode.html" class="md-nav__link">
+      <a href="vscode.html" class="md-nav__link">
         
   
   
@@ -434,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/ideavim.html" class="md-nav__link">
+      <a href="ideavim.html" class="md-nav__link">
         
   
   
@@ -457,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/neovim.html" class="md-nav__link">
+      <a href="neovim.html" class="md-nav__link">
         
   
   
@@ -480,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/advanced.html" class="md-nav__link">
+      <a href="advanced.html" class="md-nav__link">
         
   
   
@@ -511,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/terminal.html" class="md-nav__link">
+      <a href="../terminal.html" class="md-nav__link">
         
   
   
@@ -2306,7 +2306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -2330,67 +2330,98 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="kubernetes">Kubernetes</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-18 00:00:00+00:00">2024年11月18日</time></li>
-        
-          <li class="md-meta__item">
-            於
-            
-              <a href="spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="kubernetes.html" class="md-meta__link">Kubernetes</a>, 
-              <a href="docker.html" class="md-meta__link">Docker</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="run-appliocation-on-kubernetes"><a class="toclink" href="../2024/11/18/run-appliocation-on-kubernetes.html">Run appliocation on kubernetes</a></h2>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../2024/11/18/run-appliocation-on-kubernetes.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
-        
-          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
 
 
-<nav class="md-pagination">
+  <h1>Goneovim</h1>
+
+<h2 id="raycast">結合 Raycast</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Required parameters:</span>
+<span class="c1"># @raycast.schemaVersion 1</span>
+<span class="c1"># @raycast.title Open opersonal note</span>
+<span class="c1"># @raycast.mode silent</span>
+
+<span class="c1"># Optional parameters:</span>
+<span class="c1"># @raycast.icon /Applications/goneovim.app/Contents/Resources/goneovim.icns</span>
+<span class="c1"># @raycast.packageName Goneovim</span>
+
+<span class="nb">cd</span><span class="w"> </span>~/LIbrary/CloudStorage/Box-Box/HOME-teddy.cc.lee/note/personal
+
+<span class="nv">TARGET_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">TARGET_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGET_DIR</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="nv">FOUND</span><span class="o">=</span><span class="k">$(</span>osascript<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;set targetName to \&quot;</span><span class="nv">$TARGET_NAME</span><span class="s2">\&quot;&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;tell application &quot;System Events&quot;</span>
+<span class="s1">  set matchedWindows to {}</span>
+<span class="s1">  log targetName</span>
+<span class="s1">  repeat with proc in (every process whose name is &quot;goneovim&quot;)</span>
+<span class="s1">    repeat with win in windows of proc</span>
+<span class="s1">      if title of win = targetName then</span>
+<span class="s1">        set frontmost of proc to true</span>
+<span class="s1">        return &quot;FOUND&quot;</span>
+<span class="s1">      end if</span>
+<span class="s1">    end repeat</span>
+<span class="s1">  end repeat</span>
+<span class="s1">  set cmd to &quot;/Applications/goneovim.app/Contents/MacOS/goneovim .&quot;</span>
+<span class="s1">  do shell script cmd</span>
+<span class="s1">  return &quot;NOT_FOUND&quot;</span>
+<span class="s1">end tell&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$FOUND</span>
+</code></pre></div>
+
+
+
+
+
+
+
   
-</nav>
-        
-      
-    </div>
-  </div>
+    
+  
+  
+    
+  
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

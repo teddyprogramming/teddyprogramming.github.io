@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../testing/index.html">
+      
+      
+        <link rel="next" href="../../feature-toggles/main.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Kubernetes - Teddy 的筆記本</title>
+        <title>03 Creating a Set of Cooperating Microservices - Teddy 的筆記本</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#3-creating-a-set-of-cooperating-microservices" class="md-skip">
           跳轉到
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes
+              03 Creating a Set of Cooperating Microservices
             
           </span>
         </div>
@@ -1936,18 +1940,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1963,7 +1969,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Spring Boot
@@ -2053,7 +2059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../scheduler/hello_world.html" class="md-nav__link">
         
   
   
@@ -2076,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   
@@ -2115,7 +2121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../testing/index.html" class="md-nav__link">
         
   
   
@@ -2135,18 +2141,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
         
           
           <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
@@ -2162,7 +2170,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             Microservices
@@ -2173,10 +2181,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../spring-boot/microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    03 Creating a Set of Cooperating Microservices
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2187,6 +2217,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      參考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2306,7 +2365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -2330,67 +2389,547 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="kubernetes">Kubernetes</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-18 00:00:00+00:00">2024年11月18日</time></li>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3-creating-a-set-of-cooperating-microservices">3 Creating a Set of Cooperating Microservices</h1>
+<div class='puml-container'><div class="puml light" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: f7dccd30-51d7-4390-95f4-9ee11fb18ea8</p>
+        <p><strong>Timestamp</strong>: 2025-06-02 00:48:50</p>
         
-          <li class="md-meta__item">
-            於
-            
-              <a href="spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="kubernetes.html" class="md-meta__link">Kubernetes</a>, 
-              <a href="docker.html" class="md-meta__link">Docker</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="run-appliocation-on-kubernetes"><a class="toclink" href="../2024/11/18/run-appliocation-on-kubernetes.html">Run appliocation on kubernetes</a></h2>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../2024/11/18/run-appliocation-on-kubernetes.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div><div class="puml dark" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: d7e205e8-7958-4468-806a-23f5bc55c1f5</p>
+        <p><strong>Timestamp</strong>: 2025-06-02 00:48:50</p>
         
-          
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div></div>
+
+<p>對於每個微服務，我們會建立一個 Spring Boot 專案，並有以下設定:</p>
+<ul>
+<li>使用 Gradle 作為建構工具</li>
+<li>產生符合 Java 21 的程式碼</li>
+<li>專案會被打包成一個 fat JAR 檔案</li>
+<li>引入 <code>Spring Actuator</code> 和 <code>WebFlux</code> 模組的相依套件</li>
+<li>基於 Spring Boot v3.4.5（其依賴 Spring Framework v6.2.6）</li>
+</ul>
+<p>由於這個階段我們尚未建立任何服務註冊機制，我們會將所有微服務都執行在 <code>localhost</code> 上，並為每個微服務使用固定的埠號。我們將使用以下埠號：</p>
+<ul>
+<li>Product Composite Service: <code>8000</code></li>
+<li>Product Service: <code>8001</code></li>
+<li>Recommendation Service: <code>8002</code></li>
+<li>Review Service: <code>8003</code></li>
+</ul>
+<details class="tip">
+<summary>設定 port</summary>
+<div class="highlight"><span class="filename">application.yml</span><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">server.port=8000</span>
+</code></pre></div>
+</details>
+<p><a href="https://start.spring.io/#!type=gradle-project-kotlin&amp;language=kotlin&amp;platformVersion=3.4.5&amp;packaging=jar&amp;jvmVersion=21&amp;groupId=com.example&amp;artifactId=product-service&amp;name=product-service&amp;description=Demo%20project%20for%20Spring%20Boot&amp;packageName=com.example.product-service&amp;dependencies=webflux,actuator">Spring Initializr - Product Service</a><br />
+當我們建立好這四個專案後，檔案結構會如下所示:</p>
+<div class="highlight"><pre><span></span><code>└ microservices/
+    ├── product-composite-service
+    ├── product-service
+    ├── recommendation-service
+    └── review-service
+</code></pre></div>
+<p>為了讓我們能夠用一個指令就建構所有微服務，我們可以在 Gradle 中設定一個 multi-project build。步驟如下:</p>
+<ol>
+<li>
+<p>首先，我們在根目錄建立 <code>settings.gradle</code> 檔案，用來描述 Gradle 應該建構哪些專案：</p>
+<div class="highlight"><pre><span></span><code><span class="n">include</span><span class="p">(</span><span class="s">&quot;:microservices:product-composite-service&quot;</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;:microservices:product-service&quot;</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;:microservices:recommendation-service&quot;</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;:microservices:review-service&quot;</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>接著，我們會將其中一個專案中產生的 Gradle 執行檔複製過來，這樣就可以在多專案建構中重複使用它們:</p>
+<ul>
+<li><code>gradle/</code></li>
+<li><code>gradlew</code></li>
+<li><code>gradlew.bat</code></li>
+<li><code>.gitignore</code></li>
+<li><code>.gitattributes</code></li>
+</ul>
+</li>
+<li>
+<p>我們不再需要在每個專案中產生的上述檔案，所以可以將它們移除。</p>
+</li>
+<li>
+<p>現在，我們可以用一個指令來建構所有微服務:</p>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>build
+</code></pre></div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">使用 <code>git add -A</code> 將沒有忽略的檔案加到版控系統</p>
+</div>
+<p>從 Spring Boot v2.5.0 開始，當執行 <code>./gradlew build</code> 指令時，會產生兩個 JAR 檔案：一個是一般的 JAR 檔案，另一個是只包含編譯後 Java 類別檔的 plain JAR。由於我們不需要這個新的 plain JAR，因此停用了它的建立，這樣就可以使用萬用字元來引用一般的 JAR 來啟動 Spring Boot 應用，例如：</p>
+<p><code>java -jar microservices/product-service/build/libs/*.jar</code></p>
+<p>為了停用 plain JAR 的建立，我們在每個 microservice 的 <code>build.gradle.kts</code> 檔案中加上以下設定：</p>
+<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code>tasks.named&lt;Jar&gt;(&quot;jar&quot;) {
+    enabled = false
+}
+</code></pre></div>
+<p>Product Service cases</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET /product/1</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>GET /product/no-integer</td>
+<td>BAD_REQUEST (<code>Type mismatch.</code>) <sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>GET /product/13</td>
+<td>NOT_FOUND (<code>Product (id: 13) not found.</code>)</td>
+</tr>
+<tr>
+<td>GET /product/-1</td>
+<td>UNPROCESSABLE_ENTITY (<code>Invalid product id: -1.</code>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>錯誤的訊息，必須包含兩個欄位 <code>path</code>, <code>message</code></p>
+</div>
+<details class="tip">
+<summary>撰寫 HTTP request 測試</summary>
+<ul>
+<li><code>@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)</code></li>
+<li><code>@Autowired private lateinit var webTestClient: WebTestClient</code></li>
+<li>test code<br />
+    <div class="highlight"><pre><span></span><code><span class="n">webTestClient</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">uri</span><span class="p">(</span><span class="s">&quot;/product/1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">exchange</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">expectStatus</span><span class="p">().</span><span class="na">isOk</span>
+<span class="w">    </span><span class="p">.</span><span class="na">expectBody</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">jsonPath</span><span class="p">(</span><span class="s">&quot;</span><span class="err">$</span><span class="s">.id&quot;</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">jsonPath</span><span class="p">(</span><span class="s">&quot;</span><span class="err">$</span><span class="s">.name&quot;</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;Product 1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">jsonPath</span><span class="p">(</span><span class="s">&quot;</span><span class="err">$</span><span class="s">.weight&quot;</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+</code></pre></div></li>
+</ul>
+</details>
+<details class="tip">
+<summary>Global Exception Handler</summary>
+<ol>
+<li>
+<p>新增 Global Exception Handler 的類別</p>
+</li>
+<li>
+<p>在類別標上 <code>@RestControllerAdvice</code></p>
+</li>
+<li>
+<p>在類別中新增處理例外的 function</p>
+<ul>
+<li>假設處理 <code>NotFoundException</code>，則在 function 標上 <code>@ExceptionHandler(NotFoundException::class)</code></li>
+<li>假設回傳的 http status 是 not found，則在 function 標上 <code>@ResponseStatus(HttpStatus.NOT_FOUND)</code></li>
+</ul>
+</li>
+<li>
+<p>function 接受處理的例外當作參數。</p>
+<ul>
+<li>例如 <code>fun handleNotFound(e: NotFoundException)</code></li>
+</ul>
+</li>
+<li>
+<p>function 接受 <code>ServerHttpRequest</code> 當作參數，用以取得 path</p>
+<ul>
+<li>例如 <code>fun handleNotFound(.., request: ServerHttpRequest)</code></li>
+<li>path 為 <code>request.path.pathWithinApplication().value()</code></li>
+</ul>
+</li>
+<li>
+<p>宣告類別用以表達回傳的資料。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Response</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">path</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
+<p>Recommendation service cases</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET /recommendation?productId=1</td>
+<td>OK, 3 筆 recommendations</td>
+</tr>
+<tr>
+<td>GET /recommendation</td>
+<td>BAD_REQUEST (<code>Required query parameter 'productId' is not present.</code>) <sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>GET /recommendation?productId=no-integer</td>
+<td>BAD_REQUEST (<code>Type mismatch.</code>)</td>
+</tr>
+<tr>
+<td>GET /recommendation?productId=113</td>
+<td>OK, empty</td>
+</tr>
+<tr>
+<td>GET /recommendation?productId=-1</td>
+<td>UNPROCESSABLE_ENTITY (<code>Invalid productId: -1.</code>)</td>
+</tr>
+</tbody>
+</table>
+<details class="tip">
+<summary>實作提示</summary>
+<ul>
+<li>
+<p>驗證 json 內容</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">`get recommendations`</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">webTestClient</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">uri</span><span class="p">(</span><span class="s">&quot;/recommendation?productId=1&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">exchange</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">expectStatus</span><span class="p">().</span><span class="na">isOk</span>
+<span class="w">        </span><span class="p">.</span><span class="na">expectHeader</span><span class="p">().</span><span class="na">contentType</span><span class="p">(</span><span class="n">MediaType</span><span class="p">.</span><span class="na">APPLICATION_JSON</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">expectBody</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">json</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;&quot;&quot;[</span>
+<span class="s">            { &quot;id&quot;: 1, &quot;productId&quot;: 1, &quot;content&quot;: &quot;recommendation 1&quot;, &quot;author&quot;: &quot;author 1&quot;, &quot;rate&quot;: 4.5 },</span>
+<span class="s">            { &quot;id&quot;: 2, &quot;productId&quot;: 1, &quot;content&quot;: &quot;recommendation 2&quot;, &quot;author&quot;: &quot;author 2&quot;, &quot;rate&quot;: 3.0 },</span>
+<span class="s">            { &quot;id&quot;: 3, &quot;productId&quot;: 1, &quot;content&quot;: &quot;recommendation 3&quot;, &quot;author&quot;: &quot;author 3&quot;, &quot;rate&quot;: 5.0 }</span>
+<span class="s">        ]&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Json 預設比對是寬鬆模式 (LENIENT)，field 順序不重要，實際上有多的 field 沒有 assert 也不重要。</p>
+</li>
+<li>
+<p>Query parameter: <code>@RequestParam</code></p>
+</li>
+<li>
+<p>使用 jsonPath 驗證 list 的長度</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">`empty recommendation`</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">webTestClient</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">uri</span><span class="p">(</span><span class="s">&quot;/recommendation?productId=113&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">exchange</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">expectStatus</span><span class="p">().</span><span class="na">isOk</span>
+<span class="w">        </span><span class="p">.</span><span class="na">expectHeader</span><span class="p">().</span><span class="na">contentType</span><span class="p">(</span><span class="n">MediaType</span><span class="p">.</span><span class="na">APPLICATION_JSON</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">expectBody</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">jsonPath</span><span class="p">(</span><span class="s">&quot;</span><span class="err">$</span><span class="s">.length()&quot;</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">重構</p>
+<ul>
+<li>
+<p>新增 <code>util</code> module</p>
+<ul>
+<li>新增純 gradle 專案，不必是 spring boot</li>
+<li>
+<p>設定 <code>build.gradle.kts</code></p>
+<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="c1">// 從既有的 service 專案，複製 plugins 的內容</span>
+<span class="w">    </span><span class="n">kotlin</span><span class="p">(</span><span class="s">&quot;plugin.spring&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;1.9.25&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.springframework.boot&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;3.4.5&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.spring.dependency-management&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;1.1.7&quot;</span>
+<span class="p">}</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.springframework:spring-context&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 我們不需要 spring boot starter，這裡使用 spring-context</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.springframework:spring-webflux&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 我們後面會需要 webflux 的類別，這需要 spring-webflux</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="o">&lt;</span><span class="n">BootJar</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;bootJar&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>設定 Auto-Configuration，讓相依此 module 的 project，可以自動掃描 <code>util</code> 定義的 beans</p>
+<div class="highlight"><span class="filename">UtilConfiguration.kt</span><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="p">(</span><span class="s">&quot;org.example.util&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 這裡填入 util 的 base package，以掃描在此 package 下的所有 bean</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">UtilConfiguration</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</span><pre><span></span><code>org.example.exception.UtilConfiguration
+</code></pre></div>
+</li>
+<li>
+<p>將例外移到 <code>util</code> module 共用</p>
+</li>
+<li>將 Global Exception Handler 移到 <code>util</code> module 共用</li>
+</ul>
+</div>
+<p>Review service cases</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET /review?productId=1</td>
+<td>OK, 3 筆 reviews</td>
+</tr>
+<tr>
+<td>GET /review</td>
+<td>BAD_REQUEST (<code>Required query parameter 'productId' is not present.</code>) <sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>GET /review?productId=no-integer</td>
+<td>BAD_REQUEST (<code>Type mismatch.</code>) <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>GET /review?productId=213</td>
+<td>OK, empty</td>
+</tr>
+<tr>
+<td>GET /review?productId=-1</td>
+<td>UNPROCESSABLE_ENTITY (<code>Invalid productId: -1.</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Product Composite service</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET /product-composite/1</td>
+<td>OK, length(reviews) = 1, length(recommendations) = 1</td>
+</tr>
+<tr>
+<td>GET /product-composite/2</td>
+<td>NOT_FOUND (<code>Not found productId: 2.</code>)</td>
+</tr>
+<tr>
+<td>GET /product-composite/-1</td>
+<td>UNPROCESSABLE_ENTITY (<code>Invalid productId: -1.</code>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>使用假資料，<code>productId=1</code> 時，reviews, recommendations 各一筆</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">重構</p>
+<ul>
+<li>提取 <code>ProductService</code>, <code>RecommendationService</code>, <code>ReviewService</code> 成 interface</li>
+<li>新增 <code>api</code> module，將 service interface 放在這個 module 中</li>
+</ul>
+</div>
+<details class="tip">
+<summary>測試</summary>
+<ul>
+<li>使用 <a href="https://wiremock.org/docs/spring-boot/">WireMock</a><ul>
+<li><code>testImplementation("org.wiremock.integrations:wiremock-spring-boot:3.6.0")</code></li>
+<li>在測試標上 <code>@EnableWireMock</code><br />
+    <div class="highlight"><pre><span></span><code><span class="c1">// ...</span>
+<span class="nd">@EnableWireMock</span><span class="p">(</span><span class="n">ConfigureWireMock</span><span class="p">(</span><span class="n">baseUrlProperties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s">&quot;product-service.host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;review-service.host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;recommendation-service.host&quot;</span><span class="o">]</span><span class="p">))</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">ProductCompositeServiceApplicationTests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>用 <code>subFor</code> 來 mock api 回傳的資料<br />
+    <div class="highlight"><pre><span></span><code><span class="n">stubFor</span><span class="p">(</span><span class="k">get</span><span class="p">(</span><span class="s">&quot;/product/1&quot;</span><span class="p">).</span><span class="na">willReturn</span><span class="p">(</span><span class="n">okJson</span><span class="p">(</span><span class="s">&quot;{\&quot;id\&quot;: 1, \&quot;name\&quot;: \&quot;Product 1\&quot;, \&quot;weight\&quot;: 123}&quot;</span><span class="p">)))</span>
+<span class="n">stubFor</span><span class="p">(</span><span class="k">get</span><span class="p">(</span><span class="s">&quot;/review?productId=1&quot;</span><span class="p">).</span><span class="na">willReturn</span><span class="p">(</span><span class="n">okJson</span><span class="p">(</span><span class="s">&quot;[{\&quot;id\&quot;: 1, \&quot;productId\&quot;: 1, \&quot;author\&quot;: \&quot;Author 1\&quot;, \&quot;subject\&quot;: \&quot;Subject 1\&quot;, \&quot;content\&quot;: \&quot;Content 1\&quot;}]&quot;</span><span class="p">)))</span>
+<span class="n">stubFor</span><span class="p">(</span><span class="k">get</span><span class="p">(</span><span class="s">&quot;/recommendation?productId=1&quot;</span><span class="p">).</span><span class="na">willReturn</span><span class="p">(</span><span class="n">okJson</span><span class="p">(</span><span class="s">&quot;[{\&quot;id\&quot;: 1, \&quot;productId\&quot;: 1, \&quot;author\&quot;: \&quot;Author 1\&quot;, \&quot;rate\&quot;: 4.2, \&quot;content\&quot;: \&quot;Content 1\&quot;}]&quot;</span><span class="p">)))</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</details>
+<details class="tip">
+<summary>實作 service client</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nc">ProductServiceClient</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ProductService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@GetExchange</span><span class="p">(</span><span class="s">&quot;/product/{productId}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getProduct</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">productId</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="n">Product</span>
+<span class="p">}</span>
+
+<span class="nd">@Bean</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">productServiceClient</span><span class="p">(</span><span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;\</span><span class="si">${</span><span class="n">product</span><span class="o">-</span><span class="n">service</span><span class="p">.</span><span class="na">host</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">host</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">ProductServiceClient</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">webClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WebClient</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">baseUrl</span><span class="p">(</span><span class="n">host</span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">adapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WebClientAdapter</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">webClient</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpServiceProxyFactory</span><span class="p">.</span><span class="na">builderFor</span><span class="p">(</span><span class="n">adapter</span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">factory</span><span class="p">.</span><span class="na">createClient</span><span class="p">(</span><span class="n">ProductServiceClient</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>WebClient</code> 才有支援 suspend，<code>RestTemplate</code>, <code>RestClient</code> 如果要產生 suspend method 的 API，在呼叫時，會拋出錯誤。</li>
+</ul>
+<p>參考: <a href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface">https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface</a></p>
+</details>
+<h2 id="_1">參考</h2>
+<p><a href="https://github.com/PacktPublishing/Microservices-with-Spring-Boot-and-Spring-Cloud-Third-Edition/tree/main/Chapter03">https://github.com/PacktPublishing/Microservices-with-Spring-Boot-and-Spring-Cloud-Third-Edition/tree/main/Chapter03</a></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>在 properties 檔案新增 <code>server.error.include-message=always</code> 將會在 response 中提供 <code>message</code>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
-      
-    </div>
-  </div>
+    
+  
+  
+    
+  
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

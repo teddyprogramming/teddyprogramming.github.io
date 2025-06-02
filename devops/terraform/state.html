@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="intro_to_terraform.html">
+      
+      
+        <link rel="next" href="style_guide.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Kubernetes - Teddy 的筆記本</title>
+        <title>State - Teddy 的筆記本</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#state" class="md-skip">
           跳轉到
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes
+              State
             
           </span>
         </div>
@@ -538,18 +542,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -565,7 +571,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             DevOps
@@ -576,18 +582,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -603,7 +611,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Terraform
@@ -617,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/backend.html" class="md-nav__link">
+      <a href="backend.html" class="md-nav__link">
         
   
   
@@ -640,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/import_infrastructure.html" class="md-nav__link">
+      <a href="import_infrastructure.html" class="md-nav__link">
         
   
   
@@ -663,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/intro_to_terraform.html" class="md-nav__link">
+      <a href="intro_to_terraform.html" class="md-nav__link">
         
   
   
@@ -683,10 +691,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../devops/terraform/state.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    State
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="state.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -697,6 +727,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspection-and-modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspection and Modification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -709,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/style_guide.html" class="md-nav__link">
+      <a href="style_guide.html" class="md-nav__link">
         
   
   
@@ -732,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/workspaces.html" class="md-nav__link">
+      <a href="workspaces.html" class="md-nav__link">
         
   
   
@@ -2306,7 +2383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -2330,67 +2407,88 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="kubernetes">Kubernetes</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-18 00:00:00+00:00">2024年11月18日</time></li>
-        
-          <li class="md-meta__item">
-            於
-            
-              <a href="spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="kubernetes.html" class="md-meta__link">Kubernetes</a>, 
-              <a href="docker.html" class="md-meta__link">Docker</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="run-appliocation-on-kubernetes"><a class="toclink" href="../2024/11/18/run-appliocation-on-kubernetes.html">Run appliocation on kubernetes</a></h2>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../2024/11/18/run-appliocation-on-kubernetes.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
-        
-          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
 
 
-<nav class="md-pagination">
+<h1 id="state">State</h1>
+<p>Terraform 需要儲存有關你所管理基礎架構和設定的狀態。這些狀態可用來對應實際資源與設定、追蹤相關的中繼資料，以及在管理大型基礎架構時提升效能。</p>
+<p>預設情況下，這個狀態會儲存在名為 terraform.tfstate 的本機檔案中。不過我們建議將它儲存在 <a href="https://developer.hashicorp.com/terraform/cloud-docs/migrate">HCP Terraform</a>，以便進行版本控管、加密，並安全地與團隊成員共享。</p>
+<p>Terraform 會透過狀態來判斷需要對基礎架構進行哪些變更。在執行任何操作之前，Terraform 都會先進行 <a href="https://developer.hashicorp.com/terraform/cli/commands/refresh">refresh</a>，以將狀態與實際的基礎架構同步更新。</p>
+<p>Terraform 狀態的主要目的，是用來儲存遠端系統中的物件與你在設定中宣告的資源實例之間的對應關係。當 Terraform 因設定變更而建立遠端物件時，會將該物件的識別資訊記錄在對應的資源實例上，之後在設定再次變更時，就可以根據這些資訊去更新或刪除相應的遠端物件。</p>
+<p>若想了解更多關於為什麼 Terraform 需要狀態，以及為什麼沒有狀態就無法運作，請參考文件中的 <a href="https://developer.hashicorp.com/terraform/language/state/purpose">state purpose</a> 頁面。</p>
+<h2 id="inspection-and-modification">Inspection and Modification</h2>
+<p>雖然狀態檔的格式只是 JSON，但不建議直接編輯這些檔案。Terraform 提供了 <a href="https://developer.hashicorp.com/terraform/cli/commands/state">terraform state</a> 指令，讓你可以透過 CLI 執行基本的狀態修改操作。</p>
+<p>Terraform state 指令的使用方式與輸出格式設計上是為了方便搭配 Unix 工具(像是 grep、awk 等)使用。此外，CLI 也會幫使用者隔離狀態格式的變動，讓你不需要關心底層格式是否有改變。即使未來狀態格式有所調整，Terraform 專案也會確保 CLI 操作依然可用。</p>
+<p>Terraform 預期設定中的資源實例與遠端物件之間是一對一的對應關係。這種對應通常是由 Terraform 自己負責建立的，也就是由 Terraform 建立每個物件並在狀態中記錄其識別資訊，或在銷毀物件後從狀態中移除對應的關聯。</p>
+<p>如果你透過其他方式新增或移除狀態中的對應關係，例如使用 <code>terraform import</code> 匯入外部建立的物件，或用 <code>terraform state rm</code> 讓 Terraform「忘記」某個現有物件，那你就需要自行確保這個一對一的對應規則仍然成立。舉例來說，你可能需要手動刪除被「忘記」的物件，或重新匯入它，讓它綁定到另一個資源實例上。</p>
+<div class="admonition question">
+<p class="admonition-title">你可能需要手動刪除被「忘記」的物件</p>
+<p>ChatGPT:</p>
+<p>當你使用 <code>terraform state rm</code> 指令讓 Terraform「忘記」某個資源後，Terraform 就不再追蹤它了，但實際上那個資源還存在於遠端（像是 AWS、GCP 上的某個實體資源）。 這樣會造成狀態檔裡沒有這個資源的紀錄，但遠端的實體還在，導致 Terraform 和實際環境不一致。</p>
+<p>所以你可能需要手動到雲端平台上刪掉那個實際存在的資源，這樣才不會留下「殘留資源」，確保 Terraform 的狀態和實際環境一致。</p>
+</div>
+<h2 id="format">Format</h2>
+<p>狀態快照是以 JSON 格式儲存的，並且新版本的 Terraform 通常會向後相容於舊版本產生的狀態快照。然而，狀態格式可能會在新版本的 Terraform 中有所變動，因此如果你開發的軟體需要直接解析或修改狀態，你應該預期在未來版本中隨著狀態格式的變化，仍需持續維護這些軟體。</p>
+<p>另外，也有幾個整合點會產生專門供外部軟體使用的 JSON 輸出：</p>
+<ul>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/output"><code>terraform output</code> 指令</a>有一個 <code>-json</code> 選項，可以用來取得最新狀態快照中的完整根模組輸出值集，或是某個特定名稱的輸出值。</li>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/show"><code>terraform show</code> 指令</a>有一個 <code>-json</code> 選項，可以用來檢視完整的最新狀態快照，也可以檢視保存的計劃檔案，這些計劃檔案包含了計劃執行時的先前狀態副本。</li>
+</ul>
+<p>在 Terraform 自動化執行的情況下，這些指令的典型使用方式是，在成功執行 `terraform apply`` 後立即運行它們，以獲取最新狀態快照的表示，然後將該結果儲存為與自動化運行相關聯的工件，這樣其他軟體就可以直接使用這些資料，而不需要重新執行 Terraform。</p>
+<h2 id="references">References</h2>
+<p><a href="https://developer.hashicorp.com/terraform/language/state">https://developer.hashicorp.com/terraform/language/state</a></p>
+
+
+
+
+
+
+
   
-</nav>
-        
-      
-    </div>
-  </div>
+    
+  
+  
+    
+  
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

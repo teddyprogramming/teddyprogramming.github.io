@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../development/terminal.html">
+      
+      
+        <link rel="next" href="import_infrastructure.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Kubernetes - Teddy 的筆記本</title>
+        <title>Backend - Teddy 的筆記本</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#backend-types" class="md-skip">
           跳轉到
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes
+              Backend
             
           </span>
         </div>
@@ -538,18 +542,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -565,7 +571,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             DevOps
@@ -576,18 +582,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -603,7 +611,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             Terraform
@@ -614,10 +622,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../devops/terraform/backend.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="backend.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -628,6 +656,78 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#backend-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-the-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the backend
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partial-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-a-backend-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove a backend configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -640,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/import_infrastructure.html" class="md-nav__link">
+      <a href="import_infrastructure.html" class="md-nav__link">
         
   
   
@@ -663,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/intro_to_terraform.html" class="md-nav__link">
+      <a href="intro_to_terraform.html" class="md-nav__link">
         
   
   
@@ -686,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/state.html" class="md-nav__link">
+      <a href="state.html" class="md-nav__link">
         
   
   
@@ -709,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/style_guide.html" class="md-nav__link">
+      <a href="style_guide.html" class="md-nav__link">
         
   
   
@@ -732,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/workspaces.html" class="md-nav__link">
+      <a href="workspaces.html" class="md-nav__link">
         
   
   
@@ -2306,7 +2406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -2330,67 +2430,217 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="kubernetes">Kubernetes</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-18 00:00:00+00:00">2024年11月18日</time></li>
-        
-          <li class="md-meta__item">
-            於
-            
-              <a href="spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="kubernetes.html" class="md-meta__link">Kubernetes</a>, 
-              <a href="docker.html" class="md-meta__link">Docker</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="run-appliocation-on-kubernetes"><a class="toclink" href="../2024/11/18/run-appliocation-on-kubernetes.html">Run appliocation on kubernetes</a></h2>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../2024/11/18/run-appliocation-on-kubernetes.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
-        
-          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
 
 
-<nav class="md-pagination">
+  <h1>Backend</h1>
+
+<p><code>backend</code> defines where Terraform stores its state date files.</p>
+<p>There are some important limitations on backend configuration:</p>
+<ul>
+<li>A configuration can only provide one backend block.</li>
+<li>A backend block cannot refer to named values (like input variables, locals, or data source attributes)</li>
+<li>You cannot reference values declared within backend blocks elsewhere in the configuration.</li>
+</ul>
+<h2 id="backend-types">Backend types</h2>
+<ul>
+<li>Terraform users a backend called <code>local</code> by default.<ul>
+<li>The <code>local</code> backend type stores state as a local file on disk.</li>
+</ul>
+</li>
+<li>
+<p>remote backend</p>
+<div class="highlight"><pre><span></span><code><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;remote&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">organization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example_corp&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Using environment variables to supply credentials and other sensitive data is recommended.</li>
+<li>If you use <code>-backend-config</code> or hardcode these values directly in your configuration, Terraform will include these values in both the <code>.terraform</code> subdirectory and in plan files.</li>
+<li>Terraform writes the backend configuration in plan text in two separate files.<ul>
+<li>The <code>.terraform/terraform.tfstate</code> file contains the backend configuration for the current working directory.</li>
+<li>All plan files capture the information in <code>.terraform/terraform.tfstate</code> at the time the plan was created. This help ensure Terraform is applying the plan to correct set of infrastructure.</li>
+</ul>
+</li>
+<li>When applying a plan that you previously saved to a file, Terraform uses the backend configuration stored in that file instead of the current backend settings. If that configuration contains time-limited credentials, they may expire before you finish applying the plan. Use environment variables to pass credentials when you need to use different values between the plan and apply steps.</li>
+</ul>
+</li>
+</ul>
+<h2 id="initialize-the-backend">Initialize the backend</h2>
+<ul>
+<li>When you change a backend's configuration, you must run <code>terraform init</code> again to validate and configure the backend before you can perform any plans, applies, or state operations.</li>
+<li>After you initialize, Terraform creates a <code>.terraform/</code> directory locally. This directory contains the most recent backend configuration, including any authentication parameters you provided to the Terraform CLI. <strong>Do not check this directory into Git, as it may contain sensitive credentials for your remote backend.</strong></li>
+<li>When you change backends, Terraform gives you the option to migrate your state to the new backend. This lets you adopt backends without losing any existing state.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Important: Before migrating to a new backend, we strongly recommend manually backing up your state by coping your <code>terraform.tfstate</code> file to another location.</p>
+</div>
+<h2 id="partial-configuration">Partial configuration</h2>
+<ul>
+<li>You do not need to specify every required argument in the backend congiguration. Omitting certain arguments may be desirable if some arguments are provided automatically by an automation script running Terraform.</li>
+<li>When some or all of the arguments are omitted, we call this a partial configuration.</li>
+<li>With a partial configuration, the remaining configuration arguments must be provided as part of the initialization process.</li>
+<li>
+<p>There are several ways to supply the remaining arguments:</p>
+<ol>
+<li>
+<p>Files</p>
+<ul>
+<li>A configuration file may be specified via the <code>init</code> command line. To specify a file, use the <code>-backend-config=PATH</code> option when running <code>terraform init</code>.</li>
+<li>The partial configuration must have a <code>backend</code> block containing keys set to empty values. When you run the <code>terraform init -backend-config="&lt;path-to-remaining-configuration&gt;"</code> command, Terraform populates the keys in the partial <code>backend</code> configuration with matching key values from the specified configuration file.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-backend-config<span class="o">=</span><span class="s2">&quot;./state.config&quot;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">state.tf</span><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="na">bucket</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="na">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="na">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">state.config</span><pre><span></span><code>buckety = &quot;your-bucket&quot;
+key     = &quot;your-state.tfstate&quot;
+region  = &quot;eu-central-1&quot;
+profile = &quot;Your_Profile&quot;
+</code></pre></div>
+<ul>
+<li>When your configuration file contains secrets, you can store them in a secure date store, such as Vault, in which case it must be downloaded to the local disk before running Terraform.</li>
+</ul>
+</li>
+<li>
+<p>Command-line key/value pairs</p>
+<ul>
+<li>
+<p>Key/value paires can be specified via the <code>init</code> command line.</p>
+<div class="admonition warning">
+<p class="admonition-title">Note that many shells retain command-line flags in a history file, so this isn't recommended for secrets.</p>
+</div>
+</li>
+<li>
+<p>To specify a single key/value pair, use the <code>-backend-config="KEY=VALUE"</code> option when running <code>terraform init</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Interactively</p>
+<ul>
+<li>Terraform will interactively ask you for the required values, unless interactive input is disabled.</li>
+<li>Terraform will not prompt for optional values.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>When using partial configuration, Terraform requires at a minimum that an empty backend configuration is specified in one of the root Terraform configuration files, to specify the backend type.</p>
+<div class="highlight"><pre><span></span><code>terraform {
+    backend &quot;consul&quot; {}
+}
+</code></pre></div>
+<ul>
+<li>
+<p>File:</p>
+<ul>
+<li>
+<p>A backend configuration file has the contents of the <code>backend</code> block as top-level attributes, without the need to wrap it in another <code>terraform</code> or <code>backend</code> block:</p>
+</li>
+<li>
+<p><code>*.backendname.tfbackend</code> (e.g., <code>config.consul.tfbackend</code>) is the recommended naming pattern.</p>
+<ul>
+<li>Terraform will not prevent you from using other name but following this convention will help your editor understand the content and likely provide better editing experience as a result.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><span class="filename">config.consul.tfbackend</span><pre><span></span><code>address = &quot;demo.consul.io&quot;
+path    = &quot;example_app/terraform_state&quot;
+schema  = &quot;https&quot;
+</code></pre></div>
+</li>
+<li>
+<p>Command-line key/value pairs</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;address=demo.consul.io&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;path=example_app/terraform_state&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;schema=https&quot;</span>
+</code></pre></div>
+<ul>
+<li>The Consul backend also requires a Consul access token. Per the recommendation above of omitting credentials from the configuration and using other mechanisms, the Consul token would be provided by setting either the <code>CONSUL_HTTP_TOKEN</code> or <code>CONSUL_HTTP_AUTH</code> environment variables.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="change-configuration">Change configuration</h2>
+<ul>
+<li>You can change your backend configuration at any time.<ul>
+<li>You can change both the configuration itself as well as the type of backend (for example from "consul" to "s3")</li>
+</ul>
+</li>
+<li>Terraform will automatically detect any changes in your configuration and request a reinitialization. As part of the reinitialization process, Terraform will ask if you'd like to migrate your existing state to the new configuration. This allows you to easily switch from one backend to another.</li>
+<li>If you're using multiple workspaces, Terraform can copy all workspaces to the destination. If Terraform detects you have multiple workspaces, it will ask if this is whay you want to do.</li>
+<li>If you're just reconfiguration the same backend, Terraform will still ask if you want to migrate you state. You can respond "no" in this scenario.</li>
+</ul>
+<h2 id="remove-a-backend-configuration">Remove a backend configuration</h2>
+<ul>
+<li>Remove the <code>backend</code> block from your configuration and reinitialize the directory when prompted. Terraform also prompts you to migrate the state to the degault <code>local</code> backend.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://developer.hashicorp.com/terraform/language/backend">https://developer.hashicorp.com/terraform/language/backend</a></li>
+</ul>
+
+
+
+
+
+
+
   
-</nav>
-        
-      
-    </div>
-  </div>
+    
+  
+  
+    
+  
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月2日 07:48:11 UTC">2025年6月2日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
