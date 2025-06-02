@@ -84,6 +84,8 @@ nav:
             #       - Job vs Bean Job
             # TODO: tes
       - Testing: spring-boot/testing/index.md
+      - Microservices:
+          - 03 Creating a Set of Cooperating Microservices: spring-boot/microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.md
   - Feature Toggles: feature-toggles/main.md
   - Kata:
       - Microservices with Spring Boot 3 and Spring Cloud: kata/Microservices with Spring Boot 3 and Spring Cloud - Third Edition/index.md
