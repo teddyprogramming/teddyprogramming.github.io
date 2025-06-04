@@ -1,5 +1,17 @@
 ## 結合 Raycast
 
+Raycast script 腳本
+
+1. cd 到目標目錄
+2. 如果目前 goneovim 的 title 有目標目錄的檔案名稱，則將程式帶到前景
+
+    - neovim 設定可能需要設定 title
+
+        ```
+        vim.opt.title = true
+        vim.opt.titlestring = vim.fs.basename(vim.fn.getcwd())
+        ```
+
 ```shell
 #!/bin/bash
 
