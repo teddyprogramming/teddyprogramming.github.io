@@ -242,20 +242,17 @@ Recommendation service cases
 
             ```kotlin title="build.gradle.kts"
             plugins {
-                // ...
-                // 從既有的 service 專案，複製 plugins 的內容
+                kotlin("jvm") version "2.0.21"
                 kotlin("plugin.spring") version "1.9.25"
-                id("org.springframework.boot") version "3.4.5"
-                id("io.spring.dependency-management") version "1.1.7"
             }
 
+            // ...
+
             dependencies {
-                implementation("org.springframework:spring-context") // 我們不需要 spring boot starter，這裡使用 spring-context
-                implementation("org.springframework:spring-webflux") // 我們後面會需要 webflux 的類別，這需要 spring-webflux
-                // ...
-            }
-            tasks.named<BootJar>("bootJar") {
-                enabled = false
+                implementation(platform("org.springframework.boot:spring-boot-dependencies:3.4.5"))
+                implementation("org.springframework:spring-context")
+                implementation("org.springframework:spring-webflux")
+                testImplementation(kotlin("test"))
             }
             ```
     - 設定 Auto-Configuration，讓相依此 module 的 project，可以自動掃描 `util` 定義的 beans
@@ -351,6 +348,22 @@ Product Composite service
 ??? tip
 
     - 建立新的專案 integration-tests
+
+        ```kotlin title="build.gradle.kts"
+        plugins {
+            kotlin("jvm") version "2.0.21"
+            kotlin("plugin.spring") version "1.9.25"
+        }
+
+        // ...
+
+        dependencies {
+            implementation(platform("org.springframework.boot:spring-boot-dependencies:3.4.5"))
+            implementation("org.springframework:spring-webflux")
+            testImplementation(kotlin("test"))
+            testImplementation("org.springframework.boot:spring-boot-starter-test")
+        }
+        ```
 
     - ` webTestClient = WebTestClient.bindToServer().baseUrl("http://localhost:8000").build()`
 
