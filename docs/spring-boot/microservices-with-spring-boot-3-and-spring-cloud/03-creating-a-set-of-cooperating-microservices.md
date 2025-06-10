@@ -344,7 +344,7 @@ Product Composite service
 | Request | Response |
 | - | - |
 | GET /product-composite/1 | len(reviews) = 3 && len(recommendations) = 3 |
-| GET /product-composite/13 | 404 (`Not Found`) |
+| GET /product-composite/13 | 404 (`Product (id: 13) not found.`) |
 | GET /product-composite/113 | len(reviews) = 3 && len(recommendations) = 0 |
 | GET /product-composite/213 | len(reviews) = 0 && len(recommendations) = 3 |
 
