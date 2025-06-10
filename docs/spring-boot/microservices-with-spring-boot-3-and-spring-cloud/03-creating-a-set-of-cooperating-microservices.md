@@ -339,6 +339,23 @@ Product Composite service
 
     參考: https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface
 
+半自動 Integration tests
+
+| Request | Response |
+| - | - |
+| GET /product-composite/1 | len(reviews) = 3 && len(recommendations) = 3 |
+| GET /product-composite/13 | 404 (`Not Found`) |
+| GET /product-composite/113 | len(reviews) = 3 && len(recommendations) = 0 |
+| GET /product-composite/213 | len(reviews) = 0 && len(recommendations) = 3 |
+
+??? tip
+
+    - 建立新的專案 integration-tests
+
+    - ` webTestClient = WebTestClient.bindToServer().baseUrl("http://localhost:8000").build()`
+
+    - 手動啟動所有 microservices 後再執行測試
+
 ## 參考
 
 <https://github.com/PacktPublishing/Microservices-with-Spring-Boot-and-Spring-Cloud-Third-Edition/tree/main/Chapter03>
