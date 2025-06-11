@@ -2340,7 +2340,7 @@
   <h1>6 Adding Persistence</h1>
 
 <p><code>product</code> 和 <code>recommendation</code> 使用 MongoDB，<code>review</code> 使用 MySQL。</p>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="281px" preserveAspectRatio="xMidYMid meet" style="width:431px;height:281px;background:#FFFFFF;" version="1.1" viewBox="0 0 431 281" width="431px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="pc" data-source-line="2" data-uid="ent0002" id="entity_pc"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.877" x="131.42" y="7"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="284.297" y="12"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="282.297" y="14"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="282.297" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132.877" x="146.42" y="39.9951">Product Composite</text></g><g class="entity" data-entity="p" data-source-line="3" data-uid="ent0003" id="entity_p"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93.71" x="7" y="113.3"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="80.71" y="118.3"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="120.3"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="124.3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="22" y="146.2951">Product</text></g><g class="entity" data-entity="rd" data-source-line="4" data-uid="ent0004" id="entity_rd"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163.6484" x="136.03" y="113.3"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="279.6784" y="118.3"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="277.6784" y="120.3"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="277.6784" y="124.3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="151.03" y="146.2951">Recommendation</text></g><g class="entity" data-entity="r" data-source-line="5" data-uid="ent0005" id="entity_r"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90.5791" x="334.57" y="113.3"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="405.1491" y="118.3"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="403.1491" y="120.3"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="403.1491" y="124.3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="349.57" y="146.2951">Review</text></g><g class="entity" data-entity="pm" data-source-line="6" data-uid="ent0006" id="entity_pm"><path d="M10.18,229.59 C10.18,219.59 53.8572,219.59 53.8572,219.59 C53.8572,219.59 97.5345,219.59 97.5345,229.59 L97.5345,254.8869 C97.5345,264.8869 53.8572,264.8869 53.8572,264.8869 C53.8572,264.8869 10.18,264.8869 10.18,254.8869 L10.18,229.59" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M10.18,229.59 C10.18,239.59 53.8572,239.59 53.8572,239.59 C53.8572,239.59 97.5345,239.59 97.5345,229.59" fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67.3545" x="20.18" y="256.5851">MongoDB</text></g><g class="entity" data-entity="rdm" data-source-line="7" data-uid="ent0007" id="entity_rdm"><path d="M174.18,229.59 C174.18,219.59 217.8572,219.59 217.8572,219.59 C217.8572,219.59 261.5345,219.59 261.5345,229.59 L261.5345,254.8869 C261.5345,264.8869 217.8572,264.8869 217.8572,264.8869 C217.8572,264.8869 174.18,264.8869 174.18,254.8869 L174.18,229.59" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M174.18,229.59 C174.18,239.59 217.8572,239.59 217.8572,239.59 C217.8572,239.59 261.5345,239.59 261.5345,229.59" fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67.3545" x="184.18" y="256.5851">MongoDB</text></g><g class="entity" data-entity="rm" data-source-line="8" data-uid="ent0008" id="entity_rm"><path d="M345.82,229.59 C345.82,219.59 379.8552,219.59 379.8552,219.59 C379.8552,219.59 413.8903,219.59 413.8903,229.59 L413.8903,254.8869 C413.8903,264.8869 379.8552,264.8869 379.8552,264.8869 C379.8552,264.8869 345.82,264.8869 345.82,254.8869 L345.82,229.59" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M345.82,229.59 C345.82,239.59 379.8552,239.59 379.8552,239.59 C379.8552,239.59 413.8903,239.59 413.8903,229.59" fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48.0703" x="355.82" y="256.5851">MySQL</text></g><g class="link" data-entity-1="pc" data-entity-2="p" data-source-line="10" data-uid="lnk9" id="link_pc_p"><path d="M182.27,53.78 C154.76,71.27 121.9231,92.1605 94.4331,109.6405" fill="none" id="pc-to-p" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="89.37,112.86,99.111,111.4062,93.5893,110.1771,94.8183,104.6554,89.37,112.86" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="rd" data-source-line="11" data-uid="lnk10" id="link_pc_rd"><path d="M217.85,53.78 C217.85,71.27 217.85,89.38 217.85,106.86" fill="none" id="pc-to-rd" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="217.85,112.86,221.85,103.86,217.85,107.86,213.85,103.86,217.85,112.86" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="r" data-source-line="12" data-uid="lnk11" id="link_pc_r"><path d="M253.01,53.78 C280.18,71.27 312.5752,92.132 339.7252,109.612" fill="none" id="pc-to-r" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="344.77,112.86,339.3681,104.6247,340.566,110.1533,335.0374,111.3512,344.77,112.86" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="p" data-entity-2="pm" data-source-line="13" data-uid="lnk12" id="link_p_pm"><path d="M53.85,159.97 C53.85,177.5 53.85,195.69 53.85,213.12" fill="none" id="p-to-pm" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="53.85,219.12,57.85,210.12,53.85,214.12,49.85,210.12,53.85,219.12" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="rd" data-entity-2="rdm" data-source-line="14" data-uid="lnk13" id="link_rd_rdm"><path d="M217.85,159.97 C217.85,177.5 217.85,195.69 217.85,213.12" fill="none" id="rd-to-rdm" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="217.85,219.12,221.85,210.12,217.85,214.12,213.85,210.12,217.85,219.12" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="r" data-entity-2="rm" data-source-line="15" data-uid="lnk14" id="link_r_rm"><path d="M379.85,159.97 C379.85,177.5 379.85,195.69 379.85,213.12" fill="none" id="r-to-rm" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="379.85,219.12,383.85,210.12,379.85,214.12,375.85,210.12,379.85,219.12" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2380,55 +2380,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: a08f1899-b2f1-45f7-b42b-0e657137dc5e</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: caec9d9f-5f65-4753-9f19-f303d34c58a3</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: fcb3deab-c914-4a49-b792-b6686b867d04</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2436,7 +2389,7 @@
 </html>
 </div></div>
 
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="256px" preserveAspectRatio="xMidYMid meet" style="width:1187px;height:256px;background:#FFFFFF;" version="1.1" viewBox="0 0 1187 256" width="1187px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="ProductCompositeService" data-source-line="4" data-uid="ent0002" id="entity_ProductCompositeService"><rect fill="#F1F1F1" height="91.1875" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="397.9229" x="324.64" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="180.168" x="433.5174" y="24.9951">ProductCompositeService</text><line style="stroke:#181818;stroke-width:0.5;" x1="325.64" x2="721.5629" y1="33.2969" y2="33.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="325.64" x2="721.5629" y1="41.2969" y2="41.2969"/><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="385.9229" x="330.64" y="58.292">createProduct(body: CreateProductCompositeRequest)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="318.6162" x="330.64" y="74.5889">getProduct(productId: Int): ProductAggregate</text><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="203.3281" x="330.64" y="90.8857">deleteProduct(productId: int)</text></g><g class="entity" data-entity="ProductService" data-source-line="10" data-uid="ent0003" id="entity_ProductService"><rect fill="#F1F1F1" height="91.1875" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="323.2061" x="7" y="158.18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105.4512" x="115.8774" y="176.1751">ProductService</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="329.2061" y1="184.4769" y2="184.4769"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="329.2061" y1="192.4769" y2="192.4769"/><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="311.2061" x="13" y="209.472">createProduct(body: CreateProductRequest)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245.0889" x="13" y="225.7689">getProduct(productId: int): Product</text><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="203.3281" x="13" y="242.0657">deleteProduct(productId: int)</text></g><g class="entity" data-entity="ReviewService" data-source-line="16" data-uid="ent0004" id="entity_ReviewService"><rect fill="#F1F1F1" height="91.1875" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="316.9443" x="365.13" y="158.18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102.3203" x="472.442" y="176.1751">ReviewService</text><line style="stroke:#181818;stroke-width:0.5;" x1="366.13" x2="681.0743" y1="184.4769" y2="184.4769"/><line style="stroke:#181818;stroke-width:0.5;" x1="366.13" x2="681.0743" y1="192.4769" y2="192.4769"/><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="304.9443" x="371.13" y="209.472">createReview(body: CreateReviewRequest)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="294.0547" x="371.13" y="225.7689">getReviews(productId: int): List&lt;Review&gt;</text><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207.4912" x="371.13" y="242.0657">deleteReviews(productId: int)</text></g><g class="entity" data-entity="RecommendationService" data-source-line="22" data-uid="ent0005" id="entity_RecommendationService"><rect fill="#F1F1F1" height="91.1875" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="463.083" x="717.06" y="158.18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175.3896" x="860.9067" y="176.1751">RecommendationService</text><line style="stroke:#181818;stroke-width:0.5;" x1="718.06" x2="1179.143" y1="184.4769" y2="184.4769"/><line style="stroke:#181818;stroke-width:0.5;" x1="718.06" x2="1179.143" y1="192.4769" y2="192.4769"/><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="451.083" x="723.06" y="209.472">createRecommendation(body: CreateRecommendationRequest)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="440.1934" x="723.06" y="225.7689">getRecommendations(productId: int): List&lt;Recommendation&gt;</text><text fill="#FF0000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="280.5605" x="723.06" y="242.0657">deleteRecommendations(productId: int)</text></g><g class="link" data-entity-1="ProductCompositeService" data-entity-2="ProductService" data-source-line="28" data-uid="lnk6" id="link_ProductCompositeService_ProductService"><path codeLine="28" d="M416.61,98.55 C372,117.3 325.8315,136.7056 281.2115,155.4556" fill="none" id="ProductCompositeService-to-ProductService" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="275.68,157.78,285.5268,157.981,280.2896,155.843,282.4276,150.6057,275.68,157.78" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="ProductCompositeService" data-entity-2="ReviewService" data-source-line="29" data-uid="lnk7" id="link_ProductCompositeService_ReviewService"><path codeLine="29" d="M523.6,98.35 C523.6,117.15 523.6,132.97 523.6,151.79" fill="none" id="ProductCompositeService-to-ReviewService" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="523.6,157.79,527.6,148.79,523.6,152.79,519.6,148.79,523.6,157.79" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="ProductCompositeService" data-entity-2="RecommendationService" data-source-line="30" data-uid="lnk8" id="link_ProductCompositeService_RecommendationService"><path codeLine="30" d="M651.98,98.65 C705.25,117.35 761.2686,137.023 814.5486,155.723" fill="none" id="ProductCompositeService-to-RecommendationService" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="820.21,157.71,813.0425,150.9552,815.4921,156.0541,810.3932,158.5037,820.21,157.71" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2476,55 +2429,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 2eddea83-e753-4999-a65e-664a5fa8f911</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: ec58596a-3ad7-460b-95ab-2cd510b740a6</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: 492d8892-dae3-44b1-82c0-d457662ddbfd</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2922,8 +2828,8 @@ kapt {
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: aea24176-7879-4273-ab13-ebc6d9db6cf6</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: ec6e820f-0cd6-4732-b4eb-99a26e6174f1</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2969,8 +2875,8 @@ kapt {
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 5274dc91-7852-4edd-a4c2-b9b20ed758ae</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: 4e414910-28ba-469b-9e41-a93cbf7389ae</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -3103,7 +3009,7 @@ kapt {
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="review-service">Review Service</h2>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="MINDMAP" height="336px" preserveAspectRatio="xMidYMid meet" style="width:829px;height:336px;background:#FFFFFF;" version="1.1" viewBox="0 0 829 336" width="829px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="121.2061" x="10" y="149.1328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101.2061" x="20" y="172.1279">review service</text><rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="99.0575" x="181.2061" y="74.1875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79.0575" x="191.2061" y="97.1826">新增 review</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.0703" x="333.2635" y="97.1826">Test</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.3154" x="367.3339" y="97.1826">: API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51.7412" x="451.6493" y="60.5889">Service</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33.4277" x="556.3905" y="60.5889">Data</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67.1699" x="642.8182" y="23.9951">productId</text><path d="M589.8182,55.7422 L599.8182,55.7422 C614.8182,55.7422 614.8182,19.1484 629.8182,19.1484 L639.8182,19.1484" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59.623" x="642.8182" y="42.292">reviewId</text><path d="M589.8182,55.7422 L599.8182,55.7422 C614.8182,55.7422 614.8182,37.4453 629.8182,37.4453 L639.8182,37.4453" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46.1357" x="642.8182" y="60.5889">author</text><path d="M589.8182,55.7422 L599.8182,55.7422 C614.8182,55.7422 614.8182,55.7422 629.8182,55.7422 L639.8182,55.7422" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.7432" x="642.8182" y="78.8857">subject</text><path d="M589.8182,55.7422 L599.8182,55.7422 C614.8182,55.7422 614.8182,74.0391 629.8182,74.0391 L639.8182,74.0391" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.6006" x="642.8182" y="97.1826">content</text><path d="M589.8182,55.7422 L599.8182,55.7422 C614.8182,55.7422 614.8182,92.3359 629.8182,92.3359 L639.8182,92.3359" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M503.3905,55.7422 L513.3905,55.7422 C528.3905,55.7422 528.3905,55.7422 543.3905,55.7422 L553.3905,55.7422" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M398.6493,92.3359 L408.6493,92.3359 C423.6493,92.3359 423.6493,55.7422 438.6493,55.7422 L448.6493,55.7422" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75.0723" x="451.6493" y="124.6279">Repository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48.0703" x="579.7216" y="115.4795">MySQL</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136.9717" x="680.7919" y="115.4795">MySqlConfiguration</text><path d="M627.7919,110.6328 L637.7919,110.6328 C652.7919,110.6328 652.7919,110.6328 667.7919,110.6328 L677.7919,110.6328" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M526.7216,119.7813 L536.7216,119.7813 C551.7216,119.7813 551.7216,110.6328 566.7216,110.6328 L576.7216,110.6328" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40.8721" x="579.7216" y="133.7764">Entity</text><path d="M526.7216,119.7813 L536.7216,119.7813 C551.7216,119.7813 551.7216,128.9297 566.7216,128.9297 L576.7216,128.9297" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M398.6493,92.3359 L408.6493,92.3359 C423.6493,92.3359 423.6493,119.7813 438.6493,119.7813 L448.6493,119.7813" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52.8008" x="451.6493" y="161.2217">Mapper</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54.9268" x="557.4501" y="152.0732">toEntity</text><path d="M504.4501,156.375 L514.4501,156.375 C529.4501,156.375 529.4501,147.2266 544.4501,147.2266 L554.4501,147.2266" fill="none" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64.6338" x="557.4501" y="170.3701">toReview</text><path d="M504.4501,156.375 L514.4501,156.375 C529.4501,156.375 529.4501,165.5234 544.4501,165.5234 L554.4501,165.5234" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M398.6493,92.3359 L408.6493,92.3359 C423.6493,92.3359 423.6493,156.375 438.6493,156.375 L448.6493,156.375" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M280.2635,92.3359 L290.2635,92.3359 C305.2635,92.3359 305.2635,92.3359 320.2635,92.3359 L330.2635,92.3359" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M131.2061,167.2813 L141.2061,167.2813 C156.2061,167.2813 156.2061,92.3359 171.2061,92.3359 L181.2061,92.3359" fill="none" style="stroke:#181818;stroke-width:1;"/><rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="99.0575" x="181.2061" y="165.6719"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79.0575" x="191.2061" y="188.667">查詢 review</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.0703" x="333.2635" y="188.667">Test</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.3154" x="367.3339" y="188.667">: API</text><path d="M280.2635,183.8203 L290.2635,183.8203 C305.2635,183.8203 305.2635,183.8203 320.2635,183.8203 L330.2635,183.8203" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M131.2061,167.2813 L141.2061,167.2813 C156.2061,167.2813 156.2061,183.8203 171.2061,183.8203 L181.2061,183.8203" fill="none" style="stroke:#181818;stroke-width:1;"/><rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="201.5073" x="181.2061" y="221.9688"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="181.5073" x="191.2061" y="244.9639">新增重複的 review 應被拒絕</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.0703" x="435.7133" y="244.9639">Test</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.3154" x="469.7836" y="244.9639">: API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199.8828" x="554.0991" y="244.9639">productId + reviewId unique</text><path d="M501.0991,240.1172 L511.0991,240.1172 C526.0991,240.1172 526.0991,240.1172 541.0991,240.1172 L551.0991,240.1172" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M382.7133,240.1172 L392.7133,240.1172 C407.7133,240.1172 407.7133,240.1172 422.7133,240.1172 L432.7133,240.1172" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M131.2061,167.2813 L141.2061,167.2813 C156.2061,167.2813 156.2061,240.1172 171.2061,240.1172 L181.2061,240.1172" fill="none" style="stroke:#181818;stroke-width:1;"/><rect fill="#F1F1F1" height="36.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:1.5;" width="99.0575" x="181.2061" y="278.2656"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79.0575" x="191.2061" y="301.2607">刪除 review</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.0703" x="333.2635" y="301.2607">Test</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.3154" x="367.3339" y="301.2607">: API</text><path d="M280.2635,296.4141 L290.2635,296.4141 C305.2635,296.4141 305.2635,296.4141 320.2635,296.4141 L330.2635,296.4141" fill="none" style="stroke:#181818;stroke-width:1;"/><path d="M131.2061,167.2813 L141.2061,167.2813 C156.2061,167.2813 156.2061,296.4141 171.2061,296.4141 L181.2061,296.4141" fill="none" style="stroke:#181818;stroke-width:1;"/></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -3143,55 +3049,8 @@ kapt {
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: aa27c249-0fd6-4354-a764-a15a0e6ce480</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 1771110f-083b-4db5-8a01-6a49ec843f48</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: 0a58bdcd-c068-4835-8337-12dafb619166</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>

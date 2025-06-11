@@ -2569,7 +2569,101 @@
 <p>假定資料庫儲存了一筆 Purchase Order 的情況。</p>
 <p><img alt="" src="06/05.png" /></p>
 <p>Object diagram</p>
-<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="267px" preserveAspectRatio="xMidYMid meet" style="width:513px;height:267px;background:#FFFFFF;" version="1.1" viewBox="0 0 513 267" width="513px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="po" data-source-line="2" data-uid="ent0002" id="entity_po"><rect fill="#F1F1F1" height="44.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="198.5771" x="158.16" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184.5771" x="165.16" y="21.9951">0012946 : Purchase Order</text><line style="stroke:#181818;stroke-width:0.5;" x1="159.16" x2="355.7371" y1="27.2969" y2="27.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.9648" x="164.16" y="44.292">approved limit = 1000</text></g><g class="entity" data-entity="g" data-source-line="6" data-uid="ent0003" id="entity_g"><rect fill="#F1F1F1" height="44.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="106.6133" x="70.14" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92.6133" x="77.14" y="231.1851">Guitars : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="71.14" x2="175.7533" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="76.14" y="253.482">price = 100</text></g><g class="entity" data-entity="t" data-source-line="10" data-uid="ent0004" id="entity_t"><rect fill="#F1F1F1" height="44.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="134.627" x="324.13" y="216.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.627" x="331.13" y="231.1851">Trombones : Part</text><line style="stroke:#181818;stroke-width:0.5;" x1="325.13" x2="457.757" y1="236.4869" y2="236.4869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="330.13" y="253.482">price = 200</text></g><g class="entity" data-entity="i1" data-source-line="14" data-uid="ent0005" id="entity_i1"><rect fill="#F1F1F1" height="44.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="7" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="14" y="126.5851">001 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="238.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="13" y="148.882">quantity = 3</text></g><g class="entity" data-entity="i2" data-source-line="18" data-uid="ent0006" id="entity_i2"><rect fill="#F1F1F1" height="44.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="232.8936" x="275" y="111.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="282" y="126.5851">002 : Purchase Order Line Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="276" x2="506.8936" y1="131.8869" y2="131.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="281" y="148.882">quantity = 2</text></g><g class="link" data-entity-1="po" data-entity-2="i1" data-source-line="22" data-uid="lnk7" id="link_po_i1"><path codeLine="22" d="M229.03,52.05 C206.29,69.46 179.3143,90.1129 156.5843,107.5129" fill="none" id="po-to-i1" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="151.82,111.16,161.3979,108.8655,155.7903,108.1207,156.535,102.5131,151.82,111.16" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="po" data-entity-2="i2" data-source-line="23" data-uid="lnk8" id="link_po_i2"><path codeLine="23" d="M285.86,52.05 C308.6,69.46 335.5757,90.1129 358.3057,107.5129" fill="none" id="po-to-i2" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="363.07,111.16,358.355,102.5131,359.0997,108.1207,353.4921,108.8655,363.07,111.16" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="i1" data-entity-2="g" data-source-line="24" data-uid="lnk9" id="link_i1_g"><path codeLine="24" d="M123.45,156.65 C123.45,174.06 123.45,198.35 123.45,215.76" fill="none" id="i1-g" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="i2" data-entity-2="t" data-source-line="25" data-uid="lnk10" id="link_i2_t"><path codeLine="25" d="M391.45,156.65 C391.45,174.06 391.45,198.35 391.45,215.76" fill="none" id="i2-t" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="267px" preserveAspectRatio="xMidYMid meet" style="width:513px;height:267px;background:#1B1B1B;" version="1.1" viewBox="0 0 513 267" width="513px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="267" style="stroke:none;stroke-width:1;" width="513" x="0" y="0"/><g class="entity" data-entity="po" data-source-line="2" data-uid="ent0002" id="entity_po"><rect fill="#313139" height="44.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="198.5771" x="158.16" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184.5771" x="165.16" y="21.9951">0012946 : Purchase Order</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="159.16" x2="355.7371" y1="27.2969" y2="27.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.9648" x="164.16" y="44.292">approved limit = 1000</text></g><g class="entity" data-entity="g" data-source-line="6" data-uid="ent0003" id="entity_g"><rect fill="#313139" height="44.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="106.6133" x="70.14" y="216.19"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92.6133" x="77.14" y="231.1851">Guitars : Part</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="71.14" x2="175.7533" y1="236.4869" y2="236.4869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="76.14" y="253.482">price = 100</text></g><g class="entity" data-entity="t" data-source-line="10" data-uid="ent0004" id="entity_t"><rect fill="#313139" height="44.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="134.627" x="324.13" y="216.19"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.627" x="331.13" y="231.1851">Trombones : Part</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="325.13" x2="457.757" y1="236.4869" y2="236.4869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82.1953" x="330.13" y="253.482">price = 200</text></g><g class="entity" data-entity="i1" data-source-line="14" data-uid="ent0005" id="entity_i1"><rect fill="#313139" height="44.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="232.8936" x="7" y="111.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="14" y="126.5851">001 : Purchase Order Line Item</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="238.8936" y1="131.8869" y2="131.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="13" y="148.882">quantity = 3</text></g><g class="entity" data-entity="i2" data-source-line="18" data-uid="ent0006" id="entity_i2"><rect fill="#313139" height="44.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="232.8936" x="275" y="111.59"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218.8936" x="282" y="126.5851">002 : Purchase Order Line Item</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="276" x2="506.8936" y1="131.8869" y2="131.8869"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.9033" x="281" y="148.882">quantity = 2</text></g><g class="link" data-entity-1="po" data-entity-2="i1" data-source-line="22" data-uid="lnk7" id="link_po_i1"><path codeLine="22" d="M229.03,52.05 C206.29,69.46 179.3143,90.1129 156.5843,107.5129" fill="none" id="po-to-i1" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="151.82,111.16,161.3979,108.8655,155.7903,108.1207,156.535,102.5131,151.82,111.16" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="po" data-entity-2="i2" data-source-line="23" data-uid="lnk8" id="link_po_i2"><path codeLine="23" d="M285.86,52.05 C308.6,69.46 335.5757,90.1129 358.3057,107.5129" fill="none" id="po-to-i2" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="363.07,111.16,358.355,102.5131,359.0997,108.1207,353.4921,108.8655,363.07,111.16" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="i1" data-entity-2="g" data-source-line="24" data-uid="lnk9" id="link_i1_g"><path codeLine="24" d="M123.45,156.65 C123.45,174.06 123.45,198.35 123.45,215.76" fill="none" id="i1-g" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="i2" data-entity-2="t" data-source-line="25" data-uid="lnk10" id="link_i2_t"><path codeLine="25" d="M391.45,156.65 C391.45,174.06 391.45,198.35 391.45,215.76" fill="none" id="i2-t" style="stroke:#E7E7E7;stroke-width:1;"/></g></g></svg></div></div>
+<div class='puml-container'><div class="puml light" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: ad289386-4801-4954-8ab6-a1414f315ef8</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div><div class="puml dark" style="">520. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        h1 {
+            color: #5ca731;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .error-info p:first-child {
+            margin-bottom: 75px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Origin Unreachable</h1>
+    <div class="error-info">
+        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
+        <p><strong>Error ID</strong>: e62a1ff2-caf3-4691-8edd-c91936d133d9</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
+        
+    </div>
+    <footer>Powered by Ezoic</footer>
+</body>
+</html>
+</div></div>
 
 <h4 id="_3">操作期間忽略其他資料庫變化造成的問題</h4>
 <p><img alt="" src="06/06.png" /></p>

@@ -2338,54 +2338,7 @@
 
 
 <h1 id="3-creating-a-set-of-cooperating-microservices">3. Creating a Set of Cooperating Microservices</h1>
-<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="165px" preserveAspectRatio="xMidYMid meet" style="width:430px;height:165px;background:#FFFFFF;" version="1.1" viewBox="0 0 430 165" width="430px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="pc" data-source-line="2" data-uid="ent0002" id="entity_pc"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.877" x="94.42" y="7"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="247.297" y="12"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="245.297" y="14"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="245.297" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132.877" x="109.42" y="39.9951">Product Composite</text></g><g class="entity" data-entity="p" data-source-line="3" data-uid="ent0003" id="entity_p"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93.71" x="7" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="80.71" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="22" y="146.2851">Product</text></g><g class="entity" data-entity="r" data-source-line="4" data-uid="ent0004" id="entity_r"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90.5791" x="135.57" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="206.1491" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="204.1491" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="204.1491" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="150.57" y="146.2851">Review</text></g><g class="entity" data-entity="rd" data-source-line="5" data-uid="ent0005" id="entity_rd"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163.6484" x="261.03" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="404.6784" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="402.6784" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="402.6784" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="276.03" y="146.2851">Recommendation</text></g><g class="link" data-entity-1="pc" data-entity-2="p" data-source-line="7" data-uid="lnk6" id="link_pc_p"><path d="M153.3,53.78 C132,71.27 107.2872,91.5626 85.9972,109.0426" fill="none" id="pc-to-p" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="81.36,112.85,90.8541,110.2304,85.2244,109.6772,85.7776,104.0475,81.36,112.85" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="r" data-source-line="8" data-uid="lnk7" id="link_pc_r"><path d="M180.85,53.78 C180.85,71.27 180.85,89.37 180.85,106.85" fill="none" id="pc-to-r" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="180.85,112.85,184.85,103.85,180.85,107.85,176.85,103.85,180.85,112.85" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="rd" data-source-line="9" data-uid="lnk8" id="link_pc_rd"><path d="M216.01,53.78 C243.18,71.27 275.5752,92.122 302.7252,109.602" fill="none" id="pc-to-rd" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="307.77,112.85,302.3681,104.6147,303.566,110.1433,298.0374,111.3412,307.77,112.85" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 2d26cd2b-d3d7-4211-b7be-2584f6588fcb</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div></div>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="165px" preserveAspectRatio="xMidYMid meet" style="width:430px;height:165px;background:#FFFFFF;" version="1.1" viewBox="0 0 430 165" width="430px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="pc" data-source-line="2" data-uid="ent0002" id="entity_pc"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.877" x="94.42" y="7"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="247.297" y="12"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="245.297" y="14"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="245.297" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132.877" x="109.42" y="39.9951">Product Composite</text></g><g class="entity" data-entity="p" data-source-line="3" data-uid="ent0003" id="entity_p"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93.71" x="7" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="80.71" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="78.71" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="22" y="146.2851">Product</text></g><g class="entity" data-entity="r" data-source-line="4" data-uid="ent0004" id="entity_r"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90.5791" x="135.57" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="206.1491" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="204.1491" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="204.1491" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="150.57" y="146.2851">Review</text></g><g class="entity" data-entity="rd" data-source-line="5" data-uid="ent0005" id="entity_rd"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163.6484" x="261.03" y="113.29"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="404.6784" y="118.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="402.6784" y="120.29"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="402.6784" y="124.29"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="276.03" y="146.2851">Recommendation</text></g><g class="link" data-entity-1="pc" data-entity-2="p" data-source-line="7" data-uid="lnk6" id="link_pc_p"><path d="M153.3,53.78 C132,71.27 107.2872,91.5626 85.9972,109.0426" fill="none" id="pc-to-p" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="81.36,112.85,90.8541,110.2304,85.2244,109.6772,85.7776,104.0475,81.36,112.85" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="r" data-source-line="8" data-uid="lnk7" id="link_pc_r"><path d="M180.85,53.78 C180.85,71.27 180.85,89.37 180.85,106.85" fill="none" id="pc-to-r" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="180.85,112.85,184.85,103.85,180.85,107.85,176.85,103.85,180.85,112.85" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="rd" data-source-line="9" data-uid="lnk8" id="link_pc_rd"><path d="M216.01,53.78 C243.18,71.27 275.5752,92.122 302.7252,109.602" fill="none" id="pc-to-rd" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="307.77,112.85,302.3681,104.6147,303.566,110.1433,298.0374,111.3412,307.77,112.85" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="165px" preserveAspectRatio="xMidYMid meet" style="width:430px;height:165px;background:#1B1B1B;" version="1.1" viewBox="0 0 430 165" width="430px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="165" style="stroke:none;stroke-width:1;" width="430" x="0" y="0"/><g class="entity" data-entity="pc" data-source-line="2" data-uid="ent0002" id="entity_pc"><rect fill="#313139" height="46.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="172.877" x="94.42" y="7"/><rect fill="#313139" height="10" style="stroke:#E7E7E7;stroke-width:0.5;" width="15" x="247.297" y="12"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="245.297" y="14"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="245.297" y="18"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132.877" x="109.42" y="39.9951">Product Composite</text></g><g class="entity" data-entity="p" data-source-line="3" data-uid="ent0003" id="entity_p"><rect fill="#313139" height="46.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="93.71" x="7" y="113.29"/><rect fill="#313139" height="10" style="stroke:#E7E7E7;stroke-width:0.5;" width="15" x="80.71" y="118.29"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="78.71" y="120.29"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="78.71" y="124.29"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="22" y="146.2851">Product</text></g><g class="entity" data-entity="r" data-source-line="4" data-uid="ent0004" id="entity_r"><rect fill="#313139" height="46.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="90.5791" x="135.57" y="113.29"/><rect fill="#313139" height="10" style="stroke:#E7E7E7;stroke-width:0.5;" width="15" x="206.1491" y="118.29"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="204.1491" y="120.29"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="204.1491" y="124.29"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="150.57" y="146.2851">Review</text></g><g class="entity" data-entity="rd" data-source-line="5" data-uid="ent0005" id="entity_rd"><rect fill="#313139" height="46.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="163.6484" x="261.03" y="113.29"/><rect fill="#313139" height="10" style="stroke:#E7E7E7;stroke-width:0.5;" width="15" x="404.6784" y="118.29"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="402.6784" y="120.29"/><rect fill="#313139" height="2" style="stroke:#E7E7E7;stroke-width:0.5;" width="4" x="402.6784" y="124.29"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="276.03" y="146.2851">Recommendation</text></g><g class="link" data-entity-1="pc" data-entity-2="p" data-source-line="7" data-uid="lnk6" id="link_pc_p"><path d="M153.3,53.78 C132,71.27 107.2872,91.5626 85.9972,109.0426" fill="none" id="pc-to-p" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="81.36,112.85,90.8541,110.2304,85.2244,109.6772,85.7776,104.0475,81.36,112.85" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="r" data-source-line="8" data-uid="lnk7" id="link_pc_r"><path d="M180.85,53.78 C180.85,71.27 180.85,89.37 180.85,106.85" fill="none" id="pc-to-r" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="180.85,112.85,184.85,103.85,180.85,107.85,176.85,103.85,180.85,112.85" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="pc" data-entity-2="rd" data-source-line="9" data-uid="lnk8" id="link_pc_rd"><path d="M216.01,53.78 C243.18,71.27 275.5752,92.122 302.7252,109.602" fill="none" id="pc-to-rd" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="307.77,112.85,302.3681,104.6147,303.566,110.1433,298.0374,111.3412,307.77,112.85" style="stroke:#E7E7E7;stroke-width:1;"/></g></g></svg></div></div>
 
 <table>
 <thead>
@@ -2477,8 +2430,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: c2bf21df-f07a-4a98-bf07-ac71ba2a1b17</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: 61b25b62-37db-46e4-9504-6995ea5c177d</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2524,8 +2477,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 1438703a-8c05-491d-add3-3d96c531bfea</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: 953693ff-22e6-4fca-8ab2-d24b8dd21171</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2582,61 +2535,14 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 00d0e51f-640b-474a-8591-0d1dbdd2927f</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: f5dd8529-48c9-4ca4-b63a-a4eb03f2e2cf</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
 </body>
 </html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 8ba0eedc-c3e1-4148-b4df-bcfc5fc66ddd</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div></div>
+</div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="240px" preserveAspectRatio="xMidYMid meet" style="width:502px;height:240px;background:#1B1B1B;" version="1.1" viewBox="0 0 502 240" width="502px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="240" style="stroke:none;stroke-width:1;" width="502" x="0" y="0"/><g class="entity" data-entity="ProductService" data-source-line="4" data-uid="ent0002" id="entity_ProductService"><rect fill="#313139" height="58.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="257.3281" x="7" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105.4512" x="82.9385" y="24.9951">ProductService</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="263.3281" y1="33.2969" y2="33.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="263.3281" y1="41.2969" y2="41.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245.3281" x="13" y="58.292">getProduct(productId: Int): Product</text></g><path d="M299.62,18.73 L299.62,27.2964 L258.3281,53.4453 L299.62,35.2964 L299.62,43.8628 A0,0 0 0 0 299.62,43.8628 L495.7138,43.8628 A0,0 0 0 0 495.7138,43.8628 L495.7138,28.73 L485.7138,18.73 L299.62,18.73 A0,0 0 0 0 299.62,18.73" fill="#714137" style="stroke:#E7E7E7;stroke-width:0.5;"/><path d="M485.7138,18.73 L485.7138,28.73 L495.7138,28.73 L485.7138,18.73" fill="#714137" style="stroke:#E7E7E7;stroke-width:0.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="175.0938" x="305.62" y="35.7969">GET /products/{productId}</text><g class="entity" data-entity="Product" data-source-line="11" data-uid="ent0005" id="entity_Product"><rect fill="#313139" height="107.4844" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="169.4043" x="50.96" y="125.6"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53.71" x="108.8072" y="143.5951">Product</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="51.96" x2="219.3643" y1="151.8969" y2="151.8969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94.8281" x="56.96" y="168.892">productId: Int</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="90.6514" x="56.96" y="185.1889">name: String</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74.8604" x="56.96" y="201.4857">weight: Int</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.4043" x="56.96" y="217.7826">serviceAddress: String</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="51.96" x2="219.3643" y1="225.0844" y2="225.0844"/></g><g class="link" data-entity-1="ProductService" data-entity-2="Product" data-source-line="18" data-uid="lnk6" id="link_ProductService_Product"><path codeLine="18" d="M135.66,65.84 C135.66,82.9 135.66,99.12 135.66,119.31" fill="none" id="ProductService-to-Product" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#E7E7E7" points="135.66,125.31,139.66,116.31,135.66,120.31,131.66,116.31,135.66,125.31" style="stroke:#E7E7E7;stroke-width:1;"/></g></g></svg></div></div>
 
 <div class="admonition note">
 <p class="admonition-title">書中作者將 Controller 視作 Service，因此命名成 <code>ProductService</code>。</p>
@@ -2795,8 +2701,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 0f920312-7b3a-451a-9f45-76f861db920d</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: cd73eb41-644a-4ca9-8d5d-4a144cc26893</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2842,8 +2748,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: adb5b203-bb72-4a0c-863b-8801d9a6d230</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: fe1b9fc5-1fa9-432f-a38a-774a2ea02af8</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:56</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -2893,7 +2799,7 @@
 </li>
 </ul>
 <h3 id="recommendation-api">Recommendation API</h3>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="272px" preserveAspectRatio="xMidYMid meet" style="width:834px;height:272px;background:#FFFFFF;" version="1.1" viewBox="0 0 834 272" width="834px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="RecommendationService" data-source-line="4" data-uid="ent0002" id="entity_RecommendationService"><rect fill="#F1F1F1" height="58.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="452.4326" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="175.3896" x="145.5215" y="24.9951">RecommendationService</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="458.4326" y1="33.2969" y2="33.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="458.4326" y1="41.2969" y2="41.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="440.4326" x="13" y="58.292">getRecommendations(productId: Int): List&lt;Recommendation&gt;</text></g><path d="M494.86,18.73 L494.86,27.2964 L453.4326,53.4453 L494.86,35.2964 L494.86,43.8628 A0,0 0 0 0 494.86,43.8628 L827.5807,43.8628 A0,0 0 0 0 827.5807,43.8628 L827.5807,28.73 L817.5807,18.73 L494.86,18.73 A0,0 0 0 0 494.86,18.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M817.5807,18.73 L817.5807,28.73 L827.5807,28.73 L817.5807,18.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="311.7207" x="500.86" y="35.7969">GET /recommendations?productId={productId}</text><g class="entity" data-entity="Recommendation" data-source-line="11" data-uid="ent0005" id="entity_Recommendation"><rect fill="#F1F1F1" height="140.0781" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.3506" x="147.04" y="125.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.6484" x="171.3911" y="143.5851">Recommendation</text><line style="stroke:#181818;stroke-width:0.5;" x1="148.04" x2="318.3906" y1="151.8869" y2="151.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94.8281" x="153.04" y="168.882">productId: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160.3506" x="153.04" y="185.1789">recommendationId: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97.084" x="153.04" y="201.4757">author: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56.0957" x="153.04" y="217.7726">rate: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104.5488" x="153.04" y="234.0695">content: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.4043" x="153.04" y="250.3664">serviceAddress: String</text><line style="stroke:#181818;stroke-width:0.5;" x1="148.04" x2="318.3906" y1="257.6681" y2="257.6681"/></g><g class="link" data-entity-1="RecommendationService" data-entity-2="Recommendation" data-source-line="20" data-uid="lnk6" id="link_RecommendationService_Recommendation"><path codeLine="20" d="M233.22,65.79 C233.22,82.44 233.22,98.23 233.22,119.15" fill="none" id="RecommendationService-to-Recommendation" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="233.22,125.15,237.22,116.15,233.22,120.15,229.22,116.15,233.22,125.15" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2933,55 +2839,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: f2d29975-ae89-467d-8be3-fd4974a9b812</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 2691cb42-c321-4086-8c65-c39a9181e9b1</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: 19bf5059-e697-4b27-901f-f49085a2b8b8</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -3058,7 +2917,7 @@
 </li>
 </ul>
 <h3 id="review-api">Review API</h3>
-<div class='puml-container'><div class="puml light" style="">520. 
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="272px" preserveAspectRatio="xMidYMid meet" style="width:620px;height:272px;background:#FFFFFF;" version="1.1" viewBox="0 0 620 272" width="620px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="ReviewService" data-source-line="4" data-uid="ent0002" id="entity_ReviewService"><rect fill="#F1F1F1" height="58.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="306.2939" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102.3203" x="108.9868" y="24.9951">ReviewService</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="312.2939" y1="33.2969" y2="33.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="312.2939" y1="41.2969" y2="41.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="294.2939" x="13" y="58.292">getReviews(productId: Int): List&lt;Review&gt;</text></g><path d="M348.71,18.73 L348.71,27.2964 L307.2939,53.4453 L348.71,35.2964 L348.71,43.8628 A0,0 0 0 0 348.71,43.8628 L613.5806,43.8628 A0,0 0 0 0 613.5806,43.8628 L613.5806,28.73 L603.5806,18.73 L348.71,18.73 A0,0 0 0 0 348.71,18.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M603.5806,18.73 L603.5806,28.73 L613.5806,28.73 L603.5806,18.73" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="243.8706" x="354.71" y="35.7969">GET /reviews?productId={productId}</text><g class="entity" data-entity="Review" data-source-line="12" data-uid="ent0005" id="entity_Review"><rect fill="#F1F1F1" height="140.0781" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="169.4043" x="75.44" y="125.59"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50.5791" x="134.8526" y="143.5851">Review</text><line style="stroke:#181818;stroke-width:0.5;" x1="76.44" x2="243.8443" y1="151.8869" y2="151.8869"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94.8281" x="81.44" y="168.882">productId: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.2813" x="81.44" y="185.1789">reviewId: Int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97.084" x="81.44" y="201.4757">author: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101.6914" x="81.44" y="217.7726">subject: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104.5488" x="81.44" y="234.0695">content: String</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157.4043" x="81.44" y="250.3664">serviceAddress: String</text><line style="stroke:#181818;stroke-width:0.5;" x1="76.44" x2="243.8443" y1="257.6681" y2="257.6681"/></g><g class="link" data-entity-1="ReviewService" data-entity-2="Review" data-source-line="21" data-uid="lnk6" id="link_ReviewService_Review"><path codeLine="21" d="M160.15,65.79 C160.15,82.44 160.15,98.23 160.15,119.15" fill="none" id="ReviewService-to-Review" style="stroke:#181818;stroke-width:1;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="160.15,125.15,164.15,116.15,160.15,120.15,156.15,116.15,160.15,125.15" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -3098,55 +2957,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 39b257a2-76c7-41e7-ac8d-3e72521fa85b</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
-        
-    </div>
-    <footer>Powered by Ezoic</footer>
-</body>
-</html>
-</div><div class="puml dark" style="">520. 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Error</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        h1 {
-            color: #5ca731;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info {
-            text-align: left;
-            margin-left: 20px;
-        }
-        .error-info p:first-child {
-            margin-bottom: 75px;
-        }
-        footer {
-            position: absolute;
-            bottom: 10px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-    <h1>Origin Unreachable</h1>
-    <div class="error-info">
-        <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 1068abb8-9d7c-47a1-b45d-174fc64cbfcb</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: f29615a3-bd79-4d87-b8dd-93f559149ed3</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -3225,8 +3037,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: f07e67ef-c046-460f-85f1-a3c9bf475838</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: e6e5ec2b-ec7c-4662-b51c-9157fcef4e43</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -3272,8 +3084,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 367c5dc4-1571-4d4a-b577-7bb82203c017</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: cbac7bca-819f-46b9-a91f-bdbb599f5210</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -3333,8 +3145,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 011d171b-1492-4ac0-9751-dc932a43c7e5</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: c1887fda-5e14-45a8-b4f3-ea862ecd22e6</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
@@ -3380,8 +3192,8 @@
     <h1>Origin Unreachable</h1>
     <div class="error-info">
         <p>Sorry, we are unable to reach the origin server at the moment. Please try again later.</p>
-        <p><strong>Error ID</strong>: 09846b01-0440-4373-b971-c926ee201b1b</p>
-        <p><strong>Timestamp</strong>: 2025-06-10 11:09:04</p>
+        <p><strong>Error ID</strong>: a23bb603-5283-4800-98a5-94671c5cf9d6</p>
+        <p><strong>Timestamp</strong>: 2025-06-11 11:22:55</p>
         
     </div>
     <footer>Powered by Ezoic</footer>
