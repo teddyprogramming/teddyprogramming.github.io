@@ -3,53 +3,60 @@
 ```plantuml
 hide circle
 
-class "Product Composite" as pc {
-    Product ID
-    Name
-    Weight
-    Recommendations
-    Reviews
+cloud "product-composite"{
+    class "Product Composite" as pc {
+        Product ID
+        Name
+        Weight
+        Recommendations
+        Reviews
+    }
+    class RecommendationSummary {
+        Recommendation ID
+        Author
+        Rate
+    }
+
+    class ReviewSummary {
+        Review ID
+        Author
+        Subject
+    }
+    pc ->"*" RecommendationSummary
+    pc ->"*" ReviewSummary
 }
 
-class "Product" as p {
-    Product ID
-    Name
-    Weight
+cloud "product" {
+    class "Product" as p {
+        Product ID
+        Name
+        Weight
+    }
 }
 
-class "Review" as r {
-    Product ID
-    Review ID
-    Author
-    Subject
-    Content
+cloud "review" {
+    class "Review" as r {
+        Product ID
+        Review ID
+        Author
+        Subject
+        Content
+    }
 }
 
-class "Recommendation" as rcd {
-    Product ID
-    Recommendation ID
-    Author
-    Rate
-    Content
-}
-
-class RecommendationSummary {
-    Recommendation ID
-    Author
-    Rate
-}
-
-class ReviewSummary {
-    Review ID
-    Author
-    Subject
+cloud "recommendation" {
+    class "Recommendation" as rcd {
+        Product ID
+        Recommendation ID
+        Author
+        Rate
+        Content
+    }
 }
 
 pc ..> p
 pc ..> r
 pc ..> rcd
-pc ->"*" RecommendationSummary
-pc ->"*" ReviewSummary
 ```
 
 對於每個微服務，我們會建立一個 Spring Boot 專案，並有以下設定:
@@ -120,7 +127,7 @@ pc ->"*" ReviewSummary
 為了停用 plain JAR 的建立，我們在每個 microservice 的 `build.gradle.kts` 檔案中加上以下設定：
 
 ```gradle title="build.gradle.kts"
-tasks.named<Jar>("jar") {
+tasks.named("jar") {
     enabled = false
 }
 ```
