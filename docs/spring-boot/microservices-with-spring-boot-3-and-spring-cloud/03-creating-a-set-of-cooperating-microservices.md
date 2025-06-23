@@ -136,10 +136,10 @@ Product Service cases
 
 | Request                 | Response                                         |
 | ----------------------- | ------------------------------------------------ |
-| GET /product/1          | OK                                               |
-| GET /product/no-integer | BAD_REQUEST (`Type mismatch.`) [^1]              |
-| GET /product/13         | NOT_FOUND (`Product (id: 13) not found.`)        |
-| GET /product/-1         | UNPROCESSABLE_ENTITY (`Invalid product id: -1.`) |
+| GET /products/1          | OK                                               |
+| GET /products/no-integer | BAD_REQUEST (`Type mismatch.`) [^1]              |
+| GET /products/13         | NOT_FOUND (`Product (id: 13) not found.`)        |
+| GET /products/-1         | UNPROCESSABLE_ENTITY (`Invalid product id: -1.`) |
 
 [^1]: 在 properties 檔案新增 `server.error.include-message=always` 將會在 response 中提供 `message`
 
@@ -152,7 +152,7 @@ Product Service cases
     - `@Autowired private lateinit var webTestClient: WebTestClient`
     - test code
         ```kotlin
-        webTestClient.get().uri("/product/1")
+        webTestClient.get().uri("/products/1")
             .exchange()
             .expectStatus().isOk
             .expectBody()
@@ -192,11 +192,11 @@ Recommendation service cases
 
 | Request                                  | Response                                                                  |
 | ---------------------------------------- | ------------------------------------------------------------------------- |
-| GET /recommendation?productId=1          | OK, 3 筆 recommendations                                                  |
-| GET /recommendation                      | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
-| GET /recommendation?productId=no-integer | BAD_REQUEST (`Type mismatch.`)                                            |
-| GET /recommendation?productId=113        | OK, empty                                                                 |
-| GET /recommendation?productId=-1         | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)                           |
+| GET /recommendations?productId=1          | OK, 3 筆 recommendations                                                  |
+| GET /recommendations                     | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
+| GET /recommendations?productId=not-integer | BAD_REQUEST (`Type mismatch.`)                                            |
+| GET /recommendations?productId=113        | OK, empty                                                                 |
+| GET /recommendations?productId=-1         | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)                           |
 
 ??? tip "實作提示"
 
@@ -207,7 +207,7 @@ Recommendation service cases
         fun `get recommendations`() {
             webTestClient
                 .get()
-                .uri("/recommendation?productId=1")
+                .uri("/recommendations?productId=1")
                 .exchange()
                 .expectStatus().isOk
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
@@ -282,11 +282,11 @@ Review service cases
 
 | Request                          | Response                                                                  |
 | -------------------------------- | ------------------------------------------------------------------------- |
-| GET /review?productId=1          | OK, 3 筆 reviews                                                          |
-| GET /review                      | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
-| GET /review?productId=no-integer | BAD_REQUEST (`Type mismatch.`) [^1]                                       |
-| GET /review?productId=213        | OK, empty                                                                 |
-| GET /review?productId=-1         | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)                           |
+| GET /reviews?productId=1          | OK, 3 筆 reviews                                                          |
+| GET /reviews                      | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
+| GET /reviews?productId=no-integer | BAD_REQUEST (`Type mismatch.`) [^1]                                       |
+| GET /reviews?productId=213        | OK, empty                                                                 |
+| GET /reviews?productId=-1         | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)                           |
 
 Product Composite service
 
@@ -369,6 +369,7 @@ Product Composite service
             implementation("org.springframework:spring-webflux")
             testImplementation(kotlin("test"))
             testImplementation("org.springframework.boot:spring-boot-starter-test")
+            testRuntimeOnly("org.junit.platform:junit-platform-launcher")
         }
         ```
 
