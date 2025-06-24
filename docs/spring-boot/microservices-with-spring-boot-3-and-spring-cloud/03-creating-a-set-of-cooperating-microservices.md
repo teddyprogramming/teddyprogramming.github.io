@@ -137,7 +137,7 @@ Product Service cases
 | Request                 | Response                                         |
 | ----------------------- | ------------------------------------------------ |
 | GET /products/1          | OK                                               |
-| GET /products/no-integer | BAD_REQUEST (`Type mismatch.`) [^1]              |
+| GET /products/not-integer | BAD_REQUEST (`Type mismatch.`) [^1]              |
 | GET /products/13         | NOT_FOUND (`Product (id: 13) not found.`)        |
 | GET /products/-1         | UNPROCESSABLE_ENTITY (`Invalid product id: -1.`) |
 
