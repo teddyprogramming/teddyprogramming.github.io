@@ -14,7 +14,7 @@ cloud "product-composite"{
     class RecommendationSummary {
         Recommendation ID
         Author
-        Rate
+        Rating
     }
 
     class ReviewSummary {
@@ -49,7 +49,7 @@ cloud "recommendation" {
         Product ID
         Recommendation ID
         Author
-        Rate
+        Rating
         Content
     }
 }
@@ -214,9 +214,9 @@ Recommendation service cases
                 .expectBody()
                 .json(
                     """[
-                    { "id": 1, "productId": 1, "content": "recommendation 1", "author": "author 1", "rate": 4.5 },
-                    { "id": 2, "productId": 1, "content": "recommendation 2", "author": "author 2", "rate": 3.0 },
-                    { "id": 3, "productId": 1, "content": "recommendation 3", "author": "author 3", "rate": 5.0 }
+                    { "id": 1, "productId": 1, "content": "recommendation 1", "author": "author 1", "rating": 4.5 },
+                    { "id": 2, "productId": 1, "content": "recommendation 2", "author": "author 2", "rating": 3.0 },
+                    { "id": 3, "productId": 1, "content": "recommendation 3", "author": "author 3", "rating": 5.0 }
                 ]"""
             )
         }
@@ -319,7 +319,7 @@ Product Composite service
             ```kotlin
             stubFor(get("/product/1").willReturn(okJson("{\"id\": 1, \"name\": \"Product 1\", \"weight\": 123}")))
             stubFor(get("/review?productId=1").willReturn(okJson("[{\"id\": 1, \"productId\": 1, \"author\": \"Author 1\", \"subject\": \"Subject 1\", \"content\": \"Content 1\"}]")))
-            stubFor(get("/recommendation?productId=1").willReturn(okJson("[{\"id\": 1, \"productId\": 1, \"author\": \"Author 1\", \"rate\": 4.2, \"content\": \"Content 1\"}]")))
+            stubFor(get("/recommendation?productId=1").willReturn(okJson("[{\"id\": 1, \"productId\": 1, \"author\": \"Author 1\", \"rating\": 4.2, \"content\": \"Content 1\"}]")))
             ```
 
 ??? tip "實作 service client"
