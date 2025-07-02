@@ -134,12 +134,12 @@ tasks.named("jar") {
 
 Product Service cases
 
-| Request                 | Response                                         |
-| ----------------------- | ------------------------------------------------ |
-| GET /products/1          | OK                                               |
+| Request                   | Response                                         |
+| ------------------------- | ------------------------------------------------ |
+| GET /products/1           | OK                                               |
 | GET /products/not-integer | BAD_REQUEST (`Type mismatch.`) [^1]              |
-| GET /products/13         | NOT_FOUND (`Product (id: 13) not found.`)        |
-| GET /products/-1         | UNPROCESSABLE_ENTITY (`Invalid product id: -1.`) |
+| GET /products/13          | NOT_FOUND (`Product (id: 13) not found.`)        |
+| GET /products/-1          | UNPROCESSABLE_ENTITY (`Invalid product id: -1.`) |
 
 [^1]: 在 properties 檔案新增 `server.error.include-message=always` 將會在 response 中提供 `message`
 
@@ -190,13 +190,13 @@ Product Service cases
 
 Recommendation service cases
 
-| Request                                  | Response                                                                  |
-| ---------------------------------------- | ------------------------------------------------------------------------- |
-| GET /recommendations?productId=1          | OK, 3 筆 recommendations                                                  |
-| GET /recommendations                     | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
+| Request                                    | Response                                                                  |
+| ------------------------------------------ | ------------------------------------------------------------------------- |
+| GET /recommendations?productId=1           | OK, 3 筆 recommendations                                                  |
+| GET /recommendations                       | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
 | GET /recommendations?productId=not-integer | BAD_REQUEST (`Type mismatch.`)                                            |
-| GET /recommendations?productId=113        | OK, empty                                                                 |
-| GET /recommendations?productId=-1         | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)                           |
+| GET /recommendations?productId=113         | OK, empty                                                                 |
+| GET /recommendations?productId=-1          | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)                           |
 
 ??? tip "實作提示"
 
@@ -280,8 +280,8 @@ Recommendation service cases
 
 Review service cases
 
-| Request                          | Response                                                                  |
-| -------------------------------- | ------------------------------------------------------------------------- |
+| Request                           | Response                                                                  |
+| --------------------------------- | ------------------------------------------------------------------------- |
 | GET /reviews?productId=1          | OK, 3 筆 reviews                                                          |
 | GET /reviews                      | BAD_REQUEST (`Required query parameter 'productId' is not present.`) [^1] |
 | GET /reviews?productId=no-integer | BAD_REQUEST (`Type mismatch.`) [^1]                                       |
@@ -290,11 +290,11 @@ Review service cases
 
 Product Composite service
 
-| Request | Response |
-| - | - |
-| GET /product-composite/1 | OK, length(reviews) = 1, length(recommendations) = 1 |
-| GET /product-composite/2 | NOT_FOUND (`Not found productId: 2.`) |
-| GET /product-composite/-1 | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`) |
+| Request                   | Response                                             |
+| ------------------------- | ---------------------------------------------------- |
+| GET /product-composite/1  | OK, length(reviews) = 1, length(recommendations) = 1 |
+| GET /product-composite/2  | NOT_FOUND (`Not found productId: 2.`)                |
+| GET /product-composite/-1 | UNPROCESSABLE_ENTITY (`Invalid productId: -1.`)      |
 
 - 使用假資料，`productId=1` 時，reviews, recommendations 各一筆
 
@@ -345,37 +345,12 @@ Product Composite service
 
 半自動 Integration tests
 
-| Request | Response |
-| - | - |
-| GET /product-composite/1 | len(reviews) = 3 && len(recommendations) = 3 |
-| GET /product-composite/13 | 404 (`Product (id: 13) not found.`) |
+| Request                    | Response                                     |
+| -------------------------- | -------------------------------------------- |
+| GET /product-composite/1   | len(reviews) = 3 && len(recommendations) = 3 |
+| GET /product-composite/13  | 404 (`Product (id: 13) not found.`)          |
 | GET /product-composite/113 | len(reviews) = 3 && len(recommendations) = 0 |
 | GET /product-composite/213 | len(reviews) = 0 && len(recommendations) = 3 |
-
-??? tip
-
-    - 建立新的專案 integration-tests
-
-        ```kotlin title="build.gradle.kts"
-        plugins {
-            kotlin("jvm") version "2.0.21"
-            kotlin("plugin.spring") version "1.9.25"
-        }
-
-        // ...
-
-        dependencies {
-            implementation(platform("org.springframework.boot:spring-boot-dependencies:3.4.5"))
-            implementation("org.springframework:spring-webflux")
-            testImplementation(kotlin("test"))
-            testImplementation("org.springframework.boot:spring-boot-starter-test")
-            testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-        }
-        ```
-
-    - ` webTestClient = WebTestClient.bindToServer().baseUrl("http://localhost:8000").build()`
-
-    - 手動啟動所有 microservices 後再執行測試
 
 ## 參考
 
