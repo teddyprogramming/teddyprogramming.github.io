@@ -13,3 +13,12 @@ brew install im-select
 - Vim > Auth Switch Input Method: Enable `checked`
 - Vim > Auth Switch Input Method: Obtain IMCmd `/opt/homebrew/bin/im-select`
 - Vim > Auth Switch Input Method: Switch IMCms `/opt/homebrew/bin/im-select {im}`
+
+## 動畫
+
+```json
+"editor.cursorSurroundingLines": 15,
+"editor.cursorStyle": "underline",
+"editor.cursorSmoothCaretAnimation": true,
+"editor.cursorBlinking": "phase"
+```

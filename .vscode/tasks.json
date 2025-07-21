@@ -21,7 +21,8 @@
         {
             "label": "git commit",
             "type": "shell",
-            "command": "git commit -am 'update'"
+            "command": "git commit -am 'update'",
+            "problemMatcher": []
         }
     ]
 }
