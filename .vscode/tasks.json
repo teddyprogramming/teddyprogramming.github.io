@@ -22,9 +22,9 @@
             "problemMatcher": []
         },
         {
-            "label": "git commit",
+            "label": "git commit && push",
             "type": "shell",
-            "command": "git commit -am 'update'",
+            "command": "git commit -am 'update' && git push",
             "problemMatcher": []
         }
     ]
