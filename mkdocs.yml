@@ -20,6 +20,9 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
+  - Design:
+      - SOLID:
+          - SRP: solid/srp.md
   - Development:
       - JetBrains:
           - 快捷鍵: development/jet-brains/shortcuts.md
@@ -139,6 +142,7 @@ plugins:
         - blog/**/*
   - termynal
   - include_dir_to_nav
+  - drawio-exporter
 
 copyright: Copyright &copy; 2024-2025 Teddy Lee
 extra:

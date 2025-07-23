@@ -6,17 +6,20 @@
         {
             "label": "run serve",
             "type": "shell",
-            "command": "./.venv/bin/python -m mkdocs serve -c -s -a localhost:8880"
+            "command": "./.venv/bin/python -m mkdocs serve -c -s -a localhost:8880",
+            "problemMatcher": []
         },
         {
             "label": "pip install",
             "type": "shell",
-            "command": "./.venv/bin/pip install -r requirements.txt"
+            "command": "./.venv/bin/pip install -r requirements.txt",
+            "problemMatcher": []
         },
         {
             "label": "git push",
             "type": "shell",
-            "command": "git push"
+            "command": "git push",
+            "problemMatcher": []
         },
         {
             "label": "git commit",

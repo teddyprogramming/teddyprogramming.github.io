@@ -5,3 +5,4 @@ mkdocs-git-revision-date-localized-plugin
 mdx_wikilink_plus
 termynal
 mkdocs-include-dir-to-nav
+mkdocs-drawio-exporter
