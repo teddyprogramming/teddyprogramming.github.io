@@ -16,15 +16,9 @@
             "problemMatcher": []
         },
         {
-            "label": "git push",
-            "type": "shell",
-            "command": "git push",
-            "problemMatcher": []
-        },
-        {
             "label": "git commit && push",
             "type": "shell",
-            "command": "git commit -am 'update' && git push",
+            "command": "git add . && git commit -m 'update' && git push",
             "problemMatcher": []
         }
     ]
