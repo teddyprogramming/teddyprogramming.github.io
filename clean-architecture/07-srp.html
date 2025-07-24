@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html">
+        <link rel="prev" href="../domain-driven-design/10-supple-design.html">
       
+      
+        <link rel="next" href="34.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Blog - Teddy 的筆記本</title>
+        <title>07 Single Responsibility Principle - Teddy 的筆記本</title>
       
     
     
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#srp-single-responsibility-principle" class="md-skip">
           跳轉到
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              07 Single Responsibility Principle
             
           </span>
         </div>
@@ -1134,18 +1136,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1161,7 +1165,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Clean Architecture
@@ -1172,10 +1176,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../clean-architecture/07-srp.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    07 Single Responsibility Principle
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="07-srp.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1186,6 +1212,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      情境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      症狀
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="症狀">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-accidental-duplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Accidental duplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-merges" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Merges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解決方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      實作方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      結果
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      相關模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      參考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1198,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clean-architecture/34.html" class="md-nav__link">
+      <a href="34.html" class="md-nav__link">
         
   
   
@@ -2324,23 +2478,12 @@
       
   
   
-    
-  
   
     
-      
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   
@@ -2351,7 +2494,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2365,245 +2507,176 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-27 00:00:00+00:00">2025年4月27日</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="oh-my-zsh-fzf"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html">Oh my zsh + fzf</a></h2>
-<h3 id="fzf"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#fzf">安裝 fzf</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>fzf
-</code></pre></div>
-<p>編輯 <code>~/.zshrc</code> 找到 <code>plugins</code> 加上 <code>fzf</code></p>
-<div class="highlight"><pre><span></span><code>plugins=(... fzf)
-</code></pre></div>
-<h3 id="_1"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#_1">搜尋</a></h3>
-<p>在命令列打指令</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fzf
-</code></pre></div>
-<p>或使用 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span></p>
-<p>語法:</p>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="srp-single-responsibility-principle">SRP (Single Responsibility Principle)</h1>
+<blockquote>
+<p>A module should be responsible to one, and only one, actor.</p>
+</blockquote>
+<h2 id="_1">情境</h2>
+<p>在軟體開發過程中，我們經常會建立一些核心的業務物件或模組來處理多種相關的功能。這些物件通常代表重要的業務概念(如員工、訂單、產品等)，而不同的 actors 會對同一個物件有不同的需求和關注點。</p>
+<p>例如，在一個企業系統中：</p>
 <ul>
-<li><code>sbtrkt</code>: (fuzzy-match) Items that match <code>sbtrkt</code></li>
-<li><code>'wild</code>: (exact-match) Items that include <code>wild</code></li>
-<li><code>'wild'</code>: (exact-boundary-match) Items that include <code>wild</code> at word boundaries</li>
-<li><code>^music</code>: (prefix-exact-match) Items that start with <code>music</code></li>
-<li><code>.mp3$</code>: (suffix-exact-match) Items that end with <code>.mp3</code></li>
-<li><code>!fire</code>: (inverse-exact-match) Items that do not include <code>fire</code></li>
-<li><code>!^music</code>: (inverse-prefix-exact-match) Items that do not start with <code>music</code></li>
-<li><code>!.mp3</code>: (inverse-suffix-exact-match) Items that do not end with <code>.mp3</code></li>
+<li>人力資源部門關心員工的基本資料和績效管理</li>
+<li>財務部門關心員工的薪資計算和成本分析</li>
+<li>資訊技術部門關心資料的儲存和系統整合</li>
+<li>營運部門關心員工的工時統計和生產力分析</li>
 </ul>
-<p>多個搜尋條件使用 空白 作為間隔，邏輯是 AND 效果。如果要 OR 效果，使用 <code>|</code> 串接。</p>
-<p><code>^core go$ | rb$ | py$</code></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vim<span class="w"> </span>**&lt;TAB&gt;
+<p>當我們嘗試用單一的類別或模組來滿足所有這些不同部門的需求時，就容易產生職責混雜的問題。表面上看起來這樣的設計很合理，因為所有功能都圍繞著同一個核心概念，但實際上卻會帶來許多意想不到的困難。</p>
+<h2 id="_2">問題</h2>
+<p><strong>核心衝突</strong>: 當一個模組需要服務多個不同的 actors 時，如何在滿足所有需求的同時，避免不同需求間的相互干擾？</p>
+<p>在企業系統中，核心業務物件(如 <code>Employee</code>)往往需要支援多個部門的不同需求。表面上看，將所有相關功能集中在一個類別中似乎很合理，但這會帶來以下困境：</p>
+<p><strong>相互衝突的力量(Forces)</strong>:</p>
+<ul>
+<li><strong>內聚性(Cohesion)</strong> vs <strong>多重職責</strong>: 我們希望相關功能聚集在一起，但多個職責會降低內聚性</li>
+<li><strong>重用性</strong> vs <strong>獨立性</strong>: 我們想要重用共同的邏輯，但不同 actors 的需求可能需要獨立演化</li>
+<li><strong>簡單性</strong> vs <strong>彈性</strong>: 單一類別看似簡單，但會犧牲對變化的回應彈性<ul>
+<li><em>簡單</em>: 所有員工相關功能都在一個 <code>Employee</code> 類別中，開發者只需要知道一個地方就能處理所有員工相關的需求</li>
+<li><em>彈性</em>: 當 CFO 要求改變薪資計算時，必須修改 <code>Employee</code> 類別，但這個修改可能意外影響 COO 的工時報表或 CTO 的資料儲存；任何部門的需求變更都需要重新測試整個類別的所有功能；多個開發者無法同時修改不同部門的需求(檔案衝突)</li>
+</ul>
+</li>
+<li><strong>一致性</strong> vs <strong>客製化</strong>: 我們希望維持一致的介面，但不同 actors 需要客製化的行為</li>
+</ul>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNpdjEEKwlAMRPdzipygR3AjirvvohcIMeiH1JT8X7UU7-6nYBedxTDzBobN_D3kT37e8cg3JckhpoAYl0KnYTSfVWkBNQmbTMZVrzyvIHT0qBefoqy98EvxBViqBx379E9pS-cENKOuO2z3aPsO9DvwA1GONPE=?"></p>
+<p><strong>問題的表現</strong>:</p>
+<p>以下的 <code>Employee</code> 類別同時承擔三個不同角色的需求:</p>
+<ul>
+<li><code>calculatePay</code> 方法負責支援 CFO(財務長)的薪資計算</li>
+<li><code>reportHours</code> 方法負責支援 COO(營運長)的工時報表</li>
+<li><code>save</code> 方法負責支援 CTO(技術長)的資料儲存</li>
+</ul>
+<p>這種設計讓 <code>Employee</code> 模組的職責混雜，當不同角色的需求變動時，彼此之間容易產生不預期的影響，降低了系統的可維護性與穩定性。</p>
+<h3 id="_3">症狀</h3>
+<p>當一個模組承擔多重職責時，會出現以下症狀：</p>
+<h4 id="1-accidental-duplication">1. Accidental duplication</h4>
+<p>舉例來說，<code>calculatePay</code> 與 <code>reportHours</code> 這兩個方法都依賴同一個名為 <code>regularHours</code> 的方法來計算非加班工時。假設 CFO(財務長)提出需求，要求調整非加班工時的計算方式，開發人員便修改了 <code>regularHours</code>。但如果他沒有注意到 COO(營運長)所依賴的 <code>reportHours</code> 也會用到這個方法，這次修改就可能在不經意間影響到 COO 的功能。結果，雖然 CFO 的需求被滿足並順利上線，COO 的功能卻因此出現錯誤。</p>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNrLyExJVUjOLErOSeXKALFzU3OTUouKubjyk7JSk0sUilIL8otKPPJLgWJQoeTEnOTSnMSS1IDESoSydKBQEUQdF5ImBV1dO1RZZO2YsgAcBTS0?"></p>
+<p>這種情況會產生典型的風險：當一個模組同時承擔多個角色的需求時，對其中一個職責的修改可能會意外影響到其他職責，導致 bug 發生。</p>
+<p>雖然 CFO 和 COO 都需要計算非加班工時，但這僅僅是表面上的相似。實際上，兩個角色對於工時計算的需求和定義可能存在差異。若強行讓他們共用同一個 <code>regularHours</code> 方法，便可能產生「意外的重複」(accidental duplication): 將不同職責下的需求誤認為可共用的邏輯，導致未來當其中一方需求變動時，另一方也受到影響。</p>
+<div class="admonition note">
+<p class="admonition-title">意外的重複 一詞</p>
+<p><strong>意外</strong>: 開發者可能誤以為這是合理的程式碼重用，實際上卻因為忽略了不同職責間需求的差異，導致錯誤的耦合與潛在風險，因此稱為「意外」。這種情況下，原本應該獨立演化的邏輯被不當共用，當某一方需求變動時，另一方也會受到影響。</p>
+<p><strong>重複</strong>: 這裡的重複並不是指單純的程式碼重複，而是指不同職責下，原本應該獨立演化的概念或邏輯被誤認為可以共用，導致它們在實作上被重複利用。這種重複會讓後續的需求變更產生不必要的牽連與風險，降低系統的彈性與可維護性。</p>
+<p>補充說明: 解決這類問題不一定要產生大量相似但略有差異的程式碼，更重要的是思考如何用更貼近業務語意的 domain model 來表達需求。例如在本例中，單純用一個整數來表示工時可能不足以覆蓋不同角色的需求，這時可以考慮設計一個如 <code>WorkRecord</code> 的模型，讓各角色根據自身需求定義專屬的行為與屬性，從而降低耦合、提升可維護性。</p>
+</div>
+<h4 id="2-merges">2. Merges</h4>
+<p>當兩個不同的開發者因為不同的原因修改同一個 <code>Employee</code> 類別時，很可能會產生合併衝突(merge conflicts)。</p>
+<p>舉例來說:<br />
+- 一位開發者為了 CFO，修改了 <code>calculatePay</code> 方法<br />
+- 另一位開發者為了 COO，修改了 <code>reportHours</code> 方法</p>
+<p>即使這兩個修改從業務角度來看是完全無關的，但因為它們位於同一個原始檔案中，在版本控制系統中合併時就可能發生衝突。更糟糕的是，即使合併在機械層面上成功進行，兩個變更也可能在語意上不相容。</p>
+<p>比如說，兩個修改都需要變更某個共用的演算法或變數，這時候就會產生問題。</p>
+<p>舉個具體例子：</p>
+<p>假設 <code>Employee</code> 類別中有一個共用的 <code>workingDays</code> 變數：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">workingDays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span><span class="w"> </span><span class="c1">// 每月工作天數</span>
 
-$<span class="w"> </span>vim<span class="w"> </span>../fzf**&lt;TAB&gt;
-</code></pre></div>
-<h3 id="_2"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#_2">多選模式</a></h3>
-<p><code>$ fzf -m</code></p>
-<h3 id="_3"><a class="toclink" href="2025/04/27/oh-my-zsh--fzf.html#_3">搜尋歷史命令</a></h3>
-<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-r">R</kbd></span></p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-18 00:00:00+00:00">2024年11月18日</time></li>
-        
-          <li class="md-meta__item">
-            於
-            
-              <a href="category/spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="category/kubernetes.html" class="md-meta__link">Kubernetes</a>, 
-              <a href="category/docker.html" class="md-meta__link">Docker</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="run-appliocation-on-kubernetes"><a class="toclink" href="2024/11/18/run-appliocation-on-kubernetes.html">Run appliocation on kubernetes</a></h2>
-<p>我們會需要在 kubernets 的 cluster 試跑一下程式是否能夠如預期般的運作。像是特殊的網路環境，或者是內部的 service，我們想確認部署上去的程式是否能打通另一個 service。</p>
+<span class="w">    </span><span class="c1">// CFO 關心的薪資計算</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="nf">calculatePay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">baseSalary</span><span class="p">.</span><span class="na">divide</span><span class="p">(</span><span class="n">workingDays</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-    
-      <nav class="md-post__action">
-        <a href="2024/11/18/run-appliocation-on-kubernetes.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-07-21 00:00:00+00:00">2024年7月21日</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 2 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="on2"><a class="toclink" href="2024/07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">雜湊函數設計不良導致 <span class="arithmatex">\(O(n^2)\)</span> 時間複雜度</a></h2>
-<p>最近在看 Effective Java, 3rd 一書的 <a href="../java/effective-java/011.html">Item 11</a> 討論 <code>hashCode</code> 的實作，說到糟糕的 <code>hashCode</code> 實作將導致程式的時間複雜度從 <span class="arithmatex">\(O(n)\)</span> 變成 <span class="arithmatex">\(O(n^2)\)</span>。</p>
-<p>書中並沒有詳細說明情境。而在我的理解，hash 的時間複雜不就是 <span class="arithmatex">\(O(1)\)</span> 嗎？那麼 <span class="arithmatex">\(O(n)\)</span> 跟 <span class="arithmatex">\(O(n^2)\)</span> 是怎麼回事？ 所以我就自己<strong>腦補</strong>一個情境來解釋書中沒有描述的情境。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="2024/07/21/%E9%9B%9C%E6%B9%8A%E5%87%BD%E6%95%B8%E8%A8%AD%E8%A8%88%E4%B8%8D%E8%89%AF%E5%B0%8E%E8%87%B4-on2-%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6.html">
-          繼續閱讀
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-07-15 00:00:00+00:00">2024年7月15日</time></li>
-        
-          <li class="md-meta__item">
-            於
-            
-              <a href="category/spring-boot.html" class="md-meta__link">Spring Boot</a>, 
-              <a href="category/testing.html" class="md-meta__link">Testing</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              需要 1 分鐘閱讀時間
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="retrieving-new-entity-id-in-integration-testing-in-spring-boot-test-using-spybean"><a class="toclink" href="2024/07/15/retrieving-new-entity-id-in-integration-testing-in-spring-boot-test-using-spybean.html">Retrieving new entity id in integration testing in Spring Boot test using <code>@SpyBean</code></a></h2>
-<p>在 integration test 中，常會涉及將資料寫入資料庫，然後再透過其他 API 將資料撈出來以確認資料確實寫入資料庫。</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootTest</span>
-<span class="nd">@AutoConfigureMockMvc</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntegrationTest</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nd">@Autowired</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MockMvc</span><span class="w"> </span><span class="n">mockMvc</span><span class="p">;</span>
-
-<span class="w">    </span><span class="nd">@Test</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">post</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">).</span><span class="na">content</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">// (1)!</span>
-<span class="w">               </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">());</span>
-
-<span class="w">        </span><span class="c1">// 透過另外一個 API 撈資料，確認</span>
+<span class="w">    </span><span class="c1">// COO 關心的工時報表</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">reportHours</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Average hours per day: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">totalHours</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">workingDays</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>現在兩個開發者同時進行修改:</p>
+<ul>
+<li><strong>開發者 A</strong>: 為了 CFO 的需求，將 <code>workingDays</code> 改為 20(扣除國定假日)</li>
+<li><strong>開發者 B</strong>: 為了 COO 的需求，在 <code>reportHours</code> 中將 <code>workingDays</code> 改為 <code>actualWorkingDays</code>(扣除請假天數)</li>
+</ul>
+<p>當這兩個修改合併時，雖然程式碼可以成功合併且沒有編譯錯誤，但現在 CFO 的薪資計算可能使用了錯誤的工作天數，或 COO 的報表使用了錯誤的基準。</p>
+<p>這種問題往往很難被發現，因為:</p>
+<ul>
+<li>程式碼可以正常編譯和執行</li>
+<li>單元測試可能都會通過(如果測試不夠全面)</li>
+<li>錯誤可能在實際使用時才逐漸浮現，而非立即暴露</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">錯誤逐漸浮現的過程</p>
+<p>承接上面的例子，假設合併後 <code>workingDays</code> 變成了 20，這會影響薪資計算。但這個錯誤可能不會立即被發現:</p>
+<ul>
+<li><strong>第一個月</strong>: 新的薪資計算開始使用，但因為差異不大(22 vs 20 天)，可能沒有人注意到</li>
+<li><strong>第二個月</strong>: 一些員工開始覺得薪水好像有點不對，但不確定</li>
+<li><strong>第三個月</strong>: 財務部門在對帳時發現數字有些異常</li>
+<li><strong>第四個月</strong>: 問題才被正式發現和確認</li>
+</ul>
+<p>在這段期間內，錯誤的薪資計算一直在進行，可能已經影響了數百名員工的薪水，需要大量的時間和成本來修正。</p>
+<p>相對地，如果是明顯的錯誤(比如程式當機)，通常在第一次執行時就會被發現。</p>
+</div>
+<p>這種合併問題會導致:</p>
 <ol>
-<li>假設會在 <code>data</code> 資料庫新增一筆資料 "Hello world!"</li>
+<li><strong>開發效率降低</strong>: 原本可以並行開發的功能，現在需要協調合併</li>
+<li><strong>增加錯誤風險</strong>: 合併過程中可能引入新的 bug</li>
+<li><strong>測試負擔加重</strong>: 每次合併後都需要重新測試所有相關功能</li>
 </ol>
-<p>但是，有時候可能因為種種原因，可能是沒有這種撈資料的 API 可用，亦或者測試設計，不摻雜其他動作刻意為之等等。</p>
-<p>總之，沒有撈資料 API 的情況下，要確認資料是否正確新增到資料庫，有一種做法是直接確認資料確實寫進資料庫。不過，直接撈資料庫最後一筆資料，然後進行驗證的做法會有缺陷，我們如何確定最後一筆資料一定是剛才 API 寫入的資料呢？如果我們在不同測試共用相同的測試資料，就更難以確定了。我們可以使用 <code>@SpyBean</code> 來解決這個問題，確認 repository 寫入資料庫的 method 確實有被呼叫，並取得方才新增資料的 id。</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootTest</span>
-<span class="nd">@AutoConfigureMockMvc</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntegrationTest</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nd">@Autowired</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MockMvc</span><span class="w"> </span><span class="n">mockMvc</span><span class="p">;</span>
-
-<span class="hll"><span class="w">    </span><span class="nd">@SpyBean</span><span class="w"> </span><span class="c1">// (1)!</span>
-</span><span class="hll"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DataRepository</span><span class="w"> </span><span class="n">dataRepository</span><span class="p">;</span>
-</span>
-<span class="w">    </span><span class="nd">@Test</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">post</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">).</span><span class="na">content</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">))</span>
-<span class="w">               </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">());</span>
-
-<span class="hll"><span class="w">        </span><span class="n">ArgumentCaptor</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dataCaptor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArgumentCaptor</span><span class="p">.</span><span class="na">forClass</span><span class="p">(</span><span class="n">Data</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-</span><span class="hll"><span class="w">        </span><span class="n">verify</span><span class="p">(</span><span class="n">dataRepository</span><span class="p">).</span><span class="na">save</span><span class="p">(</span><span class="n">dataCaptor</span><span class="p">.</span><span class="na">capture</span><span class="p">());</span><span class="w"> </span><span class="c1">// (2)!</span>
-</span><span class="hll"><span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">caseId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">savedEntity</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getId</span><span class="p">();</span><span class="w"> </span><span class="c1">// (3)!</span>
-</span><span class="hll"><span class="w">        </span><span class="n">Data</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">caseId</span><span class="p">);</span><span class="w"> </span><span class="c1">// (4)!</span>
-</span><span class="hll"><span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">actual</span><span class="p">).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Data</span><span class="p">(</span><span class="n">caseId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// (5)!</span>
-</span><span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol>
-<li>標記 <code>@SpyBean</code></li>
-<li>確認 <code>dataRepository.save</code> method 有被呼叫</li>
-<li>取得新增資料的 id</li>
-<li>透過 id 取得新增資料</li>
-<li>驗證新增資料是否正確</li>
-</ol>
-<p>Mockito 的 <code>spy</code> 允許我們使用實際 object 的呼叫，並且在需要的地方做部分的 mock。<code>@SpyBean</code> 就是幫我們基於實際的 bean 產生 spy bean，讓我們可以在測試中使用實際的 repository，並且在需要的地方做部分的 mock。</p>
-    
-  </div>
-</article>
-      
-      
-        
-          
+<h2 id="_4">解決方案</h2>
+<p>TODO: 描述如何透過分離職責來解決上述問題</p>
+<h3 id="_5">實作方式</h3>
+<p>TODO: 具體的實作方法和重構步驟</p>
+<h3 id="_6">結果</h3>
+<p>TODO: 應用 SRP 後帶來的好處和改善</p>
+<h2 id="_7">相關模式</h2>
+<p>TODO: 與其他 SOLID 原則或設計模式的關聯</p>
+<h2 id="_8">參考</h2>
+<ul>
+<li>Clean Architecture: A Craftsman's Guide to Software Structure and Design by Robert C. Martin (Uncle Bob)</li>
+</ul>
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
-      
-    </div>
-  </div>
+    
+  
+  
+    
+  
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最後更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月24日 18:03:13 UTC">2025年7月24日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="建立日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月24日 18:03:13 UTC">2025年7月24日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
