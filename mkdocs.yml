@@ -20,9 +20,6 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 nav:
-  - Design:
-      - SOLID:
-          - SRP: solid/srp.md
   - Development:
       - JetBrains:
           - 快捷鍵: development/jet-brains/shortcuts.md
@@ -52,6 +49,7 @@ nav:
       - 9 Making Implicit Concepts Explicit: domain-driven-design/09-making-implicit-concepts-explicit.md
       - 10 Supple Design: domain-driven-design/10-supple-design.md
   - Clean Architecture:
+      - 07 Single Responsibility Principle: clean-architecture/07-srp.md
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
       - Effective Java, 3rd:
@@ -128,11 +126,7 @@ markdown_extensions:
 plugins:
   - search
   - blog
-  - plantuml:
-      puml_url: https://www.plantuml.com/plantuml/
-      puml_keyword: plantuml
-      interaction:
-        enabled: false
+  - kroki:
   - git-revision-date-localized:
       locale: zh
       enable_creation_date: true
@@ -142,7 +136,6 @@ plugins:
         - blog/**/*
   - termynal
   - include_dir_to_nav
-  - drawio-exporter
 
 copyright: Copyright &copy; 2024-2025 Teddy Lee
 extra:
