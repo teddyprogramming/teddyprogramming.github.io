@@ -1298,16 +1298,35 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      實作方式
+      結果
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="結果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決原有問題
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      結果
+      帶來的好處
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      可能的新挑戰
     </span>
   </a>
   
@@ -1317,18 +1336,14 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      相關模式
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       參考
     </span>
@@ -2618,14 +2633,76 @@
 <li><strong>測試負擔加重</strong>: 每次合併後都需要重新測試所有相關功能</li>
 </ol>
 <h2 id="_4">解決方案</h2>
-<p>TODO: 描述如何透過分離職責來解決上述問題</p>
-<h3 id="_5">實作方式</h3>
-<p>TODO: 具體的實作方法和重構步驟</p>
-<h3 id="_6">結果</h3>
-<p>TODO: 應用 SRP 後帶來的好處和改善</p>
-<h2 id="_7">相關模式</h2>
-<p>TODO: 與其他 SOLID 原則或設計模式的關聯</p>
-<h2 id="_8">參考</h2>
+<p><strong>核心策略</strong>: 將原本混雜在一個模組中的多重職責分離，讓每個模組只對一個 actor 負責。</p>
+<p>問題的解決方案很多，最直覺的方法是將資料與函式分離:</p>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNptjsEKwjAMhu95ih71sFfwooJH0SeINbBBSkvSCUX27mayDsvMKfm_D_L3w5OcH8QzQT_vFFIuLlB4kCiAZ1R1VyxHZD8y5ijuDc7GLwEZ3O1hqu4ljnKjFCVTVeV7zkB_zXNIHAvRHV-rqrbX_J97woymWt526rpD40BTY0Pb1xv8AV4eXk4=?"></p>
+<p>這種設計將原本的 <code>Employee</code> 類別分解為:</p>
+<ul>
+<li><strong>EmployeeData</strong>: 純粹的資料結構，沒有行為邏輯</li>
+<li><strong>PayCalculator</strong>: 專門負責 CFO 相關的薪資計算邏輯</li>
+<li><strong>HourReporter</strong>: 專門負責 COO 相關的工時報表邏輯</li>
+<li><strong>EmployeeSaver</strong>: 專門負責 CTO 相關的資料儲存邏輯</li>
+</ul>
+<p>每個類別都只對一個 actor 負責，當某個部門的需求變更時，只需要修改對應的類別，不會影響到其他部門的功能。</p>
+<p><strong>可選的 Facade 模式</strong>：有些開發人員喜歡使用 Facade 模式來簡化多個類別的管理。這樣可以保持原本的簡單介面，同時在底層維持職責分離：</p>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNptj0sKwzAMRPc-hZftIlfoph-6LO0JVFWQgI2N7BRCyN0rh7jEib0SM8_STNt9SGPHaEi1aSbr46At2TdxUAoNhKCv1hs3EN0AQZhRaXkIBnsDkR4wHI6zxOQdx7vrOSxKgC_JOOVNwp6Xf47ri_5s2vOcN1JGywPTNt9LrmU0Xc56jb1ABEFF37RrmlMZswass9X8IpEqW6_9lEIVRXduWW5n_wB3cpdb?"></p>
+<p>Facade 提供了與原本 <code>Employee</code> 類別相同的公開方法，讓既有的客戶端代碼不需要修改就能繼續使用，但需要注意不要讓它重新引入職責混雜的問題。理想的 Facade 應該是一層薄薄的介面，僅負責將呼叫委派給對應的職責類別，而不包含任何業務邏輯。</p>
+<p><strong>另一種實作方式</strong>：有些開發人員偏好將資料與使用該資料的方法放得更近，他們會讓 <code>Employee</code> 類別保留資料和公開方法，但將實際的業務邏輯委派給專門的服務物件：</p>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNptT0sOwiAU3L9TsNRFewQ3VeOuRnuBJ74oCUgDVCXGu0sr1NLIaphhPqCU-qHEU9wucBVnYlwYLumLSbXOM0XqRMYCcInWso1qpfZE7AUsnILifY0OB4aj5J1ER3v0i-VAGWq1cTvdGRsZi3cK8J1Sw9sq-rSJ0VlQqpl4-rzDkEzJMi3640jbj6E9Wfolic8940-LYpUPzKXpjlzJ-gCQ95-rtnVC9YiaGiAIrCx_Lgj6jGhmxAe6O5MY?"></p>
+<p>在這種設計中，<code>Employee</code> 類別仍然作為資料的載體和統一的介面，但實際的業務邏輯都委派給對應的專門類別。這樣既保持了資料與方法的接近性，又確保了每個業務邏輯只對一個 actor 負責。</p>
+<h3 id="_5">結果</h3>
+<p>應用 SRP 後，系統會獲得以下改善：</p>
+<h4 id="_6">解決原有問題</h4>
+<p><strong>1. 消除 Accidental duplication</strong></p>
+<ul>
+<li>不同 actors 的邏輯分離在各自的類別中，不再共用可能語意不同的方法</li>
+<li>CFO 的薪資計算邏輯在 <code>PayCalculator</code> 中，COO 的工時報表邏輯在 <code>HourReporter</code> 中</li>
+<li>各自的需求變更不會意外影響到其他角色</li>
+</ul>
+<p><strong>2. 減少 Merge conflicts</strong></p>
+<ul>
+<li><strong>大幅降低衝突頻率</strong>: 不同部門的需求修改發生在不同的檔案中，直接業務邏輯的衝突大幅減少</li>
+<li><strong>並行開發</strong>: 開發者可以同時修改不同角色的需求，不會互相干擾</li>
+<li><strong>衝突範圍更明確</strong>: 即使發生衝突(如共用依賴、介面變更、建構設定等)，影響範圍更容易識別和解決</li>
+<li><strong>更安全的合併</strong>: 即使需要手動解決衝突，也不用擔心意外破壞其他角色的業務邏輯</li>
+</ul>
+<h4 id="_7">帶來的好處</h4>
+<p><strong>開發效率提升</strong></p>
+<ul>
+<li><strong>並行開發</strong>: 多個開發者可以同時修改不同角色的需求，不會互相干擾</li>
+<li><strong>更快的編譯與測試</strong>: 只需要重新編譯和測試受影響的特定模組</li>
+<li><strong>更容易的程式碼審查</strong>: 每次修改的範圍更明確，審查更聚焦</li>
+</ul>
+<p><strong>維護性改善</strong></p>
+<ul>
+<li><strong>單一變更原因</strong>: 每個類別只會因為一個角色的需求而改變</li>
+<li><strong>更容易理解</strong>: 每個類別的職責明確，新進開發者更容易理解</li>
+<li><strong>更安全的修改</strong>: 修改某個功能時，不用擔心意外破壞其他功能</li>
+</ul>
+<p><strong>測試品質提升</strong></p>
+<ul>
+<li><strong>獨立測試</strong>: 每個職責類別可以獨立進行單元測試</li>
+<li><strong>更精確的測試</strong>: 測試範圍明確，更容易設計有效的測試案例</li>
+<li><strong>更快的測試回饋</strong>: 不需要每次都測試整個巨大的類別</li>
+</ul>
+<h4 id="_8">可能的新挑戰</h4>
+<p><strong>複雜度增加</strong></p>
+<ul>
+<li>類別數量增加，需要管理更多的元件</li>
+<li>可能需要額外的依賴注入或 factory 來組織物件</li>
+</ul>
+<p><strong>學習成本</strong></p>
+<ul>
+<li>團隊需要適應新的架構模式</li>
+<li>需要建立新的開發和測試慣例</li>
+</ul>
+<p><strong>過度設計風險</strong></p>
+<ul>
+<li>在簡單的場景中可能造成不必要的複雜性</li>
+<li>需要根據實際情況權衡是否值得重構</li>
+</ul>
+<p>整體而言，SRP 的應用通常能提升系統的可維護性、可測試性和開發效率。雖然會帶來一些新的複雜性，但在多數中大型系統中，這些好處往往超越其成本。</p>
+<h2 id="_9">參考</h2>
 <ul>
 <li>Clean Architecture: A Craftsman's Guide to Software Structure and Design by Robert C. Martin (Uncle Bob)</li>
 </ul>
@@ -2651,7 +2728,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月24日 18:03:13 UTC">2025年7月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月25日 15:06:08 UTC">2025年7月25日</span>
   </span>
 
     
