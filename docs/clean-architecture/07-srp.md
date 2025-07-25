@@ -157,19 +157,178 @@ public class Employee {
 
 ## 解決方案
 
-TODO: 描述如何透過分離職責來解決上述問題
+**核心策略**: 將原本混雜在一個模組中的多重職責分離，讓每個模組只對一個 actor 負責。
 
-### 實作方式
+問題的解決方案很多，最直覺的方法是將資料與函式分離:
 
-TODO: 具體的實作方法和重構步驟
+```kroki-plantuml
+hide circle
+hide empty members
+
+class PayCalculator {
+    calculatePay()
+}
+
+class HourReporter {
+    reportHours()
+}
+
+class EmployeeSaver {
+    saveEmployee()
+}
+
+class EmployeeData {
+}
+
+PayCalculator --> EmployeeData
+HourReporter --> EmployeeData
+EmployeeSaver --> EmployeeData
+```
+
+這種設計將原本的 `Employee` 類別分解為:
+
+- **EmployeeData**: 純粹的資料結構，沒有行為邏輯
+- **PayCalculator**: 專門負責 CFO 相關的薪資計算邏輯
+- **HourReporter**: 專門負責 COO 相關的工時報表邏輯
+- **EmployeeSaver**: 專門負責 CTO 相關的資料儲存邏輯
+
+每個類別都只對一個 actor 負責，當某個部門的需求變更時，只需要修改對應的類別，不會影響到其他部門的功能。
+
+**可選的 Facade 模式**：有些開發人員喜歡使用 Facade 模式來簡化多個類別的管理。這樣可以保持原本的簡單介面，同時在底層維持職責分離：
+
+```kroki-plantuml
+hide circle
+hide empty members
+
+class EmployeeFacade {
+    calculatePay()
+    reportHours()
+    save()
+}
+
+class PayCalculator {
+    calculatePay()
+}
+
+class HourReporter {
+    reportHours()
+}
+
+class EmployeeSaver {
+    saveEmployee()
+}
+
+class EmployeeData {
+}
+
+EmployeeFacade --> PayCalculator
+EmployeeFacade --> HourReporter
+EmployeeFacade --> EmployeeSaver
+PayCalculator --> EmployeeData
+HourReporter --> EmployeeData
+EmployeeSaver --> EmployeeData
+```
+
+Facade 提供了與原本 `Employee` 類別相同的公開方法，讓既有的客戶端代碼不需要修改就能繼續使用，但需要注意不要讓它重新引入職責混雜的問題。理想的 Facade 應該是一層薄薄的介面，僅負責將呼叫委派給對應的職責類別，而不包含任何業務邏輯。
+
+**另一種實作方式**：有些開發人員偏好將資料與使用該資料的方法放得更近，他們會讓 `Employee` 類別保留資料和公開方法，但將實際的業務邏輯委派給專門的服務物件：
+
+```kroki-plantuml
+allowmixing
+hide circle
+hide empty members
+
+class Employee {
+    -employeeData
+    calculatePay()
+    reportHours()
+    save()
+}
+
+class PayCalculator {
+    calculatePay(employee)
+}
+
+class HourReporter {
+    reportHours(employee)
+}
+
+class EmployeeSaver {
+    saveEmployee(employee)
+}
+
+Employee --> PayCalculator
+Employee --> HourReporter
+Employee --> EmployeeSaver
+
+actor CFO
+actor COO
+actor CTO
+
+CFO ..> Employee
+COO ..> Employee
+CTO ..> Employee
+```
+
+在這種設計中，`Employee` 類別仍然作為資料的載體和統一的介面，但實際的業務邏輯都委派給對應的專門類別。這樣既保持了資料與方法的接近性，又確保了每個業務邏輯只對一個 actor 負責。
 
 ### 結果
 
-TODO: 應用 SRP 後帶來的好處和改善
+應用 SRP 後，系統會獲得以下改善：
 
-## 相關模式
+#### 解決原有問題
 
-TODO: 與其他 SOLID 原則或設計模式的關聯
+**1. 消除 Accidental duplication**
+
+- 不同 actors 的邏輯分離在各自的類別中，不再共用可能語意不同的方法
+- CFO 的薪資計算邏輯在 `PayCalculator` 中，COO 的工時報表邏輯在 `HourReporter` 中
+- 各自的需求變更不會意外影響到其他角色
+
+**2. 減少 Merge conflicts**
+
+- **大幅降低衝突頻率**: 不同部門的需求修改發生在不同的檔案中，直接業務邏輯的衝突大幅減少
+- **並行開發**: 開發者可以同時修改不同角色的需求，不會互相干擾
+- **衝突範圍更明確**: 即使發生衝突(如共用依賴、介面變更、建構設定等)，影響範圍更容易識別和解決
+- **更安全的合併**: 即使需要手動解決衝突，也不用擔心意外破壞其他角色的業務邏輯
+
+#### 帶來的好處
+
+**開發效率提升**
+
+- **並行開發**: 多個開發者可以同時修改不同角色的需求，不會互相干擾
+- **更快的編譯與測試**: 只需要重新編譯和測試受影響的特定模組
+- **更容易的程式碼審查**: 每次修改的範圍更明確，審查更聚焦
+
+**維護性改善**
+
+- **單一變更原因**: 每個類別只會因為一個角色的需求而改變
+- **更容易理解**: 每個類別的職責明確，新進開發者更容易理解
+- **更安全的修改**: 修改某個功能時，不用擔心意外破壞其他功能
+
+**測試品質提升**
+
+- **獨立測試**: 每個職責類別可以獨立進行單元測試
+- **更精確的測試**: 測試範圍明確，更容易設計有效的測試案例
+- **更快的測試回饋**: 不需要每次都測試整個巨大的類別
+
+#### 可能的新挑戰
+
+**複雜度增加**
+
+- 類別數量增加，需要管理更多的元件
+- 可能需要額外的依賴注入或 factory 來組織物件
+
+**學習成本**
+
+- 團隊需要適應新的架構模式
+- 需要建立新的開發和測試慣例
+
+**過度設計風險**
+
+- 在簡單的場景中可能造成不必要的複雜性
+- 需要根據實際情況權衡是否值得重構
+
+整體而言，SRP 的應用通常能提升系統的可維護性、可測試性和開發效率。雖然會帶來一些新的複雜性，但在多數中大型系統中，這些好處往往超越其成本。
 
 ## 參考
 
