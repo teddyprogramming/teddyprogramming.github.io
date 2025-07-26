@@ -329,7 +329,3 @@ CTO ..> Employee
 - 需要根據實際情況權衡是否值得重構
 
 整體而言，SRP 的應用通常能提升系統的可維護性、可測試性和開發效率。雖然會帶來一些新的複雜性，但在多數中大型系統中，這些好處往往超越其成本。
-
-## 參考
-
-- Clean Architecture: A Craftsman's Guide to Software Structure and Design by Robert C. Martin (Uncle Bob)

@@ -50,6 +50,7 @@ nav:
       - 10 Supple Design: domain-driven-design/10-supple-design.md
   - Clean Architecture:
       - 07 Single Responsibility Principle: clean-architecture/07-srp.md
+      - 22 Clean Architecture: clean-architecture/22-clean-architecture.md
       - 34 The Missing Chapter: clean-architecture/34.md
   - Java:
       - Effective Java, 3rd:
