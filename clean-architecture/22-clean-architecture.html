@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../domain-driven-design/10-supple-design.html">
+        <link rel="prev" href="07-srp.html">
       
       
-        <link rel="next" href="22-clean-architecture.html">
+        <link rel="next" href="34.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>07 Single Responsibility Principle - Teddy 的筆記本</title>
+        <title>22 Clean Architecture - Teddy 的筆記本</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#srp-single-responsibility-principle" class="md-skip">
+        <a href="#clean-architecture" class="md-skip">
           跳轉到
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07 Single Responsibility Principle
+              22 Clean Architecture
             
           </span>
         </div>
@@ -1176,6 +1176,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="07-srp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 Single Responsibility Principle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1193,7 +1216,7 @@
   
   
   <span class="md-ellipsis">
-    07 Single Responsibility Principle
+    22 Clean Architecture
     
   </span>
   
@@ -1201,12 +1224,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="07-srp.html" class="md-nav__link md-nav__link--active">
+      <a href="22-clean-architecture.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    07 Single Responsibility Principle
+    22 Clean Architecture
     
   </span>
   
@@ -1229,54 +1252,81 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#context" class="md-nav__link">
     <span class="md-ellipsis">
-      情境
+      Context
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#problem" class="md-nav__link">
     <span class="md-ellipsis">
-      問題
+      Problem
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="問題">
+    <nav class="md-nav" aria-label="Problem">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      具體挑戰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      穩定性需求
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      症狀
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="症狀">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-accidental-duplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Accidental duplication
+      可測試性需求
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-merges" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Merges
+      可維護性需求
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      可替換性需求
+    </span>
+  </a>
   
 </li>
         
@@ -1286,38 +1336,107 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
-      解決方案
+      Solution
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="解決方案">
+    <nav class="md-nav" aria-label="Solution">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#dependency-rule" class="md-nav__link">
     <span class="md-ellipsis">
-      結果
+      Dependency Rule (依賴規則)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="結果">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      解決原有問題
+      四個同心圓分層
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="四個同心圓分層">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-entities-" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Entities (實體層) - 企業業務規則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-use-cases-" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Use Cases (使用案例層) - 應用業務規則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-interface-adapters-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Interface Adapters (介面 Adapter 層)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-frameworks-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Frameworks &amp; Drivers (框架和驅動程式層)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      帶來的好處
+      依賴注入和介面
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller-presenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controller 和 Presenter 的依賴反轉
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Controller 和 Presenter 的依賴反轉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controller-dip-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controller 透過 DIP 呼叫 Use Cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#presenter-dip-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presenter 透過 DIP 接收 Use Cases 結果
     </span>
   </a>
   
@@ -1326,7 +1445,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      可能的新挑戰
+      關鍵特點
     </span>
   </a>
   
@@ -1334,6 +1453,39 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      正面效果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      潛在缺點
+    </span>
+  </a>
   
 </li>
         
@@ -1346,29 +1498,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="22-clean-architecture.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    22 Clean Architecture
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2543,179 +2672,484 @@
 
 
 
-<h1 id="srp-single-responsibility-principle">SRP (Single Responsibility Principle)</h1>
-<blockquote>
-<p>A module should be responsible to one, and only one, actor.</p>
-</blockquote>
-<h2 id="_1">情境</h2>
-<p>在軟體開發過程中，我們經常會建立一些核心的業務物件或模組來處理多種相關的功能。這些物件通常代表重要的業務概念(如員工、訂單、產品等)，而不同的 actors 會對同一個物件有不同的需求和關注點。</p>
-<p>例如，在一個企業系統中：</p>
+<h1 id="clean-architecture">Clean Architecture</h1>
+<h2 id="context">Context</h2>
+<p>在現代軟體開發中，應用程式通常需要整合多個外部系統: 資料庫、Web框架、第三方服務、UI框架等。這些外部依賴經常變化，而核心業務邏輯相對穩定。在傳統分層架構中，業務邏輯層往往直接依賴具體的技術實作 (如特定的資料庫存取類別、外部服務客戶端)，而不是依賴抽象介面。這種直接依賴會導致業務邏輯與技術細節緊密耦合，使系統難以測試、難以維護，且容易受到外部變化的影響。</p>
+<h2 id="problem">Problem</h2>
+<p><strong>如何設計一個既能整合必要外部系統，又能保護核心業務邏輯不受外部變化影響的架構？</strong></p>
+<h3 id="_1">具體挑戰</h3>
+<ol>
+<li>
+<p><strong>外部依賴的不穩定性</strong></p>
 <ul>
-<li>人力資源部門關心員工的基本資料和績效管理</li>
-<li>財務部門關心員工的薪資計算和成本分析</li>
-<li>資訊技術部門關心資料的儲存和系統整合</li>
-<li>營運部門關心員工的工時統計和生產力分析</li>
-</ul>
-<p>當我們嘗試用單一的類別或模組來滿足所有這些不同部門的需求時，就容易產生職責混雜的問題。表面上看起來這樣的設計很合理，因為所有功能都圍繞著同一個核心概念，但實際上卻會帶來許多意想不到的困難。</p>
-<h2 id="_2">問題</h2>
-<p><strong>核心衝突</strong>: 當一個模組需要服務多個不同的 actors 時，如何在滿足所有需求的同時，避免不同需求間的相互干擾？</p>
-<p>在企業系統中，核心業務物件(如 <code>Employee</code>)往往需要支援多個部門的不同需求。表面上看，將所有相關功能集中在一個類別中似乎很合理，但這會帶來以下困境：</p>
-<p><strong>相互衝突的力量(Forces)</strong>:</p>
-<ul>
-<li><strong>內聚性(Cohesion)</strong> vs <strong>多重職責</strong>: 我們希望相關功能聚集在一起，但多個職責會降低內聚性</li>
-<li><strong>重用性</strong> vs <strong>獨立性</strong>: 我們想要重用共同的邏輯，但不同 actors 的需求可能需要獨立演化</li>
-<li><strong>簡單性</strong> vs <strong>彈性</strong>: 單一類別看似簡單，但會犧牲對變化的回應彈性<ul>
-<li><em>簡單</em>: 所有員工相關功能都在一個 <code>Employee</code> 類別中，開發者只需要知道一個地方就能處理所有員工相關的需求</li>
-<li><em>彈性</em>: 當 CFO 要求改變薪資計算時，必須修改 <code>Employee</code> 類別，但這個修改可能意外影響 COO 的工時報表或 CTO 的資料儲存；任何部門的需求變更都需要重新測試整個類別的所有功能；多個開發者無法同時修改不同部門的需求(檔案衝突)</li>
+<li>資料庫技術可能從關聯式改為 NoSQL</li>
+<li>Web 框架版本升級可能破壞 API</li>
+<li>第三方服務可能更改介面或停止服務</li>
 </ul>
 </li>
-<li><strong>一致性</strong> vs <strong>客製化</strong>: 我們希望維持一致的介面，但不同 actors 需要客製化的行為</li>
-</ul>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNpdjEEKwlAMRPdzipygR3AjirvvohcIMeiH1JT8X7UU7-6nYBedxTDzBobN_D3kT37e8cg3JckhpoAYl0KnYTSfVWkBNQmbTMZVrzyvIHT0qBefoqy98EvxBViqBx379E9pS-cENKOuO2z3aPsO9DvwA1GONPE=?"></p>
-<p><strong>問題的表現</strong>:</p>
-<p>以下的 <code>Employee</code> 類別同時承擔三個不同角色的需求:</p>
+<li>
+<p><strong>測試困難</strong></p>
 <ul>
-<li><code>calculatePay</code> 方法負責支援 CFO(財務長)的薪資計算</li>
-<li><code>reportHours</code> 方法負責支援 COO(營運長)的工時報表</li>
-<li><code>save</code> 方法負責支援 CTO(技術長)的資料儲存</li>
+<li>單元測試需要真實資料庫連線</li>
+<li>整合測試需要外部服務正常運作</li>
+<li>測試環境設置複雜且脆弱</li>
 </ul>
-<p>這種設計讓 <code>Employee</code> 模組的職責混雜，當不同角色的需求變動時，彼此之間容易產生不預期的影響，降低了系統的可維護性與穩定性。</p>
-<h3 id="_3">症狀</h3>
-<p>當一個模組承擔多重職責時，會出現以下症狀：</p>
-<h4 id="1-accidental-duplication">1. Accidental duplication</h4>
-<p>舉例來說，<code>calculatePay</code> 與 <code>reportHours</code> 這兩個方法都依賴同一個名為 <code>regularHours</code> 的方法來計算非加班工時。假設 CFO(財務長)提出需求，要求調整非加班工時的計算方式，開發人員便修改了 <code>regularHours</code>。但如果他沒有注意到 COO(營運長)所依賴的 <code>reportHours</code> 也會用到這個方法，這次修改就可能在不經意間影響到 COO 的功能。結果，雖然 CFO 的需求被滿足並順利上線，COO 的功能卻因此出現錯誤。</p>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNrLyExJVUjOLErOSeXKALFzU3OTUouKubjyk7JSk0sUilIL8otKPPJLgWJQoeTEnOTSnMSS1IDESoSydKBQEUQdF5ImBV1dO1RZZO2YsgAcBTS0?"></p>
-<p>這種情況會產生典型的風險：當一個模組同時承擔多個角色的需求時，對其中一個職責的修改可能會意外影響到其他職責，導致 bug 發生。</p>
-<p>雖然 CFO 和 COO 都需要計算非加班工時，但這僅僅是表面上的相似。實際上，兩個角色對於工時計算的需求和定義可能存在差異。若強行讓他們共用同一個 <code>regularHours</code> 方法，便可能產生「意外的重複」(accidental duplication): 將不同職責下的需求誤認為可共用的邏輯，導致未來當其中一方需求變動時，另一方也受到影響。</p>
-<div class="admonition note">
-<p class="admonition-title">意外的重複 一詞</p>
-<p><strong>意外</strong>: 開發者可能誤以為這是合理的程式碼重用，實際上卻因為忽略了不同職責間需求的差異，導致錯誤的耦合與潛在風險，因此稱為「意外」。這種情況下，原本應該獨立演化的邏輯被不當共用，當某一方需求變動時，另一方也會受到影響。</p>
-<p><strong>重複</strong>: 這裡的重複並不是指單純的程式碼重複，而是指不同職責下，原本應該獨立演化的概念或邏輯被誤認為可以共用，導致它們在實作上被重複利用。這種重複會讓後續的需求變更產生不必要的牽連與風險，降低系統的彈性與可維護性。</p>
-<p>補充說明: 解決這類問題不一定要產生大量相似但略有差異的程式碼，更重要的是思考如何用更貼近業務語意的 domain model 來表達需求。例如在本例中，單純用一個整數來表示工時可能不足以覆蓋不同角色的需求，這時可以考慮設計一個如 <code>WorkRecord</code> 的模型，讓各角色根據自身需求定義專屬的行為與屬性，從而降低耦合、提升可維護性。</p>
-</div>
-<h4 id="2-merges">2. Merges</h4>
-<p>當兩個不同的開發者因為不同的原因修改同一個 <code>Employee</code> 類別時，很可能會產生合併衝突(merge conflicts)。</p>
-<p>舉例來說:<br />
-- 一位開發者為了 CFO，修改了 <code>calculatePay</code> 方法<br />
-- 另一位開發者為了 COO，修改了 <code>reportHours</code> 方法</p>
-<p>即使這兩個修改從業務角度來看是完全無關的，但因為它們位於同一個原始檔案中，在版本控制系統中合併時就可能發生衝突。更糟糕的是，即使合併在機械層面上成功進行，兩個變更也可能在語意上不相容。</p>
-<p>比如說，兩個修改都需要變更某個共用的演算法或變數，這時候就會產生問題。</p>
-<p>舉個具體例子：</p>
-<p>假設 <code>Employee</code> 類別中有一個共用的 <code>workingDays</code> 變數：</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">workingDays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span><span class="w"> </span><span class="c1">// 每月工作天數</span>
-
-<span class="w">    </span><span class="c1">// CFO 關心的薪資計算</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="nf">calculatePay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">baseSalary</span><span class="p">.</span><span class="na">divide</span><span class="p">(</span><span class="n">workingDays</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// COO 關心的工時報表</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">reportHours</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Average hours per day: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">totalHours</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">workingDays</span><span class="p">);</span>
+</li>
+<li>
+<p><strong>業務邏輯散落</strong></p>
+<ul>
+<li>
+<p>業務規則分散在資料存取層中</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// DAO 層包含業務邏輯</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderDAO</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 業務規則混在 DAO 中</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="p">.</span><span class="na">getTotal</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">order</span><span class="p">.</span><span class="na">setStatus</span><span class="p">(</span><span class="s">&quot;REQUIRES_APPROVAL&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">jdbcTemplate</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO orders...&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>現在兩個開發者同時進行修改:</p>
+</li>
+<li>
+<p>用戶介面包含業務決策邏輯</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Controller 包含業務邏輯</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">createOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getOrderFromForm</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 業務規則混在 UI 層</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">order</span><span class="p">.</span><span class="nx">customerType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;VIP&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">order</span><span class="p">.</span><span class="nx">total</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">order</span><span class="p">.</span><span class="nx">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">saveOrder</span><span class="p">(</span><span class="nx">order</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>很難找到「業務邏輯在哪裡」</p>
 <ul>
-<li><strong>開發者 A</strong>: 為了 CFO 的需求，將 <code>workingDays</code> 改為 20(扣除國定假日)</li>
-<li><strong>開發者 B</strong>: 為了 COO 的需求，在 <code>reportHours</code> 中將 <code>workingDays</code> 改為 <code>actualWorkingDays</code>(扣除請假天數)</li>
+<li>折扣計算在前端</li>
+<li>訂單驗證在 DAO</li>
+<li>狀態判斷在 Service</li>
+<li>相同邏輯重複出現在多個地方</li>
 </ul>
-<p>當這兩個修改合併時，雖然程式碼可以成功合併且沒有編譯錯誤，但現在 CFO 的薪資計算可能使用了錯誤的工作天數，或 COO 的報表使用了錯誤的基準。</p>
-<p>這種問題往往很難被發現，因為:</p>
-<ul>
-<li>程式碼可以正常編譯和執行</li>
-<li>單元測試可能都會通過(如果測試不夠全面)</li>
-<li>錯誤可能在實際使用時才逐漸浮現，而非立即暴露</li>
+</li>
 </ul>
-<div class="admonition example">
-<p class="admonition-title">錯誤逐漸浮現的過程</p>
-<p>承接上面的例子，假設合併後 <code>workingDays</code> 變成了 20，這會影響薪資計算。但這個錯誤可能不會立即被發現:</p>
-<ul>
-<li><strong>第一個月</strong>: 新的薪資計算開始使用，但因為差異不大(22 vs 20 天)，可能沒有人注意到</li>
-<li><strong>第二個月</strong>: 一些員工開始覺得薪水好像有點不對，但不確定</li>
-<li><strong>第三個月</strong>: 財務部門在對帳時發現數字有些異常</li>
-<li><strong>第四個月</strong>: 問題才被正式發現和確認</li>
-</ul>
-<p>在這段期間內，錯誤的薪資計算一直在進行，可能已經影響了數百名員工的薪水，需要大量的時間和成本來修正。</p>
-<p>相對地，如果是明顯的錯誤(比如程式當機)，通常在第一次執行時就會被發現。</p>
-</div>
-<p>這種合併問題會導致:</p>
-<ol>
-<li><strong>開發效率降低</strong>: 原本可以並行開發的功能，現在需要協調合併</li>
-<li><strong>增加錯誤風險</strong>: 合併過程中可能引入新的 bug</li>
-<li><strong>測試負擔加重</strong>: 每次合併後都需要重新測試所有相關功能</li>
+</li>
 </ol>
-<h2 id="_4">解決方案</h2>
-<p><strong>核心策略</strong>: 將原本混雜在一個模組中的多重職責分離，讓每個模組只對一個 actor 負責。</p>
-<p>問題的解決方案很多，最直覺的方法是將資料與函式分離:</p>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNptjsEKwjAMhu95ih71sFfwooJH0SeINbBBSkvSCUX27mayDsvMKfm_D_L3w5OcH8QzQT_vFFIuLlB4kCiAZ1R1VyxHZD8y5ijuDc7GLwEZ3O1hqu4ljnKjFCVTVeV7zkB_zXNIHAvRHV-rqrbX_J97woymWt526rpD40BTY0Pb1xv8AV4eXk4=?"></p>
-<p>這種設計將原本的 <code>Employee</code> 類別分解為:</p>
+<h2 id="forces">Forces</h2>
+<h3 id="_2">穩定性需求</h3>
 <ul>
-<li><strong>EmployeeData</strong>: 純粹的資料結構，沒有行為邏輯</li>
-<li><strong>PayCalculator</strong>: 專門負責 CFO 相關的薪資計算邏輯</li>
-<li><strong>HourReporter</strong>: 專門負責 COO 相關的工時報表邏輯</li>
-<li><strong>EmployeeSaver</strong>: 專門負責 CTO 相關的資料儲存邏輯</li>
+<li>業務邏輯是系統的核心價值，應該最穩定</li>
+<li>外部技術細節變化頻繁，不應影響核心邏輯</li>
 </ul>
-<p>每個類別都只對一個 actor 負責，當某個部門的需求變更時，只需要修改對應的類別，不會影響到其他部門的功能。</p>
-<p><strong>可選的 Facade 模式</strong>：有些開發人員喜歡使用 Facade 模式來簡化多個類別的管理。這樣可以保持原本的簡單介面，同時在底層維持職責分離：</p>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNptj0sKwzAMRPc-hZftIlfoph-6LO0JVFWQgI2N7BRCyN0rh7jEib0SM8_STNt9SGPHaEi1aSbr46At2TdxUAoNhKCv1hs3EN0AQZhRaXkIBnsDkR4wHI6zxOQdx7vrOSxKgC_JOOVNwp6Xf47ri_5s2vOcN1JGywPTNt9LrmU0Xc56jb1ABEFF37RrmlMZswass9X8IpEqW6_9lEIVRXduWW5n_wB3cpdb?"></p>
-<p>Facade 提供了與原本 <code>Employee</code> 類別相同的公開方法，讓既有的客戶端代碼不需要修改就能繼續使用，但需要注意不要讓它重新引入職責混雜的問題。理想的 Facade 應該是一層薄薄的介面，僅負責將呼叫委派給對應的職責類別，而不包含任何業務邏輯。</p>
-<p><strong>另一種實作方式</strong>：有些開發人員偏好將資料與使用該資料的方法放得更近，他們會讓 <code>Employee</code> 類別保留資料和公開方法，但將實際的業務邏輯委派給專門的服務物件：</p>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNptT0sOwiAU3L9TsNRFewQ3VeOuRnuBJ74oCUgDVCXGu0sr1NLIaphhPqCU-qHEU9wucBVnYlwYLumLSbXOM0XqRMYCcInWso1qpfZE7AUsnILifY0OB4aj5J1ER3v0i-VAGWq1cTvdGRsZi3cK8J1Sw9sq-rSJ0VlQqpl4-rzDkEzJMi3640jbj6E9Wfolic8940-LYpUPzKXpjlzJ-gCQ95-rtnVC9YiaGiAIrCx_Lgj6jGhmxAe6O5MY?"></p>
-<p>在這種設計中，<code>Employee</code> 類別仍然作為資料的載體和統一的介面，但實際的業務邏輯都委派給對應的專門類別。這樣既保持了資料與方法的接近性，又確保了每個業務邏輯只對一個 actor 負責。</p>
-<h3 id="_5">結果</h3>
-<p>應用 SRP 後，系統會獲得以下改善：</p>
-<h4 id="_6">解決原有問題</h4>
-<p><strong>1. 消除 Accidental duplication</strong></p>
+<h3 id="_3">可測試性需求</h3>
 <ul>
-<li>不同 actors 的邏輯分離在各自的類別中，不再共用可能語意不同的方法</li>
-<li>CFO 的薪資計算邏輯在 <code>PayCalculator</code> 中，COO 的工時報表邏輯在 <code>HourReporter</code> 中</li>
-<li>各自的需求變更不會意外影響到其他角色</li>
+<li>業務邏輯必須能夠獨立測試</li>
+<li>不應依賴外部系統來驗證核心邏輯</li>
 </ul>
-<p><strong>2. 減少 Merge conflicts</strong></p>
+<h3 id="_4">可維護性需求</h3>
 <ul>
-<li><strong>大幅降低衝突頻率</strong>: 不同部門的需求修改發生在不同的檔案中，直接業務邏輯的衝突大幅減少</li>
-<li><strong>並行開發</strong>: 開發者可以同時修改不同角色的需求，不會互相干擾</li>
-<li><strong>衝突範圍更明確</strong>: 即使發生衝突(如共用依賴、介面變更、建構設定等)，影響範圍更容易識別和解決</li>
-<li><strong>更安全的合併</strong>: 即使需要手動解決衝突，也不用擔心意外破壞其他角色的業務邏輯</li>
+<li>修改外部整合不應影響業務邏輯<ul>
+<li>例如: 從 MySQL 改為 PostgreSQL，不需要修改訂單計算邏輯</li>
 </ul>
-<h4 id="_7">帶來的好處</h4>
-<p><strong>開發效率提升</strong></p>
+</li>
+<li>業務邏輯變更不應影響技術實作細節<ul>
+<li>例如: 修改折扣計算規則，不需要修改資料庫 schema 或 API 格式</li>
+<li><strong>前提</strong>: 初始設計時的抽象分層要適當<ul>
+<li>資料庫 schema 設計要足夠通用 (如: discount_amount 而非 vip_discount)</li>
+<li>API 介面要足夠彈性 (如: 使用通用的計算結果欄位)</li>
+<li>領域模型要穩定且表達力強</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_5">可替換性需求</h3>
 <ul>
-<li><strong>並行開發</strong>: 多個開發者可以同時修改不同角色的需求，不會互相干擾</li>
-<li><strong>更快的編譯與測試</strong>: 只需要重新編譯和測試受影響的特定模組</li>
-<li><strong>更容易的程式碼審查</strong>: 每次修改的範圍更明確，審查更聚焦</li>
+<li>應該能夠替換資料庫而不修改業務邏輯</li>
+<li>應該能夠替換 UI 框架而不修改業務邏輯</li>
 </ul>
-<p><strong>維護性改善</strong></p>
+<h2 id="solution">Solution</h2>
+<p>Clean Architecture 透過 <strong>依賴反轉</strong> 和 <strong>明確分層</strong> 來解決這些問題:</p>
+<h3 id="dependency-rule">Dependency Rule (依賴規則)</h3>
+<p><strong>Source code dependencies must point only inward, toward higher-level policies. (原始碼依賴必須只指向內層，朝向更高層級的政策。)</strong></p>
+<div class="admonition note">
+<p class="admonition-title">什麼是「政策」(Policy)？</p>
+<p>在軟體架構中，「政策」指的是系統的核心業務邏輯和規則，例如:</p>
 <ul>
-<li><strong>單一變更原因</strong>: 每個類別只會因為一個角色的需求而改變</li>
-<li><strong>更容易理解</strong>: 每個類別的職責明確，新進開發者更容易理解</li>
-<li><strong>更安全的修改</strong>: 修改某個功能時，不用擔心意外破壞其他功能</li>
+<li>業務規則: 「訂單金額超過 10000 元需要主管核准」</li>
+<li>計算邏輯: 「VIP 客戶享有 10% 折扣」</li>
+<li>工作流程: 「訂單建立 → 庫存檢查 → 付款處理 → 出貨」</li>
 </ul>
-<p><strong>測試品質提升</strong></p>
+<p>這些政策代表系統的核心價值，相對穩定且不應該依賴於技術實作細節 (如資料庫類型、UI 框架等)。</p>
+</div>
+<p><img alt="" src="22-1.png" /></p>
+<h3 id="_6">四個同心圓分層</h3>
+<p>Clean Architecture 將系統分為四個同心圓分層，每層都有明確的職責:</p>
+<div class="admonition info">
+<p class="admonition-title">關於圓圈數量的說明</p>
+<p>Robert Martin 在書中提到：</p>
 <ul>
-<li><strong>獨立測試</strong>: 每個職責類別可以獨立進行單元測試</li>
-<li><strong>更精確的測試</strong>: 測試範圍明確，更容易設計有效的測試案例</li>
-<li><strong>更快的測試回饋</strong>: 不需要每次都測試整個巨大的類別</li>
+<li><strong>圖中的四個圓圈只是示意圖</strong>：並非固定限制</li>
+<li><strong>可以有更多圓圈</strong>：根據應用程式的複雜度，可能需要更多層次</li>
+<li><strong>依賴規則仍然適用</strong>：無論有多少層，依賴關係都必須指向內層</li>
 </ul>
-<h4 id="_8">可能的新挑戰</h4>
+<p>重點是<strong>依賴方向</strong>和<strong>關注點分離</strong>的原則。</p>
+</div>
+<h4 id="1-entities-">1. Entities (實體層) - 企業業務規則</h4>
+<ul>
+<li><strong>職責</strong>: 封裝企業級業務邏輯和規則</li>
+<li><strong>特徵</strong>:<ul>
+<li>最不可能因外部變化而改變</li>
+<li>可被多個應用程式重用</li>
+<li>不依賴任何外層</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 範例: 訂單實體</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CustomerId</span><span class="w"> </span><span class="n">customerId</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderStatus</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 業務規則: 訂單總額計算</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="nf">calculateTotal</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">OrderItem</span><span class="p">::</span><span class="n">getSubtotal</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">reduce</span><span class="p">(</span><span class="n">Money</span><span class="p">.</span><span class="na">ZERO</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">::</span><span class="n">add</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 業務規則: 訂單確認條件</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">confirm</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Cannot confirm empty order&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OrderStatus</span><span class="p">.</span><span class="na">PENDING</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Order already processed&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OrderStatus</span><span class="p">.</span><span class="na">CONFIRMED</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2-use-cases-">2. Use Cases (使用案例層) - 應用業務規則</h4>
+<ul>
+<li><strong>職責</strong>: 協調實體的互動以完成特定應用功能</li>
+<li><strong>特徵</strong>:<ul>
+<li>包含應用特定的業務規則</li>
+<li>定義資料進出的介面</li>
+<li>不關心資料如何呈現或持久化</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 範例: 建立訂單使用案例</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderUseCase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CustomerRepository</span><span class="w"> </span><span class="n">customerRepository</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderId</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">CreateOrderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 驗證客戶存在</span>
+<span class="w">        </span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CustomerNotFoundException</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// 建立訂單實體</span>
+<span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span>
+<span class="w">            </span><span class="n">OrderId</span><span class="p">.</span><span class="na">generate</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">customer</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">buildOrderItems</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getItems</span><span class="p">())</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 應用業務規則</span>
+<span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">confirm</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 持久化</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">).</span><span class="na">getId</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="3-interface-adapters-adapter">3. Interface Adapters (介面 Adapter 層)</h4>
+<ul>
+<li><strong>職責</strong>: 在內外層之間轉換資料格式，讓不同的介面能夠溝通</li>
+<li><strong>包含</strong>:<ul>
+<li>Controllers</li>
+<li>Gateways</li>
+<li>Presenters</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 範例: 訂單控制器</span>
+<span class="nd">@RestController</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CreateOrderUseCase</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/orders&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">CreateOrderResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">CreateOrderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 直接執行使用案例</span>
+<span class="w">        </span><span class="n">OrderId</span><span class="w"> </span><span class="n">orderId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 回傳結果</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderResponse</span><span class="p">(</span><span class="n">orderId</span><span class="p">.</span><span class="na">getValue</span><span class="p">()));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="4-frameworks-drivers">4. Frameworks &amp; Drivers (框架和驅動程式層)</h4>
+<ul>
+<li><strong>職責</strong>: 提供實際的技術實作</li>
+<li><strong>包含</strong>:<ul>
+<li>Web框架</li>
+<li>資料庫</li>
+<li>外部服務</li>
+<li>UI框架</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 範例: JPA訂單 Repository 的實作</span>
+<span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">JpaOrderEntityRepository</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OrderEntity</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OrderMapper</span><span class="p">.</span><span class="na">toEntity</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+<span class="w">        </span><span class="n">OrderEntity</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">OrderMapper</span><span class="p">.</span><span class="na">toDomain</span><span class="p">(</span><span class="n">saved</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="na">getValue</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">OrderMapper</span><span class="p">::</span><span class="n">toDomain</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_7">依賴注入和介面</h3>
+<p>透過依賴注入實現依賴反轉:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 在使用案例層定義介面</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OrderRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 在外層實作介面</span>
+<span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 實作細節...</span>
+<span class="p">}</span>
+
+<span class="c1">// 在組裝層進行依賴注入</span>
+<span class="nd">@Configuration</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ApplicationConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">CreateOrderUseCase</span><span class="w"> </span><span class="nf">createOrderUseCase</span><span class="p">(</span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderUseCase</span><span class="p">(</span><span class="n">orderRepository</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="nf">orderRepository</span><span class="p">(</span><span class="n">JpaOrderEntityRepository</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JpaOrderRepository</span><span class="p">(</span><span class="n">jpaRepository</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="controller-presenter">Controller 和 Presenter 的依賴反轉</h3>
+<p>Controller 和 Presenter 透過 DIP 與 Use Cases 互動：</p>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNqdULtOAzEQ7P0VVipSXD4gRSSUKgVKRMQHWOsJWDi22bUREty_47ugYKK7hq0s7zx25sVZaHJMHkolQ6_mGXrxJNBbI5CF_lS6jgsZfDJUvxkmY88WvAup5EPk_AMa5j06q_EBKhl3jLcCyQ_Rwq9b5mOzWI7cXs377EueMUoMQcjHQgSR6icpBsGUYbP540jeiLTQmn2Irt05eZyrusxk7lXfVLa7Xn5vTarva3cXh5G9jSFz9B7cJKFf9X801qgfLm0M4uNtt5Zdt5mMom7Yq9XXZrp_NdFTV7o59DeALM_i?"></p>
+<p><strong>依賴方向說明</strong>：</p>
+<ul>
+<li>Controller 依賴 InputPort interface (向內依賴)</li>
+<li>UseCase 實作 InputPort interface</li>
+<li>UseCase 依賴 OutputPort interface (同層依賴)</li>
+<li>Presenter 實作 OutputPort interface</li>
+</ul>
+<h4 id="controller-dip-use-cases">Controller 透過 DIP 呼叫 Use Cases</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CreateOrderInputPort</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">requestModel</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@RestController</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">OrderController</span><span class="p">(</span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">createOrderUseCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/orders&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">createOrderUseCase</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Controller 使用 DIP 與 Use Case 互動的好處</strong>：</p>
+<ol>
+<li>
+<p><strong>鬆耦合設計</strong></p>
+<ul>
+<li>Controller 不知道具體的 Use Case 實作細節</li>
+<li>可以替換不同的 Use Case 實作而不修改 Controller</li>
+</ul>
+</li>
+<li>
+<p><strong>可測試性</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">shouldCallUseCaseWhenCreateOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 使用 Mock InputPort，不需要真實的 Use Case</span>
+<span class="w">    </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">mockUseCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">CreateOrderInputPort</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OrderController</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderController</span><span class="p">(</span><span class="n">mockUseCase</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 測試 Controller 邏輯</span>
+<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="na">createOrder</span><span class="p">(</span><span class="n">requestModel</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 驗證 Use Case 被正確呼叫</span>
+<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">mockUseCase</span><span class="p">).</span><span class="na">execute</span><span class="p">(</span><span class="n">requestModel</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>框架獨立性</strong></p>
+<ul>
+<li>Controller 的核心邏輯不依賴特定的業務實作</li>
+<li>可以從 Spring MVC 切換到其他 Web 框架，Use Case 不受影響</li>
+</ul>
+</li>
+<li>
+<p><strong>職責分離</strong></p>
+<ul>
+<li>Controller 專注於 HTTP 請求處理和資料轉換</li>
+<li>Use Case 專注於業務邏輯執行</li>
+<li>各自可以獨立演化和測試</li>
+</ul>
+</li>
+</ol>
+<h4 id="presenter-dip-use-cases">Presenter 透過 DIP 接收 Use Cases 結果</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CreateOrderOutputPort</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentSuccess</span><span class="p">(</span><span class="n">CreateOrderResponseModel</span><span class="w"> </span><span class="n">responseModel</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Component</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderPresenter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CreateOrderOutputPort</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CreateOrderViewModel</span><span class="w"> </span><span class="n">viewModel</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentSuccess</span><span class="p">(</span><span class="n">CreateOrderResponseModel</span><span class="w"> </span><span class="n">responseModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">viewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderViewModel</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;訂單建立成功&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">responseModel</span><span class="p">.</span><span class="na">getOrderId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">responseModel</span><span class="p">.</span><span class="na">getTotal</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">CreateOrderViewModel</span><span class="w"> </span><span class="nf">getViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">viewModel</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderUseCase</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CreateOrderOutputPort</span><span class="w"> </span><span class="n">outputPort</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CreateOrderUseCase</span><span class="p">(</span><span class="n">CreateOrderOutputPort</span><span class="w"> </span><span class="n">outputPort</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">outputPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outputPort</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">requestModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span>
+<span class="w">            </span><span class="n">OrderId</span><span class="p">.</span><span class="na">generate</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">requestModel</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">requestModel</span><span class="p">.</span><span class="na">getItems</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">confirm</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">savedOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">CreateOrderResponseModel</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderResponseModel</span><span class="p">(</span>
+<span class="w">            </span><span class="n">savedOrder</span><span class="p">.</span><span class="na">getId</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">savedOrder</span><span class="p">.</span><span class="na">calculateTotal</span><span class="p">().</span><span class="na">getValue</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="n">outputPort</span><span class="p">.</span><span class="na">presentSuccess</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_8">關鍵特點</h4>
+<ul>
+<li><strong>Controller 不直接依賴 Use Case 實作</strong>：透過 InputPort 介面</li>
+<li><strong>Use Case 不直接依賴 Presenter 實作</strong>：透過 OutputPort 介面</li>
+<li><strong>依賴方向正確</strong>：外層依賴內層的抽象介面</li>
+<li><strong>各層職責清晰</strong>：Controller 處理 HTTP，Presenter 處理格式化，Use Case 處理業務邏輯</li>
+</ul>
+<h2 id="results">Results</h2>
+<h3 id="_9">正面效果</h3>
+<ol>
+<li>
+<p><strong>獨立性 (Independence)</strong></p>
+<ul>
+<li>業務邏輯完全獨立於外部技術</li>
+<li>可以單獨測試核心邏輯</li>
+<li>外部系統變更不影響業務邏輯</li>
+</ul>
+</li>
+<li>
+<p><strong>可測試性 (Testability)</strong></p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">shouldCreateOrderWhenCustomerExistsAndItemsValid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 使用模擬 Repository，無需真實資料庫</span>
+<span class="w">    </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">mockRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">OrderRepository</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CreateOrderUseCase</span><span class="w"> </span><span class="n">useCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderUseCase</span><span class="p">(</span><span class="n">mockRepository</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 測試業務邏輯</span>
+<span class="w">    </span><span class="n">OrderId</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">useCase</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">validRequest</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>
+<p><strong>可替換性 (Replaceability)</strong></p>
+<ul>
+<li>可以替換資料庫 (MySQL → MongoDB) 而不影響業務邏輯</li>
+<li>可以替換 Web 框架 (Spring → Vert.x) 而不修改 Use Cases</li>
+<li>可以替換 UI (Web → Mobile) 而不改變核心功能</li>
+</ul>
+</li>
+<li>
+<p><strong>規模化發展 (Scalability)</strong></p>
+<ul>
+<li>團隊可以平行開發不同架構層</li>
+<li>新功能不會污染現有核心邏輯</li>
+<li>複雜度被明確分離和管理</li>
+</ul>
+</li>
+</ol>
+<h3 id="_10">潛在缺點</h3>
+<ol>
+<li>
 <p><strong>複雜度增加</strong></p>
 <ul>
-<li>類別數量增加，需要管理更多的元件</li>
-<li>可能需要額外的依賴注入或 factory 來組織物件</li>
+<li>需要更多的介面和 Adapter</li>
+<li>程式碼行數可能增加</li>
+<li>學習曲線較陡峭</li>
 </ul>
-<p><strong>學習成本</strong></p>
-<ul>
-<li>團隊需要適應新的架構模式</li>
-<li>需要建立新的開發和測試慣例</li>
-</ul>
+</li>
+<li>
 <p><strong>過度設計風險</strong></p>
 <ul>
-<li>在簡單的場景中可能造成不必要的複雜性</li>
-<li>需要根據實際情況權衡是否值得重構</li>
+<li>簡單專案可能不需要如此複雜的結構</li>
+<li>需要根據專案規模衡量是否適用</li>
 </ul>
-<p>整體而言，SRP 的應用通常能提升系統的可維護性、可測試性和開發效率。雖然會帶來一些新的複雜性，但在多數中大型系統中，這些好處往往超越其成本。</p>
+</li>
+<li>
+<p><strong>團隊學習成本</strong></p>
+<ul>
+<li>需要團隊對架構有共同理解</li>
+<li>需要良好的文件和培訓</li>
+</ul>
+</li>
+</ol>
 
 
 
@@ -2748,7 +3182,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月24日 18:03:13 UTC">2025年7月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月26日 18:31:23 UTC">2025年7月26日</span>
   </span>
 
     
