@@ -122,6 +122,54 @@ Clean Architecture 將系統分為四個同心圓分層，每層都有明確的�
 
     重點是**依賴方向**和**關注點分離**的原則。
 
+```kroki-plantuml
+hide circle
+
+package "Use Cases" {
+    interface CreateOrderInputPort {
+        void execute(requestModel: CreateOrderRequestModel)
+    }
+
+    interface CreateOrderOutputPort {
+        void presentSuccess(responseModel: CreateOrderResponseModel)
+    }
+
+    interface OrderRepository {
+        Order save(order: Order)
+        Optional<Order> findById(id: OrderId)
+    }
+
+    class CreateOrderUseCase implements CreateOrderInputPort {
+        orderRepository: OrderRepository
+    }
+
+    CreateOrderUseCase --> OrderRepository
+}
+
+package "Interface Adapters" {
+    class OrderController {
+        createOrder(httpRequest: CreateOrderHttpRequest)
+    }
+
+    class OrderPresenter {
+        presentSuccess(responseModel: CreateOrderResponseModel)
+        getViewModel(): CreateOrderViewModel
+    }
+}
+
+package "Frameworks & Drivers" {
+    class JpaOrderRepository {
+        save(order: Order)
+        findById(id: OrderId)
+    }
+}
+
+OrderController --> CreateOrderInputPort
+OrderPresenter ..|> CreateOrderOutputPort
+CreateOrderUseCase -u-> CreateOrderOutputPort
+JpaOrderRepository ..|> OrderRepository
+```
+
 #### 1. Entities (實體層) - 企業業務規則
 
 - **職責**: 封裝企業級業務邏輯和規則
@@ -167,6 +215,12 @@ public class Order {
     - 不關心資料如何呈現或持久化
 
 ```java
+// Use Cases 層定義的 Repository 介面
+public interface OrderRepository {
+    Order save(Order order);
+    Optional<Order> findById(OrderId id);
+}
+
 // 範例: 建立訂單使用案例
 public class CreateOrderUseCase {
     private final OrderRepository orderRepository;
@@ -229,7 +283,7 @@ public class OrderController {
     - UI框架
 
 ```java
-// 範例: JPA訂單 Repository 的實作
+// 範例: JPA 訂單 Repository 的實作
 @Repository
 public class JpaOrderRepository implements OrderRepository {
     private final JpaOrderEntityRepository jpaRepository;
@@ -254,18 +308,6 @@ public class JpaOrderRepository implements OrderRepository {
 透過依賴注入實現依賴反轉:
 
 ```java
-// 在使用案例層定義介面
-public interface OrderRepository {
-    Order save(Order order);
-    Optional<Order> findById(OrderId id);
-}
-
-// 在外層實作介面
-@Repository
-public class JpaOrderRepository implements OrderRepository {
-    // 實作細節...
-}
-
 // 在組裝層進行依賴注入
 @Configuration
 public class ApplicationConfig {
@@ -285,40 +327,84 @@ public class ApplicationConfig {
 
 Controller 和 Presenter 透過 DIP 與 Use Cases 互動：
 
-```kroki-plantuml
-hide circle
-
-package "Use Cases" {
-    interface CreateOrderInputPort {
-        void execute(requestModel: CreateOrderRequestModel)
-    }
-
-    interface CreateOrderOutputPort {
-        void presentSuccess(responseModel: CreateOrderResponseModel)
-    }
-
-    class CreateOrderUseCase implements CreateOrderInputPort {}
-}
-
-package "Interface Adapters" {
-    class OrderController {
-        createOrder(requestModel: CreateOrderRequestModel)
-    }
-
-    class OrderPresenter {}
-}
-
-OrderController --> CreateOrderInputPort
-OrderPresenter ..|> CreateOrderOutputPort
-CreateOrderUseCase -u-> CreateOrderOutputPort
-```
 
 **依賴方向說明**：
 
-- Controller 依賴 InputPort interface (向內依賴)
-- UseCase 實作 InputPort interface
-- UseCase 依賴 OutputPort interface (同層依賴)
-- Presenter 實作 OutputPort interface
+- **Controller 層**：
+
+    - Controller 依賴 InputPort interface (向內依賴)
+    - Controller 使用 HttpRequest model (同層依賴)
+    - Controller 建立 RequestModel 傳遞給 Use Case
+
+- **Use Case 層**：
+
+    - UseCase 實作 InputPort interface
+    - UseCase 依賴 OutputPort interface (同層依賴)
+    - UseCase 依賴 Repository interface (同層依賴)
+    - 使用 Request 和 Response Models 進行資料傳遞
+
+- **Frameworks 層**：
+
+    - JpaOrderRepository 實作 OrderRepository interface (外層實作內層介面)
+
+!!!note "Clean Architecture 中的資料傳遞設計原則"
+
+    基於 Clean Architecture 的核心原則，在層與層之間傳遞資料時應該遵循以下設計考量：
+
+    **核心原則**：
+
+    - **依賴規則**：內層不應該知道外層的存在
+    - **框架獨立性**：業務邏輯不應依賴特定的技術框架
+    - **介面隔離**：使用介面定義邊界，而非具體實作
+
+    **實作建議**：
+
+    - Use Cases 透過 Input Port 接收資料
+    - Use Cases 透過 Output Port 傳送資料
+    - 資料結構應該是 **不依賴外部框架的純粹資料結構**
+    - 通常實作為 POJO (Plain Old Java Objects) 或 DTO (Data Transfer Objects)
+
+    **設計考量**：
+
+    - **框架獨立性**：避免在核心業務邏輯中使用框架特定的註解或依賴
+    - **職責分離**：每層有自己的資料模型，透過轉換來隔離變化
+    - **測試性**：純粹的資料結構易於建立和測試
+
+    **對比範例**：
+
+    ```java
+    // ❌ 包含框架依賴
+    public class CreateOrderHttpRequest {
+        @JsonProperty("customer_id")
+        @NotBlank
+        private String customerId;
+
+        @Valid
+        private List<OrderItemRequest> items;
+    }
+
+    // ✅ 框架獨立的資料結構
+    public class CreateOrderRequestModel {
+        private final String customerId;
+        private final List<OrderItemData> items;
+
+        // 建構子和 getter...
+    }
+    ```
+
+    這種設計確保 Use Case 層符合 Clean Architecture 的依賴規則。
+
+- **Presenter 層**：
+
+    - Presenter 實作 OutputPort interface
+    - Presenter 接收 ResponseModel 並轉換為 ViewModel
+    - ViewModel 包含 UI 特定的展示邏輯
+
+**關鍵設計原則**：
+
+- 每一層都有自己的資料模型，避免跨層污染
+- 依賴方向始終指向內層(業務核心)
+- 外層負責資料轉換和格式 adaptation
 
 #### Controller 透過 DIP 呼叫 Use Cases
 
@@ -336,12 +422,38 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public ResponseEntity<?> createOrder(@RequestBody CreateOrderRequestModel request) {
-        createOrderUseCase.execute(request);
+    public ResponseEntity<?> createOrder(@RequestBody CreateOrderHttpRequest httpRequest) {
+        // 將 HTTP 請求模型轉換為 Use Case 請求模型
+        CreateOrderRequestModel requestModel = new CreateOrderRequestModel(
+            httpRequest.getCustomerId(),
+            convertToOrderItemData(httpRequest.getItems())
+        );
+
+        createOrderUseCase.execute(requestModel);
         return ResponseEntity.ok().build();
+    }
+
+    private List<OrderItemData> convertToOrderItemData(List<OrderItemRequest> items) {
+        // 轉換邏輯：處理 HTTP 特定的資料格式
+        return items.stream()
+            .map(item -> new OrderItemData(item.getProductId(), item.getQuantity()))
+            .collect(Collectors.toList());
     }
 }
 ```
+
+**為什麼 Controller 也需要分別定義 HttpRequest 和 RequestModel？**
+
+1. **HTTP 層的職責**：
+
+    - `CreateOrderHttpRequest` 處理 HTTP 特定的需求 (如 JSON 序列化、驗證註解)
+    - `CreateOrderRequestModel` 專注於業務邏輯所需的純淨資料
+
+2. **框架獨立性與資料轉換控制**：
+
+    - Use Case 不依賴 Spring Boot 或 JSON 等框架的註解和依賴
+    - 業務邏輯可以在不同的應用程式類型中重用 (Web API、CLI 工具、批次處理等)
+    - Controller 可以在轉換過程中處理 HTTP 特定的邏輯 (如資料驗證、格式轉換、預設值設定)
 
 **Controller 使用 DIP 與 Use Case 互動的好處**：
 
@@ -352,20 +464,40 @@ public class OrderController {
 
 2. **可測試性**
 
+    Controller 透過 DIP 的主要測試價值在於能夠隔離測試各層的職責：
+
     ```java
     @Test
-    void shouldCallUseCaseWhenCreateOrder() {
-        // 使用 Mock InputPort，不需要真實的 Use Case
+    void shouldReturn200WhenOrderCreatedSuccessfully() {
+        // 模擬成功的 Use Case
         CreateOrderInputPort mockUseCase = Mockito.mock(CreateOrderInputPort.class);
         OrderController controller = new OrderController(mockUseCase);
 
-        // 測試 Controller 邏輯
-        controller.createOrder(requestModel);
+        CreateOrderHttpRequest request = new CreateOrderHttpRequest("CUST001", List.of());
 
-        // 驗證 Use Case 被正確呼叫
-        verify(mockUseCase).execute(requestModel);
+        // 測試 HTTP 層的行為
+        ResponseEntity<?> response = controller.createOrder(request);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    void shouldReturn500WhenUseCaseThrowsException() {
+        // 模擬 Use Case 拋出例外
+        CreateOrderInputPort mockUseCase = Mockito.mock(CreateOrderInputPort.class);
+        doThrow(new RuntimeException("Database error"))
+            .when(mockUseCase).execute(any());
+
+        OrderController controller = new OrderController(mockUseCase);
+        CreateOrderHttpRequest request = new CreateOrderHttpRequest("CUST001", List.of());
+
+        // 驗證 Controller 如何處理例外
+        assertThrows(RuntimeException.class, () ->
+            controller.createOrder(request));
     }
     ```
+
+    重點是測試 **Controller 的職責**（HTTP 處理、錯誤處理），而非驗證是否有呼叫其他組件。
 
 3. **框架獨立性**
 
@@ -393,10 +525,14 @@ public class OrderPresenter implements CreateOrderOutputPort {
     @Override
     public void presentSuccess(CreateOrderResponseModel responseModel) {
         this.viewModel = new CreateOrderViewModel(
-            "訂單建立成功",
+            "訂單建立成功",  // UI 訊息
             responseModel.getOrderId(),
-            responseModel.getTotal()
+            formatCurrency(responseModel.getTotal()) // 格式化顯示
         );
+    }
+
+    private String formatCurrency(BigDecimal amount) {
+        return NumberFormat.getCurrencyInstance(Locale.TAIWAN).format(amount);
     }
 
     public CreateOrderViewModel getViewModel() {
