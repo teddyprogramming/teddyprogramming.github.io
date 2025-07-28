@@ -2797,6 +2797,7 @@
 </ul>
 <p>重點是<strong>依賴方向</strong>和<strong>關注點分離</strong>的原則。</p>
 </div>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNqlU01PAjEQve-vaDiY5QA_gBgSxRjXxEA0em_aARpKWztdkCj_3W7ZsN2liwfn1MxH3-ub17XgQJiwTEKWGco2dAVk8I5AZhQBB-Q7Iz6EcmCXlPm0BepgbjnYQpnSLbR1dVMVOy04gS9gpYPcwmcJ6F40BzmJJ1-jwjDMHrN-nHnpeoCMBQTl3krGANHjodEKIQUYVXoQ60ajUThtDxFWqBCkO8h1dZycMsOmwTihFZW3IT8lS6H4_aHgueB1b8FbqExSxJigV7wSnIitkbD1b8K_lNZtupMu_xguATQaTS8mjpEFirMud5wafz574cQ9zM60clZL6dVpiLEGLF87Z-plt_bx1OQTuoSWxWm3rav_s-8qVuA-BOxDNh-2Js75mk6sxaOlW9hru0FyQx6s2F2o8Wxov32uGOeaUTyDrsjV0lK2yDqKjcc_0_QPylJWKEd93Yl3hbu7zvkFE6pr7w==?"></p>
 <h4 id="1-entities-">1. Entities (實體層) - 企業業務規則</h4>
 <ul>
 <li><strong>職責</strong>: 封裝企業級業務邏輯和規則</li>
@@ -2843,7 +2844,13 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// 範例: 建立訂單使用案例</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Use Cases 層定義的 Repository 介面</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OrderRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 範例: 建立訂單使用案例</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderUseCase</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CustomerRepository</span><span class="w"> </span><span class="n">customerRepository</span><span class="p">;</span>
@@ -2905,7 +2912,7 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// 範例: JPA訂單 Repository 的實作</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 範例: JPA 訂單 Repository 的實作</span>
 <span class="nd">@Repository</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">JpaOrderEntityRepository</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">;</span>
@@ -2926,19 +2933,7 @@
 </code></pre></div>
 <h3 id="_7">依賴注入和介面</h3>
 <p>透過依賴注入實現依賴反轉:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 在使用案例層定義介面</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OrderRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// 在外層實作介面</span>
-<span class="nd">@Repository</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 實作細節...</span>
-<span class="p">}</span>
-
-<span class="c1">// 在組裝層進行依賴注入</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 在組裝層進行依賴注入</span>
 <span class="nd">@Configuration</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ApplicationConfig</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Bean</span>
@@ -2954,13 +2949,90 @@
 </code></pre></div>
 <h3 id="controller-presenter">Controller 和 Presenter 的依賴反轉</h3>
 <p>Controller 和 Presenter 透過 DIP 與 Use Cases 互動：</p>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNqdULtOAzEQ7P0VVipSXD4gRSSUKgVKRMQHWOsJWDi22bUREty_47ugYKK7hq0s7zx25sVZaHJMHkolQ6_mGXrxJNBbI5CF_lS6jgsZfDJUvxkmY88WvAup5EPk_AMa5j06q_EBKhl3jLcCyQ_Rwq9b5mOzWI7cXs377EueMUoMQcjHQgSR6icpBsGUYbP540jeiLTQmn2Irt05eZyrusxk7lXfVLa7Xn5vTarva3cXh5G9jSFz9B7cJKFf9X801qgfLm0M4uNtt5Zdt5mMom7Yq9XXZrp_NdFTV7o59DeALM_i?"></p>
 <p><strong>依賴方向說明</strong>：</p>
 <ul>
+<li>
+<p><strong>Controller 層</strong>：</p>
+<ul>
 <li>Controller 依賴 InputPort interface (向內依賴)</li>
+<li>Controller 使用 HttpRequest model (同層依賴)</li>
+<li>Controller 建立 RequestModel 傳遞給 Use Case</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Case 層</strong>：</p>
+<ul>
 <li>UseCase 實作 InputPort interface</li>
 <li>UseCase 依賴 OutputPort interface (同層依賴)</li>
+<li>UseCase 依賴 Repository interface (同層依賴)</li>
+<li>使用 Request 和 Response Models 進行資料傳遞</li>
+</ul>
+</li>
+<li>
+<p><strong>Frameworks 層</strong>：</p>
+<ul>
+<li>JpaOrderRepository 實作 OrderRepository interface (外層實作內層介面)</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Clean Architecture 中的資料傳遞設計原則</p>
+<p>基於 Clean Architecture 的核心原則，在層與層之間傳遞資料時應該遵循以下設計考量：</p>
+<p><strong>核心原則</strong>：</p>
+<ul>
+<li><strong>依賴規則</strong>：內層不應該知道外層的存在</li>
+<li><strong>框架獨立性</strong>：業務邏輯不應依賴特定的技術框架</li>
+<li><strong>介面隔離</strong>：使用介面定義邊界，而非具體實作</li>
+</ul>
+<p><strong>實作建議</strong>：</p>
+<ul>
+<li>Use Cases 透過 Input Port 接收資料</li>
+<li>Use Cases 透過 Output Port 傳送資料</li>
+<li>資料結構應該是 <strong>不依賴外部框架的純粹資料結構</strong></li>
+<li>通常實作為 POJO (Plain Old Java Objects) 或 DTO (Data Transfer Objects)</li>
+</ul>
+<p><strong>設計考量</strong>：</p>
+<ul>
+<li><strong>框架獨立性</strong>：避免在核心業務邏輯中使用框架特定的註解或依賴</li>
+<li><strong>職責分離</strong>：每層有自己的資料模型，透過轉換來隔離變化</li>
+<li><strong>測試性</strong>：純粹的資料結構易於建立和測試</li>
+</ul>
+<p><strong>對比範例</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ 包含框架依賴</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderHttpRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@JsonProperty</span><span class="p">(</span><span class="s">&quot;customer_id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@NotBlank</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customerId</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Valid</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItemRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ 框架獨立的資料結構</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderRequestModel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customerId</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItemData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 建構子和 getter...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>這種設計確保 Use Case 層符合 Clean Architecture 的依賴規則。</p>
+</div>
+<ul>
+<li>
+<p><strong>Presenter 層</strong>：</p>
+<ul>
 <li>Presenter 實作 OutputPort interface</li>
+<li>Presenter 接收 ResponseModel 並轉換為 ViewModel</li>
+<li>ViewModel 包含 UI 特定的展示邏輯</li>
+</ul>
+</li>
+</ul>
+<p><strong>關鍵設計原則</strong>：</p>
+<ul>
+<li>每一層都有自己的資料模型，避免跨層污染</li>
+<li>依賴方向始終指向內層(業務核心)</li>
+<li>外層負責資料轉換和格式 adaptation</li>
 </ul>
 <h4 id="controller-dip-use-cases">Controller 透過 DIP 呼叫 Use Cases</h4>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CreateOrderInputPort</span><span class="w"> </span><span class="p">{</span>
@@ -2976,12 +3048,43 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/orders&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">createOrderUseCase</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">CreateOrderHttpRequest</span><span class="w"> </span><span class="n">httpRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 將 HTTP 請求模型轉換為 Use Case 請求模型</span>
+<span class="w">        </span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">requestModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderRequestModel</span><span class="p">(</span>
+<span class="w">            </span><span class="n">httpRequest</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">convertToOrderItemData</span><span class="p">(</span><span class="n">httpRequest</span><span class="p">.</span><span class="na">getItems</span><span class="p">())</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">createOrderUseCase</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">requestModel</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItemData</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">convertToOrderItemData</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItemRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 轉換邏輯：處理 HTTP 特定的資料格式</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderItemData</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getProductId</span><span class="p">(),</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getQuantity</span><span class="p">()))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>為什麼 Controller 也需要分別定義 HttpRequest 和 RequestModel？</strong></p>
+<ol>
+<li>
+<p><strong>HTTP 層的職責</strong>：</p>
+<ul>
+<li><code>CreateOrderHttpRequest</code> 處理 HTTP 特定的需求 (如 JSON 序列化、驗證註解)</li>
+<li><code>CreateOrderRequestModel</code> 專注於業務邏輯所需的純淨資料</li>
+</ul>
+</li>
+<li>
+<p><strong>框架獨立性與資料轉換控制</strong>：</p>
+<ul>
+<li>Use Case 不依賴 Spring Boot 或 JSON 等框架的註解和依賴</li>
+<li>業務邏輯可以在不同的應用程式類型中重用 (Web API、CLI 工具、批次處理等)</li>
+<li>Controller 可以在轉換過程中處理 HTTP 特定的邏輯 (如資料驗證、格式轉換、預設值設定)</li>
+</ul>
+</li>
+</ol>
 <p><strong>Controller 使用 DIP 與 Use Case 互動的好處</strong>：</p>
 <ol>
 <li>
@@ -2993,19 +3096,37 @@
 </li>
 <li>
 <p><strong>可測試性</strong></p>
+<p>Controller 透過 DIP 的主要測試價值在於能夠隔離測試各層的職責：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">shouldCallUseCaseWhenCreateOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 使用 Mock InputPort，不需要真實的 Use Case</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">shouldReturn200WhenOrderCreatedSuccessfully</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 模擬成功的 Use Case</span>
 <span class="w">    </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">mockUseCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">CreateOrderInputPort</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 <span class="w">    </span><span class="n">OrderController</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderController</span><span class="p">(</span><span class="n">mockUseCase</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// 測試 Controller 邏輯</span>
-<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="na">createOrder</span><span class="p">(</span><span class="n">requestModel</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CreateOrderHttpRequest</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderHttpRequest</span><span class="p">(</span><span class="s">&quot;CUST001&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">());</span>
 
-<span class="w">    </span><span class="c1">// 驗證 Use Case 被正確呼叫</span>
-<span class="w">    </span><span class="n">verify</span><span class="p">(</span><span class="n">mockUseCase</span><span class="p">).</span><span class="na">execute</span><span class="p">(</span><span class="n">requestModel</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 測試 HTTP 層的行為</span>
+<span class="w">    </span><span class="n">ResponseEntity</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">controller</span><span class="p">.</span><span class="na">createOrder</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getStatusCode</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">OK</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Test</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">shouldReturn500WhenUseCaseThrowsException</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 模擬 Use Case 拋出例外</span>
+<span class="w">    </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">mockUseCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">CreateOrderInputPort</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">doThrow</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Database error&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="na">when</span><span class="p">(</span><span class="n">mockUseCase</span><span class="p">).</span><span class="na">execute</span><span class="p">(</span><span class="n">any</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">OrderController</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderController</span><span class="p">(</span><span class="n">mockUseCase</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CreateOrderHttpRequest</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderHttpRequest</span><span class="p">(</span><span class="s">&quot;CUST001&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// 驗證 Controller 如何處理例外</span>
+<span class="w">    </span><span class="n">assertThrows</span><span class="p">(</span><span class="n">RuntimeException</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="n">controller</span><span class="p">.</span><span class="na">createOrder</span><span class="p">(</span><span class="n">request</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>重點是測試 <strong>Controller 的職責</strong>（HTTP 處理、錯誤處理），而非驗證是否有呼叫其他組件。</p>
 </li>
 <li>
 <p><strong>框架獨立性</strong></p>
@@ -3035,10 +3156,14 @@
 <span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentSuccess</span><span class="p">(</span><span class="n">CreateOrderResponseModel</span><span class="w"> </span><span class="n">responseModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">viewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderViewModel</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;訂單建立成功&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;訂單建立成功&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// UI 訊息</span>
 <span class="w">            </span><span class="n">responseModel</span><span class="p">.</span><span class="na">getOrderId</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">responseModel</span><span class="p">.</span><span class="na">getTotal</span><span class="p">()</span>
+<span class="w">            </span><span class="n">formatCurrency</span><span class="p">(</span><span class="n">responseModel</span><span class="p">.</span><span class="na">getTotal</span><span class="p">())</span><span class="w"> </span><span class="c1">// 格式化顯示</span>
 <span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">formatCurrency</span><span class="p">(</span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">NumberFormat</span><span class="p">.</span><span class="na">getCurrencyInstance</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">TAIWAN</span><span class="p">).</span><span class="na">format</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">CreateOrderViewModel</span><span class="w"> </span><span class="nf">getViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -3172,7 +3297,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月26日 18:31:23 UTC">2025年7月26日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月28日 02:08:10 UTC">2025年7月28日</span>
   </span>
 
     
