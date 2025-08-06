@@ -2441,63 +2441,7 @@
 
 
 <h1 id="3-creating-a-set-of-cooperating-microservices">3 Creating a Set of Cooperating Microservices</h1>
-<div class="highlight"><pre><span></span><code>hide circle
-
-cloud &quot;product-composite&quot;{
-    class &quot;Product Composite&quot; as pc {
-        Product ID
-        Name
-        Weight
-        Recommendations
-        Reviews
-    }
-    class RecommendationSummary {
-        Recommendation ID
-        Author
-        Rating
-    }
-
-    class ReviewSummary {
-        Review ID
-        Author
-        Subject
-    }
-    pc -&gt;&quot;*&quot; RecommendationSummary
-    pc -&gt;&quot;*&quot; ReviewSummary
-}
-
-cloud &quot;product&quot; {
-    class &quot;Product&quot; as p {
-        Product ID
-        Name
-        Weight
-    }
-}
-
-cloud &quot;review&quot; {
-    class &quot;Review&quot; as r {
-        Product ID
-        Review ID
-        Author
-        Subject
-        Content
-    }
-}
-
-cloud &quot;recommendation&quot; {
-    class &quot;Recommendation&quot; as rcd {
-        Product ID
-        Recommendation ID
-        Author
-        Rating
-        Content
-    }
-}
-
-pc ..&gt; p
-pc ..&gt; r
-pc ..&gt; rcd
-</code></pre></div>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNqdkk1qAzEMhfc-hfCykBwhUNJNN6Uki6wdWWRcxvbgn5YS5u61O4nrmZqUVCtLeuh7SO6UJEDlsCfGsLdRAh-clRHDCq0erFeB-JlBCuyF98BfpzZsSxuEhwFhUuW4Sp6fSulFaCrJgdSpCyXdUUJpMlIEZY2v6u-KPqZ8rCzM9fuotXCfFX7er108xtBZ9yNMAnO6zJ8BMrg1ONdvDNzH4xthqBynvaw2_IG3TS8lFZaNy4NwaN1h2v7_lj9WEPcNXzB2l2JCuNuIu1aTY2tNINPyUe_pl595M_tC-Zez-39D02C603q9geH6cOWBkn0BRxfm1Q==?"></p>
 <p>對於每個微服務，我們會建立一個 Spring Boot 專案，並有以下設定:</p>
 <ul>
 <li>使用 Gradle 作為建構工具</li>
@@ -2933,7 +2877,7 @@ pc ..&gt; rcd
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月2日 17:24:00 UTC">2025年7月2日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月6日 14:39:23 UTC">2025年8月6日</span>
   </span>
 
     

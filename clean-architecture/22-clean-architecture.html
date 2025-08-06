@@ -2773,7 +2773,7 @@
 <h2 id="solution">Solution</h2>
 <p>Clean Architecture 透過 <strong>依賴反轉</strong> 和 <strong>明確分層</strong> 來解決這些問題:</p>
 <h3 id="dependency-rule">Dependency Rule (依賴規則)</h3>
-<p><strong>Source code dependencies must point only inward, toward higher-level policies. (原始碼依賴必須只指向內層，朝向更高層級的政策。)</strong></p>
+<p><strong><span style="color: #0099FF;">Source code</span><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> dependencies must point only inward, toward higher-level policies. (<span style="color: #0099FF;">程式碼</span>依賴必須只指向內層，朝向更高層級的政策。)</strong></p>
 <div class="admonition note">
 <p class="admonition-title">什麼是「政策」(Policy)？</p>
 <p>在軟體架構中，「政策」指的是系統的核心業務邏輯和規則，例如:</p>
@@ -2787,7 +2787,7 @@
 <p><img alt="" src="22-1.png" /></p>
 <h3 id="_6">四個同心圓分層</h3>
 <p>Clean Architecture 將系統分為四個同心圓分層，每層都有明確的職責:</p>
-<div class="admonition info">
+<div class="admonition note">
 <p class="admonition-title">關於圓圈數量的說明</p>
 <p>Robert Martin 在書中提到：</p>
 <ul>
@@ -2797,7 +2797,7 @@
 </ul>
 <p>重點是<strong>依賴方向</strong>和<strong>關注點分離</strong>的原則。</p>
 </div>
-<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNqlU01PAjEQve-vaDiY5QA_gBgSxRjXxEA0em_aARpKWztdkCj_3W7ZsN2liwfn1MxH3-ub17XgQJiwTEKWGco2dAVk8I5AZhQBB-Q7Iz6EcmCXlPm0BepgbjnYQpnSLbR1dVMVOy04gS9gpYPcwmcJ6F40BzmJJ1-jwjDMHrN-nHnpeoCMBQTl3krGANHjodEKIQUYVXoQ60ajUThtDxFWqBCkO8h1dZycMsOmwTihFZW3IT8lS6H4_aHgueB1b8FbqExSxJigV7wSnIitkbD1b8K_lNZtupMu_xguATQaTS8mjpEFirMud5wafz574cQ9zM60clZL6dVpiLEGLF87Z-plt_bx1OQTuoSWxWm3rav_s-8qVuA-BOxDNh-2Js75mk6sxaOlW9hru0FyQx6s2F2o8Wxov32uGOeaUTyDrsjV0lK2yDqKjcc_0_QPylJWKEd93Yl3hbu7zvkFE6pr7w==?"></p>
+<p><img alt="Kroki" src="https://kroki.io/plantuml/svg/eNqlU8tuwjAQvPsrLA5VcoAPQBVSC6qaShWor7uxF3AxsWs7UET59zpOCM6rl_oC7M7OeGfMhjPAlGsqACFF6JasAQ_eDeApMWAG-ISwOzy1oFeEurIGYmGuGegkVZldSG1LUH7gG2hmIdLwlYGxz5KBGIdDL0Ej9mNn1C8xz2xbQ2kwkNrXjFIwxkkZJVMDXVpBp0esBCppuJX6GMgYsodI5u1xgYrLzwqx4im7PyYs4qxsJSwHKctlSsStL01CXSqIMeEVndO50ZjvlICd28r85XDJ0jE_zIaT5i7oHESaVBvfMaLc9yrb4k5-dipTq6UQoAMf6FUt2lirygRrTj9e63F7Xw9ZFKnVqP-TZH7WYD84HHw1imsTVb19nSe2pP2xf7ruG7g4HNPYYy-_SqbQ1QdNdnCQemvwDZ5pvm_5GhLUUyz6M2LJMk_wdKVvZjF02Xa9CtQwdjT6mXT_e1Dfk-lGdznkyZsvrAvoeWu-1Tzw7cvW6Bdjan6G?"></p>
 <h4 id="1-entities-">1. Entities (實體層) - 企業業務規則</h4>
 <ul>
 <li><strong>職責</strong>: 封裝企業級業務邏輯和規則</li>
@@ -2851,28 +2851,44 @@
 <span class="p">}</span>
 
 <span class="c1">// 範例: 建立訂單使用案例</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderUseCase</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreateOrderUseCase</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CustomerRepository</span><span class="w"> </span><span class="n">customerRepository</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CreateOrderOutputPort</span><span class="w"> </span><span class="n">outputPort</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderId</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">CreateOrderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// 驗證客戶存在</span>
-<span class="w">        </span><span class="n">Customer</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">())</span>
-<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CustomerNotFoundException</span><span class="p">());</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CreateOrderUseCase</span><span class="p">(</span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">CreateOrderOutputPort</span><span class="w"> </span><span class="n">outputPort</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">orderRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">outputPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outputPort</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">requestModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 建立訂單實體</span>
 <span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span>
 <span class="w">            </span><span class="n">OrderId</span><span class="p">.</span><span class="na">generate</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">customer</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">buildOrderItems</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getItems</span><span class="p">())</span>
+<span class="w">            </span><span class="n">requestModel</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">buildOrderItems</span><span class="p">(</span><span class="n">requestModel</span><span class="p">.</span><span class="na">getItems</span><span class="p">())</span>
 <span class="w">        </span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// 應用業務規則</span>
 <span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">confirm</span><span class="p">();</span>
 
 <span class="w">        </span><span class="c1">// 持久化</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">).</span><span class="na">getId</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">savedOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 透過 OutputPort 回傳結果</span>
+<span class="w">        </span><span class="n">CreateOrderResponseModel</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderResponseModel</span><span class="p">(</span>
+<span class="w">            </span><span class="n">savedOrder</span><span class="p">.</span><span class="na">getId</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">savedOrder</span><span class="p">.</span><span class="na">calculateTotal</span><span class="p">().</span><span class="na">getValue</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="n">outputPort</span><span class="p">.</span><span class="na">presentSuccess</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">buildOrderItems</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItemData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 建構 OrderItem 的邏輯</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderItem</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getProductId</span><span class="p">(),</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getQuantity</span><span class="p">()))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2889,48 +2905,98 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// 範例: 訂單控制器</span>
 <span class="nd">@RestController</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderController</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CreateOrderUseCase</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">createOrderInputPort</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">OrderController</span><span class="p">(</span><span class="n">CreateOrderInputPort</span><span class="w"> </span><span class="n">createOrderInputPort</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">createOrderInputPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createOrderInputPort</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/orders&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">CreateOrderResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">CreateOrderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// 直接執行使用案例</span>
-<span class="w">        </span><span class="n">OrderId</span><span class="w"> </span><span class="n">orderId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createOrderUseCase</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="nf">createOrder</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">CreateOrderHttpRequest</span><span class="w"> </span><span class="n">httpRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 將 HTTP 請求模型轉換為 Use Case 請求模型</span>
+<span class="w">        </span><span class="n">CreateOrderRequestModel</span><span class="w"> </span><span class="n">requestModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderRequestModel</span><span class="p">(</span>
+<span class="w">            </span><span class="n">httpRequest</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">httpRequest</span><span class="p">.</span><span class="na">getItems</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// 回傳結果</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">CreateOrderResponse</span><span class="p">(</span><span class="n">orderId</span><span class="p">.</span><span class="na">getValue</span><span class="p">()));</span>
+<span class="w">        </span><span class="c1">// 透過 InputPort 執行使用案例</span>
+<span class="w">        </span><span class="n">createOrderInputPort</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">requestModel</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 範例: Repository 實作 (屬於 Interface Adapters 層)</span>
+<span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JdbcOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">JdbcOrderRepository</span><span class="p">(</span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">jdbcTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 將領域物件轉換為資料庫格式</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;INSERT INTO orders (id, customer_id, total, status) VALUES (?, ?, ?, ?)&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">jdbcTemplate</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span>
+<span class="w">            </span><span class="n">order</span><span class="p">.</span><span class="na">getId</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">order</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">order</span><span class="p">.</span><span class="na">calculateTotal</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">order</span><span class="p">.</span><span class="na">getStatus</span><span class="p">().</span><span class="na">name</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">order</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT id, customer_id, total, status FROM orders WHERE id = ?&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">.</span><span class="na">queryForObject</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span>
+<span class="w">                </span><span class="p">(</span><span class="n">rs</span><span class="p">,</span><span class="w"> </span><span class="n">rowNum</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">OrderMapper</span><span class="p">.</span><span class="na">fromResultSet</span><span class="p">(</span><span class="n">rs</span><span class="p">),</span>
+<span class="w">                </span><span class="n">id</span><span class="p">.</span><span class="na">getValue</span><span class="p">()</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyResultDataAccessException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="4-frameworks-drivers">4. Frameworks &amp; Drivers (框架和驅動程式層)</h4>
 <ul>
-<li><strong>職責</strong>: 提供實際的技術實作</li>
+<li><strong>職責</strong>: 提供實際的技術基礎設施</li>
 <li><strong>包含</strong>:<ul>
-<li>Web框架</li>
-<li>資料庫</li>
-<li>外部服務</li>
-<li>UI框架</li>
+<li><strong>Frameworks (框架)</strong>: Spring Boot, Express.js, Django 等</li>
+<li><strong>Drivers (驅動程式)</strong>: 資料庫驅動、檔案系統、網路協議等</li>
+<li><strong>External Systems (外部系統)</strong>: 第三方 API、訊息佇列、快取系統等</li>
+<li><strong>Infrastructure (基礎設施)</strong>: Web Server、Database、File System 等</li>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// 範例: JPA 訂單 Repository 的實作</span>
-<span class="nd">@Repository</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">JpaOrderEntityRepository</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 範例: 資料庫配置 (Frameworks &amp; Drivers 層)</span>
+<span class="nd">@Configuration</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseConfig</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">OrderEntity</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OrderMapper</span><span class="p">.</span><span class="na">toEntity</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
-<span class="w">        </span><span class="n">OrderEntity</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">OrderMapper</span><span class="p">.</span><span class="na">toDomain</span><span class="p">(</span><span class="n">saved</span><span class="p">);</span>
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="nf">dataSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">HikariDataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HikariDataSource</span><span class="p">();</span>
+<span class="w">        </span><span class="n">dataSource</span><span class="p">.</span><span class="na">setJdbcUrl</span><span class="p">(</span><span class="s">&quot;jdbc:postgresql://localhost:5432/orders&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">dataSource</span><span class="p">.</span><span class="na">setUsername</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">dataSource</span><span class="p">.</span><span class="na">setPassword</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">OrderId</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="na">getValue</span><span class="p">())</span>
-<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">OrderMapper</span><span class="p">::</span><span class="n">toDomain</span><span class="p">);</span>
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="nf">jdbcTemplate</span><span class="p">(</span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="p">(</span><span class="n">dataSource</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>重要概念澄清</strong>：<br />
+- <strong>Repository 介面</strong>：定義在 Use Cases 層 (內層定義抽象)<br />
+- <strong>Repository 實作</strong>：位於 Interface Adapters 層 (外層實作抽象)<br />
+- <strong>資料庫驅動/框架</strong>：位於 Frameworks &amp; Drivers 層 (最外層基礎設施)</p>
 <h3 id="_7">依賴注入和介面</h3>
 <p>透過依賴注入實現依賴反轉:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 在組裝層進行依賴注入</span>
@@ -2942,8 +3008,8 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nd">@Bean</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="nf">orderRepository</span><span class="p">(</span><span class="n">JpaOrderEntityRepository</span><span class="w"> </span><span class="n">jpaRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JpaOrderRepository</span><span class="p">(</span><span class="n">jpaRepository</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="nf">orderRepository</span><span class="p">(</span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JdbcOrderRepository</span><span class="p">(</span><span class="n">jdbcTemplate</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2952,7 +3018,7 @@
 <p><strong>依賴方向說明</strong>：</p>
 <ul>
 <li>
-<p><strong>Controller 層</strong>：</p>
+<p><strong>Controller 層 (Interface Adapters)</strong>：</p>
 <ul>
 <li>Controller 依賴 InputPort interface (向內依賴)</li>
 <li>Controller 使用 HttpRequest model (同層依賴)</li>
@@ -2969,9 +3035,17 @@
 </ul>
 </li>
 <li>
-<p><strong>Frameworks 層</strong>：</p>
+<p><strong>Interface Adapters 層</strong>：</p>
 <ul>
-<li>JpaOrderRepository 實作 OrderRepository interface (外層實作內層介面)</li>
+<li>JdbcOrderRepository 實作 OrderRepository interface (外層實作內層介面)</li>
+<li>Repository 實作負責將領域物件轉換為資料庫格式</li>
+</ul>
+</li>
+<li>
+<p><strong>Frameworks &amp; Drivers 層</strong>：</p>
+<ul>
+<li>提供 JdbcTemplate、資料庫驅動等基礎設施</li>
+<li>Repository 實作會使用這些基礎設施來完成實際的資料存取</li>
 </ul>
 </li>
 </ul>
@@ -3275,6 +3349,14 @@
 </ul>
 </li>
 </ol>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>這裡特別強調「程式碼」依賴，是因為在最外層基本上是非程式碼 (例如資料庫、檔案系統等)，這些外部系統不受此依賴規則約束。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -3297,7 +3379,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年7月28日 02:08:10 UTC">2025年7月28日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月6日 14:39:23 UTC">2025年8月6日</span>
   </span>
 
     
