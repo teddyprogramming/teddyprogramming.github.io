@@ -94,7 +94,9 @@ Clean Architecture 透過 **依賴反轉** 和 **明確分層** 來解決這些�
 
 ### Dependency Rule (依賴規則)
 
-**Source code dependencies must point only inward, toward higher-level policies. (原始碼依賴必須只指向內層，朝向更高層級的政策。)**
+**<span style="color: #0099FF;">Source code</span>[^1] dependencies must point only inward, toward higher-level policies. (<span style="color: #0099FF;">程式碼</span>依賴必須只指向內層，朝向更高層級的政策。)**
+
+[^1]: 這裡特別強調「程式碼」依賴，是因為在最外層基本上是非程式碼 (例如資料庫、檔案系統等)，這些外部系統不受此依賴規則約束。
 
 !!!note "什麼是「政策」(Policy)？"
 
@@ -112,7 +114,7 @@ Clean Architecture 透過 **依賴反轉** 和 **明確分層** 來解決這些�
 
 Clean Architecture 將系統分為四個同心圓分層，每層都有明確的職責:
 
-!!!info "關於圓圈數量的說明"
+!!!note "關於圓圈數量的說明"
 
     Robert Martin 在書中提到：
 
@@ -127,23 +129,22 @@ hide circle
 
 package "Use Cases" {
     interface CreateOrderInputPort {
-        void execute(requestModel: CreateOrderRequestModel)
+        execute(requestModel: CreateOrderRequestModel)
     }
 
     interface CreateOrderOutputPort {
-        void presentSuccess(responseModel: CreateOrderResponseModel)
+        presentSuccess(responseModel: CreateOrderResponseModel)
     }
 
     interface OrderRepository {
-        Order save(order: Order)
-        Optional<Order> findById(id: OrderId)
+        save(order: Order): Order
+        findById(id: OrderId): Optional<Order>
     }
 
     class CreateOrderUseCase implements CreateOrderInputPort {
-        orderRepository: OrderRepository
     }
 
-    CreateOrderUseCase --> OrderRepository
+    CreateOrderUseCase -u-> OrderRepository
 }
 
 package "Interface Adapters" {
@@ -155,19 +156,26 @@ package "Interface Adapters" {
         presentSuccess(responseModel: CreateOrderResponseModel)
         getViewModel(): CreateOrderViewModel
     }
+
+    class JdbcOrderRepository {
+        jdbcTemplate: JdbcTemplate
+    }
 }
 
 package "Frameworks & Drivers" {
-    class JpaOrderRepository {
-        save(order: Order)
-        findById(id: OrderId)
+    class JdbcTemplate {
+    }
+
+    class Database {
     }
 }
 
 OrderController --> CreateOrderInputPort
 OrderPresenter ..|> CreateOrderOutputPort
 CreateOrderUseCase -u-> CreateOrderOutputPort
-JpaOrderRepository ..|> OrderRepository
+JdbcOrderRepository ..|> OrderRepository
+JdbcOrderRepository -u-> JdbcTemplate
+JdbcTemplate -u-> Database
 ```
 
 #### 1. Entities (實體層) - 企業業務規則
@@ -222,28 +230,44 @@ public interface OrderRepository {
 }
 
 // 範例: 建立訂單使用案例
-public class CreateOrderUseCase {
+public class CreateOrderUseCase implements CreateOrderInputPort {
     private final OrderRepository orderRepository;
-    private final CustomerRepository customerRepository;
-    private final ProductRepository productRepository;
+    private final CreateOrderOutputPort outputPort;
 
-    public OrderId execute(CreateOrderRequest request) {
-        // 驗證客戶存在
-        Customer customer = customerRepository.findById(request.getCustomerId())
-            .orElseThrow(() -> new CustomerNotFoundException());
+    public CreateOrderUseCase(OrderRepository orderRepository,
+                              CreateOrderOutputPort outputPort) {
+        this.orderRepository = orderRepository;
+        this.outputPort = outputPort;
+    }
 
+    @Override
+    public void execute(CreateOrderRequestModel requestModel) {
         // 建立訂單實體
         Order order = new Order(
             OrderId.generate(),
-            customer.getId(),
-            buildOrderItems(request.getItems())
+            requestModel.getCustomerId(),
+            buildOrderItems(requestModel.getItems())
         );
 
         // 應用業務規則
         order.confirm();
 
         // 持久化
-        return orderRepository.save(order).getId();
+        Order savedOrder = orderRepository.save(order);
+
+        // 透過 OutputPort 回傳結果
+        CreateOrderResponseModel response = new CreateOrderResponseModel(
+            savedOrder.getId().getValue(),
+            savedOrder.calculateTotal().getValue()
+        );
+        outputPort.presentSuccess(response);
+    }
+
+    private List<OrderItem> buildOrderItems(List<OrderItemData> items) {
+        // 建構 OrderItem 的邏輯
+        return items.stream()
+            .map(item -> new OrderItem(item.getProductId(), item.getQuantity()))
+            .collect(Collectors.toList());
     }
 }
 ```
@@ -260,48 +284,99 @@ public class CreateOrderUseCase {
 // 範例: 訂單控制器
 @RestController
 public class OrderController {
-    private final CreateOrderUseCase createOrderUseCase;
+    private final CreateOrderInputPort createOrderInputPort;
+
+    public OrderController(CreateOrderInputPort createOrderInputPort) {
+        this.createOrderInputPort = createOrderInputPort;
+    }
 
     @PostMapping("/orders")
-    public ResponseEntity<CreateOrderResponse> createOrder(@RequestBody CreateOrderRequest request) {
-        // 直接執行使用案例
-        OrderId orderId = createOrderUseCase.execute(request);
+    public ResponseEntity<?> createOrder(@RequestBody CreateOrderHttpRequest httpRequest) {
+        // 將 HTTP 請求模型轉換為 Use Case 請求模型
+        CreateOrderRequestModel requestModel = new CreateOrderRequestModel(
+            httpRequest.getCustomerId(),
+            httpRequest.getItems()
+        );
 
-        // 回傳結果
-        return ResponseEntity.ok(new CreateOrderResponse(orderId.getValue()));
+        // 透過 InputPort 執行使用案例
+        createOrderInputPort.execute(requestModel);
+
+        return ResponseEntity.ok().build();
+    }
+}
+
+// 範例: Repository 實作 (屬於 Interface Adapters 層)
+@Repository
+public class JdbcOrderRepository implements OrderRepository {
+    private final JdbcTemplate jdbcTemplate;
+
+    public JdbcOrderRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public Order save(Order order) {
+        // 將領域物件轉換為資料庫格式
+        String sql = "INSERT INTO orders (id, customer_id, total, status) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql,
+            order.getId().getValue(),
+            order.getCustomerId().getValue(),
+            order.calculateTotal().getValue(),
+            order.getStatus().name()
+        );
+        return order;
+    }
+
+    @Override
+    public Optional<Order> findById(OrderId id) {
+        String sql = "SELECT id, customer_id, total, status FROM orders WHERE id = ?";
+        try {
+            Order order = jdbcTemplate.queryForObject(sql,
+                (rs, rowNum) -> OrderMapper.fromResultSet(rs),
+                id.getValue()
+            );
+            return Optional.of(order);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }
 ```
 
 #### 4. Frameworks & Drivers (框架和驅動程式層)
 
-- **職責**: 提供實際的技術實作
+- **職責**: 提供實際的技術基礎設施
 - **包含**:
-    - Web框架
-    - 資料庫
-    - 外部服務
-    - UI框架
+    - **Frameworks (框架)**: Spring Boot, Express.js, Django 等
+    - **Drivers (驅動程式)**: 資料庫驅動、檔案系統、網路協議等
+    - **External Systems (外部系統)**: 第三方 API、訊息佇列、快取系統等
+    - **Infrastructure (基礎設施)**: Web Server、Database、File System 等
 
 ```java
-// 範例: JPA 訂單 Repository 的實作
-@Repository
-public class JpaOrderRepository implements OrderRepository {
-    private final JpaOrderEntityRepository jpaRepository;
+// 範例: 資料庫配置 (Frameworks & Drivers 層)
+@Configuration
+public class DatabaseConfig {
 
-    @Override
-    public Order save(Order order) {
-        OrderEntity entity = OrderMapper.toEntity(order);
-        OrderEntity saved = jpaRepository.save(entity);
-        return OrderMapper.toDomain(saved);
+    @Bean
+    public DataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/orders");
+        dataSource.setUsername("user");
+        dataSource.setPassword("password");
+        return dataSource;
     }
 
-    @Override
-    public Optional<Order> findById(OrderId id) {
-        return jpaRepository.findById(id.getValue())
-            .map(OrderMapper::toDomain);
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
     }
 }
 ```
+
+**重要概念澄清**：
+- **Repository 介面**：定義在 Use Cases 層 (內層定義抽象)
+- **Repository 實作**：位於 Interface Adapters 層 (外層實作抽象)
+- **資料庫驅動/框架**：位於 Frameworks & Drivers 層 (最外層基礎設施)
 
 ### 依賴注入和介面
 
@@ -317,8 +392,8 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public OrderRepository orderRepository(JpaOrderEntityRepository jpaRepository) {
-        return new JpaOrderRepository(jpaRepository);
+    public OrderRepository orderRepository(JdbcTemplate jdbcTemplate) {
+        return new JdbcOrderRepository(jdbcTemplate);
     }
 }
 ```
@@ -330,7 +405,7 @@ Controller 和 Presenter 透過 DIP 與 Use Cases 互動：
 
 **依賴方向說明**：
 
-- **Controller 層**：
+- **Controller 層 (Interface Adapters)**：
 
     - Controller 依賴 InputPort interface (向內依賴)
     - Controller 使用 HttpRequest model (同層依賴)
@@ -343,9 +418,15 @@ Controller 和 Presenter 透過 DIP 與 Use Cases 互動：
     - UseCase 依賴 Repository interface (同層依賴)
     - 使用 Request 和 Response Models 進行資料傳遞
 
-- **Frameworks 層**：
+- **Interface Adapters 層**：
 
-    - JpaOrderRepository 實作 OrderRepository interface (外層實作內層介面)
+    - JdbcOrderRepository 實作 OrderRepository interface (外層實作內層介面)
+    - Repository 實作負責將領域物件轉換為資料庫格式
+
+- **Frameworks & Drivers 層**：
+
+    - 提供 JdbcTemplate、資料庫驅動等基礎設施
+    - Repository 實作會使用這些基礎設施來完成實際的資料存取
 
 !!!note "Clean Architecture 中的資料傳遞設計原則"
 

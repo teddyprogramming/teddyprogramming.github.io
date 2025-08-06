@@ -1,6 +1,6 @@
 # 3 Creating a Set of Cooperating Microservices
 
-```plantuml
+```kroki-plantuml
 hide circle
 
 cloud "product-composite"{
