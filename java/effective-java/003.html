@@ -1428,6 +1428,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Item 3 - Enforce the singleton property with a private constructor or an enum type
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="003.html" class="md-nav__link md-nav__link--active">
         
   
@@ -1439,6 +1452,136 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Singleton 的實作方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Singleton 的實作方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-final-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法一：Public Final Field (公開最終欄位)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-factory-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法二：Static Factory Method (靜態工廠方法)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-element-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法三：Single-Element Enum (推薦)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      序列化考量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      反射攻擊防護
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      最佳實務建議
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最佳實務建議">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      推薦使用 Enum 方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-factory-method_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      何時使用 Static Factory Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      延遲初始化範例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      總結
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2402,33 +2545,208 @@
 
 
 <h1 id="item-3-enforce-the-singleton-property-with-a-private-constructor-or-an-enum-type">Item 3: Enforce the singleton property with a private constructor or an enum type</h1>
-<p>兩種常見實作 Singleton 的方法：</p>
-<p>方法一: 將 constructor 設為 private，並且有一個 public static final field 來存放唯一的 instance。</p>
+<p>Singleton pattern 確保一個類別只有一個實例，並提供全域存取點。在 Java 中，有三種主要的實作方式，每種都有其優缺點。</p>
+<h2 id="singleton">Singleton 的實作方式</h2>
+<h3 id="public-final-field">方法一：Public Final Field (公開最終欄位)</h3>
+<p>將 constructor 設為 private，並提供一個 public static final field 來存放唯一的實例：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Singleton with public final field</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Elvis</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Elvis</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 防止反射攻擊</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Use getInstance() method to get the single instance of this class.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Elvis has left the building!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>方法二: 將 constructor 設為 private，並且有一個 public static 方法來回傳唯一的 instance。</p>
+<p><strong>使用方式：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Elvis</span><span class="w"> </span><span class="n">elvis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Elvis</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">;</span>
+<span class="n">elvis</span><span class="p">.</span><span class="na">leaveTheBuilding</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>優點：</strong></p>
+<ul>
+<li><strong>簡潔明確</strong>：API 清楚表明這是一個 singleton</li>
+<li><strong>效能良好</strong>：沒有額外的方法呼叫開銷</li>
+<li><strong>執行緒安全</strong>：JVM 保證 static 欄位的初始化是執行緒安全的</li>
+</ul>
+<p><strong>缺點：</strong></p>
+<ul>
+<li><strong>彈性較差</strong>：無法在不修改 API 的情況下改變 singleton 行為</li>
+<li><strong>測試困難</strong>：難以進行單元測試時的 mock</li>
+</ul>
+<h3 id="static-factory-method">方法二：Static Factory Method (靜態工廠方法)</h3>
+<p>將 constructor 設為 private，並提供一個 public static 方法回傳唯一的實例：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Singleton with static factory</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Elvis</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Elvis</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">INSTANCE</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 防止反射攻擊</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Use getInstance() method to get the single instance of this class.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">INSTANCE</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Elvis has left the building!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>另一種實作 Singleton 的方法是 single-element enum。</p>
+<p><strong>使用方式：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Elvis</span><span class="w"> </span><span class="n">elvis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Elvis</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="n">elvis</span><span class="p">.</span><span class="na">leaveTheBuilding</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>優點：</strong></p>
+<ul>
+<li><strong>彈性佳</strong>：可以在不改變 API 的情況下修改實作（例如改為非 singleton）</li>
+<li><strong>支援泛型</strong>：可以建立泛型 singleton factory</li>
+<li><strong>方法參考友善</strong>：<code>Elvis::getInstance</code> 可以用作 <code>Supplier&lt;Elvis&gt;</code></li>
+<li><strong>延遲初始化</strong>：可以實作延遲載入 (lazy loading)</li>
+</ul>
+<p><strong>缺點：</strong></p>
+<ul>
+<li><strong>稍微複雜</strong>：比方法一多了一層方法呼叫</li>
+</ul>
+<h3 id="single-element-enum">方法三：Single-Element Enum (推薦)</h3>
+<p>使用只有一個元素的 enum 來實作 singleton：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Elvis</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">INSTANCE</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leaveTheBuilding</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Elvis has left the building!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 可以新增其他方法</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sing</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">song</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Elvis is singing: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">song</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>使用方式：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Elvis</span><span class="w"> </span><span class="n">elvis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Elvis</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">;</span>
+<span class="n">elvis</span><span class="p">.</span><span class="na">leaveTheBuilding</span><span class="p">();</span>
+<span class="n">elvis</span><span class="p">.</span><span class="na">sing</span><span class="p">(</span><span class="s">&quot;Love Me Tender&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>優點：</strong></p>
+<ul>
+<li><strong>簡潔</strong>：程式碼最簡潔</li>
+<li><strong>序列化安全</strong>：免費獲得序列化支援，無需額外處理</li>
+<li><strong>反射安全</strong>：天然防止反射攻擊</li>
+<li><strong>執行緒安全</strong>：JVM 保證 enum 的執行緒安全性</li>
+</ul>
+<p><strong>缺點：</strong></p>
+<ul>
+<li><strong>繼承限制</strong>：無法繼承其他類別 (但可以實作介面)</li>
+</ul>
+<h2 id="_1">序列化考量</h2>
+<p>對於方法一和方法二，如果需要支援序列化，必須：</p>
+<ol>
+<li>實作 <code>Serializable</code> 介面</li>
+<li>將所有欄位宣告為 <code>transient</code></li>
+<li>提供 <code>readResolve</code> 方法：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// 確保序列化後仍維持 singleton 特性</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">readResolve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">INSTANCE</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">序列化陷阱</p>
+<p>沒有正確處理序列化的 singleton 可能在反序列化時產生新的實例，破壞 singleton 的唯一性。</p>
+</div>
+<h2 id="_2">反射攻擊防護</h2>
+<p>對於方法一和方法二，可以在 constructor 中加入防護：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="nf">Elvis</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Cannot create instance via reflection&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">最佳實務建議</h2>
+<h3 id="enum">推薦使用 Enum 方式</h3>
+<div class="admonition tip">
+<p class="admonition-title">最佳選擇</p>
+<p><strong>Single-element enum 是實作 singleton 的最佳方式</strong>，除非需要繼承其他類別。它提供了最簡潔、最安全的實作。</p>
+</div>
+<h3 id="static-factory-method_1">何時使用 Static Factory Method</h3>
+<p>當需要以下特性時，考慮使用 static factory method：</p>
+<ul>
+<li><strong>延遲初始化</strong>：只有在第一次呼叫時才建立實例</li>
+<li><strong>條件性建立</strong>：根據條件決定是否建立實例</li>
+<li><strong>泛型支援</strong>：需要泛型 singleton factory</li>
+</ul>
+<h3 id="_4">延遲初始化範例</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LazyElvis</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="n">LazyElvis</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">LazyElvis</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">LazyElvis</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">LazyElvis</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LazyElvis</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_5">總結</h2>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>簡潔性</th>
+<th>彈性</th>
+<th>序列化安全</th>
+<th>反射安全</th>
+<th>推薦程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-Element Enum</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>✅</td>
+<td>✅</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Public Final Field</td>
+<td>⭐⭐⭐</td>
+<td>⭐</td>
+<td>❌</td>
+<td>⚠️</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Static Factory Method</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>❌</td>
+<td>⚠️</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>註解：</strong><br />
+- ✅ 原生支援<br />
+- ❌ 不支援/需要額外處理<br />
+- ⚠️ 需要手動在 constructor 中加入檢查來防護</p>
+<p><strong>結論</strong>：除非有特殊需求，否則建議使用 <strong>single-element enum</strong> 來實作 singleton pattern。</p>
 
 
 
@@ -2451,7 +2769,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月7日 13:26:32 UTC">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月30日 08:49:55 UTC">2025年9月30日</span>
   </span>
 
     
