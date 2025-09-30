@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1446,27 +1446,168 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#anti-pattern-telescoping-constructor-pattern" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      (anti-pattern) telescoping constructor pattern
+      問題：參數過多的困擾
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#javabeans-pattern" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      JavaBeans pattern
+      解決方案比較
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="解決方案比較">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-telescoping-constructor-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Telescoping Constructor Pattern (不推薦)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-javabeans-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. JavaBeans Pattern (不推薦)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-builder-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Builder Pattern (推薦)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#builder-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      Builder pattern
+      Builder Pattern 的優點
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Builder Pattern 的優點">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fluent-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fluent API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-named-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 類似 Named Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 保證物件一致性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      參數驗證
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="參數驗證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Builder 層級驗證
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      物件層級驗證
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      實務建議
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="實務建議">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builder-pattern_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      何時使用 Builder Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡化實作方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      總結
     </span>
   </a>
   
@@ -2461,8 +2602,17 @@
 
 
 <h1 id="item-2-consider-a-builder-when-faced-with-many-constructor-parameters">Item 2: Consider a builder when faced with many constructor parameters</h1>
-<p>static factory method 與 constructor 的缺點是，當有太多參數時，會讓程式碼難以閱讀。這時候，可以考慮使用 builder。</p>
-<h2 id="anti-pattern-telescoping-constructor-pattern">(anti-pattern) telescoping constructor pattern</h2>
+<p>當類別的 constructor 或 static factory method 有太多參數時，會讓程式碼難以閱讀和維護。在這種情況下，Builder pattern 是一個優秀的解決方案。</p>
+<h2 id="_1">問題：參數過多的困擾</h2>
+<p>當一個類別需要很多參數時，傳統的解決方式會遇到以下問題：</p>
+<ul>
+<li><strong>可讀性差</strong>：呼叫時難以理解每個參數的意義</li>
+<li><strong>易出錯</strong>：參數順序容易搞混</li>
+<li><strong>擴展性差</strong>：新增參數時需要修改所有呼叫點</li>
+</ul>
+<h2 id="_2">解決方案比較</h2>
+<h3 id="1-telescoping-constructor-pattern">1. Telescoping Constructor Pattern (不推薦)</h3>
+<p>這是一種常見但不理想的解決方式：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NutritionFacts</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">;</span><span class="w">  </span><span class="c1">// (mL)            required</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">;</span><span class="w">     </span><span class="c1">// (per container) required</span>
@@ -2475,24 +2625,19 @@
 <span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sodium</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sodium</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="n">sodium</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span>
-<span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sodium</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">carbohydrate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sodium</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">carbohydrate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">servingSize</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">servingSize</span><span class="p">;</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">servings</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">servings</span><span class="p">;</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">calories</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">calories</span><span class="p">;</span>
@@ -2502,12 +2647,16 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>範例中的 constructor，比較少參數的 constructor 會呼叫比較多參數的 constructor ，最終都呼叫最多參數的 constructor。</p>
-<p>這種寫法，在 optional field 越多時，會變得越複雜越難以管理，程式碼可能會越難閱讀。</p>
-<h2 id="javabeans-pattern">JavaBeans pattern</h2>
-<p>JavaBean 消除了 telescoping constructor pattern 的問題。</p>
+<p><strong>缺點：</strong></p>
+<ul>
+<li>隨著 optional 參數增加，constructor 數量爆炸式成長</li>
+<li>程式碼可讀性和維護性都很差</li>
+<li>容易傳錯參數位置</li>
+</ul>
+<h3 id="2-javabeans-pattern">2. JavaBeans Pattern (不推薦)</h3>
+<p>使用無參數 constructor 搭配 setter 方法：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NutritionFacts</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Parameters initialized to default values (if any)</span>
+<span class="w">    </span><span class="c1">// 初始化為預設值</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Required; no default value</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Required; no default value</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2519,14 +2668,14 @@
 
 <span class="w">    </span><span class="c1">// Setters</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setServingSize</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">servingSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setServings</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">servings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setCalories</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">calories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFat</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">         </span><span class="p">{</span><span class="w"> </span><span class="n">fat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSodium</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">sodium</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setServings</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="n">servings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setCalories</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="n">calories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFat</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="n">fat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSodium</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="n">sodium</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setCarbohydrate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">carbohydrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>允許一個沒有參數的 constructor，並且透過 setter 設定 field values。</p>
+<p><strong>使用方式：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">NutritionFacts</span><span class="w"> </span><span class="n">cocaCola</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NutritionFacts</span><span class="p">();</span>
 <span class="n">cocaCola</span><span class="p">.</span><span class="na">setServingSize</span><span class="p">(</span><span class="mi">240</span><span class="p">);</span>
 <span class="n">cocaCola</span><span class="p">.</span><span class="na">setServings</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
@@ -2534,14 +2683,15 @@
 <span class="n">cocaCola</span><span class="p">.</span><span class="na">setSodium</span><span class="p">(</span><span class="mi">35</span><span class="p">);</span>
 <span class="n">cocaCola</span><span class="p">.</span><span class="na">setCarbohydrate</span><span class="p">(</span><span class="mi">27</span><span class="p">);</span>
 </code></pre></div>
-<p>JavaBeans pattern 的缺點:</p>
+<p><strong>缺點：</strong></p>
 <ul>
-<li>需要多行程式碼，且物件在建立後可能處於不一致的狀態。</li>
-<li>在狀態不一致的狀態下操作物件可能產生 bug，且難以 debug。</li>
-<li>不保證物件的不可變性(immutable)。</li>
-<li>不保證物件的 thread safety。</li>
+<li><strong>狀態不一致</strong>：物件建立過程中可能處於不完整狀態</li>
+<li><strong>除錯困難</strong>：在不一致狀態下操作可能產生難以追蹤的 bug</li>
+<li><strong>無法保證不可變性</strong>：物件建立後仍可修改</li>
+<li><strong>執行緒安全問題</strong>：需要額外的同步機制</li>
 </ul>
-<h2 id="builder-pattern">Builder pattern</h2>
+<h3 id="3-builder-pattern">3. Builder Pattern (推薦)</h3>
+<p>Builder pattern 結合了前兩種方法的優點，同時避免了它們的缺點：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NutritionFacts</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">;</span>
@@ -2567,17 +2717,20 @@
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">calories</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">calories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w">      </span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"> </span>
+<span class="w">            </span><span class="n">calories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
+
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">fat</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">fat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
+
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">sodium</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">sodium</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
+
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">carbohydrate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">carbohydrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
@@ -2598,21 +2751,78 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>使用方式：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">NutritionFacts</span><span class="w"> </span><span class="n">cocaCola</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NutritionFacts</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">calories</span><span class="p">(</span><span class="mi">100</span><span class="p">).</span><span class="na">sodium</span><span class="p">(</span><span class="mi">35</span><span class="p">).</span><span class="na">carbohydrate</span><span class="p">(</span><span class="mi">27</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+<span class="w">        </span><span class="p">.</span><span class="na">calories</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">sodium</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">carbohydrate</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 </code></pre></div>
-<p>這種 Builder 呼叫 method 回傳自身物件，讓 client 端可以一直接著往下呼叫的寫法稱作 fluent API。</p>
-<div class="admonition tip">
-<p class="admonition-title">使用 Lobmok Builder (<a href="https://projectlombok.org/features/Builder">link</a>) 簡化實作。</p>
-</div>
-<p>提供了一種類似於 Python, Scala 或 kotlin 的 named optional parameter 的寫法。</p>
-<p>validation:</p>
+<h2 id="builder-pattern">Builder Pattern 的優點</h2>
+<h3 id="1-fluent-api">1. Fluent API</h3>
+<p>Builder 的每個方法都回傳自身物件，讓客戶端可以鏈式呼叫，這種寫法稱為 <strong>Fluent API</strong>。</p>
+<h3 id="2-named-parameters">2. 類似 Named Parameters</h3>
+<p>提供了類似於 Python、Scala 或 Kotlin 的 <strong>named optional parameters</strong> 的寫法，讓程式碼更具表達性。</p>
+<h3 id="3">3. 保證物件一致性</h3>
 <ul>
-<li>builder constructor, setter 進行各別參數的檢查</li>
-<li>class constructor 進行整體物件的檢查</li>
-<li>未通過檢查時，拋出 <code>IllegalArgumentException</code></li>
+<li>透過 private constructor 確保只能透過 Builder 建立物件</li>
+<li>物件建立完成後是完整且一致的狀態</li>
+<li>支援不可變物件的建立</li>
 </ul>
-<p>通常，constructor 參數的數量超過四個以上比較適用。並且，多數參數是選填的情況。</p>
+<h2 id="_3">參數驗證</h2>
+<p>建議在兩個地方進行驗證：</p>
+<h3 id="builder">Builder 層級驗證</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">calories</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;calories must be non-negative&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">calories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_4">物件層級驗證</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="nf">NutritionFacts</span><span class="p">(</span><span class="n">Builder</span><span class="w"> </span><span class="n">builder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 個別參數檢查在 Builder 中進行</span>
+<span class="w">    </span><span class="c1">// 這裡進行整體物件的一致性檢查</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">builder</span><span class="p">.</span><span class="na">servingSize</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">servings</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;serving size and servings must be positive&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">servingSize</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">servingSize</span><span class="p">;</span>
+<span class="w">    </span><span class="n">servings</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">servings</span><span class="p">;</span>
+<span class="w">    </span><span class="n">calories</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">calories</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fat</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">fat</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sodium</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">sodium</span><span class="p">;</span>
+<span class="w">    </span><span class="n">carbohydrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">carbohydrate</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_5">實務建議</h2>
+<h3 id="builder-pattern_1">何時使用 Builder Pattern</h3>
+<ul>
+<li><strong>參數數量</strong>：通常 constructor 參數超過 <strong>4 個</strong> 時適用</li>
+<li><strong>可選參數</strong>：大部分參數是可選的情況</li>
+<li><strong>複雜物件</strong>：物件建立邏輯較為複雜</li>
+</ul>
+<h3 id="_6">簡化實作方式</h3>
+<div class="admonition tip">
+<p class="admonition-title">使用 Lombok @Builder</p>
+<p>可以使用 <a href="https://projectlombok.org/features/Builder">Lombok @Builder</a> 註解來自動生成 Builder 程式碼，大幅簡化實作：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Builder</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NutritionFacts</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servingSize</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">servings</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">calories</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fat</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sodium</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">carbohydrate</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="_7">總結</h2>
+<p>Builder pattern 在面對多參數 constructor 時提供了優雅的解決方案：</p>
+<p>✅ <strong>可讀性佳</strong>：程式碼清楚表達每個參數的意義<br />
+✅ <strong>類型安全</strong>：編譯時期就能發現參數錯誤<br />
+✅ <strong>支援不可變性</strong>：建立後無法修改的物件<br />
+✅ <strong>彈性擴展</strong>：新增參數不影響現有程式碼</p>
+<p>雖然需要額外的程式碼，但在複雜物件建立的場景中，這些投資是值得的。</p>
 
 
 
@@ -2635,7 +2845,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月7日 12:21:20 UTC">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月30日 08:25:13 UTC">2025年9月30日</span>
   </span>
 
     
@@ -2698,10 +2908,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

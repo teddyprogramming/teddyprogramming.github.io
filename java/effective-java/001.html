@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1429,12 +1429,183 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="優點">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 提供有意義的名稱
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 不必每次都建立新物件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 可以回傳子類別
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 依據條件回傳不同的子類別
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 在撰寫時類別不必存在
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       限制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="限制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 拋棄繼承能力
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 增加除錯難度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命名慣例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="命名慣例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from" class="md-nav__link">
+    <span class="md-ellipsis">
+      from
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#of" class="md-nav__link">
+    <span class="md-ellipsis">
+      of
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valueof" class="md-nav__link">
+    <span class="md-ellipsis">
+      valueOf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-getinstance" class="md-nav__link">
+    <span class="md-ellipsis">
+      instance / getInstance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-newinstance" class="md-nav__link">
+    <span class="md-ellipsis">
+      create / newInstance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettype" class="md-nav__link">
+    <span class="md-ellipsis">
+      getType
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      newType
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    <span class="md-ellipsis">
+      type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      總結
     </span>
   </a>
   
@@ -2452,167 +2623,116 @@
 
 
 <h1 id="item-1-consider-static-factory-methods-instead-of-constructors">Item 1: Consider static factory methods instead of constructors</h1>
+<p>Static factory methods 是一種替代 constructor 的物件建立方式，提供了許多優點但也有一些限制。</p>
 <h2 id="_1">優點</h2>
-<p>偏好 static factory method 的優點：</p>
-<ol>
-<li>
-<p>可以提供有意義的名稱，幫助閱讀理解的名稱</p>
+<h3 id="1">1. 提供有意義的名稱</h3>
+<p>Static factory methods 可以提供更具表達性的名稱，讓程式碼更容易理解：</p>
 <ul>
-<li><code>BigInteger.probablePrime</code> 比 <code>BigInteger(int, int, Random)</code> 更容易理解。</li>
-<li>constructor 之間只能夠透過參數型別不同來加以區隔，開發人員需要知道這些不同 constructor 對應的實作。但是，他們也可能會記錯而誤用。例如，我們有辦法區分 <code>BigInteger(int[])</code>, <code>BigInteger(int[], int)</code>, <code>BigInteger(int, int[])</code> 他們的不同嗎？</li>
+<li><code>BigInteger.probablePrime()</code> 比 <code>BigInteger(int, int, Random)</code> 更容易理解其用途</li>
+<li>Constructor 只能透過參數型別來區隔，開發人員需要記住不同 constructor 的具體用途</li>
+<li>容易混淆的例子：<code>BigInteger(int[])</code>, <code>BigInteger(int[], int)</code>, <code>BigInteger(int, int[])</code></li>
 </ul>
-</li>
-<li>
-<p>不必每次都建立新物件</p>
+<h3 id="2">2. 不必每次都建立新物件</h3>
+<p>通過 static factory methods 可以控制物件的建立：</p>
 <ul>
-<li>套用 Flyweight pattern, Singleton pattern</li>
-<li>可以避免建立不必要重複的物件</li>
-<li>Instance-controlled class</li>
+<li>套用 <strong>Flyweight pattern</strong> 和 <strong>Singleton pattern</strong></li>
+<li>避免建立不必要的重複物件</li>
+<li>實現 <strong>Instance-controlled class</strong> (實例控制類別)</li>
 </ul>
-</li>
-<li>
-<p>可以回傳 Subclass</p>
+<h3 id="3">3. 可以回傳子類別</h3>
+<p>Static factory methods 能夠回傳宣告回傳型別的任何子類別：</p>
 <ul>
-<li>interface-based frameworks</li>
-<li><a href="https://en.wikiversity.org/wiki/Software_Design/Interface_size">conceptual weight</a>: 開發人員需要掌握多少概念才能夠使用 API</li>
+<li>支援 <strong>interface-based frameworks</strong></li>
+<li>降低 <a href="https://en.wikiversity.org/wiki/Software_Design/Interface_size">conceptual weight</a>：減少開發人員需要掌握的概念</li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Java 8 以前，interface 不能有 static method。在實作上，需要 static factory methods 的 class 會命名成 Type + s，並將 constructor 宣告成 private，例如 <code>Collections</code>, <code>Arrays</code>。</p>
+<p class="admonition-title">Java 8 以前的實作方式</p>
+<p>在 Java 8 以前，interface 不能有 static method。需要 static factory methods 的類別會命名成 <code>Type + s</code> 的形式，並將 constructor 宣告成 private，例如 <code>Collections</code>、<code>Arrays</code>。</p>
 </div>
-</li>
-<li>
-<p>可以依據情況回傳不同的 Subclass</p>
+<h3 id="4">4. 依據條件回傳不同的子類別</h3>
+<p>可以根據輸入參數或執行環境回傳不同的實作類別：</p>
 <ul>
-<li>允許不同的 release 更換 return 的 subclass。</li>
-<li>
-<p><code>EnumSet</code> 的實作，根據 enum 數量的不同，回傳不同的 subclass。回傳的 subclass 與條件是可以改變而不影響呼叫端的。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 示意程式碼</span>
+<li>允許不同版本更換回傳的子類別，而不影響客戶端程式碼</li>
+<li><strong>範例：<code>EnumSet</code> 的實作</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// EnumSet 根據 enum 數量選擇不同的實作</span>
 <span class="kd">class</span> <span class="nc">EnumSet</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">E</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Enum</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">EnumSet</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">noneOf</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elementType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">E</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Enum</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">EnumSet</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">noneOf</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elementType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elementType</span><span class="p">.</span><span class="na">getEnumCount</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RegularEnumSet</span><span class="p">(..)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RegularEnumSet</span><span class="p">(..);</span>
 <span class="w">        </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JumboEnumSet</span><span class="p">(..)</span>
-<span class="w">   </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JumboEnumSet</span><span class="p">(..);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>條件判斷邏輯（如 <code>&lt;= 64</code>）和具體的子類別實作都可以改變，而不會影響呼叫端的程式碼。</p>
+<h3 id="5">5. 在撰寫時類別不必存在</h3>
+<p>這個特性特別適用於 <strong>service provider frameworks</strong>：</p>
 <ul>
-<li>條件 (<code>&lt;= 64</code>) 與 subclass 的實作是可以改變的，而不影響呼叫端的程式碼。</li>
+<li>框架開發者不需要預先知道所有可能的介面實作</li>
+<li>讓介面實作延遲到開發時決定</li>
+<li><strong>JDBC 範例</strong>：<code>Connection</code> interface 可以在開發時透過設定決定具體實作<br />
+  <div class="highlight"><pre><span></span><code><span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+</code></pre></div></li>
+<li>支援 <strong>Bridge pattern</strong></li>
+<li>可以與 <strong>Dependency Injection frameworks</strong> 整合</li>
+<li>可搭配 <code>ServiceLoader</code> 使用</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>
-<p>在撰寫程式碼時，類別不必存在</p>
-<ul>
-<li>利於 service provider frameworks<ul>
-<li>框架開發商不必提前知道所有 interface 可能的實作</li>
-<li>讓 interface 實作延遲到 development time 決定</li>
-<li>例如: JDBC API 的 Connection interface，開發人員可以在開發時在決定具體的 Connection 實作，像是透過 property 設定 Connection 是 MySql <code>spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</code></li>
-</ul>
-</li>
-<li>Bridge pattern</li>
-<li>可以配合 Dependency injection frameworks 使用</li>
-<li><code>ServiceLoader</code></li>
-</ul>
-</li>
-</ol>
 <h2 id="_2">限制</h2>
-<p>偏好 static factory method 的限制：</p>
-<ol>
-<li>
-<p><strong>拋棄繼承</strong>:</p>
+<h3 id="1_1">1. 拋棄繼承能力</h3>
 <ul>
-<li>constructor 被宣告成 <code>private</code> / <code>protected</code>，使得 subclass 無法初始化 superclass，造成無法繼承。</li>
-<li>無法繼承意味著放棄 polymorphism 的特性。</li>
+<li>如果將 constructor 宣告為 <code>private</code> 或 <code>protected</code>，子類別無法初始化父類別，導致無法繼承</li>
+<li>失去繼承能力意味著放棄了 <strong>polymorphism</strong> 的特性</li>
 </ul>
 <div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>如果同時讓 class 保有 static factory methods 並且把 constructor 宣告成 <code>public</code> 呢?</p>
+<p class="admonition-title">思考問題</p>
+<p>如果同時保留 static factory methods 並將 constructor 宣告為 <code>public</code> 會如何？</p>
 </div>
-</li>
-<li>
-<p><strong>增加 debug 難度</strong>:</p>
+<h3 id="2_1">2. 增加除錯難度</h3>
+<p>由於物件建立的邏輯隱藏在 static factory methods 中，除錯時較難直接追蹤：</p>
 <ul>
-<li>因為建立物件的動作隱藏在 static factory methods 裡，所以 debug 時無法直接看到建立物件的地方，以及怎麼被建立的。</li>
-<li>以下幾種命名規則，可以幫助 static factory methods 的理解: (此為列舉而非窮舉)<ul>
-<li><code>from</code><ul>
-<li>type-conversion method: 從 <strong>一個</strong> type 的物件轉換成另一個 type 的物件</li>
-<li>範例:<ul>
-<li><code>Date.from(instant)</code></li>
+<li>無法直接看到物件建立的位置</li>
+<li>難以了解物件的具體建立方式</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><code>of</code><ul>
-<li>aggregation method: 從 <strong>多個</strong> 參數的物件合併成一個 type 的物件</li>
-<li>範例:<ul>
-<li><code>EnumSet.of(JACK, QUEEN, KING)</code></li>
-<li><code>LocalDate.of(2024, 7, 4)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>valueOf</code><ul>
-<li>比 <code>from</code> 與 <code>of</code> 更囉唆一點的版本</li>
-<li>範例:<ul>
-<li><code>Integer.valueOf("100")</code> </li>
-<li><code>Integer.valueOf("100", 2)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>instance</code> / <code>getInstance</code><ul>
-<li>從 <strong>0</strong> 至 <strong>多個</strong> 參數建立物件</li>
-<li>雖然說是 <code>getInstance</code>，但是不保證回傳的是同一個物件</li>
-<li>範例:<ul>
-<li><code>Calendar.getInstance()</code> </li>
-<li><code>Calendar.getInstance(TimeZone.getDefault())</code> </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>create</code> / <code>newInstance</code><ul>
-<li>從 <strong>0</strong> 至 <strong>多個</strong> 參數建立物件</li>
-<li>每次都會建立新的物件</li>
-<li>範例:<ul>
-<li><code>Array.newInstance(Integer.class, 10)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>getType</code><ul>
-<li>回傳的物件是 <code>Type</code> 的 instance</li>
-<li>雖然為 get，但是不保證回傳的是同一個物件</li>
-<li>範例:<ul>
-<li><code>Files.getFileStore(path)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>newType</code><ul>
-<li>回傳的物件是 <code>Type</code> 的 instance</li>
-<li>每次都會建立新的物件</li>
-<li>範例:<ul>
-<li><code>BufferedReader br = Buffer.newBufferedReader(path)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>type</code><ul>
-<li><code>getType</code> 與 <code>newType</code> 的簡化版</li>
-<li>範例:<ul>
-<li><code>Collections.singletonList("apple")</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
+<h2 id="_3">命名慣例</h2>
+<p>為了提高可讀性，以下是常見的 static factory method 命名規則：</p>
+<h3 id="from"><code>from</code></h3>
+<p><strong>型別轉換方法</strong>：從<strong>一個</strong>型別轉換為另一個型別</p>
+<div class="highlight"><pre><span></span><code><span class="n">Date</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">instant</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="of"><code>of</code></h3>
+<p><strong>聚合方法</strong>：從<strong>多個</strong>參數建立物件</p>
+<div class="highlight"><pre><span></span><code><span class="n">EnumSet</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">JACK</span><span class="p">,</span><span class="w"> </span><span class="n">QUEEN</span><span class="p">,</span><span class="w"> </span><span class="n">KING</span><span class="p">)</span>
+<span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="valueof"><code>valueOf</code></h3>
+<p>比 <code>from</code> 和 <code>of</code> 更詳細的版本</p>
+<div class="highlight"><pre><span></span><code><span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">)</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="c1">// 指定進位制</span>
+</code></pre></div>
+<h3 id="instance-getinstance"><code>instance</code> / <code>getInstance</code></h3>
+<p>從<strong>零個</strong>到<strong>多個</strong>參數建立物件，但不保證每次回傳相同物件</p>
+<div class="highlight"><pre><span></span><code><span class="n">Calendar</span><span class="p">.</span><span class="na">getInstance</span><span class="p">()</span>
+<span class="n">Calendar</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">TimeZone</span><span class="p">.</span><span class="na">getDefault</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="create-newinstance"><code>create</code> / <code>newInstance</code></h3>
+<p>從<strong>零個</strong>到<strong>多個</strong>參數建立物件，保證每次建立新物件</p>
+<div class="highlight"><pre><span></span><code><span class="n">Array</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="gettype"><code>getType</code></h3>
+<p>回傳指定型別的物件，但不保證每次回傳相同物件</p>
+<div class="highlight"><pre><span></span><code><span class="n">Files</span><span class="p">.</span><span class="na">getFileStore</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="newtype"><code>newType</code></h3>
+<p>回傳指定型別的新物件，保證每次建立新物件</p>
+<div class="highlight"><pre><span></span><code><span class="n">BufferedReader</span><span class="w"> </span><span class="n">br</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Files</span><span class="p">.</span><span class="na">newBufferedReader</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="type"><code>type</code></h3>
+<p><code>getType</code> 和 <code>newType</code> 的簡化版本</p>
+<div class="highlight"><pre><span></span><code><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">&quot;apple&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_4">總結</h2>
+<p>Static factory methods 是建立物件的有力工具，提供了比 constructor 更大的彈性和表達力。雖然有一些限制，但在大多數情況下，其優點遠超過缺點。建議在設計 API 時優先考慮使用 static factory methods。</p>
 
 
 
@@ -2635,7 +2755,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月7日 05:57:22 UTC">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月30日 08:00:29 UTC">2025年9月30日</span>
   </span>
 
     
@@ -2698,10 +2818,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
