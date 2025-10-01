@@ -6,7 +6,7 @@
         {
             "label": "run serve",
             "type": "shell",
-            "command": "./.venv/bin/python -m mkdocs serve -c -s -a localhost:8880",
+            "command": "./.venv/bin/python -m mkdocs serve --livereload -c -s -a localhost:8880",
             "problemMatcher": []
         },
         {
