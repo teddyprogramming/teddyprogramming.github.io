@@ -1584,37 +1584,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#finalizers" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      什麼是 Finalizers
+      為什麼要避免？
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#finalizer" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Finalizer 的替代方案
+      正確做法
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Finalizer 的替代方案">
+    <nav class="md-nav" aria-label="正確做法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#try-with-resources" class="md-nav__link">
+  <a href="#1-try-with-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      try-with-resources
+      1. Try-with-resources (推薦)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cleaners" class="md-nav__link">
+  <a href="#2-cleaner" class="md-nav__link">
     <span class="md-ellipsis">
-      Cleaners
+      2. Cleaner（僅作安全網）
     </span>
   </a>
   
@@ -1626,9 +1626,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      額外參考
+      重點整理
     </span>
   </a>
   
@@ -2553,153 +2553,58 @@
 
 
 <h1 id="item-8-avoid-finalizers-and-cleaners">Item 8: Avoid finalizers and cleaners</h1>
-<h2 id="finalizers">什麼是 Finalizers</h2>
-<p>finalizer 是 Java 提供的一種 resource 回收機制，作用於 GC (Garbage Collection) 在回收物件前，會呼叫物件的 <code>finalize</code> 方法來釋放 resource。</p>
-<p><img alt="" src="008-timeline.svg" /></p>
-<p>若物件有 resource 需要釋放，就將釋放的程式碼寫在 <code>protected void finalize()</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClassWithFinalizer</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">finalize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// release resource</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<p>避免使用 finalizer 和 cleaner 進行資源管理。</p>
+<h2 id="_1">為什麼要避免？</h2>
+<ul>
+<li><strong>不可靠</strong>：無法保證執行時機</li>
+<li><strong>效能差</strong>：影響 GC 效率</li>
+<li><strong>已棄用</strong>：finalizer 在 Java 9 已標記為過時</li>
+</ul>
+<h2 id="_2">正確做法</h2>
+<h3 id="1-try-with-resources">1. Try-with-resources (推薦)</h3>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 使用資源</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// 自動關閉，即使發生例外</span>
 </code></pre></div>
-<p>Finalizer 有 Security, Reliability, Performance 風險，不建議使用，並被棄用。在 Java 9 被標記為 deprecated 且為 removal。</p>
-<h2 id="finalizer">Finalizer 的替代方案</h2>
-<p>不使用 finalizer 可以使用 <code>try-finally</code> 替代。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">FileInputStream</span><span class="w">  </span><span class="n">input</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="n">FileOutputStream</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file2</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// ... copy bytes from input to output ...</span>
-
-<span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">output</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">output</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// ignore exception</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">input</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// ignore exception</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<p>程式碼中，在 <code>try</code> 區塊中建立 resource，並在 <code>finally</code> 區塊中釋放 resource。因為 <code>try</code> 區塊中不止一個 resource，所以在 <code>finally</code> 區塊中要分別釋放。為了避免釋放 resource 時發生例外影響其他 resource 的釋放，所以在釋放 resource 時要用 <code>try-catch</code> 包住，忽略例外。</p>
-<p>這樣的寫法真的是又臭又長。</p>
-<h3 id="try-with-resources">try-with-resources</h3>
-<p>Java 7 新增的 try-with-resources 可以用來釋放 resource，改進上面所提到的 <code>try-finally</code> 的寫法。等價寫法如下:</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file1</span><span class="p">);</span>
-<span class="w">     </span><span class="n">FileOutputStream</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ... copy bytes from input to output ...</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="cleaners">Cleaners</h3>
-<p>try-with-resource 不適用在生命週期長的 resource，Java 9 新增了 Cleaner 用來釋放長生命週期的 resource。</p>
-<p>Cleaner 允許註冊 release action 的動作，當物件 unreachable 時，Cleaner 會執行 release action。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CleaningExample</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
+<h3 id="2-cleaner">2. Cleaner（僅作安全網）</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ResourceManager</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Cleaner</span><span class="w"> </span><span class="n">cleaner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cleaner</span><span class="p">.</span><span class="na">create</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">State</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Runnable</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="n">State</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 準備清理動作所需要的資料。</span>
-<span class="w">        </span><span class="p">}</span>
-
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CleanAction</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Runnable</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 執行清理動作，最多執行一次。</span>
+<span class="w">            </span><span class="c1">// 清理動作，不能參考外部物件</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Cleaner</span><span class="p">.</span><span class="na">Cleanable</span><span class="w"> </span><span class="n">cleanable</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CleaningExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">State</span><span class="p">(...);</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cleanable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cleaner</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ResourceManager</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cleanable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cleaner</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CleanAction</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nd">@Override</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">cleanable</span><span class="p">.</span><span class="na">clean</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
+<p><strong>重點</strong>：Cleaner 只是安全網，主要還是要靠 try-with-resources。</p>
+<h2 id="_3">重點整理</h2>
+<p>✅ <strong>應該做</strong>：</p>
 <ul>
-<li><code>State</code> 稱作 clean action，實作 <code>Runnable</code> 介面，負責執行釋放 resource 的動作。</li>
-<li><code>CleaningExample</code> 實作 <code>AutoCloseable</code> 介面，負責註冊 clean action。當物件變得 unreachable 時，clean action 會被執行。<ul>
-<li>注意，clean action 不要回去參考 <code>AutoCloseable</code> 物件，否則會讓 unreachable 狀態永遠無法達到。</li>
+<li>實作 <code>AutoCloseable</code></li>
+<li>使用 try-with-resources</li>
+<li>提供明確的 <code>close()</code> 方法</li>
 </ul>
-</li>
-<li>向 cleaner 註冊 clean action 後回傳 <code>Cleanable</code> 物件，用來執行 clean action。<ul>
-<li>最有效率的做法是在 resource 不需要時，呼叫 <code>clean()</code> 來執行 clean action。(第 23-25 行)</li>
-</ul>
-</li>
-<li>clean action 在 cleaner 的 thread 中執行，所有 clean action 拋出的例外都會被忽略。所以 clean action 的例外不會影響其他的 clean action。</li>
-<li><code>AutoClosable</code> 註冊的所有 clean action 都執行完畢，GC 才會回收物件。</li>
-<li>Clean action 可以用 lambda 來實作，但會很容易不小心參考到 <code>AutoCloseable</code> 物件。所以按範例實作成 nested static class 可以避免這種錯誤。</li>
-</ul>
-<p>如果依賴 cleaner 自動執行 clean action，要注意的是，不能保證在 <code>System.exit</code> (包含程式正常結束) 是否會被執行。因此，有可能程式結束了，但是 clean action 並沒有執行。</p>
-<p>另外，cleaner 受 GC 排程，也會有 Reliability 與 Performance 的問題。</p>
-<p>簡單來說，應避免使用 finalizer 與 cleaner。</p>
-<h2 id="_1">額外參考</h2>
+<p>❌ <strong>不要做</strong>：</p>
 <ul>
-<li><a href="https://openjdk.org/jeps/421">JEP 421: Deprecate Finalization for Removal</a></li>
+<li>依賴 finalizer 或 cleaner 釋放資源</li>
+<li>在清理動作中參考主物件 (會導致 memory leak)</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">核心原則</p>
+<p>資源管理應該明確且可預測，不要依賴 GC 的不可預測行為。</p>
+</div>
 
 
 
@@ -2722,7 +2627,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月14日 10:51:08 UTC">2024年7月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年10月1日 06:41:45 UTC">2025年10月1日</span>
   </span>
 
     

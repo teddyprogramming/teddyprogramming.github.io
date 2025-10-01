@@ -1609,44 +1609,35 @@
         <li class="md-nav__item">
   <a href="#try-with-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      使用 try-with-resources
+      為什麼使用 try-with-resources？
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="使用 try-with-resources">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本使用方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本使用方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#try-with-multiple-resources" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      try with multiple resources
+      單一資源
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#try-close" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      try 區塊發生例外: close 方法依然會被呼叫
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#finally" class="md-nav__link">
-    <span class="md-ellipsis">
-      finally 區塊發生例外
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#try-finally-close-suppress" class="md-nav__link">
-    <span class="md-ellipsis">
-      try 區塊與 finally 區塊都發生例外: close 方法的例外會被 Suppress
+      多個資源
     </span>
   </a>
   
@@ -1654,6 +1645,57 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      例外處理優勢詳解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例外處理優勢詳解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      try-finally 的問題：重要例外被隱藏
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-with-resources_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      try-with-resources 的解決方案：保留重要訊息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      為什麼這很重要？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      重點整理
+    </span>
+  </a>
   
 </li>
       
@@ -2553,163 +2595,81 @@
 
 
 <h1 id="item-9-prefer-try-with-resources-to-try-finally">Item 9: Prefer try-with-resources to try-finally</h1>
-<p>使用 <code>try-finally</code> 可以確保資源可以正常被關閉，但如同 <a href="008.html">Item 8</a> 所述，這樣的寫法會讓程式碼變得冗長且難以閱讀，而且較複雜的狀況可能會造成例外覆蓋難以除錯。</p>
-<p>Java 7 引入了 try-with-resources 來解決這個問題，這個語法可以讓程式碼更簡潔且易讀。類別需實作 <code>AutoCloseable</code> 介面，並實作 <code>close</code> 方法，這樣就可以在 try-with-resources 中使用。</p>
-<h2 id="try-with-resources">使用 try-with-resources</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (1)!</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">(){</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (2)!</span>
-<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<p>使用 try-with-resources 取代 try-finally 來管理資源。</p>
+<h2 id="try-with-resources">為什麼使用 try-with-resources？</h2>
+<ul>
+<li><strong>程式碼更簡潔</strong>：自動管理資源關閉</li>
+<li><strong>例外處理更好</strong>：不會遺失原始例外訊息</li>
+<li><strong>避免資源洩漏</strong>：確保資源正確關閉</li>
+</ul>
+<h2 id="_1">基本使用方式</h2>
+<h3 id="_2">單一資源</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 類別需實作 AutoCloseable</span>
+<span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 使用資源</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// 自動呼叫 close()，即使發生例外</span>
 </code></pre></div>
-<ol>
-<li><code>SimpleAutoCloseable</code> 實作 <code>AutoCloseable</code> 介面，並實作 <code>close</code> 方法。</li>
-<li>在 <code>try</code> 括號中宣告 <code>SimpleAutoCloseable</code> 物件，在 try 區塊結束時，無論有無發生例外，都會自動呼叫 <code>close</code> 方法。</li>
-</ol>
-<p>程式的執行結果</p>
-<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
-SimpleAutoCloseable.close()
-</code></pre></div>
-<h3 id="try-with-multiple-resources">try with multiple resources</h3>
+<h3 id="_3">多個資源</h3>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file1</span><span class="p">);</span>
 <span class="w">     </span><span class="n">FileOutputStream</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// 使用多個資源</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// 按相反順序自動關閉</span>
 </code></pre></div>
-<h3 id="try-close"><code>try</code> 區塊發生例外: <code>close</code> 方法依然會被呼叫</h3>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">(){</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
-<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in doIo()&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// (1)!</span>
-</span><span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol>
-<li>故意在 <code>doIo</code> 方法中拋出例外，這會造成 <code>try</code> 區塊在呼叫時發生例外。</li>
-</ol>
-<p>程式的執行結果:</p>
-<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
-SimpleAutoCloseable.close()
-Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in doIo()
-    at ...
-</code></pre></div>
-<p>如果要捕捉 <code>doIo</code> 方法的例外，可以在 <code>try</code> 增加 <code>catch</code> 區塊。</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">try</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="w">    </span><span class="c1">// ...</span>
-<span class="hll"><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">    </span><span class="c1">// handle exception</span>
-</span><span class="hll"><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="finally"><code>finally</code> 區塊發生例外</h3>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">(){</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
-<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in close()&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// (1)!</span>
-</span><span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol>
-<li>故意在 <code>close</code> 方法中拋出例外，會造成 <code>try</code> 區塊結束後執行的 <code>close</code> 方法發生例外。</li>
-</ol>
-<p>執行結果:</p>
-<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
-SimpleAutoCloseable.close()
-Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in close()
-    at ... 
-</code></pre></div>
-<p>如果要捕捉 <code>doIo</code> 方法的例外，可以在 <code>try</code> 增加 <code>catch</code> 區塊。</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">try</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="w">    </span><span class="c1">// ...</span>
-<span class="hll"><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">    </span><span class="c1">// handle exception</span>
-</span><span class="hll"><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="try-finally-close-suppress"><code>try</code> 區塊與 <code>finally</code> 區塊都發生例外: <code>close</code> 方法的例外會被 Suppress</h3>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleAutoCloseable</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doIo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.doIo()&quot;</span><span class="p">);</span>
-<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in doIo()&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// (1)!</span>
-</span><span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleAutoCloseable.close()&quot;</span><span class="p">);</span>
-<span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in close()&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// (2)!</span>
-</span><span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">SimpleAutoCloseable</span><span class="w"> </span><span class="n">sac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleAutoCloseable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">sac</span><span class="p">.</span><span class="na">doIo</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol>
-<li>故意在 <code>doIo</code> 方法中拋出例外，這會造成 <code>try</code> 區塊在呼叫時發生例外。</li>
-<li>故意在 <code>close</code> 方法中拋出例外，會造成 <code>try</code> 區塊結束後執行的 <code>close</code> 方法發生例外。</li>
-</ol>
-<p>執行結果:</p>
-<div class="highlight"><pre><span></span><code>SimpleAutoCloseable.doIo()
-SimpleAutoCloseable.close()
-Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in doIo()
-    at ...
-    Suppressed: java.lang.RuntimeException: Exception in close()
-        at ...
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">try-finally 的例外覆蓋行為</p>
-<p>值得關注的是，try-with-resource 發生多個例外的行為，與 try-catch-finally 的多個例外行為不同。(Java 21)</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in try block&quot;</span><span class="p">);</span>
+<h2 id="_4">例外處理優勢詳解</h2>
+<p>假設我們在處理檔案時遇到問題：</p>
+<h3 id="try-finally">try-finally 的問題：重要例外被隱藏</h3>
+<div class="highlight"><pre><span></span><code><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;不存在的檔案.txt&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 這裡會拋出 FileNotFoundException</span>
 <span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Exception in finally block&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">input</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"> </span><span class="c1">// 假設這裡也拋出 IOException</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>執行結果</p>
-<div class="highlight"><pre><span></span><code>Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in finally block
-    at ...
+<p><strong>結果</strong>：只會看到 <code>finally</code> 區塊的 <code>IOException</code>，真正的原因 <code>FileNotFoundException</code> 被隱藏了！</p>
+<h3 id="try-with-resources_1">try-with-resources 的解決方案：保留重要訊息</h3>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;不存在的檔案.txt&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 這裡會拋出 FileNotFoundException</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// close() 假設也拋出 IOException</span>
 </code></pre></div>
-<p>這種情況，<code>try</code> 的例外訊息遺失了，這會造成<strong>除錯上的困難</strong>。而 try-with-resource 的例外行為，會將 <code>try</code> 的例外訊息保留下來，並將 <code>finally</code> 的例外訊息以 suppressed 的方式附加在後面。</p>
+<p><strong>結果</strong>：</p>
+<ul>
+<li>主要例外：<code>FileNotFoundException</code> (真正的問題原因)</li>
+<li>Suppressed：<code>IOException</code>（附加資訊，不會遮蔽主要問題）</li>
+</ul>
+<h3 id="_5">為什麼這很重要？</h3>
+<p>想像你在除錯一個複雜的應用程式：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ try-finally：看到的錯誤訊息</span>
+<span class="n">Exception</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="p">:</span><span class="w"> </span><span class="n">Stream</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileInputStream</span><span class="p">.</span><span class="na">close</span><span class="p">(...)</span>
+
+<span class="c1">// 你會想：「為什麼 stream 是 closed？」</span>
+<span class="c1">// 但真正的問題（檔案不存在）被隱藏了！</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ try-with-resources：看到的錯誤訊息</span>
+<span class="n">Exception</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileNotFoundException</span><span class="p">:</span><span class="w"> </span><span class="n">不存在的檔案</span><span class="p">.</span><span class="na">txt</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileInputStream</span><span class="p">.</span><span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(...)</span>
+<span class="w">    </span><span class="n">Suppressed</span><span class="p">:</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="p">:</span><span class="w"> </span><span class="n">Stream</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">        </span><span class="n">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">FileInputStream</span><span class="p">.</span><span class="na">close</span><span class="p">(...)</span>
+
+<span class="c1">// 你立刻知道：「檔案不存在」是真正的問題！</span>
+</code></pre></div>
+<h2 id="_6">重點整理</h2>
+<p>✅ <strong>優勢</strong>：</p>
+<ul>
+<li>程式碼簡潔，自動資源管理</li>
+<li>正確的例外處理（不會遺失重要例外）</li>
+<li>支援多個資源同時管理</li>
+</ul>
+<p>✅ <strong>使用條件</strong>：</p>
+<ul>
+<li>資源類別必須實作 <code>AutoCloseable</code> 介面</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">最佳實務</p>
+<p>優先使用 try-with-resources，只有在無法使用時才考慮 try-finally。</p>
 </div>
 
 
@@ -2733,7 +2693,7 @@ Exception in thread &quot;main&quot; java.lang.RuntimeException: Exception in do
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月14日 14:15:49 UTC">2024年7月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年10月1日 06:48:13 UTC">2025年10月1日</span>
   </span>
 
     
