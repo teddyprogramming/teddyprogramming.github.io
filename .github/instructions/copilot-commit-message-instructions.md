@@ -7,7 +7,7 @@
 ### 基本格式
 
 ```
-<type>([optional scope]): <description>
+<type>: <description>
 
 [optional body]
 
@@ -17,9 +17,9 @@
 ### 範例
 
 ```
-feat(java): add effective java item 5 notes
+feat: add effective java item 5 notes
 docs: update documentation instructions
-fix(css): correct mobile responsive layout
+fix: correct mobile responsive layout
 ```
 
 ## Type 類型說明
@@ -37,69 +37,53 @@ fix(css): correct mobile responsive layout
 | `test` | 測試相關 | `test: add unit tests` |
 | `perf` | 效能優化 | `perf: optimize image loading` |
 
-## Scope 範圍（可選）
-
-用來指定變更的範圍或模組：
-
-- `java` - Java 相關筆記
-- `python` - Python 相關筆記
-- `docs` - 文檔相關
-- `css` - 樣式相關
-- `config` - 配置檔案
-- `blog` - 部落格文章
-
 ## 實際範例
 
 ### 新增內容
 
 ```bash
-feat(java): add effective java item 1-5 notes
-feat(blog): add post about dependency injection
-feat(docs): add clean architecture chapter 7
+feat: add effective java item 1-5 notes
+feat: add post about dependency injection
+feat: add clean architecture chapter 7
 ```
 
 ### 修正錯誤
 
 ```bash
-fix(java): correct code example in singleton pattern
-fix(css): resolve mobile layout issues
-fix(docs): fix broken links in navigation
+fix: correct code example in singleton pattern
+fix: resolve mobile layout issues
+fix: fix broken links in navigation
 ```
 
 ### 文檔更新
 
 ```bash
 docs: update project README
-docs(instructions): add commit message guidelines
+docs: add commit message guidelines
 docs: reorganize folder structure explanation
 ```
 
 ### 重構和整理
 
 ```bash
-refactor(java): simplify dependency injection examples
-style(docs): improve markdown formatting
+refactor: simplify dependency injection examples
+style: improve markdown formatting
 chore: organize file structure
 ```
 
 ## 撰寫原則
 
-### 1. 使用繁體中文
-
-- **Description 使用繁體中文**：`feat: 新增 Java 筆記`
-- **Body 詳細說明可用中文**
-
-### 2. 動詞使用現在式
+### 1. 動詞使用現在式
 
 - ✅ `add`、`update`、`fix`、`remove`
 - ❌ `added`、`updated`、`fixed`、`removed`
 
-### 3. 首字母小寫
+### 2. 首字母小寫
 
 - ✅ `feat: add new feature`
 - ❌ `feat: Add new feature`
 
-### 4. 簡潔明確
+### 3. 簡潔明確
 
 - 描述要具體說明做了什麼
 - 避免過於籠統的描述
@@ -117,19 +101,19 @@ chore: organize file structure
 
 ```bash
 # 新增文章或筆記
-feat(java): 新增 effective java item 6 筆記
+feat: add effective java item 6 notes
 
 # 整理既有內容
-refactor(docs): 重新整理 dependency injection 說明
+refactor: reorganize dependency injection explanation
 
 # 修正內容錯誤
-fix(java): 修正 builder pattern 程式碼範例
+fix: correct builder pattern code example
 
 # 更新文檔結構
-docs: 更新文檔撰寫指引
+docs: update documentation guidelines
 
 # 樣式和格式調整
-style: 統一程式碼區塊格式
+style: standardize code block formatting
 ```
 
 這樣的規範讓 commit 歷史更清楚，也便於後續維護和回顧變更。
