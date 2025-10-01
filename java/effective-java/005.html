@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1474,6 +1474,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Item 5 - Prefer dependency injection to hardwiring resources
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="005.html" class="md-nav__link md-nav__link--active">
         
   
@@ -1485,6 +1498,100 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題：寫死資源依賴
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="問題：寫死資源依賴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-utility-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ 錯誤方式：Static Utility 或 Singleton
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 解決方案：Dependency Injection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 解決方案：Dependency Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本實作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他實作方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#di" class="md-nav__link">
+    <span class="md-ellipsis">
+      DI 框架
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      總結
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2470,49 +2577,85 @@
 
 
 <h1 id="item-5-prefer-dependency-injection-to-hardwiring-resources">Item 5: Prefer dependency injection to hardwiring resources</h1>
-<p>實作拼字檢查物件，以下兩種實作方法有可以更好的空間：</p>
-<p>1: Utility class</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of static utility - inflexible &amp; untestable!</span>
+<p>當類別依賴於底層資源時，不要使用 singleton 或 static utility class。相反地，應該將資源透過 constructor (或 static factory 或 builder) 傳入，這種技術稱為 <strong>dependency injection</strong>。</p>
+<h2 id="_1">問題：寫死資源依賴</h2>
+<p>考慮拼字檢查器的實作：</p>
+<h3 id="static-utility-singleton">❌ 錯誤方式：Static Utility 或 Singleton</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 錯誤：寫死依賴</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EnglishDictionary</span><span class="p">();</span><span class="w"> </span><span class="c1">// 寫死！</span>
 
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Noninstantiable</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">word</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>2: Singleton</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Inappropriate use of singleton - inflexible &amp; untestable!</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(...)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">SpellChecker</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(...);</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">讓物件變成不可繼承會增加測試的難度</p>
-</div>
-<p>使用 dependency injection 比較好:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Dependency injection provides flexibility and testability</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<p><strong>問題：</strong></p>
+<ul>
+<li>缺乏彈性：只能使用英文字典</li>
+<li>難以測試：無法使用 mock 物件</li>
+<li>違反單一職責：同時管理資源和提供功能</li>
+</ul>
+<h2 id="dependency-injection">✅ 解決方案：Dependency Injection</h2>
+<h3 id="_2">基本實作</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(</span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">dictionary</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">suggestions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">typo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">word</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用方式</span>
+<span class="n">SpellChecker</span><span class="w"> </span><span class="n">englishChecker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EnglishDictionary</span><span class="p">());</span>
+<span class="n">SpellChecker</span><span class="w"> </span><span class="n">frenchChecker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FrenchDictionary</span><span class="p">());</span>
+</code></pre></div>
+<h3 id="_3">其他實作方式</h3>
+<p><strong>Static Factory：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">SpellChecker</span><span class="w"> </span><span class="nf">createEnglishChecker</span><span class="p">(</span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// 預設不區分大小寫</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>常見的 Dependency injection framework: Dagger, Guice, Spring</p>
-<p>另一個替代方法是使用 Factory Method。</p>
-<p>總的來說，不要使用 singleton 或 static utility class 來實作有 resource dependency 的物件，這樣會讓物件變得不靈活，難以測試。</p>
+<p><strong>Builder Pattern：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">SpellChecker</span><span class="w"> </span><span class="n">checker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpellChecker</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">caseSensitive</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">maxSuggestions</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>Factory Method：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(</span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">Lexicon</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dictionaryFactory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dictionaryFactory</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="di">DI 框架</h2>
+<p>複雜應用可使用 DI 框架：Spring、Guice、Dagger</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpellChecker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SpellChecker</span><span class="p">(</span><span class="n">Lexicon</span><span class="w"> </span><span class="n">dictionary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dictionary</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_4">總結</h2>
+<div class="admonition tip">
+<p class="admonition-title">核心原則</p>
+<p><strong>不要使用 singleton 或 static utility class 來實作依賴於底層資源的類別</strong>。</p>
+</div>
+<p><strong>優點：</strong></p>
+<p>✅ 彈性：支援多種實作<br />
+✅ 可測試性：可注入 mock 物件<br />
+✅ 可重用性：同一類別配合不同資源</p>
+<p><strong>方式選擇：</strong></p>
+<ul>
+<li>簡單依賴：Constructor Injection</li>
+<li>預設配置：Static Factory</li>
+<li>複雜配置：Builder Pattern</li>
+</ul>
 
 
 
@@ -2535,7 +2678,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月7日 15:24:17 UTC">2024年7月7日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年10月1日 03:08:37 UTC">2025年10月1日</span>
   </span>
 
     
