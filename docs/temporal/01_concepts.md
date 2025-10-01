@@ -1,80 +1,53 @@
 # Temporal 核心概念
 
-## Temporal 應用架構
+## 核心元件
 
-### 核心元件
+**Workflow**：業務邏輯的執行流程
 
-- **Workflow**：Temporal 的核心抽象概念
-    - 代表業務邏輯的執行步驟序列
-    - 必須是**確定性的** (deterministic)
-    - 在 Java SDK 中定義為方法
+- 必須是**確定性的 (deterministic)**
+- 定義整個業務流程的步驟
 
-- **Activity**：封裝不可靠或非確定性的程式碼
-    - 失敗時自動重試
-    - 適合處理 I/O、外部 API 呼叫等
+**Activity**：處理不可靠或非確定性的操作
 
-- **Worker**：執行 Workflow 和 Activity 的程式
-    - 輪詢 Temporal Cluster 的 Task Queue
-    - 由 SDK 提供實作，應用程式負責配置
+- 封裝 I/O、外部 API 呼叫等
+- 自動重試機制
 
-### 架構圖解
+**Worker**：執行 Workflow 和 Activity 的程式
 
-![Temporal 應用架構](01_01.png)
+- 輪詢 Temporal Cluster 的 Task Queue
 
-![應用程式與 Cluster 的關係](01_05.png)
 
 ## 錯誤處理機制
 
-### Activity 錯誤處理
+### Activity 重試
 
-#### Activity 失敗與重試機制
+**自動重試**：
 
-- Activity 拋出 Exception 時，Temporal 會根據 Retry Policy 自動重試
-- 預設使用指數退避策略：1秒、2秒、4秒...，最多等待 100 秒
-- 重試會持續直到：成功執行、明確取消或逾時
+- 預設指數 backoff：1秒、2秒、4秒...（最多 100 秒）
+- 持續重試直到成功、取消或逾時
 
-自訂重試策略：
-
+**自訂重試策略**：
 ```java
-// 設定重試次數或例外不重試
-RetryOptions criticalRetry = RetryOptions.newBuilder()
+RetryOptions.newBuilder()
     .setMaximumAttempts(10)
     .setDoNotRetry("com.example.DatabaseCorruptionException")
     .build();
 ```
 
-#### Activity 設計原則
+**重要原則**：
 
-**冪等性要求**：
-
-- Activity 可能被執行多次，必須設計為冪等操作
+- Activity 必須設計為 **idempotent**
 - 相同輸入多次執行應產生相同結果
-- 避免重複效果 (如重複扣款、重複寄信)
-
-**自動恢復機制**：
-
-- 暫時性錯誤 (網路中斷)：重試後自動恢復
-- 程式碼錯誤 (語法錯誤)：修正並重新部署後自動恢復
 
 ### Workflow 錯誤處理
 
-#### Workflow vs Activity 錯誤處理
+| 類型 | Activity | Workflow |
+|------|----------|----------|
+| 重試機制 | 預設指數 backoff 重試 | 無預設重試 |
+| 一般 Exception | 自動重試 | 重試整個 Task |
+| TemporalFailure | - | 直接標記失敗 |
 
-| 特性 | Activity | Workflow |
-| ---- | -------- | -------- |
-| 預設重試機制 | 有預設重試策略<br>(指數退避) | 無預設重試策略<br>(依例外類型處理) |
-| 例外處理方式 | 透過 RetryPolicy 設定重試次數和間隔 | 一般 Exception 重試整個 Task<br>TemporalFailure 直接標記失敗 |
-
-#### Exception 分類與行為
-
-- **Workflow Task Failure**：一般 Java Exception
-    - 結果：Temporal 重試整個 Workflow Task
-
-- **Workflow Execution Failure**：`TemporalFailure` 或 `ApplicationFailure.newFailure()`
-    - 結果：Workflow 直接標記失敗，不再重試
-
-明確終止 Workflow 範例：
-
+**明確終止 Workflow**：
 ```java
 if (distance.getKilometers() > 25) {
   throw ApplicationFailure.newFailure(
@@ -84,17 +57,11 @@ if (distance.getKilometers() > 25) {
 }
 ```
 
-### 跨語言例外處理
+### 跨語言支援
 
-#### 例外轉換機制
+**例外轉換**：自動將語言特定例外轉換為通用的 `ApplicationFailure`
 
-- Temporal 自動將語言特定例外轉換為通用的 `ApplicationFailure`
-- 例如：Java 的 `IOException` → `ActivityFailure(ApplicationFailure(IOException))`
-- 優點：支援跨語言呼叫 (如 TypeScript Workflow + Python Activity)
-
-#### 簡化例外處理
-
-使用 `Activity.wrap()` 處理 Checked Exception：
+**簡化處理**：
 
 ```java
 try {
@@ -103,9 +70,3 @@ try {
   throw Activity.wrap(e);  // 轉為 ActivityFailure
 }
 ```
-
-#### 核心設計理念
-
-- **跨語言相容**：統一錯誤格式
-- **簡化開發**：降低處理 Checked Exception 的複雜度
-- **保留類型資訊**：便於準確識別錯誤來源
