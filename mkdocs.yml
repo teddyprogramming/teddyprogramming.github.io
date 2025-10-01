@@ -93,6 +93,7 @@ nav:
       - Microservices with Spring Boot 3 and Spring Cloud: kata/Microservices with Spring Boot 3 and Spring Cloud - Third Edition/index.md
   - Temporal:
       - 01 Concepts: temporal/01_concepts.md
+      - 02 Imporving Your Temporal Application Code: temporal/02_imporving_your_temporal_application_code.md
   - Blog: blog/index.md
 
 markdown_extensions:
