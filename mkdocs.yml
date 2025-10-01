@@ -94,6 +94,7 @@ nav:
   - Temporal:
       - 01 Concepts: temporal/01_concepts.md
       - 02 Imporving Your Temporal Application Code: temporal/02_imporving_your_temporal_application_code.md
+      - 03 Using Timers in a Workflow Definition: temporal/03_using_timers_in_a_workflow_definition.md
   - Blog: blog/index.md
 
 markdown_extensions:
