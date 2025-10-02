@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="hello_world.html">
+        <link rel="prev" href="04_understanding_event_history.html">
       
       
-        <link rel="next" href="../testing/index.html">
+        <link rel="next" href="../blog/index.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
     
     
       
-        <title>JDBC JobStore - Teddy 的筆記本</title>
+        <title>05 Understanding Workflow Determinism - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,11 +46,11 @@
       
     
     
-      <link rel="stylesheet" href="../../css/style.css">
+      <link rel="stylesheet" href="../css/style.css">
     
-      <link rel="stylesheet" href="../../termynal.css">
+      <link rel="stylesheet" href="../termynal.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quartz-jdbc-jobstore" class="md-skip">
+        <a href="#workflow" class="md-skip">
           跳轉到
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JDBC JobStore
+              05 Understanding Workflow Determinism
             
           </span>
         </div>
@@ -204,7 +204,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -298,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../development/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   
@@ -321,7 +321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/jet-brains/postfix-completion.html" class="md-nav__link">
+      <a href="../development/jet-brains/postfix-completion.html" class="md-nav__link">
         
   
   
@@ -390,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/zsh.html" class="md-nav__link">
+      <a href="../development/vim/zsh.html" class="md-nav__link">
         
   
   
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/vscode.html" class="md-nav__link">
+      <a href="../development/vim/vscode.html" class="md-nav__link">
         
   
   
@@ -436,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/ideavim.html" class="md-nav__link">
+      <a href="../development/vim/ideavim.html" class="md-nav__link">
         
   
   
@@ -459,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/neovim.html" class="md-nav__link">
+      <a href="../development/vim/neovim.html" class="md-nav__link">
         
   
   
@@ -482,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/advanced.html" class="md-nav__link">
+      <a href="../development/vim/advanced.html" class="md-nav__link">
         
   
   
@@ -513,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/terminal.html" class="md-nav__link">
+      <a href="../development/terminal.html" class="md-nav__link">
         
   
   
@@ -619,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/backend.html" class="md-nav__link">
+      <a href="../devops/terraform/backend.html" class="md-nav__link">
         
   
   
@@ -642,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/import_infrastructure.html" class="md-nav__link">
+      <a href="../devops/terraform/import_infrastructure.html" class="md-nav__link">
         
   
   
@@ -665,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/intro_to_terraform.html" class="md-nav__link">
+      <a href="../devops/terraform/intro_to_terraform.html" class="md-nav__link">
         
   
   
@@ -688,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/state.html" class="md-nav__link">
+      <a href="../devops/terraform/state.html" class="md-nav__link">
         
   
   
@@ -711,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/style_guide.html" class="md-nav__link">
+      <a href="../devops/terraform/style_guide.html" class="md-nav__link">
         
   
   
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/workspaces.html" class="md-nav__link">
+      <a href="../devops/terraform/workspaces.html" class="md-nav__link">
         
   
   
@@ -803,7 +803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/apply.html" class="md-nav__link">
+      <a href="../kubernetes/apply.html" class="md-nav__link">
         
   
   
@@ -826,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   
@@ -902,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
         
   
   
@@ -925,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   
@@ -948,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   
@@ -971,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+      <a href="../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
         
   
   
@@ -994,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
+      <a href="../domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   
@@ -1017,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+      <a href="../domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
         
   
   
@@ -1040,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/07-using-the-language-an-extended-example.html" class="md-nav__link">
+      <a href="../domain-driven-design/07-using-the-language-an-extended-example.html" class="md-nav__link">
         
   
   
@@ -1063,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/08-breakthrough.html" class="md-nav__link">
+      <a href="../domain-driven-design/08-breakthrough.html" class="md-nav__link">
         
   
   
@@ -1086,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/09-making-implicit-concepts-explicit.html" class="md-nav__link">
+      <a href="../domain-driven-design/09-making-implicit-concepts-explicit.html" class="md-nav__link">
         
   
   
@@ -1109,7 +1109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/10-supple-design.html" class="md-nav__link">
+      <a href="../domain-driven-design/10-supple-design.html" class="md-nav__link">
         
   
   
@@ -1177,7 +1177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/07-srp.html" class="md-nav__link">
+      <a href="../clean-architecture/07-srp.html" class="md-nav__link">
         
   
   
@@ -1200,7 +1200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/22-clean-architecture.html" class="md-nav__link">
+      <a href="../clean-architecture/22-clean-architecture.html" class="md-nav__link">
         
   
   
@@ -1223,7 +1223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   
@@ -1367,7 +1367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   
@@ -1390,7 +1390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   
@@ -1413,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   
@@ -1436,7 +1436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   
@@ -1459,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   
@@ -1482,7 +1482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   
@@ -1505,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   
@@ -1528,7 +1528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   
@@ -1551,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   
@@ -1620,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   
@@ -1643,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   
@@ -1666,7 +1666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/012.html" class="md-nav__link">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   
@@ -1689,7 +1689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   
@@ -1712,7 +1712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   
@@ -1781,7 +1781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   
@@ -1804,7 +1804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   
@@ -1873,7 +1873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/effective-java/055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   
@@ -1957,7 +1957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/pyenv.html" class="md-nav__link">
+      <a href="../python/pyenv.html" class="md-nav__link">
         
   
   
@@ -1984,20 +1984,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2013,7 +2011,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Spring Boot
@@ -2024,20 +2022,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
         
           
           <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
@@ -2053,7 +2049,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             Scheduler
@@ -2064,20 +2060,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_1" >
         
           
           <label class="md-nav__link" for="__nav_7_1_1" id="__nav_7_1_1_label" tabindex="0">
@@ -2093,7 +2087,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_1_1">
             <span class="md-nav__icon md-icon"></span>
             Quartz
@@ -2107,7 +2101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   
@@ -2127,32 +2121,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    JDBC JobStore
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="jdbc_job_store.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   
@@ -2163,86 +2135,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#job" class="md-nav__link">
-    <span class="md-ellipsis">
-      簡單的 Job 範例
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      探討: 執行時間超過下一次排程的時間的行為
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="探討: 執行時間超過下一次排程的時間的行為">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#disallowconcurrentexecution" class="md-nav__link">
-    <span class="md-ellipsis">
-      使用@DisallowConcurrentExecution 來避免重疊執行
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trigger" class="md-nav__link">
-    <span class="md-ellipsis">
-      計算排程的時間與觸發的時間差來忽略錯過的 trigger
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#job_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      探討: Job 執行過程發生錯誤的行為
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      參考
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2271,7 +2163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   
@@ -2332,7 +2224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
+      <a href="../spring-boot/microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
         
   
   
@@ -2370,7 +2262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../feature-toggles/main.html" class="md-nav__link">
+      <a href="../feature-toggles/main.html" class="md-nav__link">
         
   
   
@@ -2430,7 +2322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html" class="md-nav__link">
+      <a href="../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html" class="md-nav__link">
         
   
   
@@ -2457,18 +2349,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -2484,7 +2378,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             Temporal
@@ -2498,7 +2392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/01_concepts.html" class="md-nav__link">
+      <a href="01_concepts.html" class="md-nav__link">
         
   
   
@@ -2521,7 +2415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/02_imporving_your_temporal_application_code.html" class="md-nav__link">
+      <a href="02_imporving_your_temporal_application_code.html" class="md-nav__link">
         
   
   
@@ -2544,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/03_using_timers_in_a_workflow_definition.html" class="md-nav__link">
+      <a href="03_using_timers_in_a_workflow_definition.html" class="md-nav__link">
         
   
   
@@ -2567,7 +2461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/04_understanding_event_history.html" class="md-nav__link">
+      <a href="04_understanding_event_history.html" class="md-nav__link">
         
   
   
@@ -2587,10 +2481,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../temporal/05_understanding_workflow_determinism.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    05 Understanding Workflow Determinism
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="05_understanding_workflow_determinism.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2601,6 +2517,293 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      History Replay 機制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="History Replay 機制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      持久執行保證
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repl-reset-validateorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repl// Reset 策略：選擇 validateOrder 之前的安全點
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replay 特性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      確定性要求
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="確定性要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      確定性驗證流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      驗證機制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      非確定性來源與解決方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="非確定性來源與解決方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚫 常見問題清單
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      詳細範例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="詳細範例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 隨機數處理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 時間處理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 集合遍歷
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      部署與相容性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="部署與相容性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 相容性評估標準
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型問題場景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      錯誤症狀
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Reset 機制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Reset 機制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      概念與用途
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Reset 操作步驟
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Reset 操作步驟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web UI 操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令列操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Reset 注意事項
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      實際案例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      監控重點
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2622,7 +2825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   
@@ -2653,279 +2856,308 @@
 
 
 
-<h1 id="quartz-jdbc-jobstore">Quartz: JDBC JobStore</h1>
-<h2 id="job">簡單的 Job 範例</h2>
-<p>以下範例展示，在 Spring Boot 中如何設定 Quartz 使用 JDBC JobStore。如此一來，我們把 Job 放到 cluster 上執行。</p>
-<p>在 <code>build.gradle.kts</code> 中新增 <code>spring-boot-starter-quartz</code> 相依套件。如此，程式啟動後就會有一個 Quartz Scheduler 在背景執行。</p>
-<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.springframework.boot:spring-boot-starter-quartz&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>使用 docker compose 執行 mysql。</p>
-<div class="highlight"><span class="filename">compose.yml</span><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.1&#39;</span>
-
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.4.0</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3306:3306&quot;</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quartz</span>
-</code></pre></div>
-<p>設定 spring boot 的 properties。</p>
-<div class="highlight"><span class="filename">src/main/resources/application.yml</span><pre><span></span><code><span class="nt">spring</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w"> </span><span class="c1">#(1)!</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datasource</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/quartz</span>
-<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">    </span><span class="nt">password</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span>
-<span class="w">  </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">job-store-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc</span><span class="w"> </span><span class="c1">#(2)!</span>
-<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">initialize-schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"> </span><span class="c1">#(3)!</span>
-<span class="w">    </span><span class="nt">overwrite-existing-jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">org</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">scheduler</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">instanceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduler</span>
-<span class="w">            </span><span class="nt">instanceId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AUTO</span><span class="w"> </span><span class="c1">#(4)!</span>
-<span class="w">          </span><span class="nt">dataSource</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">quartzDataSource</span><span class="p">:</span><span class="w"> </span><span class="c1">#(5)!</span>
-<span class="w">              </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span>
-<span class="w">              </span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/quartz</span>
-<span class="w">              </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">              </span><span class="nt">password</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hikaricp</span>
-<span class="w">          </span><span class="nt">jobStore</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.quartz.impl.jdbcjobstore.JobStoreTX</span>
-<span class="w">            </span><span class="nt">dataSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quartzDataSource</span><span class="w"> </span><span class="c1">#(5)!</span>
-<span class="w">            </span><span class="nt">isClustered</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1">#(6)!</span>
-</code></pre></div>
-<ol>
-<li><code>spring.quartz.jdbc.initialize-schema</code> 吃的 Data Source 設定。在 <code>spring.quartz.properties.org.quartz.dataSource</code> 設定的 Data Source 不支援 initialize schema。</li>
-<li>使用 JDBC JobStore。</li>
-<li>每次啟動都會初始化 schema。換句話說，我們可以不必手動新增 quartz 相關的 tables。(<a href="https://github.com/quartz-scheduler/quartz/tree/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore">SQL 參考</a>)</li>
-<li>在 cluster 上的 pod 需要有唯一的 instance id。這裡設定 <code>AUTO</code> 即可達到需求。</li>
-<li>data source 的設定。這裡的名稱會在下面設定 job store 的 dataSource 參考。</li>
-<li>job store 使用的 dataSource。</li>
-<li>啟用 cluster。</li>
-</ol>
-<details class="tip">
-<summary>使用變數來避免重複設定</summary>
-<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">org</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">dataSource</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">quartzDataSource</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.driver-class-name}</span>
-<span class="w">              </span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.url}</span>
-<span class="w">              </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.username}</span>
-<span class="w">              </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.password}</span>
-</code></pre></div>
-</details>
-<p>新增 <code>Job</code> 實作，簡單的在畫面輸出現在的時間以及 "Hello World!"。印出時間是為了幫助我們識別這是哪個時間點所觸發的 Job。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">jobExecutionContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">&quot;hh:mm:ss&quot;</span><span class="p">));</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">time</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; Hello World!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>新增 <code>JobDetail</code> 和 <code>Trigger</code> 的 Bean 定義。這裡設定每 10 秒觸發一次 Job 在畫面上輸出 "Hello World!"。</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">QuartzConfig</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nd">@Bean</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JobDetail</span><span class="w"> </span><span class="nf">helloWorldJobDetail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">JobBuilder</span><span class="p">.</span><span class="na">newJob</span><span class="p">(</span><span class="n">HelloWorldJob</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">withIdentity</span><span class="p">(</span><span class="s">&quot;helloWorldJob&quot;</span><span class="p">)</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">storeDurably</span><span class="p">()</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nd">@Bean</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="nf">helloWorldTrigger</span><span class="p">(</span><span class="n">JobDetail</span><span class="w"> </span><span class="n">helloWorldJobDetail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TriggerBuilder</span><span class="p">.</span><span class="na">newTrigger</span><span class="p">()</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">forJob</span><span class="p">(</span><span class="n">helloWorldJobDetail</span><span class="p">)</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">withIdentity</span><span class="p">(</span><span class="s">&quot;helloWorldTrigger&quot;</span><span class="p">)</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">withSchedule</span><span class="p">(</span><span class="n">CronScheduleBuilder</span><span class="p">.</span><span class="na">cronSchedule</span><span class="p">(</span><span class="s">&quot;*/10 * * * * ?&quot;</span><span class="p">))</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>為了可以同時執行多個 instance，我們將程式打包成 tar 檔。專案的目錄 /build/libs 應該會產生 xxx.jar 檔。</p>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>bootJar
-</code></pre></div>
-<p>打開 3 個 terminal，分別執行以下指令執行程式: (xxx 替換成實際檔案名稱)</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/xxx.jar
-</code></pre></div>
-<p>觀察每 10 秒只會有一個 terminal 輸出 "Hello World!"。這表示 Job 是在 cluster 上執行的。將輸出訊息的 terminal 關閉，可以觀察到其他 terminal 會接續執行輸出 "Hello World!" 的 Job。</p>
+<h1 id="workflow">Workflow 確定性原理與實務</h1>
 <div class="admonition note">
-<p class="admonition-title">一個 trigger 一個 job instance 的設定</p>
-<p><code>org.quartz.scheduler.batchTriggerAcquisitionMaxCount</code> 預設值為 1 設定了 Trigger 的 job 一次執行一個 instance。可以設定其他數值來讓同一 trigger 同時執行多個 job。</p>
+<p class="admonition-title">筆記重點</p>
+<p>Temporal Workflow 的確定性是核心要求 - 相同輸入必須產生相同的 Commands 序列。涵蓋確定性原理、常見陷阱、部署注意事項和錯誤恢復方法。</p>
 </div>
-<h2 id="_1">探討: 執行時間超過下一次排程的時間的行為</h2>
-<p>假設我們設定每 10 秒跑一個 job。並且，每個 job 執行時間需要 15 秒。也就是說，job 的執行時間必定會覆蓋到下一次觸發的時間。在沒有特別設定的情況下，經過 30 秒後，將會有 3 個 job 被跑起來。job 與 job 的時間時間是會重疊的。</p>
-<div class="highlight"><pre><span></span><code>@startgantt
-[T1] happens D+0
-Separator just at [T1]&#39;s start
-
-[T2] happens D+10
-[T2] displays on same row as [T1]
-Separator just at [T2]&#39;s start
-
-[T3] happens D+20
-[T3] displays on same row as [T1]
-Separator just at [T3]&#39;s start
-
-[T4] happens D+30
-[T4] displays on same row as [T1]
-Separator just at [T4]&#39;s start
-
-[Job 1] starts D+0
-[Job 2] starts D+10
-[Job 3] starts D+20
-[Job 1] requires 15 days
-[Job 2] requires 15 days
-[Job 3] requires 15 days
-@endgantt
-</code></pre></div>
-<h3 id="disallowconcurrentexecution">使用<code>@DisallowConcurrentExecution</code> 來避免重疊執行</h3>
-<p>在 Job 的宣告加上 <code>@DisallowConcurrentExecution</code> 來避免 Job 重疊執行。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="hll"><span class="nd">@DisallowConcurrentExecution</span>
-</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>如此，當 Job 還在執行時，下一次的 Job 將會被延遲到上一次的 Job 執行完畢後再執行。變更後的<br />
-3 個 Job 執行時間軸參考下圖:</p>
-<div class="highlight"><pre><span></span><code>@startgantt
-[T1] happens D+0
-Separator just at [T1]&#39;s start
-
-[T2] happens D+10
-[T2] displays on same row as [T1]
-Separator just at [T2]&#39;s start
-
-[T3] happens D+20
-[T3] displays on same row as [T1]
-Separator just at [T3]&#39;s start
-
-[T4] happens D+30
-[T4] displays on same row as [T1]
-Separator just at [T4]&#39;s start
-
-[T5] happens D+40
-[T5] displays on same row as [T1]
-Separator just at [T5]&#39;s start
-
-[Job 1] starts D+0
-note bottom
-Trigger by T1
-end note
-[Job 2] starts D+15
-note bottom
-Trigger by T2
-end note
-[Job 3] starts D+30
-note bottom
-Trigger by T3
-end note
-
-[Job 1] requires 15 days
-[Job 2] requires 15 days
-[Job 3] requires 15 days
-
-@endgantt
-</code></pre></div>
-<h3 id="trigger">計算排程的時間與觸發的時間差來忽略錯過的 trigger</h3>
-<p>在 <code>Job.execute</code> 開始前，檢查 job 觸發的時間與排程的時間差，如果超過一定時間，則忽略這次的 trigger。範例中是時間差超過 1000 毫秒 (1 秒) 就忽略這次的 trigger。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="nd">@DisallowConcurrentExecution</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">getFireTime</span><span class="p">().</span><span class="na">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getScheduledFireTime</span><span class="p">().</span><span class="na">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">  </span><span class="c1">// skip this trigger</span>
-</span><span class="hll"><span class="w">        </span><span class="p">}</span>
-</span><span class="w">        </span><span class="c1">// ...</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>如此，trigger 的 job 都會落在排程設定的時間點上。變更後的 Job 執行時間軸參考下圖:</p>
-<div class="highlight"><pre><span></span><code>@startgantt
-[T1] happens D+0
-Separator just at [T1]&#39;s start
-
-[T2] happens D+10
-[T2] displays on same row as [T1]
-Separator just at [T2]&#39;s start
-
-[T3] happens D+20
-[T3] displays on same row as [T1]
-Separator just at [T3]&#39;s start
-
-[T4] happens D+30
-[T4] displays on same row as [T1]
-Separator just at [T4]&#39;s start
-
-[T5] happens D+40
-[T5] displays on same row as [T1]
-Separator just at [T5]&#39;s start
-
-[T6] happens D+50
-[T6] displays on same row as [T1]
-Separator just at [T6]&#39;s start
-
-[Job 1] starts D+0
-[Job 2] starts D+15
-note bottom
-Trigger by T2
-skipped
-end note
-[Job 3] starts D+20
-[Job 4] starts D+35
-note bottom
-Trigger by T4
-skipped
-end note
-[Job 5] starts D+40
-
-[Job 1] requires 15 days
-[Job 3] requires 15 days
-[Job 5] requires 15 days
-
-@endgantt
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>目前沒有發現官方對於此方案的解法。這裡的解法有土法煉鋼的感覺。</p>
-</div>
-<h2 id="job_1">探討: Job 執行過程發生錯誤的行為</h2>
-<p>在 Job 執行過程中，如果拋出例外，Job 即中斷執行。如果拋出的例外是 <code>JobExecutionException</code> 並設定 <code>refireImmediately</code> 為 <code>true</code>，則 Job 會立即重新執行，並且下一次 <code>JobExecutionContext.getRefireCount()</code> 數字累加。<br />
-以下程式碼展示當 Job 失敗拋出例外時， retry 3 次。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="nd">@DisallowConcurrentExecution</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">getRefireCount</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JobExecutionException</span><span class="p">(</span><span class="s">&quot;Too many re-fires&quot;</span><span class="p">);</span>
-</span><span class="hll"><span class="w">        </span><span class="p">}</span>
-</span>
-<span class="w">        </span><span class="c1">// ...</span>
-
-<span class="hll"><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JobExecutionException</span><span class="p">(</span><span class="s">&quot;Something goes wrong&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
-</span><span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="_2">參考</h2>
+<h2 id="history-replay">History Replay 機制</h2>
+<h3 id="_1">持久執行保證</h3>
+<p>Temporal 確保程式碼可靠執行，即使面臨：</p>
 <ul>
-<li><a href="https://docs.spring.io/spring-boot/reference/io/quartz.html">Sprint Boot Quartz Scheduler</a></li>
-<li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.2.2/configuration/ConfigJDBCJobStoreClustering.html">Quartz Configuration - Configure Clustering with JDBC-JobStore</a> </li>
+<li>Worker 當掉</li>
+<li>伺服器重啟</li>
+<li>網路中斷</li>
 </ul>
+<h3 id="repl-reset-validateorder">Repl// Reset 策略：選擇 validateOrder 之前的安全點</h3>
+<p>// 這樣新執行就不會期望找到被移除的 validateOrder Activity<br />
+<div class="highlight"><pre><span></span><code>Worker 當掉 → 新 Worker 接管 → 載入 Event History → 重新執行程式碼 → 恢復狀態 → 從中斷點繼續
+</code></pre></div></p>
+<h3 id="replay">Replay 特性</h3>
+<table>
+<thead>
+<tr>
+<th>組件</th>
+<th>原始執行</th>
+<th>Replay 執行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>日誌</strong></td>
+<td>正常輸出</td>
+<td>抑制重複輸出</td>
+</tr>
+<tr>
+<td><strong>Activity</strong></td>
+<td>實際執行</td>
+<td>使用歷史結果</td>
+</tr>
+<tr>
+<td><strong>Timer</strong></td>
+<td>設定計時器</td>
+<td>基於歷史狀態</td>
+</tr>
+<tr>
+<td><strong>變數</strong></td>
+<td>計算產生</td>
+<td>重建相同狀態</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">確定性要求</h2>
+<div class="admonition important">
+<p class="admonition-title">確定性定義</p>
+<p><strong>相同輸入 → 相同 Commands → 相同順序</strong></p>
+<p>給定相同輸入，Workflow 每次執行都必須產生相同的 Commands 序列。</p>
+</div>
+<h3 id="_3">確定性驗證流程</h3>
+<div class="highlight"><pre><span></span><code>原始執行：Input → [Command1, Command2, Command3] → Events
+Replay 執行：Input → [Command1, Command2, Command3] → ✅ 狀態恢復成功
+
+非確定性：Input → [Command1, Command3] → ❌ Commands 不匹配
+</code></pre></div>
+<h3 id="_4">驗證機制</h3>
+<ol>
+<li><strong>Event History 分析</strong>：Worker 從 Events 推導期望的 Commands</li>
+<li><strong>程式碼執行</strong>：重新執行程式碼產生實際 Commands</li>
+<li><strong>Commands 比對</strong>：驗證期望與實際是否一致</li>
+<li><strong>錯誤處理</strong>：不一致時拋出非確定性錯誤</li>
+</ol>
+<h2 id="_5">非確定性來源與解決方案</h2>
+<h3 id="_6">🚫 常見問題清單</h3>
+<table>
+<thead>
+<tr>
+<th>問題類型</th>
+<th>⚠️ 需注意</th>
+<th>✅ 確定性做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>隨機數</strong></td>
+<td><code>random.nextInt()</code></td>
+<td>Activity 中產生</td>
+</tr>
+<tr>
+<td><strong>系統時間</strong></td>
+<td><code>System.currentTimeMillis()</code></td>
+<td><code>Workflow.currentTimeMillis()</code></td>
+</tr>
+<tr>
+<td><strong>執行緒</strong></td>
+<td><code>Thread.sleep()</code></td>
+<td><code>Workflow.sleep()</code></td>
+</tr>
+<tr>
+<td><strong>外部狀態</strong></td>
+<td>直接存取資料庫</td>
+<td>Activity 中存取</td>
+</tr>
+<tr>
+<td><strong>遍歷順序</strong></td>
+<td><code>HashMap.keySet()</code></td>
+<td><code>LinkedHashMap.keySet()</code> 或排序</td>
+</tr>
+<tr>
+<td><strong>Run ID</strong></td>
+<td>條件判斷中使用</td>
+<td>避免使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">詳細範例</h3>
+<h4 id="1">1. 隨機數處理</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ 錯誤：每次 Replay 產生不同值</span>
+<span class="nd">@WorkflowMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">randomId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">().</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">randomId</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">callExpressDelivery</span><span class="p">();</span><span class="w"> </span><span class="c1">// 非確定性分支</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">callStandardDelivery</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ 正確：透過 Activity 取得確定性值</span>
+<span class="nd">@WorkflowMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">randomId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generateRandomId</span><span class="p">();</span><span class="w"> </span><span class="c1">// Activity call</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">randomId</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">callExpressDelivery</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">callStandardDelivery</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2">2. 時間處理</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ 錯誤：Replay 時時間不同</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofHours</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="na">toMillis</span><span class="p">();</span>
+
+<span class="c1">// ✅ 正確：使用 Workflow 時間</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Workflow</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofHours</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="na">toMillis</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="3">3. 集合遍歷</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// ⚠️ 需注意：HashMap 遍歷順序不確定</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">processItem</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"> </span><span class="c1">// 在 Workflow 中順序可能影響確定性</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ 確定性做法：使用有序集合或排序</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="c1">// 或者排序後遍歷</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sortedKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">keySet</span><span class="p">().</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">sorted</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+</code></pre></div>
+<h2 id="_8">部署與相容性</h2>
+<h3 id="_9">🔍 相容性評估標準</h3>
+<div class="admonition question">
+<p class="admonition-title">關鍵問題</p>
+<p>新版本程式碼是否會產生與舊版本不同的 Commands 序列？</p>
+</div>
+<h3 id="_10">典型問題場景</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 原始版本</span>
+<span class="nd">@WorkflowMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">validateOrder</span><span class="p">();</span><span class="w">     </span><span class="c1">// Activity 1</span>
+<span class="w">    </span><span class="n">checkInventory</span><span class="p">();</span><span class="w">    </span><span class="c1">// Activity 2</span>
+<span class="w">    </span><span class="n">processPayment</span><span class="p">();</span><span class="w">    </span><span class="c1">// Activity 3</span>
+<span class="p">}</span>
+
+<span class="c1">// 🔴 危險變更：移除 Activity</span>
+<span class="nd">@WorkflowMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// validateOrder();  // 刪除此行</span>
+<span class="w">    </span><span class="n">checkInventory</span><span class="p">();</span>
+<span class="w">    </span><span class="n">processPayment</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ 安全變更：修改 Activity 內部</span>
+<span class="nd">@ActivityMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 修改驗證邏輯（不影響 Commands）</span>
+<span class="w">    </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Enhanced validation&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ... 新的驗證邏輯</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_11">錯誤症狀</h3>
+<p>當部署不相容變更時會出現：</p>
+<ul>
+<li>Workflow 執行卡住或失敗</li>
+<li>Worker 日誌出現 NonDeterministicError</li>
+<li>Web UI 中 Workflow 狀態顯示異常</li>
+<li>無法繼續處理後續任務</li>
+</ul>
+<h2 id="workflow-reset">Workflow Reset 機制</h2>
+<h3 id="_12">概念與用途</h3>
+<p>Workflow Reset 是從錯誤部署中恢復的重要工具，它會：</p>
+<ol>
+<li><strong>終止當前執行</strong>：停止有問題的 Workflow</li>
+<li><strong>建立新執行</strong>：從指定的 Event History 點重新開始</li>
+<li><strong>保留部分歷史</strong>：Reset 點之前的 Events 會保留</li>
+</ol>
+<h3 id="reset">🔧 Reset 操作步驟</h3>
+<h4 id="web-ui">Web UI 操作</h4>
+<div class="highlight"><pre><span></span><code>1. 開啟 Workflow 詳情頁面
+2. 點選 &quot;Reset&quot; 按鈕
+3. 選擇適當的 Event ID
+   ├─ 通常選擇錯誤發生前的最後一個安全點
+   ├─ 如：WorkflowTaskCompleted Event
+   └─ 避免選擇 ActivityTaskScheduled 等中間狀態
+4. 輸入 Reset 原因
+5. 確認執行
+</code></pre></div>
+<h4 id="_13">命令列操作</h4>
+<div class="highlight"><pre><span></span><code>temporal<span class="w"> </span>workflow<span class="w"> </span>reset<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--workflow-id<span class="w"> </span><span class="s2">&quot;pizza-workflow-order-XD001&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--event-id<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--reason<span class="w"> </span><span class="s2">&quot;Deployed incompatible change (deleted Activity)&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>default
+</code></pre></div>
+<h3 id="reset_1">⚠️ Reset 注意事項</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>說明</th>
+<th>影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Event 保留</strong></td>
+<td>只保留 Reset 點之前的 Events</td>
+<td>之後的進度會遺失</td>
+</tr>
+<tr>
+<td><strong>重新執行</strong></td>
+<td>Reset 點之後的所有邏輯重新執行</td>
+<td>可能產生重複的副作用</td>
+</tr>
+<tr>
+<td><strong>新執行</strong></td>
+<td>Reset 會建立全新的執行，原執行被終止</td>
+<td>原執行和新執行分開記錄</td>
+</tr>
+<tr>
+<td><strong>Activity 重複</strong></td>
+<td>已完成的 Activity 可能重新執行</td>
+<td>需要考慮冪等性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">實際案例</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 問題場景：移除了 validateOrder Activity</span>
+<span class="c1">// 原始版本</span>
+<span class="nd">@WorkflowMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">validateOrder</span><span class="p">();</span><span class="w">     </span><span class="c1">// Event ID 3: ActivityTaskScheduled</span>
+<span class="w">                        </span><span class="c1">// Event ID 4: ActivityTaskCompleted</span>
+<span class="w">    </span><span class="n">processPayment</span><span class="p">();</span><span class="w">    </span><span class="c1">// Event ID 5: ActivityTaskScheduled</span>
+<span class="p">}</span>
+
+<span class="c1">// 新版本（有問題）</span>
+<span class="nd">@WorkflowMethod</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// validateOrder(); // 被移除！</span>
+<span class="w">    </span><span class="n">processPayment</span><span class="p">();</span><span class="w">    </span><span class="c1">// 現在是第一個 Activity</span>
+<span class="p">}</span>
+
+<span class="c1">// Reset 策略：選擇 validateOrder 之前的安全點</span>
+<span class="c1">// 這樣新執行就不會期望找到被移除的 validateOrder Activity</span>
+</code></pre></div>
+<h3 id="_15">監控重點</h3>
+<table>
+<thead>
+<tr>
+<th>監控項目</th>
+<th>指標</th>
+<th>處理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>非確定性錯誤</strong></td>
+<td>錯誤日誌</td>
+<td>立即 Reset</td>
+</tr>
+<tr>
+<td><strong>執行中 Workflow</strong></td>
+<td>數量統計</td>
+<td>部署前確認</td>
+</tr>
+<tr>
+<td><strong>Reset 操作</strong></td>
+<td>頻率追蹤</td>
+<td>分析根本原因</td>
+</tr>
+<tr>
+<td><strong>部署影響</strong></td>
+<td>成功率</td>
+<td>回滾準備</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2948,7 +3180,7 @@ end note
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月29日 17:23:07 UTC">2024年7月29日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年10月2日 10:08:25 UTC">2025年10月2日</span>
   </span>
 
     
@@ -2958,7 +3190,7 @@ end note
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月1日 07:51:59 UTC">2024年7月1日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年10月2日 10:08:25 UTC">2025年10月2日</span>
   </span>
 
     
@@ -3011,14 +3243,14 @@ end note
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../termynal.js"></script>
+        <script src="../termynal.js"></script>
       
     
   </body>
