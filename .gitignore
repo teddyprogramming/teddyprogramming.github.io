@@ -4,3 +4,4 @@
 *.svg.bkp
 /docs/drawio-exporter
 .venv
+.python-version
