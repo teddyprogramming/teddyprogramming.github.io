@@ -57,32 +57,7 @@ Domain model
 
 Object diagram
 
-```plantuml
-object "0012946 : Purchase Order" as po {
-  approved limit = 1000
-}
-
-object "Guitars : Part" as g {
-  price = 100
-}
-
-object "Trombones : Part" as t {
-  price = 200
-}
-
-object "001 : Purchase Order Line Item" as i1 {
-  quantity = 3
-}
-
-object "002 : Purchase Order Line Item" as i2 {
-  quantity = 2
-}
-
-po -d-> i1
-po -d-> i2
-i1 -d- g
-i2 -d- t
-```
+![Purchase Order Object Diagram](purchase-order-object-diagram.png){width=70%}
 
 #### 操作期間忽略其他資料庫變化造成的問題
 

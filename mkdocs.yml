@@ -144,7 +144,7 @@ plugins:
   - termynal
   - include_dir_to_nav
 
-copyright: Copyright &copy; 2024-2025 Teddy Lee
+copyright: Copyright &copy; 2024-2026 Teddy Lee
 extra:
   generator: false
 

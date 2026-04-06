@@ -1,0 +1,54 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="ch10" id="pJ0AJxrQVDLw_MrD9zSt">
+    <mxGraphModel dx="541" dy="418" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-1" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;" value="0012946 :Purchase Order" vertex="1">
+          <mxGeometry height="30" width="150" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-11" edge="1" parent="1" source="L7V9--JSrlWPO2Yo0rMZ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="L7V9--JSrlWPO2Yo0rMZ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-2" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;align=left;verticalAlign=top;spacingLeft=4;" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;approved limit = 1000&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="150" x="80" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-3" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;" value="Guitars&amp;nbsp;:Part" vertex="1">
+          <mxGeometry height="30" width="95" x="345" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-4" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;align=left;verticalAlign=top;spacingLeft=4;" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;price = 100&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="95" x="345" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-5" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;" value="Trombones&amp;nbsp;:Part" vertex="1">
+          <mxGeometry height="30" width="110" x="345" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-6" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;align=left;verticalAlign=top;spacingLeft=4;" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;price = 200&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="110" x="345" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-7" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;" value="001 :Purchase Order Line Item" vertex="1">
+          <mxGeometry height="30" width="170" x="150" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-8" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;align=left;verticalAlign=top;spacingLeft=4;" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;quantity = 3&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="170" x="150" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-9" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;" value="002 :Purchase Order Line Item" vertex="1">
+          <mxGeometry height="30" width="170" x="150" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-10" parent="1" style="whiteSpace=wrap;html=1;fontStyle=1;fontFamily=palatino;horizontal=1;align=left;verticalAlign=top;spacingLeft=4;" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;quantity = 2&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="170" x="150" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="L7V9--JSrlWPO2Yo0rMZ-13" edge="1" parent="1" source="L7V9--JSrlWPO2Yo0rMZ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="L7V9--JSrlWPO2Yo0rMZ-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="118" y="185" />
+              <mxPoint x="118" y="185" />
+              <mxPoint x="118" y="230" />
+            </Array>
+            <mxPoint x="100" y="185" as="sourcePoint" />
+            <mxPoint x="150" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
