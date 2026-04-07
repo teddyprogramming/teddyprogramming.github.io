@@ -9,28 +9,28 @@
       
       
       
-        <link rel="prev" href="011.html">
+        <link rel="prev" href="../kubernetes/pod-topology-spread-constraints.html">
       
       
-        <link rel="next" href="013.html">
+        <link rel="next" href="01-crunching-knowledge.html">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Item 12 = Always override toString - Teddy 的筆記本</title>
+        <title>Aggregate - Teddy 的筆記本</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,11 +49,11 @@
       
     
     
-      <link rel="stylesheet" href="../../css/style.css">
+      <link rel="stylesheet" href="../css/style.css">
     
-      <link rel="stylesheet" href="../../termynal.css">
+      <link rel="stylesheet" href="../termynal.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#item-12-always-override-tostring" class="md-skip">
+        <a href="#aggregate" class="md-skip">
           跳轉到
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../.." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-header__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Item 12 = Always override toString
+              Aggregate
             
           </span>
         </div>
@@ -206,7 +206,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
+    <a href=".." title="Teddy 的筆記本" class="md-nav__button md-logo" aria-label="Teddy 的筆記本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -318,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/jet-brains/shortcuts.html" class="md-nav__link">
+      <a href="../development/jet-brains/shortcuts.html" class="md-nav__link">
         
   
   
@@ -346,7 +346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/jet-brains/postfix-completion.html" class="md-nav__link">
+      <a href="../development/jet-brains/postfix-completion.html" class="md-nav__link">
         
   
   
@@ -429,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/zsh.html" class="md-nav__link">
+      <a href="../development/vim/zsh.html" class="md-nav__link">
         
   
   
@@ -457,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/vscode.html" class="md-nav__link">
+      <a href="../development/vim/vscode.html" class="md-nav__link">
         
   
   
@@ -485,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/ideavim.html" class="md-nav__link">
+      <a href="../development/vim/ideavim.html" class="md-nav__link">
         
   
   
@@ -513,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/neovim.html" class="md-nav__link">
+      <a href="../development/vim/neovim.html" class="md-nav__link">
         
   
   
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/vim/advanced.html" class="md-nav__link">
+      <a href="../development/vim/advanced.html" class="md-nav__link">
         
   
   
@@ -577,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/terminal.html" class="md-nav__link">
+      <a href="../development/terminal.html" class="md-nav__link">
         
   
   
@@ -706,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/backend.html" class="md-nav__link">
+      <a href="../devops/terraform/backend.html" class="md-nav__link">
         
   
   
@@ -734,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/import_infrastructure.html" class="md-nav__link">
+      <a href="../devops/terraform/import_infrastructure.html" class="md-nav__link">
         
   
   
@@ -762,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/intro_to_terraform.html" class="md-nav__link">
+      <a href="../devops/terraform/intro_to_terraform.html" class="md-nav__link">
         
   
   
@@ -790,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/state.html" class="md-nav__link">
+      <a href="../devops/terraform/state.html" class="md-nav__link">
         
   
   
@@ -818,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/style_guide.html" class="md-nav__link">
+      <a href="../devops/terraform/style_guide.html" class="md-nav__link">
         
   
   
@@ -846,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../devops/terraform/workspaces.html" class="md-nav__link">
+      <a href="../devops/terraform/workspaces.html" class="md-nav__link">
         
   
   
@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/apply.html" class="md-nav__link">
+      <a href="../kubernetes/apply.html" class="md-nav__link">
         
   
   
@@ -957,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
+      <a href="../kubernetes/pod-topology-spread-constraints.html" class="md-nav__link">
         
   
   
@@ -997,18 +997,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -1029,7 +1031,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1044,10 +1046,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../domain-driven-design/aggregate.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aggregate
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="aggregate.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1063,6 +1092,148 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#car" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汽車 (Car)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purchase-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        採購訂單 (Purchase Order)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggregate-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregate Root 的基本結構
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跨 Aggregate 的引用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository 只為 Root 提供查詢
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1075,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="01-crunching-knowledge.html" class="md-nav__link">
         
   
   
@@ -1103,7 +1274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   
@@ -1131,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   
@@ -1159,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+      <a href="04-isolating-the-domain.html" class="md-nav__link">
         
   
   
@@ -1187,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
+      <a href="05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   
@@ -1215,7 +1386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+      <a href="06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
         
   
   
@@ -1243,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/07-using-the-language-an-extended-example.html" class="md-nav__link">
+      <a href="07-using-the-language-an-extended-example.html" class="md-nav__link">
         
   
   
@@ -1271,7 +1442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/08-breakthrough.html" class="md-nav__link">
+      <a href="08-breakthrough.html" class="md-nav__link">
         
   
   
@@ -1299,7 +1470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/09-making-implicit-concepts-explicit.html" class="md-nav__link">
+      <a href="09-making-implicit-concepts-explicit.html" class="md-nav__link">
         
   
   
@@ -1327,7 +1498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/10-supple-design.html" class="md-nav__link">
+      <a href="10-supple-design.html" class="md-nav__link">
         
   
   
@@ -1409,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/07-srp.html" class="md-nav__link">
+      <a href="../clean-architecture/07-srp.html" class="md-nav__link">
         
   
   
@@ -1437,7 +1608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/22-clean-architecture.html" class="md-nav__link">
+      <a href="../clean-architecture/22-clean-architecture.html" class="md-nav__link">
         
   
   
@@ -1465,7 +1636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../clean-architecture/34.html" class="md-nav__link">
+      <a href="../clean-architecture/34.html" class="md-nav__link">
         
   
   
@@ -1497,20 +1668,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1531,7 +1700,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1546,20 +1715,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -1580,7 +1747,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1645,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="001.html" class="md-nav__link">
+      <a href="../java/effective-java/001.html" class="md-nav__link">
         
   
   
@@ -1673,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="002.html" class="md-nav__link">
+      <a href="../java/effective-java/002.html" class="md-nav__link">
         
   
   
@@ -1701,7 +1868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="003.html" class="md-nav__link">
+      <a href="../java/effective-java/003.html" class="md-nav__link">
         
   
   
@@ -1729,7 +1896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="004.html" class="md-nav__link">
+      <a href="../java/effective-java/004.html" class="md-nav__link">
         
   
   
@@ -1757,7 +1924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="005.html" class="md-nav__link">
+      <a href="../java/effective-java/005.html" class="md-nav__link">
         
   
   
@@ -1785,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="006.html" class="md-nav__link">
+      <a href="../java/effective-java/006.html" class="md-nav__link">
         
   
   
@@ -1813,7 +1980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="007.html" class="md-nav__link">
+      <a href="../java/effective-java/007.html" class="md-nav__link">
         
   
   
@@ -1841,7 +2008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="008.html" class="md-nav__link">
+      <a href="../java/effective-java/008.html" class="md-nav__link">
         
   
   
@@ -1869,7 +2036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="009.html" class="md-nav__link">
+      <a href="../java/effective-java/009.html" class="md-nav__link">
         
   
   
@@ -1902,20 +2069,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
         
           
           <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
@@ -1936,7 +2101,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1954,7 +2119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="010.html" class="md-nav__link">
+      <a href="../java/effective-java/010.html" class="md-nav__link">
         
   
   
@@ -1982,7 +2147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="011.html" class="md-nav__link">
+      <a href="../java/effective-java/011.html" class="md-nav__link">
         
   
   
@@ -2007,37 +2172,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Item 12 = Always override toString
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="012.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../java/effective-java/012.html" class="md-nav__link">
         
   
   
@@ -2053,37 +2191,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        其他補充
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2096,7 +2203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="013.html" class="md-nav__link">
+      <a href="../java/effective-java/013.html" class="md-nav__link">
         
   
   
@@ -2124,7 +2231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="014.html" class="md-nav__link">
+      <a href="../java/effective-java/014.html" class="md-nav__link">
         
   
   
@@ -2207,7 +2314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="015.html" class="md-nav__link">
+      <a href="../java/effective-java/015.html" class="md-nav__link">
         
   
   
@@ -2235,7 +2342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="016.html" class="md-nav__link">
+      <a href="../java/effective-java/016.html" class="md-nav__link">
         
   
   
@@ -2318,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="055.html" class="md-nav__link">
+      <a href="../java/effective-java/055.html" class="md-nav__link">
         
   
   
@@ -2416,7 +2523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/pyenv.html" class="md-nav__link">
+      <a href="../python/pyenv.html" class="md-nav__link">
         
   
   
@@ -2592,7 +2699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   
@@ -2620,7 +2727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
+      <a href="../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   
@@ -2664,7 +2771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
+      <a href="../spring-boot/testing/index.html" class="md-nav__link">
         
   
   
@@ -2739,7 +2846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spring-boot/microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
+      <a href="../spring-boot/microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
         
   
   
@@ -2782,7 +2889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../feature-toggles/main.html" class="md-nav__link">
+      <a href="../feature-toggles/main.html" class="md-nav__link">
         
   
   
@@ -2856,7 +2963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html" class="md-nav__link">
+      <a href="../kata/Microservices%20with%20Spring%20Boot%203%20and%20Spring%20Cloud%20-%20Third%20Edition/index.html" class="md-nav__link">
         
   
   
@@ -2938,7 +3045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/01_concepts.html" class="md-nav__link">
+      <a href="../temporal/01_concepts.html" class="md-nav__link">
         
   
   
@@ -2966,7 +3073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/02_imporving_your_temporal_application_code.html" class="md-nav__link">
+      <a href="../temporal/02_imporving_your_temporal_application_code.html" class="md-nav__link">
         
   
   
@@ -2994,7 +3101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/03_using_timers_in_a_workflow_definition.html" class="md-nav__link">
+      <a href="../temporal/03_using_timers_in_a_workflow_definition.html" class="md-nav__link">
         
   
   
@@ -3022,7 +3129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/04_understanding_event_history.html" class="md-nav__link">
+      <a href="../temporal/04_understanding_event_history.html" class="md-nav__link">
         
   
   
@@ -3050,7 +3157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../temporal/05_understanding_workflow_determinism.html" class="md-nav__link">
+      <a href="../temporal/05_understanding_workflow_determinism.html" class="md-nav__link">
         
   
   
@@ -3087,7 +3194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/index.html" class="md-nav__link">
+      <a href="../blog/index.html" class="md-nav__link">
         
   
   
@@ -3124,17 +3231,188 @@
 
 
 
-<h1 id="item-12-always-override-tostring">Item 12: Always override <code>toString</code></h1>
-<p>Programmer 時常會將物件的訊息印出來，以幫助診斷程式的行為。實作輸出有意義有助於 Programmer 閱讀的訊息有助於診斷問題。</p>
-<p>在自動化測試，錯誤訊息像</p>
-<div class="highlight"><pre><span></span><code>Assertion failure: expected {abc, 123}, but was {abc, 123}.
-</code></pre></div>
-<p>對除錯的幫助有限。</p>
-<h2 id="_1">其他補充</h2>
+<h1 id="aggregate">Aggregate</h1>
+<p>Aggregate 是 Domain-Driven Design 中用來管理「一組相關物件」的模式。它讓我們以業務語意去劃定邊界，確保資料的一致性與完整性。</p>
+<hr />
+<h2 id="what">What</h2>
+<div class="admonition abstract">
+<p class="admonition-title">定義</p>
+<p><strong>Aggregate</strong> 是一組緊密相關的物件集合，被視為一個<strong>資料修改的單元</strong>。每個 Aggregate 由一個 <strong>Aggregate Root</strong> 與一條明確的 <strong>Boundary (邊界)</strong> 所定義。</p>
+</div>
 <ul>
-<li>輸出物件的所有重要資訊</li>
-<li>訊息量太多的 field，提供 summary 即可</li>
+<li><strong>Aggregate Root</strong>：Aggregate 的唯一對外入口。外部世界只能引用 Root，不能直接操作邊界內的其他物件。</li>
+<li><strong>Boundary</strong>：劃定哪些物件屬於同一個 Aggregate。邊界內的物件可以互相引用，邊界之間的物件則只能透過 Root 互動。</li>
 </ul>
+<hr />
+<h2 id="why">Why</h2>
+<p>沒有 Aggregate 的情況下，任何外部物件都可以自由地修改邊界內的任一物件，導致：</p>
+<ul>
+<li><strong>Invariant 被破壞</strong>：無法保證業務規則（如採購訂單的總金額限制）在多人操作時仍然成立。</li>
+<li><strong>難以追蹤刪除責任</strong>：例如刪除 <code>Person</code> 時，它的 <code>Address</code> 要一起刪嗎？如果沒有邊界，這個決策分散在每個操作中。</li>
+<li><strong>Locking 難以管理</strong>：多使用者同時修改一個物件群集時，不知道該鎖住哪個範圍。</li>
+</ul>
+<p>Aggregate 透過明確的邊界與 Root 來集中這些責任，讓業務規則有一個守護者。</p>
+<hr />
+<h2 id="rules">Rules</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">規則</th>
+<th style="text-align: left;">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Aggregate Root 有 Global ID</strong></td>
+<td style="text-align: left;">可被外部直接查詢（如資料庫查詢）。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>內部物件只有 Local ID</strong></td>
+<td style="text-align: left;">只在此 Aggregate 邊界內唯一，外部無法直接查詢。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>外部只能持有 Root 的引用</strong></td>
+<td style="text-align: left;">內部物件可以傳遞到外部，但外部不能保留對它的持久引用。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Root 負責檢查 Invariant</strong></td>
+<td style="text-align: left;">所有對邊界內物件的修改，都必須通過 Root 的業務規則驗證。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>只能透過 Root 查詢內部物件</strong></td>
+<td style="text-align: left;">不可繞過 Root 直接查出邊界內的物件。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>刪除以 Aggregate 為單位</strong></td>
+<td style="text-align: left;">刪除 Root 時，邊界內所有物件必須一併刪除。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>跨 Aggregate 不需即時同步</strong></td>
+<td style="text-align: left;">Aggregate 之間可透過 Domain Event 或 Batch 等最終一致性機制更新。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="examples">Examples</h2>
+<h3 id="car">汽車 (Car)</h3>
+<p><img alt="" src="car-aggregate-boundary.svg" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">物件</th>
+<th style="text-align: left;">類型</th>
+<th style="text-align: left;">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Car</code></td>
+<td style="text-align: left;"><strong>Aggregate Root</strong></td>
+<td style="text-align: left;">具有全球唯一車籍號碼 (VIN)，是查詢的入口。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Wheel</code></td>
+<td style="text-align: left;">邊界內 Entity</td>
+<td style="text-align: left;">具有 Local ID（如 LF, RR），不被外部直接追蹤。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Tire</code></td>
+<td style="text-align: left;">邊界內 Entity</td>
+<td style="text-align: left;">消耗品，透過 <code>Car</code> 管理，不獨立追蹤。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Position</code></td>
+<td style="text-align: left;">邊界內 Value Object</td>
+<td style="text-align: left;">記錄零件的安裝位置與里程，協助維護 Invariant。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Engine</code></td>
+<td style="text-align: left;">可能是另一個 Aggregate Root</td>
+<td style="text-align: left;">若引擎需要獨立維修追蹤，則自成一個 Aggregate。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Invariants：</strong></p>
+<p><img alt="" src="car-invariants.svg" /></p>
+<ul>
+<li><code>{time period must not overlap on same wheel}</code>：同一個輪框不可在相同時間點出現在多個位置。</li>
+<li><code>{mileage = sum(Position.mileage)}</code>：輪胎的總里程必須等於各 Position 的里程總和。</li>
+</ul>
+<h3 id="purchase-order">採購訂單 (Purchase Order)</h3>
+<p><img alt="" src="po-domain-model.svg" /></p>
+<p>當多個使用者同時修改 PO 的不同 Line Item 時，各自看來都符合金額上限，但合併後卻超標——這正是 Invariant 被破壞的例子。</p>
+<p>資料庫中 PO 的初始情況<br />
+<img alt="" src="po-initial-state.svg" /></p>
+<p>Georage 與 Amanda 同時修改 PO，分別增加 Guitar 與 Trombone 的數量。這兩個人在各自的視圖中，都認為修改是合法的 (Total &lt;= Approved Limit)。<br />
+<img alt="" src="po-concurrent-updates.svg" /></p>
+<p>但兩個人的修改合併後，總金額卻超過了上限 (Total &gt; Approved Limit)。<br />
+<img alt="" src="po-invariant-violated.svg" /></p>
+<p><strong>解法</strong>：將整筆 <code>Purchase Order</code> 視為一個 Aggregate，任何修改都需要鎖定整個 Root (PO)，由 Root 統一驗證金額上限。</p>
+<p><img alt="" src="po-aggregate-lock.svg" /></p>
+<hr />
+<h2 id="how">How</h2>
+<h3 id="aggregate-root">Aggregate Root 的基本結構</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Aggregate Root</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PurchaseOrder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PurchaseOrderId</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">        </span><span class="c1">// Global ID</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">LineItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lineItems</span><span class="p">;</span><span class="w">  </span><span class="c1">// 邊界內物件</span>
+
+<span class="w">    </span><span class="c1">// 只能透過 Root 的方法來修改邊界內物件</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addLineItem</span><span class="p">(</span><span class="n">Part</span><span class="w"> </span><span class="n">part</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Money</span><span class="w"> </span><span class="n">newTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateTotal</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">part</span><span class="p">.</span><span class="na">getPrice</span><span class="p">().</span><span class="na">times</span><span class="p">(</span><span class="n">quantity</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Root 負責檢查 Invariant</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newTotal</span><span class="p">.</span><span class="na">isGreaterThan</span><span class="p">(</span><span class="n">approvedLimit</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ApprovedLimitExceededException</span><span class="p">(</span><span class="n">approvedLimit</span><span class="p">,</span><span class="w"> </span><span class="n">newTotal</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">lineItems</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LineItem</span><span class="p">(</span><span class="n">part</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">part</span><span class="p">.</span><span class="na">getPrice</span><span class="p">(),</span><span class="w"> </span><span class="n">quantity</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="nf">calculateTotal</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">lineItems</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">LineItem</span><span class="p">::</span><span class="n">getAmount</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">reduce</span><span class="p">(</span><span class="n">Money</span><span class="p">.</span><span class="na">ZERO</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">::</span><span class="n">add</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 邊界內物件 (Local Identity)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LineItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PartId</span><span class="w"> </span><span class="n">partId</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">   </span><span class="c1">// PO 建立當下的價格快照，非最新價格</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="nf">getAmount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">price</span><span class="p">.</span><span class="na">times</span><span class="p">(</span><span class="n">quantity</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="aggregate_1">跨 Aggregate 的引用</h3>
+<p><img alt="" src="aggregate-cross-reference.svg" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正確：只持有另一個 Aggregate Root 的 ID</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LineItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PartId</span><span class="w"> </span><span class="n">partId</span><span class="p">;</span><span class="w"> </span><span class="c1">// 只存 Part 的 ID，而非 Part 物件本身</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// 錯誤：不應持有其他 Aggregate 內部物件的引用</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LineItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Part</span><span class="w"> </span><span class="n">part</span><span class="p">;</span><span class="w"> </span><span class="c1">// ❌ 直接引用 Part 物件（若 Part 是另一個 Aggregate）</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="repository-root">Repository 只為 Root 提供查詢</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正確：Repository 只針對 Aggregate Root</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">PurchaseOrderRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">PurchaseOrder</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">PurchaseOrderId</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">PurchaseOrder</span><span class="w"> </span><span class="n">order</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 錯誤：不應提供 LineItem 的獨立查詢</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">LineItemRepository</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// ❌</span>
+<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">LineItem</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">LineItemId</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 
@@ -3157,7 +3435,7 @@
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月21日 10:02:50 UTC">2024年7月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月7日 17:17:49 UTC">2026年4月7日</span>
   </span>
 
     
@@ -3167,7 +3445,7 @@
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月21日 10:02:50 UTC">2024年7月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月7日 17:17:49 UTC">2026年4月7日</span>
   </span>
 
     
@@ -3221,14 +3499,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.select", "content.code.annotate", "content.code.copy", "toc.integrate", "navigation.top", "content.footnote.tooltips", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../termynal.js"></script>
+        <script src="../termynal.js"></script>
       
     
   </body>
