@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="hello_world.html">
+        <link rel="prev" href="../aggregate/index.html">
       
       
-        <link rel="next" href="../testing/index.html">
+        <link rel="next" href="../01-crunching-knowledge.html">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>JDBC JobStore - Teddy 的筆記本</title>
+        <title>Factory - Teddy 的筆記本</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quartz-jdbc-jobstore" class="md-skip">
+        <a href="#factory" class="md-skip">
           跳轉到
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JDBC JobStore
+              Factory
             
           </span>
         </div>
@@ -997,18 +997,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -1029,7 +1031,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1047,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/aggregate/index.html" class="md-nav__link">
+      <a href="../aggregate/index.html" class="md-nav__link">
         
   
   
@@ -1072,10 +1074,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../domain-driven-design/factory/index.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1091,6 +1120,165 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        何時只需要 Constructor (不需 Factory)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分配全域 Identity 與封裝複雜建構邏輯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在既有的 Aggregate 中新增元素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立不屬於此 Aggregate 的物件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregatereconstitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        重建 Aggregate（Reconstitution）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="重建 Aggregate（Reconstitution）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-reconstitution-invariant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新建 (Creation) 與重建 (Reconstitution) 對 Invariant 的處理差異
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factory-vs-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory vs. Repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1103,7 +1291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/01-crunching-knowledge.html" class="md-nav__link">
+      <a href="../01-crunching-knowledge.html" class="md-nav__link">
         
   
   
@@ -1131,7 +1319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/02-communication-and-the-use-of-language.html" class="md-nav__link">
+      <a href="../02-communication-and-the-use-of-language.html" class="md-nav__link">
         
   
   
@@ -1159,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/03-binding-model-and-implementation.html" class="md-nav__link">
+      <a href="../03-binding-model-and-implementation.html" class="md-nav__link">
         
   
   
@@ -1187,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/04-isolating-the-domain.html" class="md-nav__link">
+      <a href="../04-isolating-the-domain.html" class="md-nav__link">
         
   
   
@@ -1215,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/05-a-model-expressed-in-software.html" class="md-nav__link">
+      <a href="../05-a-model-expressed-in-software.html" class="md-nav__link">
         
   
   
@@ -1243,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
+      <a href="../06-the-life-cycle-of-a-domain-object.html" class="md-nav__link">
         
   
   
@@ -1271,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/07-using-the-language-an-extended-example.html" class="md-nav__link">
+      <a href="../07-using-the-language-an-extended-example.html" class="md-nav__link">
         
   
   
@@ -1299,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/08-breakthrough.html" class="md-nav__link">
+      <a href="../08-breakthrough.html" class="md-nav__link">
         
   
   
@@ -1327,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/09-making-implicit-concepts-explicit.html" class="md-nav__link">
+      <a href="../09-making-implicit-concepts-explicit.html" class="md-nav__link">
         
   
   
@@ -1355,7 +1543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../domain-driven-design/10-supple-design.html" class="md-nav__link">
+      <a href="../10-supple-design.html" class="md-nav__link">
         
   
   
@@ -2412,20 +2600,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2446,7 +2632,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2461,20 +2647,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
         
           
           <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
@@ -2495,7 +2679,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2510,20 +2694,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_1" >
         
           
           <label class="md-nav__link" for="__nav_7_1_1" id="__nav_7_1_1_label" tabindex="0">
@@ -2544,7 +2726,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2562,7 +2744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hello_world.html" class="md-nav__link">
+      <a href="../../spring-boot/scheduler/hello_world.html" class="md-nav__link">
         
   
   
@@ -2587,37 +2769,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JDBC JobStore
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="jdbc_job_store.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../spring-boot/scheduler/jdbc_job_store.html" class="md-nav__link">
         
   
   
@@ -2633,98 +2788,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#job" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        簡單的 Job 範例
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        探討: 執行時間超過下一次排程的時間的行為
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="探討: 執行時間超過下一次排程的時間的行為">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#disallowconcurrentexecution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用@DisallowConcurrentExecution 來避免重疊執行
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trigger" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        計算排程的時間與觸發的時間差來忽略錯過的 trigger
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#job_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        探討: Job 執行過程發生錯誤的行為
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        參考
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2753,7 +2816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/index.html" class="md-nav__link">
+      <a href="../../spring-boot/testing/index.html" class="md-nav__link">
         
   
   
@@ -2828,7 +2891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
+      <a href="../../spring-boot/microservices-with-spring-boot-3-and-spring-cloud/03-creating-a-set-of-cooperating-microservices.html" class="md-nav__link">
         
   
   
@@ -3213,279 +3276,250 @@
 
 
 
-<h1 id="quartz-jdbc-jobstore">Quartz: JDBC JobStore</h1>
-<h2 id="job">簡單的 Job 範例</h2>
-<p>以下範例展示，在 Spring Boot 中如何設定 Quartz 使用 JDBC JobStore。如此一來，我們把 Job 放到 cluster 上執行。</p>
-<p>在 <code>build.gradle.kts</code> 中新增 <code>spring-boot-starter-quartz</code> 相依套件。如此，程式啟動後就會有一個 Quartz Scheduler 在背景執行。</p>
-<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.springframework.boot:spring-boot-starter-quartz&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>使用 docker compose 執行 mysql。</p>
-<div class="highlight"><span class="filename">compose.yml</span><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.1&#39;</span>
-
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.4.0</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3306:3306&quot;</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">MYSQL_ALLOW_EMPTY_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quartz</span>
-</code></pre></div>
-<p>設定 spring boot 的 properties。</p>
-<div class="highlight"><span class="filename">src/main/resources/application.yml</span><pre><span></span><code><span class="nt">spring</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w"> </span><span class="c1">#(1)!</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datasource</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/quartz</span>
-<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">    </span><span class="nt">password</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span>
-<span class="w">  </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">job-store-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc</span><span class="w"> </span><span class="c1">#(2)!</span>
-<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">initialize-schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"> </span><span class="c1">#(3)!</span>
-<span class="w">    </span><span class="nt">overwrite-existing-jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">org</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">scheduler</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">instanceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduler</span>
-<span class="w">            </span><span class="nt">instanceId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AUTO</span><span class="w"> </span><span class="c1">#(4)!</span>
-<span class="w">          </span><span class="nt">dataSource</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">quartzDataSource</span><span class="p">:</span><span class="w"> </span><span class="c1">#(5)!</span>
-<span class="w">              </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span>
-<span class="w">              </span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/quartz</span>
-<span class="w">              </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">              </span><span class="nt">password</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hikaricp</span>
-<span class="w">          </span><span class="nt">jobStore</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.quartz.impl.jdbcjobstore.JobStoreTX</span>
-<span class="w">            </span><span class="nt">dataSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quartzDataSource</span><span class="w"> </span><span class="c1">#(5)!</span>
-<span class="w">            </span><span class="nt">isClustered</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1">#(6)!</span>
-</code></pre></div>
-<ol>
-<li><code>spring.quartz.jdbc.initialize-schema</code> 吃的 Data Source 設定。在 <code>spring.quartz.properties.org.quartz.dataSource</code> 設定的 Data Source 不支援 initialize schema。</li>
-<li>使用 JDBC JobStore。</li>
-<li>每次啟動都會初始化 schema。換句話說，我們可以不必手動新增 quartz 相關的 tables。(<a href="https://github.com/quartz-scheduler/quartz/tree/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore">SQL 參考</a>)</li>
-<li>在 cluster 上的 pod 需要有唯一的 instance id。這裡設定 <code>AUTO</code> 即可達到需求。</li>
-<li>data source 的設定。這裡的名稱會在下面設定 job store 的 dataSource 參考。</li>
-<li>job store 使用的 dataSource。</li>
-<li>啟用 cluster。</li>
-</ol>
-<details class="tip">
-<summary>使用變數來避免重複設定</summary>
-<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">org</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">quartz</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">dataSource</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">quartzDataSource</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.driver-class-name}</span>
-<span class="w">              </span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.url}</span>
-<span class="w">              </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.username}</span>
-<span class="w">              </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.password}</span>
-</code></pre></div>
-</details>
-<p>新增 <code>Job</code> 實作，簡單的在畫面輸出現在的時間以及 "Hello World!"。印出時間是為了幫助我們識別這是哪個時間點所觸發的 Job。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">jobExecutionContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">&quot;hh:mm:ss&quot;</span><span class="p">));</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">time</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; Hello World!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>新增 <code>JobDetail</code> 和 <code>Trigger</code> 的 Bean 定義。這裡設定每 10 秒觸發一次 Job 在畫面上輸出 "Hello World!"。</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">QuartzConfig</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nd">@Bean</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JobDetail</span><span class="w"> </span><span class="nf">helloWorldJobDetail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">JobBuilder</span><span class="p">.</span><span class="na">newJob</span><span class="p">(</span><span class="n">HelloWorldJob</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">withIdentity</span><span class="p">(</span><span class="s">&quot;helloWorldJob&quot;</span><span class="p">)</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">storeDurably</span><span class="p">()</span>
-<span class="w">                         </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nd">@Bean</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="nf">helloWorldTrigger</span><span class="p">(</span><span class="n">JobDetail</span><span class="w"> </span><span class="n">helloWorldJobDetail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TriggerBuilder</span><span class="p">.</span><span class="na">newTrigger</span><span class="p">()</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">forJob</span><span class="p">(</span><span class="n">helloWorldJobDetail</span><span class="p">)</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">withIdentity</span><span class="p">(</span><span class="s">&quot;helloWorldTrigger&quot;</span><span class="p">)</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">withSchedule</span><span class="p">(</span><span class="n">CronScheduleBuilder</span><span class="p">.</span><span class="na">cronSchedule</span><span class="p">(</span><span class="s">&quot;*/10 * * * * ?&quot;</span><span class="p">))</span>
-<span class="w">                             </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>為了可以同時執行多個 instance，我們將程式打包成 tar 檔。專案的目錄 /build/libs 應該會產生 xxx.jar 檔。</p>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>bootJar
-</code></pre></div>
-<p>打開 3 個 terminal，分別執行以下指令執行程式: (xxx 替換成實際檔案名稱)</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/xxx.jar
-</code></pre></div>
-<p>觀察每 10 秒只會有一個 terminal 輸出 "Hello World!"。這表示 Job 是在 cluster 上執行的。將輸出訊息的 terminal 關閉，可以觀察到其他 terminal 會接續執行輸出 "Hello World!" 的 Job。</p>
-<div class="admonition note">
-<p class="admonition-title">一個 trigger 一個 job instance 的設定</p>
-<p><code>org.quartz.scheduler.batchTriggerAcquisitionMaxCount</code> 預設值為 1 設定了 Trigger 的 job 一次執行一個 instance。可以設定其他數值來讓同一 trigger 同時執行多個 job。</p>
+<h1 id="factory">Factory</h1>
+<p>Factory 是 Domain-Driven Design 中負責<strong>建立複雜物件或 Aggregate</strong> 的模式。它將「如何建立物件」的邏輯集中管理，讓 client 不需要知道建立的細節。</p>
+<p><img alt="" src="factory-concept.svg" style="zoom:1.3" /></p>
+<hr />
+<h2 id="what">What</h2>
+<div class="admonition abstract">
+<p class="admonition-title">定義</p>
+<p><strong>Factory</strong> 是一種將物件建立邏輯封裝起來的機制。當一個物件或 Aggregate 的建立過程很複雜，或建立過程需要揭露許多內部細節時，Factory 將這些複雜性隱藏起來，提供一個清楚的建立介面。</p>
 </div>
-<h2 id="_1">探討: 執行時間超過下一次排程的時間的行為</h2>
-<p>假設我們設定每 10 秒跑一個 job。並且，每個 job 執行時間需要 15 秒。也就是說，job 的執行時間必定會覆蓋到下一次觸發的時間。在沒有特別設定的情況下，經過 30 秒後，將會有 3 個 job 被跑起來。job 與 job 的時間時間是會重疊的。</p>
-<div class="highlight"><pre><span></span><code>@startgantt
-[T1] happens D+0
-Separator just at [T1]&#39;s start
-
-[T2] happens D+10
-[T2] displays on same row as [T1]
-Separator just at [T2]&#39;s start
-
-[T3] happens D+20
-[T3] displays on same row as [T1]
-Separator just at [T3]&#39;s start
-
-[T4] happens D+30
-[T4] displays on same row as [T1]
-Separator just at [T4]&#39;s start
-
-[Job 1] starts D+0
-[Job 2] starts D+10
-[Job 3] starts D+20
-[Job 1] requires 15 days
-[Job 2] requires 15 days
-[Job 3] requires 15 days
-@endgantt
-</code></pre></div>
-<h3 id="disallowconcurrentexecution">使用<code>@DisallowConcurrentExecution</code> 來避免重疊執行</h3>
-<p>在 Job 的宣告加上 <code>@DisallowConcurrentExecution</code> 來避免 Job 重疊執行。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="hll"><span class="nd">@DisallowConcurrentExecution</span>
-</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>如此，當 Job 還在執行時，下一次的 Job 將會被延遲到上一次的 Job 執行完畢後再執行。變更後的<br />
-3 個 Job 執行時間軸參考下圖:</p>
-<div class="highlight"><pre><span></span><code>@startgantt
-[T1] happens D+0
-Separator just at [T1]&#39;s start
-
-[T2] happens D+10
-[T2] displays on same row as [T1]
-Separator just at [T2]&#39;s start
-
-[T3] happens D+20
-[T3] displays on same row as [T1]
-Separator just at [T3]&#39;s start
-
-[T4] happens D+30
-[T4] displays on same row as [T1]
-Separator just at [T4]&#39;s start
-
-[T5] happens D+40
-[T5] displays on same row as [T1]
-Separator just at [T5]&#39;s start
-
-[Job 1] starts D+0
-note bottom
-Trigger by T1
-end note
-[Job 2] starts D+15
-note bottom
-Trigger by T2
-end note
-[Job 3] starts D+30
-note bottom
-Trigger by T3
-end note
-
-[Job 1] requires 15 days
-[Job 2] requires 15 days
-[Job 3] requires 15 days
-
-@endgantt
-</code></pre></div>
-<h3 id="trigger">計算排程的時間與觸發的時間差來忽略錯過的 trigger</h3>
-<p>在 <code>Job.execute</code> 開始前，檢查 job 觸發的時間與排程的時間差，如果超過一定時間，則忽略這次的 trigger。範例中是時間差超過 1000 毫秒 (1 秒) 就忽略這次的 trigger。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="nd">@DisallowConcurrentExecution</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">getFireTime</span><span class="p">().</span><span class="na">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getScheduledFireTime</span><span class="p">().</span><span class="na">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">  </span><span class="c1">// skip this trigger</span>
-</span><span class="hll"><span class="w">        </span><span class="p">}</span>
-</span><span class="w">        </span><span class="c1">// ...</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>如此，trigger 的 job 都會落在排程設定的時間點上。變更後的 Job 執行時間軸參考下圖:</p>
-<div class="highlight"><pre><span></span><code>@startgantt
-[T1] happens D+0
-Separator just at [T1]&#39;s start
-
-[T2] happens D+10
-[T2] displays on same row as [T1]
-Separator just at [T2]&#39;s start
-
-[T3] happens D+20
-[T3] displays on same row as [T1]
-Separator just at [T3]&#39;s start
-
-[T4] happens D+30
-[T4] displays on same row as [T1]
-Separator just at [T4]&#39;s start
-
-[T5] happens D+40
-[T5] displays on same row as [T1]
-Separator just at [T5]&#39;s start
-
-[T6] happens D+50
-[T6] displays on same row as [T1]
-Separator just at [T6]&#39;s start
-
-[Job 1] starts D+0
-[Job 2] starts D+15
-note bottom
-Trigger by T2
-skipped
-end note
-[Job 3] starts D+20
-[Job 4] starts D+35
-note bottom
-Trigger by T4
-skipped
-end note
-[Job 5] starts D+40
-
-[Job 1] requires 15 days
-[Job 3] requires 15 days
-[Job 5] requires 15 days
-
-@endgantt
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>目前沒有發現官方對於此方案的解法。這裡的解法有土法煉鋼的感覺。</p>
-</div>
-<h2 id="job_1">探討: Job 執行過程發生錯誤的行為</h2>
-<p>在 Job 執行過程中，如果拋出例外，Job 即中斷執行。如果拋出的例外是 <code>JobExecutionException</code> 並設定 <code>refireImmediately</code> 為 <code>true</code>，則 Job 會立即重新執行，並且下一次 <code>JobExecutionContext.getRefireCount()</code> 數字累加。<br />
-以下程式碼展示當 Job 失敗拋出例外時， retry 3 次。</p>
-<div class="highlight"><span class="filename">HelloWorldJob.java</span><pre><span></span><code><span class="nd">@DisallowConcurrentExecution</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldJob</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">JobExecutionContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">getRefireCount</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JobExecutionException</span><span class="p">(</span><span class="s">&quot;Too many re-fires&quot;</span><span class="p">);</span>
-</span><span class="hll"><span class="w">        </span><span class="p">}</span>
-</span>
-<span class="w">        </span><span class="c1">// ...</span>
-
-<span class="hll"><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JobExecutionException</span><span class="p">(</span><span class="s">&quot;Something goes wrong&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
-</span><span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="_2">參考</h2>
+<p>Factory 的實作手段 (GoF Design Patterns)：</p>
 <ul>
-<li><a href="https://docs.spring.io/spring-boot/reference/io/quartz.html">Sprint Boot Quartz Scheduler</a></li>
-<li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.2.2/configuration/ConfigJDBCJobStoreClustering.html">Quartz Configuration - Configure Clustering with JDBC-JobStore</a> </li>
+<li><strong>Factory Method</strong>：在類別中定義建立物件的方法，子類別可以決定實際建立的型別。</li>
+<li><strong>Abstract Factory</strong>：提供一個建立相關物件家族的介面，無需指定具體類別。</li>
+<li><strong>Builder</strong>：逐步建立複雜物件，適合有很多可選設定的情境。</li>
 </ul>
+<hr />
+<h2 id="why">Why</h2>
+<p>當物件或 Aggregate 的建立過程複雜時，不加以封裝會產生問題：</p>
+<ul>
+<li><strong>洩漏內部細節</strong>：client 被迫了解物件的內部結構才能完成建立，破壞了封裝性。</li>
+<li><strong>Invariant 不易保護</strong>：建立邏輯分散在各處，容易忘記設定某個必要狀態，導致物件一開始就違反 invariant。</li>
+<li><strong>建立與使用耦合</strong>：client 同時負責知道「如何建立」與「如何使用」，職責不清。</li>
+</ul>
+<p>Factory 將建立責任集中，確保每個新建立的物件都滿足其 invariant，並從一開始就處於有效狀態。</p>
+<h3 id="constructor-factory">何時只需要 Constructor (不需 Factory)</h3>
+<p>並非所有的物件都需要 Factory。書中強調，如果符合以下情況，直接使用 Constructor 即可，過度使用 Factory 反而會增加不必要的複雜度：</p>
+<ol>
+<li><strong>類別本身就是具體型別</strong>：沒有複雜的多型 (Polymorphism) 或繼承階層。</li>
+<li><strong>Client 關心實作細節</strong>：例如要選擇某個具體的「策略 (Strategy)」，Client 本來就需要知道特定實作。</li>
+<li><strong>Client 已經擁有所有構造所需屬性</strong>：不需要透過複雜的內部狀態計算或其他物件來提取資訊。</li>
+<li><strong>建構過程很簡單</strong>：沒有複雜的組裝邏輯，也就是 <code>new</code> 一下就好了。</li>
+<li><strong>能夠輕易滿足 Invariant</strong>：只要把參數傳入 Constructor，物件立刻就是完全合法且立即可用的狀態。</li>
+</ol>
+<hr />
+<h2 id="rules">Rules</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">規則</th>
+<th style="text-align: left;">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Factory 確保 Invariant</strong></td>
+<td style="text-align: left;">建立出來的物件或 Aggregate 必須處於一致且有效的狀態。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>整個 Aggregate 由 Factory 建立</strong></td>
+<td style="text-align: left;">Factory 建立整個 Aggregate，並回傳 Aggregate Root。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Aggregate Root 可作為 Factory Method 的宿主</strong></td>
+<td style="text-align: left;">在既有的 Aggregate 中新增元素，可以在 Root 上加入 Factory Method。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Factory Method 產生的物件不一定屬於此 Aggregate</strong></td>
+<td style="text-align: left;">Factory Method 可以用來建立另一個 Aggregate 的物件，只要建立邏輯與此 Aggregate 相關即可。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>重建 (Reconstitution) 與新建不同</strong></td>
+<td style="text-align: left;">從資料庫重建物件時，不一定需要驗證所有 Invariant（資料已存在，應該是合法的），但要確保物件狀態完整還原。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="examples">Examples</h2>
+<h3 id="identity">分配全域 Identity 與封裝複雜建構邏輯</h3>
+<p><img alt="" src="factory-identity-assignment.svg" style="zoom:1.3" /></p>
+<p>針對 Entity 或 Aggregate Root 的建立，有時會牽涉到無法單純靠 Constructor 解決的外部依賴（例如需要向外部機制取得流水號）。Factory 的任務就是將這些<strong>前置準備與外部資源的互動</strong>封裝起來：</p>
+<ul>
+<li><strong>取得與分配全域唯一的 Identity (ID)</strong>：如圖中，Factory 向 <code>brokerage account number sequence</code> (通常是資料庫 sequence 或其他外部服務) 要求一個唯一的流水號 <code>123</code>，然後才以此流水號建立物件。這可以避免將產生 ID 的基礎設施邏輯混入核心的 Domain Object 中。</li>
+<li><strong>根據參數處理 Aggregate 的內部組裝</strong>：如圖中接收到 <code>MARGIN_APPROVED</code> 參數後，Factory 除了建立 Aggregate Root（<code>:Brokerage Account</code>）之外，還一併負責把其內部的元件（<code>:Margin Account</code>）建立起來並組裝好。Factory 將這段「確保整個 Aggregate 從一開始就完整可用」的複雜機制給封裝了。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccountFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AccountNumberSequence</span><span class="w"> </span><span class="n">accountSequence</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Factory 隱藏了向系統取得 ID 以及組裝 Aggregate 內部元件的複雜度</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BrokerageAccount</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">customerName</span><span class="p">,</span><span class="w"> </span><span class="n">AuthorizationType</span><span class="w"> </span><span class="n">authType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 1. Factory 負責與外部基礎設施互動，取得流水號 (如 123)</span>
+<span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountSequence</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 2. 將流水號轉換/組合成系統實際的 Identity 格式 (如 b123)</span>
+<span class="w">        </span><span class="n">AccountNumber</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountNumber</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">seq</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 3. 建立 Aggregate Root</span>
+<span class="w">        </span><span class="n">BrokerageAccount</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BrokerageAccount</span><span class="p">(</span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">customerName</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 4. 若符合特定條件 (如 MARGIN_APPROVED)，負責建立並組裝 Aggregate 內部的其他元件</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">authType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AuthorizationType</span><span class="p">.</span><span class="na">MARGIN_APPROVED</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">MarginAccount</span><span class="w"> </span><span class="n">margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MarginAccount</span><span class="p">();</span>
+<span class="w">            </span><span class="n">account</span><span class="p">.</span><span class="na">enableMargin</span><span class="p">(</span><span class="n">margin</span><span class="p">);</span><span class="w"> </span><span class="c1">// 將 MarginAccount 組裝進 Root</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">account</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="aggregate">在既有的 Aggregate 中新增元素</h3>
+<p><img alt="" src="factory-new-item.svg" style="zoom:1.3" /></p>
+<p>通常在既有的 Aggregate 中新增元素時，可以把 Aggregate Root 當作 Factory。透過在 Root 上提供 Factory Method，能有效封裝內部物件（例如 <code>Purchase Item</code>）的建立細節，並確保 Aggregate 內部的 Invariant 不被破壞。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Aggregate Root</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PurchaseOrder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PurchaseItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Factory Method: 建立並封裝內部元素的邏輯</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PurchaseItem</span><span class="w"> </span><span class="nf">newItem</span><span class="p">(</span><span class="n">CatalogPart</span><span class="w"> </span><span class="n">part</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Money</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">part</span><span class="p">.</span><span class="na">getPrice</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Money</span><span class="w"> </span><span class="n">itemTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">.</span><span class="na">times</span><span class="p">(</span><span class="n">quantity</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Factory Method 在建立內部物件前，負責驗證 Invariant</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">total</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">itemTotal</span><span class="p">).</span><span class="na">isGreaterThan</span><span class="p">(</span><span class="n">approvedLimit</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ApprovedLimitExceededException</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// 隱藏 PurchaseItem 的建構細節</span>
+<span class="w">        </span><span class="n">PurchaseItem</span><span class="w"> </span><span class="n">newItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PurchaseItem</span><span class="p">(</span><span class="n">part</span><span class="p">.</span><span class="na">getPartNumber</span><span class="p">(),</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">items</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">newItem</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">newItem</span><span class="p">;</span><span class="w"> </span><span class="c1">// 根據範例，回傳新建的 PurchaseItem (i3) 供 Client 暫時操作或取值</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="nf">total</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getPrice</span><span class="p">().</span><span class="na">times</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getQuantity</span><span class="p">()))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">reduce</span><span class="p">(</span><span class="n">Money</span><span class="p">.</span><span class="na">ZERO</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">::</span><span class="n">add</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="aggregate_1">建立不屬於此 Aggregate 的物件</h3>
+<p><img alt="" src="factory-new-buy.svg" style="zoom:1.3" /></p>
+<p>雖然同樣是在 Aggregate Root 上加上 Factory Method，但所建立出來的元素 <strong>不一定</strong> 要屬於同一個 Aggregate。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BrokerageAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AccountNumber</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customerName</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Factory Method：建立 BuyOrder 的 TradeOrder，但 TradeOrder 並不屬於 BrokerageAccount 這個 Aggregate</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TradeOrder</span><span class="w"> </span><span class="nf">newBuy</span><span class="p">(</span><span class="n">Security</span><span class="w"> </span><span class="n">security</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numberOfShares</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ... (可在這裡檢查業務規則，例如帳戶是否有下單權限) ...</span>
+
+<span class="w">        </span><span class="c1">// TradeOrder 建立需要引用 BrokerageAccount 的標識符 (accountNumber)</span>
+<span class="w">        </span><span class="n">TradeOrder</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TradeOrder</span><span class="p">(</span>
+<span class="w">            </span><span class="n">TradeOrderId</span><span class="p">.</span><span class="na">generate</span><span class="p">(),</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">accountNumber</span><span class="p">,</span><span class="w">  </span><span class="c1">// 對應圖片的 brokerageAccountId</span>
+<span class="w">            </span><span class="n">security</span><span class="p">,</span>
+<span class="w">            </span><span class="n">numberOfShares</span><span class="p">,</span>
+<span class="w">            </span><span class="n">OrderType</span><span class="p">.</span><span class="na">BuyOrder</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">order</span><span class="p">;</span><span class="w"> </span><span class="c1">// 回傳新建的 TradeOrder (t456)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">為什麼讓 <code>BrokerageAccount</code> 產生 <code>TradeOrder</code>？</p>
+<p>雖然 <code>TradeOrder</code> 不屬於 <code>BrokerageAccount</code> 的 Aggregate，但讓它來負責建立 <code>TradeOrder</code> 是自然的，因為：</p>
+<ul>
+<li><code>TradeOrder</code> 建立需要 <code>BrokerageAccount</code> 的資訊（如帳戶 ID）。</li>
+<li><code>BrokerageAccount</code> 控制交易是否允許（業務邏輯聚集在有知識的地方）。</li>
+</ul>
+</div>
+<h3 id="aggregatereconstitution">重建 Aggregate（Reconstitution）</h3>
+<p>當物件已經被持久化到儲存媒體（如資料庫或 XML），我們將它讀取並還原回記憶體中 Domain Object 的過程稱為<strong>重建（Reconstitution）</strong>。</p>
+<p>透過 Factory 來處理重建過程，我們能將「解析外部資料格式」（如 SQL 資料列或 DOM 節點）的麻煩事與物件產生的邏輯封裝起來。這樣一來，保證了 Domain Object 的純粹，不受底層技術細節污染。</p>
+<p><img alt="" src="factory-reconstitute-sql.svg" style="zoom:1.3" /><br />
+<em>▲ 從關聯式資料庫的 SQL Result Set 中提取資料並交由 Factory 重建物件</em></p>
+<p><img alt="" src="factory-reconstitute-xml.svg" style="zoom:1.3" /><br />
+<em>▲ 從 XML 文件解析內容並交由 Factory 重建物件</em></p>
+<h4 id="creation-reconstitution-invariant">新建 (Creation) 與重建 (Reconstitution) 對 Invariant 的處理差異</h4>
+<p>在重建過程中有一條很重要的守則：<strong>重建時，通常不需要重新驗證 Invariant。</strong></p>
+<p>新建遇到錯誤時，我們會丟出例外拒絕建立。但「重建」的目的在於「真實還原被持久化的資料」。如果一筆資料存入後，業務規則發生了變更（例如總額上限被調降），我們在還原舊訂單時如果依舊嚴厲地驗證，可能會導致「歷史資料再也讀不出來」的窘境。因此，重建的職責就是放寬限制，如實還原物件原貌。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PurchaseOrderFactory</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 1. 用於新建（Creation）：必須嚴格驗證所有 Invariant、並產生初始狀態</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PurchaseOrder</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">CustomerId</span><span class="w"> </span><span class="n">customerId</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ... (可能有各種業務規則檢查)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PurchaseOrder</span><span class="p">(</span>
+<span class="w">            </span><span class="n">PurchaseOrderId</span><span class="p">.</span><span class="na">generate</span><span class="p">(),</span><span class="w"> </span><span class="n">customerId</span><span class="p">,</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">,</span><span class="w"> </span><span class="n">Collections</span><span class="p">.</span><span class="na">emptyList</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 2. 用於重建（Reconstitution）：從外部資料源負責還原狀態</span>
+<span class="w">    </span><span class="c1">// 這裡的方法允許外部放入完整的持久化資料，且會跳過 Invariant 的拒絕性檢查</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PurchaseOrder</span><span class="w"> </span><span class="nf">reconstitute</span><span class="p">(</span>
+<span class="w">            </span><span class="n">PurchaseOrderId</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+<span class="w">            </span><span class="n">CustomerId</span><span class="w"> </span><span class="n">customerId</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Money</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">,</span>
+<span class="w">            </span><span class="n">List</span><span class="o">&lt;</span><span class="n">LineItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lineItems</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PurchaseOrder</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">customerId</span><span class="p">,</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">,</span><span class="w"> </span><span class="n">lineItems</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="factory-vs-repository">Factory vs. Repository</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Factory</th>
+<th style="text-align: left;">Repository</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>職責</strong></td>
+<td style="text-align: left;">建立（新建或重建）物件</td>
+<td style="text-align: left;">保存、查詢、刪除物件</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>物件狀態</strong></td>
+<td style="text-align: left;">新建的物件，尚未持久化</td>
+<td style="text-align: left;">已持久化的物件</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>身份 (Identity)</strong></td>
+<td style="text-align: left;">通常在建立時指派新 ID</td>
+<td style="text-align: left;">使用已存在的 ID 查詢</td>
+</tr>
+</tbody>
+</table>
+<p>Repository 可以<strong>委託 Factory</strong> 來重建從資料庫取出的物件：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaPurchaseOrderRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PurchaseOrderRepository</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PurchaseOrderFactory</span><span class="w"> </span><span class="n">factory</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">PurchaseOrder</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">PurchaseOrderId</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">jpa</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="na">value</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">record</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">factory</span><span class="p">.</span><span class="na">reconstitute</span><span class="p">(</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">PurchaseOrderId</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="na">getId</span><span class="p">()),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">CustomerId</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">()),</span>
+<span class="w">                </span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="na">getApprovedLimit</span><span class="p">()),</span>
+<span class="w">                </span><span class="n">toLineItems</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="na">getLineItems</span><span class="p">())</span>
+<span class="w">            </span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Client 從 Factory 建立物件後，需要知道應透過 Repository 保存物件：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// client 的使用流程</span>
+<span class="n">PurchaseOrder</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">purchaseOrderFactory</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">customerId</span><span class="p">,</span><span class="w"> </span><span class="n">approvedLimit</span><span class="p">);</span>
+<span class="c1">// ... 對 order 進行操作 ...</span>
+<span class="n">purchaseOrderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">  </span><span class="c1">// 透過 Repository 持久化</span>
+</code></pre></div>
 
 
 
@@ -3508,7 +3542,7 @@ end note
     <span class="md-icon" title="最後更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月29日 17:23:07 UTC">2024年7月29日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月11日 19:21:40 UTC">2026年4月11日</span>
   </span>
 
     
@@ -3518,7 +3552,7 @@ end note
     <span class="md-icon" title="建立日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年7月1日 07:51:59 UTC">2024年7月1日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月11日 19:21:40 UTC">2026年4月11日</span>
   </span>
 
     
